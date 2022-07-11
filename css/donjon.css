@@ -1,0 +1,36 @@
+A:link,A:visited {color:#000080}
+A:active {color:#FFFFFF}
+
+body {
+	background-color : #E7E7D2;
+	
+}
+
+#texte
+{
+	border : 1px solid black;
+	border-radius : 10px;
+	background-color : rgb(247, 247, 247);
+	padding : 50px;
+	margin : 16px 8px;
+	line-height : 25px;
+}
+
+#paragraphe {
+	font-size : 2em;
+	font-weight : bold;
+	text-align : center;
+}
+
+#action
+{
+	border : 1px solid black;
+	border-radius : 10px;
+	background-color : rgb(247, 247, 247);
+	padding : 50px;
+	margin : 16px 8px;
+	line-height : 25px;
+}
+
+
+
