@@ -1,0 +1,22 @@
+{
+    "id": 1,
+    "texte":  [ 
+        {
+            "paragraphe" : [
+                "Il ne vous aura pas fallu bien longtemps pour arriver à la tour de Loubet. Vous la voyez déjà se profiler à travers les arbres. Elle n’est pas très haute, mais plutôt large, et se présente un peu comme un pâté de sable disgracieux posé dans le paysage. Ses murs semblent épais, ses rares fenêtres étroites – on pourrait même parler de meurtrières à ce stade – et il s’en dégage une impression malsaine.",
+                "C’est à ce moment que vous vous demandez si vous avez fait le bon choix...",
+                "Comment diable en êtes-vous arrivé là ? Eh bien, cela s’est fait très simplement, à vrai dire..."
+            ]
+        }
+    ],
+    "choix": [
+        {
+            "texte": "Si vous êtes un orque, demi-orque, gnôme des forets, gobelin ou ogre",
+            "id": 20
+        },
+        {
+                "texte": "Si vous êtes d’une autre origine",
+                "id": 30
+        }
+    ]
+}

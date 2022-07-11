@@ -1,0 +1,38 @@
+{
+    "id": 30,
+    "texte":[ 
+        { "paragraphe" : [
+            "Tout a commencé dans la taverne d’Auvairlouk, sur la place Muchi à Loubet. ",
+            "Vous étiez de passage, après avoir bourlingué un peu dans la région sud-ouest de la Terre de Fangh, cherchant quelque chose d’intéressant à faire. ",
+            "Plutôt que d’user inutilement vos braies sur le tabouret un peu collant de cette gargote, et comme vous n’aviez pas d’ami dans le secteur, vous avez choisi d’épier les conversations voisines.  ",
+            "C’était sans intérêt."
+            ]
+        } ,
+        { "paragraphe" : [
+            "En début de soirée, et alors qu’il pleuvait des cordes à l’extérieur, un jeune homme a poussé la porte de la taverne. ",
+            "Il était trempé, pieds nus, il lui manquait quelques vêtements et il souffrait de plusieurs blessures sans gravité. ",
+            "Il semblait également avoir été blessé dans son orgueil. ",
+            "Sale et grelottant, il s’est blotti dans un coin de la salle commune avec un jus de viande chaud, enroulé dans une couverture aimablement fournie par le patron hilare. ",
+            "En écoutant parler le jeune homme à deux vieux du village, vous avez compris qu’il venait de s’essayer à l’aventure.",
+            "Mais visiblement, il n’y connaissait rien."
+            ]
+        },
+        { "paragraphe" : [
+            "« Ah, le sot. » avez-vous pensé, avant de vous approcher pour en savoir plus."
+            ]
+        }, 
+        { "paragraphe" : [
+            "En prêtant l’oreille, vous avez fini par comprendre qu’il y avait dans le voisinage une tour étrange, un genre de donjon qui alimentait les légendes locales. ",
+            "C’était tout à fait ce qu’il vous fallait pour continuer à vous lancer dans votre carrière d’aventurier ! ",
+            "Un peu d’action, quelques trésors, des armes gratuites et vous pourriez bien accéder au niveau suivant ! ",
+            "Vous avez donc passé la nuit à l’auberge, et au matin vous avez décidé de suivre les indications d’un fermier un peu demeuré pour localiser la tour."
+            ]
+        }
+    ],
+    "choix": [
+        {
+            "texte": "",
+            "id": 10
+        }
+    ]
+}

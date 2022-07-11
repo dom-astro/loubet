@@ -1,0 +1,30 @@
+{
+    "id": 20,
+    "texte": [ 
+        { "paragraphe" : [    
+             "Tout a commencé sur un chemin boueux, alors que vous étiez occupé à suivre votre instinct – et votre appétit – pour vous rapprocher d’une bourgade de petite taille.",
+             "Il pleuvait des cordes et l’endroit semblait peuplé majoritairement d’humains cultivateurs.",
+             "Vous n’aimez pas trop ces gens, prompts à saisir une fourche ou une pelle pour vous chasser hors de leur voisinage, mais ils sont tout de même moins dangereux que les gardes et les miliciens des villages de plus grande importance.",
+             "Le danger, la crainte d’être chassé, c’est un peu votre lot quotidien depuis que vous avez quitté votre taudis familial."
+            ]
+        } ,
+        { "paragraphe" : [      
+            "Barouder en affrontant les dangers n’est pas chose facile sans équipier, cependant pour le moment vous ne vous en sortez pas trop mal.",
+            "Disons que... Vous êtes en vie, c’est déjà bien. ",
+            "Vous étiez d’ailleurs en train de réfléchir à un moyen d’agrémenter votre quotidien lorsque vous avez vu passer devant vous un jeune individu trempé, mal vêtu et visiblement apeuré. ",
+            "Vous l’avez suivi un moment, de loin, sans vraiment savoir ce que vous lui vouliez... ",
+            "Puis, dissimulé derrière un épais taillis, vous avez surpris sa conversation avec un vieil homme du village.",
+            "Le jeune couard parlait vite et désignait fréquemment le chemin derrière lui, alignant des propos décousus et provoquant parfois l’hilarité du vieil homme. ",
+            "Vous avez compris qu’il était question de dangers, de trésors et d’un bâtiment situé plus loin. ",
+            "Le jeune homme semblait y avoir passé un mauvais moment ! ",
+            "C’était tout ce qu’il vous fallait pour vous occuper... ",
+            "Vous avez senti le parfum de l’aventure et vous avez voulu en savoir plus."
+            ]
+        }
+    ],
+    "choix": [
+        { "texte": "" ,
+          "id": 10
+        }
+    ]
+}
