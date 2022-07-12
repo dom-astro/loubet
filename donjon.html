@@ -2,7 +2,8 @@
 <head>
 	<!--meta http-equiv="Content-Type" content="text/html; charset=windows-1252"-->
 	<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-	<link rel="STYLESHEET" type="text/css" href="css/donjon.css">
+	<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/donjon.css">
 	<title>La tour de Loubet (partie 1)</title>
 
 	<meta name="author" content="Pen of Chaos">
@@ -14,22 +15,70 @@
 
 
 <center>
-	<p style="font-size: 16px; font-weight: bold;"><img src="img/barbare-menu.gif" alt="Donjon de Naheulbeuk JDR" title="Donjon de Naheulbeuk JDR" border="0"><br>
-		La tour de Loubet (partie 1)</p>
+	<h1>La tour de Loubet</h1>
 </center>
-
-<div id="texte">
-	<div id="paragraphe">1</div>
-	<p>Il ne vous aura pas fallu bien longtemps pour arriver à la tour de Loubet. Vous la voyez déjà se profiler à travers les arbres. Elle n’est pas très haute, mais plutôt large, et se présente un peu comme un pâté de sable disgracieux posé dans le paysage. Ses murs semblent épais, ses rares fenêtres étroites – on pourrait même parler de <i>meurtrières</i> à ce stade – et il s’en dégage une impression malsaine.</p>
-	<p>C’est à ce moment que vous vous demandez si vous avez fait le bon choix...</p>
-	<p>Comment diable en êtes-vous arrivé là ? Eh bien, cela s’est fait très simplement, à vrai dire...</p>
+<div class="row">
+	<div class="col-2">
+		<h3>Ranger</h3>
+		<div class="card" style="width:300px">
+			<img class="card-img-top" src="img/Ranger.png" alt="Card image" style="width:100%">
+			<div class="card-body">		
+				<p class="card-text">Le Ranger est un leader lâche et incompétent mais fier.</p>
+			</div>
+		</div>
+	</div>
+	<div class="col-10">
+		<br>
+		<div id="texte">
+			<div id="paragraphe">1</div>
+			<p>Il ne vous aura pas fallu bien longtemps pour arriver à la tour de Loubet. Vous la voyez déjà se profiler à travers les arbres. Elle n’est pas très haute, mais plutôt large, et se présente un peu comme un pâté de sable disgracieux posé dans le paysage. Ses murs semblent épais, ses rares fenêtres étroites – on pourrait même parler de <i>meurtrières</i> à ce stade – et il s’en dégage une impression malsaine.</p>
+			<p>C’est à ce moment que vous vous demandez si vous avez fait le bon choix...</p>
+			<p>Comment diable en êtes-vous arrivé là ? Eh bien, cela s’est fait très simplement, à vrai dire...</p>
+		</div>
+		<div id="action">
+			<p>&emsp;✔	si vous êtes un <i>orque</i>, <i>demi-orque</i>, <i>gnôme des forets</i>, <i>gobelin</i> ou <i>ogre</i>, rendez-vous au paragraphe <a href="javascript:write(20);">20</a></p>
+			<p>&emsp;✔	si vous êtes d’une autre origine, rendez-vous au paragraphe <a href="javascript:write(30)">30</a></p>
+		</div>
+	</div>
 </div>
-<div id="action">
-	<p>&emsp;✔	si vous êtes un <i>orque</i>, <i>demi-orque</i>, <i>gnôme des forets</i>, <i>gobelin</i> ou <i>ogre</i>, rendez-vous au paragraphe <a href="javascript:write(20);">20</a></p>
-	<p>&emsp;✔	si vous êtes d’une autre origine, rendez-vous au paragraphe <a href="javascript:write(30)">30</a></p>
+<br>
+<div class="row">
+	<div class="col-1">
+		<table class="table table-hover">
+			<tbody>
+			  <tr>
+				<td style="font-weight: bold;font-size: 14px;">Courage</td>
+				<td><input type="integer" class="form-control" placeholder="12"></td>
+			  </tr>
+			  <tr>
+				<td style="font-weight: bold;font-size: 14px;">Charisme</td>
+				<td><input type="integer" class="form-control" placeholder="12"></td>
+			  </tr>
+			  <tr>
+				<td style="font-weight: bold;font-size: 14px;">Force</td>
+				<td style="font-size: 6px"><input type="integer" class="form-control" placeholder="12"></td>
+			  </tr>
+			</tbody>
+		</table>
+	</div>	
+	<div class="col-1">
+		<table class="table table-hover">
+			<tbody>
+			  <tr>
+				<td><input type="integer" class="form-control" placeholder="12"></td>
+				<td style="font-weight: bold;font-size: 14px;width: 50px;">Intelligence</td>
+			  </tr>
+			  <tr>
+				<td><input type="integer" class="form-control" placeholder="12"></td>
+				<td style="font-weight: bold;font-size: 14px;">Adresse</td>
+			  </tr>
+			</tbody>
+		</table>
+	</div>	
 </div>
 
 
+<script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="js/donjon.js"></script>
 
