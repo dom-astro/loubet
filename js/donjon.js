@@ -17,7 +17,7 @@ function write(id) {
 
         $("#action").empty();
         $.each(data.choix, function(i, choix){
-            $("#action").append('<p> => Rendez-vous au paragraphe <a href="javascript:paragraphe('+choix.id+')">'+choix.id+'</a></p>');
+            $("#action").append('<p> => Rendez-vous au paragraphe <a href="javascript:write('+choix.id+')">'+choix.id+'</a></p>');
         });
     });
 }
