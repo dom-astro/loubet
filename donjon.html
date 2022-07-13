@@ -22,10 +22,24 @@
 	<div class="col-2">
 		<div class="row">
 			<div class="card" style="width: 100%">
-				<h3 style="text-align: center;">Ranger</h3>
-				<img class="card-img-top" src="img/Ranger.png" alt="Card image" style="width: 100px; text-align: center;">
+				<button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown">
+					  Choix du personnage
+				</button>
+				<ul class="dropdown-menu listPerso">
+					<li><a class="dropdown-item" href="#">Barbare</a></li>
+					<li><a class="dropdown-item" href="#">Elfe</a></li>
+					<li><a class="dropdown-item" href="#">Magicienne</a></li>
+					<li><a class="dropdown-item" href="#">Menestrel</a></li>
+					<li><a class="dropdown-item" href="#">Nain</a></li>
+					<li><a class="dropdown-item" href="#">Ogre</a></li>
+					<li><a class="dropdown-item" href="#">Ranger</a></li>
+					<li><a class="dropdown-item" href="#">Voleur</a></li>
+				</ul>
+				<input type="text" class="form-control" placeholder="Nom">
+				<h3 id="typePerso" style="text-align: center;"></h3>
+				<img id="imgPerso" class="card-img-top img-thumbnail" src="img/site-titre-jdr.gif" alt="Card image" style="width: 100px; text-align: center;">
 				<div class="card-body">		
-					<p class="card-text">Le Ranger est un leader lâche et incompétent mais fier.</p>
+					<p id="descPerso" class="card-text"></p>
 				</div>
 			</div>
 		</div>
@@ -67,21 +81,20 @@
 		</div>
 	</div>
 	<div class="col-10">
+		<div id="texte"></div>
 		<div class="texte">
-			<div id="paragraphe">1</div>
-			<p>Il ne vous aura pas fallu bien longtemps pour arriver à la tour de Loubet. Vous la voyez déjà se profiler à travers les arbres. Elle n’est pas très haute, mais plutôt large, et se présente un peu comme un pâté de sable disgracieux posé dans le paysage. Ses murs semblent épais, ses rares fenêtres étroites – on pourrait même parler de <i>meurtrières</i> à ce stade – et il s’en dégage une impression malsaine.</p>
-			<p>C’est à ce moment que vous vous demandez si vous avez fait le bon choix...</p>
-			<p>Comment diable en êtes-vous arrivé là ? Eh bien, cela s’est fait très simplement, à vrai dire...</p>
-		</div>
-		<div id="action">
-			<p>&emsp;✔	si vous êtes un <i>orque</i>, <i>demi-orque</i>, <i>gnôme des forets</i>, <i>gobelin</i> ou <i>ogre</i>, rendez-vous au paragraphe <a href="javascript:write(20);">20</a></p>
-			<p>&emsp;✔	si vous êtes d’une autre origine, rendez-vous au paragraphe <a href="javascript:write(30)">30</a></p>
+			<div class="input-group mb-3">
+				<span class="input-group-text">Aller au paragraphe </span>
+				<input id="numParagraphe" type="text" class="form-control" placeholder="">
+				<button class="btn btn-success" type="submit" onclick="goTo()">Go</button> 
+			</div>
 		</div>
 	</div>
 </div>
 <br>
 
 
+<script type="text/javascript" src="json/loubet.json"></script>
 <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="js/donjon.js"></script>
