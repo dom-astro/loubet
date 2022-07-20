@@ -472,10 +472,7 @@ var loubet = [
            "ligne" : "Si vous êtes d’origine elfe sylvain ou encore haut-elfe, la simple idée de salir ici vos cheveux et vos vêtements vous révulse, et vous changez d’avis avec une grimace. Si vous êtes ogre, vous savez que vous ne passerez pas dans le conduit. Dans tous ces cas, allez donc examiner la trappe du mur au paragraphe 55."
 		},
 		{
-           "ligne" : "Sinon, vous vous laissez glisser en essayant de vous accrocher à des racines et des cailloux. Ce n’est pas facile et c’est très salissant, mais finalement, vous y êtes ! Vous vous retrouvez également dégoûtant de terre, d'insectes morts et d'herbe pourrie, ce qui vous fait perdre momentanément un point de"
-		},
-		{
-           "ligne" : "CHARISME (jusqu’à la fin de l’aventure)."
+           "ligne" : "Sinon, vous vous laissez glisser en essayant de vous accrocher à des racines et des cailloux. Ce n’est pas facile et c’est très salissant, mais finalement, vous y êtes ! Vous vous retrouvez également dégoûtant de terre, d'insectes morts et d'herbe pourrie, ce qui vous fait perdre momentanément un point de CHARISME (jusqu’à la fin de l’aventure)."
 		},
 		{
            "ligne" : "Rendez-vous au paragraphe 60 pour la suite du programme."
@@ -673,10 +670,10 @@ var loubet = [
            "ligne" : "« Ah, le sot. » avez-vous pensé, avant de vous approcher pour en savoir plus."
 		},
 		{
-           "ligne" : "En prêtant l’oreille, vous avez fini par comprendre qu’il y avait dans le voisinage une tour étrange, un genre de donjon qui alimentait les légendes locales. C’était tout à fait ce qu’il vous fallait pour continuer à vous lancer dans votre carrière d’aventurier"
+           "ligne" : "En prêtant l’oreille, vous avez fini par comprendre qu’il y avait dans le voisinage une tour étrange, un genre de donjon qui alimentait les légendes locales. C’était tout à fait ce qu’il vous fallait pour continuer à vous lancer dans votre carrière d’aventurier!"
 		},
 		{
-           "ligne" : "! Un peu d’action, quelques trésors, des armes gratuites et vous pourriez bien accéder au niveau suivant ! Vous avez donc passé la nuit à l’auberge, et au matin vous avez décidé de suivre les indications d’un fermier un peu demeuré pour localiser la tour. Rendez-vous au paragraphe 10."
+           "ligne" : "Un peu d’action, quelques trésors, des armes gratuites et vous pourriez bien accéder au niveau suivant ! Vous avez donc passé la nuit à l’auberge, et au matin vous avez décidé de suivre les indications d’un fermier un peu demeuré pour localiser la tour. Rendez-vous au paragraphe 10."
 		}
 	]
 },
@@ -958,46 +955,52 @@ var loubet = [
     "id": 45,
     "paragraphe": [
 		{
-           "ligne" : "Vous commencez à faire le tour de cette large bâtisse, en partant sur la gauche. En restant à couvert la plus grande partie du temps, vous cherchez des yeux une autre entrée, espérant échapper aux pièges sans doute installés sur cette peu discrète porte principale."
+           	"ligne" : "Vous commencez à faire le tour de cette large bâtisse, en partant sur la gauche. En restant à couvert la plus grande partie du temps, vous cherchez des yeux une autre entrée, espérant échapper aux pièges sans doute installés sur cette peu discrète porte principale."
 		},
 		{
-           "ligne" : "Il y a comme un petit fossé rempli d’eau croupie de chaque côté, peut-être les vestiges des douves originellement construite pour ce qui devait être un château. Effectivement, en voyant la tour de côté vous pensez qu’elle ressemble un peu à la demeure d’un seigneur local, mais la construction a été modifiée depuis longtemps et les dépendances probablement démolies. Il y a toutefois un genre de petite maison en pierre, à la toiture effondrée, plus loin sur le terrain. Le sol par ici est très boueux."
+           	"ligne" : "Il y a comme un petit fossé rempli d’eau croupie de chaque côté, peut-être les vestiges des douves originellement construite pour ce qui devait être un château. Effectivement, en voyant la tour de côté vous pensez qu’elle ressemble un peu à la demeure d’un seigneur local, mais la construction a été modifiée depuis longtemps et les dépendances probablement démolies. Il y a toutefois un genre de petite maison en pierre, à la toiture effondrée, plus loin sur le terrain. Le sol par ici est très boueux."
 		},
 		{
-           "ligne" : "Vous êtes occupé à vous demander si c’est une bonne idée d’aller jusqu’à la cahute, quand un bruit sur votre gauche vous fait sursauter ! Vous vous retournez vivement pour voir fondre sur vous deux gros chiens de garde, les babines retroussées. Ils ne vont pas vous laisser trop de temps ! Il faut combattre ou trouver une ruse..."
+          	"ligne" : "Vous êtes occupé à vous demander si c’est une bonne idée d’aller jusqu’à la cahute, quand un bruit sur votre gauche vous fait sursauter ! Vous vous retournez vivement pour voir fondre sur vous deux gros chiens de garde, les babines retroussées. Ils ne vont pas vous laisser trop de temps ! Il faut combattre ou trouver une ruse..."
 		},
 		{
-           "ligne" : "Spécial : Si vous avez la compétence Comprendre les animaux, tentez une épreuve d’INTELLIGENCE. Si elle est réussie, rendez-vous au paragraphe 32, et sinon continuez la lecture."
+           	"ligne" : "Spécial : Si vous avez la compétence Comprendre les animaux, tentez une épreuve d’INTELLIGENCE. Si elle est réussie, rendez-vous au paragraphe 32, et sinon continuez la lecture."
 		},
 		{
-           "ligne" : "Spécial : Si vous avez la compétence Intimider, vous pouvez tenter une épreuve de CHARISME, et si elle est réussie, les chiens prendront la fuite en direction des bois. Vous irez au paragraphe 38, sinon continuez la lecture."
+           	"ligne" : "Spécial : Si vous avez la compétence Intimider, vous pouvez tenter une épreuve de CHARISME, et si elle est réussie, les chiens prendront la fuite en direction des bois. Vous irez au paragraphe 38, sinon continuez la lecture."
 		},
 		{
-           "ligne" : "Vous allez devoir affronter les chiens ou fuir ! Si vous préférez la fuite, allez au paragraphe 8. Sinon, empoignez vos armes et utilisez les scores ci-dessous pour combattre."
+           	"ligne" : "Vous allez devoir affronter les chiens ou fuir ! Si vous préférez la fuite, allez au paragraphe 8. Sinon, empoignez vos armes et utilisez les scores ci-dessous pour combattre."
 		},
 		{
-           "ligne" : "Vous avez le temps de tirer une flèche ou de lancer un sort"
+           	"ligne" : "Vous avez le temps de tirer une flèche ou de lancer un sort"
 		},
 		{
-           "ligne" : "(incantation deux assauts ou moins) avant que les chiens ne soient sur vous. Ensuite vous devrez combattre au corps-à-corps avec les animaux. Ils vous attaqueront à chaque assaut et vous ne pourrez tenter la parade que sur l’un d’entre eux !"
+           	"ligne" : "(incantation deux assauts ou moins) avant que les chiens ne soient sur vous. Ensuite vous devrez combattre au corps-à-corps avec les animaux. Ils vous attaqueront à chaque assaut et vous ne pourrez tenter la parade que sur l’un d’entre eux !"
 		},
 		{
-           "ligne" : "Spécial : En cas d’attaque critique d’un chien, ignorez simplement votre score d’armure."
+           	"ligne" : "Spécial : En cas d’attaque critique d’un chien, ignorez simplement votre score d’armure."
 		},
 		{
-           "ligne" : "Chiens du donjon : AT 12 / Esquive 6 / PR : 1 / COU 9"
+           	"ligne" : "Chiens du donjon : AT 12 / Esquive 6 / PR : 1 / COU 9"
 		},
 		{
-           "ligne" : "Résistance Magie : 11"
+           	"ligne" : "Résistance Magie : 11"
 		},
 		{
-           "ligne" : "Mâchoire : 1D+3"
+           	"ligne" : "Mâchoire : 1D+3"
 		},
 		{
-           "ligne" : "Énergie vitale : 9"
+           	"ligne" : "Énergie vitale : 9"
 		},
 		{
-           "ligne" : "Vous pouvez choisir à tout moment de prendre la fuite en vous rendant au paragraphe 8. Si vous triomphez des animaux, rendez-vous au paragraphe 13. Si ce sont les animaux qui finissent par vous tuer, rendez-vous au paragraphe 36."
+        	"ligne" : "✔ Vous pouvez choisir à tout moment de prendre la fuite en vous rendant au paragraphe 8."
+		},
+		{
+			"ligne" : "✔ Si vous triomphez des animaux, rendez-vous au paragraphe 13."
+		},
+		{
+			"ligne" : "✔ Si ce sont les animaux qui finissent par vous tuer, rendez-vous au paragraphe 36."
 		}
 	]
 },
@@ -2439,10 +2442,10 @@ var loubet = [
     "id": 106,
     "paragraphe": [
 		{
-           "ligne" : "C’était bien tenté, mais vous n’êtes pas si discret que ça, finalement"
+           "ligne" : "C’était bien tenté, mais vous n’êtes pas si discret que ça, finalement!"
 		},
 		{
-           "ligne" : "! Vous avez attendu ce qui vous semblait être « le bon moment » pour traverser, mais hélas un orque a levé le nez de la table juste à ce moment, et son regard est tombé sur vous, l’aventurier qui tente de se faufiler avec un air concentré, les dents serrées."
+           "ligne" : "Vous avez attendu ce qui vous semblait être « le bon moment » pour traverser, mais hélas un orque a levé le nez de la table juste à ce moment, et son regard est tombé sur vous, l’aventurier qui tente de se faufiler avec un air concentré, les dents serrées."
 		},
 		{
            "ligne" : "Les deux soudards lâchent un grognement de rage et saisissent leurs armes, repoussent leurs tabourets et se précipitent vers vous ! Il ne vous reste plus que deux solutions..."
@@ -3213,10 +3216,7 @@ var loubet = [
            "ligne" : "La partie terminée, les orques se servent un peu de vinasse et l’un d’eux vous apostrophe :"
 		},
 		{
-           "ligne" : "– Bon, va falloir penser à bosser ! Toi envoyé ici pour formation"
-		},
-		{
-           "ligne" : "?"
+           "ligne" : "– Bon, va falloir penser à bosser ! Toi envoyé ici pour formation?"
 		},
 		{
            "ligne" : "Vous hochez la tête..."
@@ -4152,22 +4152,13 @@ var loubet = [
            "ligne" : "Il va vous falloir principalement de l’ADRESSE et de la discrétion pour mener ce plan à bien. C’est aussi bien si vous n’avez pas un score d’armure trop élevé, et si vous avez la compétence"
 		},
 		{
-           "ligne" : "Déplacement silencieux... Vous aurez aussi besoin de"
-		},
-		{
-           "ligne" : "COURAGE pour le meurtre de sang-froid, car ce n’est pas chose facile. Enfin, il vous faut absolument une arme tranchante"
-		},
-		{
-           "ligne" : "(dague, épée, couteau...)."
+           "ligne" : "Déplacement silencieux... Vous aurez aussi besoin de COURAGE pour le meurtre de sang-froid, car ce n’est pas chose facile. Enfin, il vous faut absolument une arme tranchante (dague, épée, couteau...)."
 		},
 		{
            "ligne" : "Si vous êtes en paix avec vous-même, que vous répondez à ces prérequis et que vous voulez passer à l’action, rendez-vous au paragraphe 193."
 		},
 		{
-           "ligne" : "Si vous n’avez pas l’équipement ou si vous trouvez que ça"
-		},
-		{
-           "ligne" : "« sent le pâté », et que préférez ne pas prendre de risque, vous pouvez toujours vous diriger vers la porte de sortie... Au paragraphe 162."
+           "ligne" : "Si vous n’avez pas l’équipement ou si vous trouvez que ça « sent le pâté », et que préférez ne pas prendre de risque, vous pouvez toujours vous diriger vers la porte de sortie... Au paragraphe 162."
 		}
 	]
 },
@@ -4397,10 +4388,10 @@ var loubet = [
            "ligne" : "Il est vraiment temps de faire quelque chose de malin, car votre situation est vraiment déplorable. Sans prendre la peine de réfléchir trop longtemps, vous criez :"
 		},
 		{
-           "ligne" : "– Mais attendez ! Je m’occupe de faire l’entretien des canalisations"
+           "ligne" : "– Mais attendez ! Je m’occupe de faire l’entretien des canalisations !!!"
 		},
 		{
-           "ligne" : "!!! Vous n’allez tout de même pas m’attaquer ?"
+           "ligne" : "Vous n’allez tout de même pas m’attaquer ?"
 		},
 		{
            "ligne" : "Le type s’arrête et vous dévisage alors qu’il était en train de se pencher pour saisir un objet. Il tient à présent dans sa main calleuse un gros pichet de bronze, pesant sans doute quatre ou cinq kilos... Ses deux camarades, juste derrière lui, ont repoussé leurs chaises pour se joindre à lui. Ils échangent des commentaires variés à votre sujet."
@@ -4412,10 +4403,10 @@ var loubet = [
            "ligne" : "Vous répondez, presque du tac au tac :"
 		},
 		{
-           "ligne" : "– Mais euh... bien sûr ! C’est mon collègue du service d’entretien"
+           "ligne" : "– Mais euh... bien sûr ! C’est mon collègue du service d’entretien!"
 		},
 		{
-           "ligne" : "! D’ailleurs euh... j’étais justement parti à sa recherche !"
+           "ligne" : "D’ailleurs euh... j’étais justement parti à sa recherche !"
 		},
 		{
            "ligne" : "Vous pensez à ce moment au jeune homme dépité et frigorifié que vous avez croisé plus tôt, celui qui vous a donné l’idée de venir ici. Il a peut-être suivi le même parcours que vous ?"
@@ -4718,10 +4709,10 @@ var loubet = [
            "ligne" : "Quelque peu honteux, vous retournez sur vos pas, vous empruntez le sentier forestier en direction du village et vous cheminez mollement tout en méditant sur votre petite journée."
 		},
 		{
-           "ligne" : "Vous avez cru, un moment, avoir assez de cran pour affronter tout seul un donjon... Mais finalement, il faut croire que vous n’en êtes pas capable. C’est peut-être aussi bien ainsi. Vos talents sont certainement utiles à un groupe, mais ne suffisent probablement pas à vous maintenir en vie tout seul, face à des dangers multiples. Peut-être vous faut-il rejoindre une compagnie"
+           "ligne" : "Vous avez cru, un moment, avoir assez de cran pour affronter tout seul un donjon... Mais finalement, il faut croire que vous n’en êtes pas capable. C’est peut-être aussi bien ainsi. Vos talents sont certainement utiles à un groupe, mais ne suffisent probablement pas à vous maintenir en vie tout seul, face à des dangers multiples. Peut-être vous faut-il rejoindre une compagnie?"
 		},
 		{
-           "ligne" : "? Dans ce cas, vous allez devoir passer du temps à la taverne... Ou retourner errer sur les chemins sauvages."
+           "ligne" : "Dans ce cas, vous allez devoir passer du temps à la taverne... Ou retourner errer sur les chemins sauvages."
 		},
 		{
            "ligne" : "Vous pouvez aussi panser vos blessures, améliorer votre équipement et revenir tenter votre chance à la prochaine décade, en recommençant la lecture au paragraphe 1."
@@ -5365,10 +5356,10 @@ var loubet = [
            "ligne" : "– Moi ? Travailler dans un donjon ? Mais vous rêvez, mon pauvre ami ! Plutôt mourir au combat ! Au paragraphe 250."
 		},
 		{
-           "ligne" : "– Hum. Je crois que je vais travailler pour vous, ça semble intéressant"
+           "ligne" : "– Hum. Je crois que je vais travailler pour vous, ça semble intéressant!"
 		},
 		{
-           "ligne" : "! Au paragraphe 260."
+           "ligne" : "Au paragraphe 260."
 		}
 	]
 },
@@ -5771,10 +5762,10 @@ var loubet = [
            "ligne" : "Tout en serrant votre main, l'homme vous observe. Vous tentez de vous composer le visage le plus neutre possible mais... peutêtre que ça n'est pas suffisant ?"
 		},
 		{
-           "ligne" : "Enfin, il se dégage, puis avant que vous n'ayez le temps de faire quoi que ce soit, lève sa main gauche dans votre direction. La bague étrange qu'il porte à son majeur lâche un éclair puissant qui vous foudroie sur place et vous tombez à la renverse, tétanisé"
+           "ligne" : "Enfin, il se dégage, puis avant que vous n'ayez le temps de faire quoi que ce soit, lève sa main gauche dans votre direction. La bague étrange qu'il porte à son majeur lâche un éclair puissant qui vous foudroie sur place et vous tombez à la renverse, tétanisé!"
 		},
 		{
-           "ligne" : "! Vous serrez les dents si fort que vous avez l'impression que toute votre mâchoire va exploser. Les orques se rapprochent, leurs armes en main... Il est trop tard pour agir."
+           "ligne" : "Vous serrez les dents si fort que vous avez l'impression que toute votre mâchoire va exploser. Les orques se rapprochent, leurs armes en main... Il est trop tard pour agir."
 		},
 		{
            "ligne" : "Le maître du donjon secoue la tête négativement et lâche :"
@@ -8306,10 +8297,10 @@ var loubet = [
            "ligne" : "– C'est bon, c'est bon ! C'est juste que j'en ai assez de ces directives de bureaucrates qu'on nous assène à longueur d'année !"
 		},
 		{
-           "ligne" : "Vous croyez qu'on n'a que ça à faire, de recevoir des inspections"
+           "ligne" : "Vous croyez qu'on n'a que ça à faire, de recevoir des inspections?"
 		},
 		{
-           "ligne" : "? En plus, mon matériel est en parfait état ! Je ne suis pas un novice, vous savez ? Je suis le maître d'armes Dorval !"
+           "ligne" : "En plus, mon matériel est en parfait état ! Je ne suis pas un novice, vous savez ? Je suis le maître d'armes Dorval !"
 		},
 		{
            "ligne" : "Vous écartez les bras, manière de signaler que vous êtes un employé, rien de plus. Du coup, il vous désigne les mannequins, les cibles ainsi que la caisse d'armes d'entraînement située le long du mur nord :"
@@ -9061,10 +9052,10 @@ var loubet = [
            "ligne" : "Si vous êtes d'origine ogre, gobelin, gnôme ou orque, vous devrez vous abstenir d'entrer seul au village... Il y a peu de chance qu'on vous laisse parcourir les rues sans vous percer à coups de fourche..."
 		},
 		{
-           "ligne" : "Si vous êtes d'une autre origine, marchez jusqu'à la taverne la plus proche et partagez quelques godets avec les clients réguliers"
+           "ligne" : "Si vous êtes d'une autre origine, marchez jusqu'à la taverne la plus proche et partagez quelques godets avec les clients réguliers!"
 		},
 		{
-           "ligne" : "! Ils seront ravis d'écouter les récits de vos aventures."
+           "ligne" : "Ils seront ravis d'écouter les récits de vos aventures."
 		},
 		{
            "ligne" : "En tout cas, pour le moment, c'est la FIN..."
@@ -9256,10 +9247,7 @@ var loubet = [
            "ligne" : "Considérant le regard qu'il vous jette, vous pensez qu'il s'agit d'un garde..."
 		},
 		{
-           "ligne" : "Il commence à poser la main sur la poignée de son arme et va rapidement se lever... Sauf si d'ici-là, vous parvenez à le baratiner"
-		},
-		{
-           "ligne" : "?"
+           "ligne" : "Il commence à poser la main sur la poignée de son arme et va rapidement se lever... Sauf si d'ici-là, vous parvenez à le baratiner?"
 		},
 		{
            "ligne" : "Vous n'avez que quelques secondes pour agir :"
@@ -9435,10 +9423,10 @@ var loubet = [
            "ligne" : "Personne ne va ouvrir cette porte, je suis dans un donjon ! »."
 		},
 		{
-           "ligne" : "Toutefois, il se passe exactement le contraire... La porte s'ouvre en grand, d'un seul coup. Vous sursautez. De l'autre côté, un gobelin frêle, équipé d'un balai, se trouve là, et il est flanqué d'un garde armé d'un impressionnant cimeterre. L'avorton vous montre du doigt et dit quelque chose qui ressemble à « Zwavezeda"
+           "ligne" : "Toutefois, il se passe exactement le contraire... La porte s'ouvre en grand, d'un seul coup. Vous sursautez. De l'autre côté, un gobelin frêle, équipé d'un balai, se trouve là, et il est flanqué d'un garde armé d'un impressionnant cimeterre. L'avorton vous montre du doigt et dit quelque chose qui ressemble à « Zwavezeda! »."
 		},
 		{
-           "ligne" : "! ». Mais nul besoin de ce commentaire, le garde a bien compris qu'il avait affaire à un intrus !"
+           "ligne" : "Mais nul besoin de ce commentaire, le garde a bien compris qu'il avait affaire à un intrus !"
 		},
 		{
            "ligne" : "Vous empoignez votre arme pour affronter cet adversaire... Le gobelin, de son côté, observe le combat sans intervenir. Rendezvous au paragraphe 389."
@@ -10047,10 +10035,10 @@ var loubet = [
     "id": 388,
     "paragraphe": [
 		{
-           "ligne" : "La porte noire était aussi enchantée contre les tentatives d'effraction"
+           "ligne" : "La porte noire était aussi enchantée contre les tentatives d'effraction!"
 		},
 		{
-           "ligne" : "! Vous n'avez pas réussi à la briser, mais comme si cela ne suffisait pas, vous subissez de plein fouet une puissante décharge de foudre en pleine poitrine !"
+           "ligne" : "Vous n'avez pas réussi à la briser, mais comme si cela ne suffisait pas, vous subissez de plein fouet une puissante décharge de foudre en pleine poitrine !"
 		},
 		{
            "ligne" : "ZZZZAP ! Brûlé de l'intérieur, vous encaissez 1D+8 points de dégâts qui ignorent l'intégralité de votre score d'armure, sauf l'armure de type « magique » (enchantement d'armure) dont vous disposeriez (si jamais cette blessure suffit à vous tuer, rendez-vous de suite au paragraphe 100)."

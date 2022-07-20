@@ -1,0 +1,17 @@
+pj = {
+    "nom:": "Mortadel",
+    "race": "Humain",
+    "metier": "Voleur",
+    "caract": {
+        "courage": 7,
+        "charisme": 7,
+        "force": 7,
+        "intelligence": 7,
+        "adresse": 7
+    },
+    "autres":{
+        "pv": 10,
+        "mana": 0,
+        "pr":3
+    }
+}
