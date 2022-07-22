@@ -41,36 +41,50 @@ function capitalizeFirstLetter(string) {
 $('.listPerso').click(function(event) {
     var desc="";
     var perso=event.target.innerHTML;
+    var ev=0;
+
     localStorage.setItem("perso",perso);
     switch(perso) {
         case "Barbare":
             desc="Le Barbare est le stéréotype du tas de muscle sans cervelle.";
+            ev=35;
             break;
         case "Elfe":
             desc="L'Elfe est naïve et stupide et représente le stéréotype des blondes.";
+            ev=25;
             break;
         case "Magicienne":
             desc="La Magicienne est intelligente mais avec un mauvais sens de l'orientation.";
+            ev=30;
             break;
         case "Menestrel":
             desc="Musicien poète qui préfère le chant des cigalles au bruit des os cassés.";
+            ev=35;
             break;
         case "Nain":
             desc="Le Nain est le stéréotype du radin grincheux égoïste qui et le plus souvent méchant avec les autres.";
+            ev=35;
             break;
         case "Ogre":
             desc="L'Ogre est une créature très simple d'esprit adorant manger tout et n'importe quoi comme la musique et ceux qui la joue, parfois.";
+            ev45;
             break;
         case "Ranger":
             desc="Le Ranger est un leader lâche et incompétent mais fier.";
+            ev=30;
             break;
         case "Voleur":
             desc="Le Voleur est un personnage très lâche essayant plus que tout d'éviter de se battre et de fuir.";
+            ev=30;
             break;
     }
 
     $("#typePerso").text(perso);
     $("#imgPerso").attr("src", "img/"+perso+".png");
+    $("#ev").val(ev);
+    localStorage.setItem("ev",ev);
+    localStorage.setItem("perso",perso);
+
     //$("#descPerso").text(desc);
     
 });
@@ -84,12 +98,23 @@ function caractD6(caract) {
     verifIsToSave();
 }
 
+function destinD4() {
+    result=Math.ceil(Math.random()*4)-1;
+    $("#destin").val(result);
+    $("#destin").next().prop("disabled",true);
+
+    localStorage.setItem("destin",result);
+    verifIsToSave();
+}
+
 function savePJ() {
     $("#choixPerso").hide();
     localStorage.setItem("nom",$("#nomPerso").val());
     $("#nomPerso").prop("disabled",true);
-    localStorage.setItem("race",result);
-    localStorage.setItem("genre",result);
+    localStorage.setItem("ea",$("#ea").val());
+    localStorage.setItem("attaque",$("#attaque").val());
+    localStorage.setItem("parade",$("#parade").val());
+    localStorage.setItem("destin",$("#destin").val());
 
     write(1);
 }
@@ -115,6 +140,9 @@ function initDonjon() {
     if(id>0) 
     {
         $("#choixPerso").hide();
+        $(".btn-svg").hide();
+        $(".caract-btn").text("D20");
+
         let perso=localStorage.getItem("perso");
 
         $("#nomPerso").val(localStorage.getItem("nom"));
@@ -126,6 +154,11 @@ function initDonjon() {
         $("#intelligence").val(localStorage.getItem("intelligence"));
         $("#charisme").val(localStorage.getItem("charisme"));
         $("#adresse").val(localStorage.getItem("adresse"));
+        $("#attaque").val(localStorage.getItem("attaque"));
+        $("#parade").val(localStorage.getItem("parade"));
+        $("#ev").val(localStorage.getItem("ev"));
+        $("#ea").val(localStorage.getItem("ea"));
+        $("#destin").val(localStorage.getItem("destin"));
         write(id);
     }
 }
