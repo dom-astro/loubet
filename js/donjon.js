@@ -17,17 +17,30 @@ function write(id) {
 
 
 function formatParagraphe(ligne) {
-    var strLigne="<p>";
+    var strLigne="";
+
+    var actions=ligne.split("paragraphe ");
+    for(i=0;i<actions.length;i++) {
+        let action=actions[i];
+        let id=action.replace(',','.').replace(' ','.').split(".")[0];
+        if(!isNaN(id)) {
+            action=action.replace(id,'<a href="javascript:write('+id+')">'+id+'</a>');
+        }
+        strLigne += action;
+    }
+    /*
     let pos=ligne.indexOf("paragraphe")+11;
-    let action=ligne.substring(pos);
-    let id=action.split(" ")[0];
+    let action=ligne.substring(pos).replace(',','.').replace(' ','.');
+    let id=action.split(".")[0];
 
     if(!isNaN(id)) {
         ligne=ligne.replace(id,'<a href="javascript:write('+id+')">'+id+'</a>');
         ligne=capitalizeFirstLetter(ligne);
-    }
+    }*/
 
-    return ligne;
+    strLigne = "<p>"+capitalizeFirstLetter(strLigne)+"</p>";
+
+    return strLigne;
 }
 
 function goTo() {

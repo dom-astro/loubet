@@ -655,10 +655,7 @@ var loubet = [
     "id": 30,
     "paragraphe": [
 		{
-           "ligne" : "Tout a commencé dans la taverne d’Auvairlouk, sur la place"
-		},
-		{
-           "ligne" : "Muchi à lobet. Vous étiez de passage, après avoir bourlingué un peu dans la région sud-ouest de la Terre de Fangh, cherchant quelque chose d’intéressant à faire. Plutôt que d’user inutilement vos braies sur le tabouret un peu collant de cette gargote, et comme vous n’aviez pas d’ami dans le secteur, vous avez choisi d’épier les conversations voisines. C’était sans intérêt."
+           "ligne" : "Tout a commencé dans la taverne d’Auvairlouk, sur la place Muchi à lobet. Vous étiez de passage, après avoir bourlingué un peu dans la région sud-ouest de la Terre de Fangh, cherchant quelque chose d’intéressant à faire. Plutôt que d’user inutilement vos braies sur le tabouret un peu collant de cette gargote, et comme vous n’aviez pas d’ami dans le secteur, vous avez choisi d’épier les conversations voisines. C’était sans intérêt."
 		},
 		{
            "ligne" : "En début de soirée, et alors qu’il pleuvait des cordes à l’extérieur, un jeune homme a poussé la porte de la taverne. Il était trempé, pieds nus, il lui manquait quelques vêtements et il souffrait de plusieurs blessures sans gravité. Il semblait également avoir été blessé dans son orgueil. Sale et grelottant, il s’est blotti dans un coin de la salle commune avec un jus de viande chaud, enroulé dans une couverture aimablement fournie par le patron hilare. En écoutant parler le jeune homme à deux vieux du village, vous avez compris qu’il venait de s’essayer à l’aventure."
@@ -724,10 +721,7 @@ var loubet = [
            "ligne" : "Il y a cette masure à demi écroulée, plus loin dans le terrain."
 		},
 		{
-           "ligne" : "Vous aviez décidé de vous y rendre, aussi vous continuez pour le moment dans cette idée, puis vous l’inspectez. Cette construction modeste a déjà servi de bergerie, d’habitation, puis actuellement c’est un genre de cabane de jardin. Tout y est à peu près en mauvais état, puisque les fuites dans la toiture ne datent pas d’hier, mais vous pouvez y récupérer une serpette qui pourrait servir d’arme de fortune. Elle n’est pas bien maniable et sans doute peu pratique pour parer les coups (caractéristiques :"
-		},
-		{
-           "ligne" : "1D+3 PI, AT-1, PRD-3, rupture 1 à 5)."
+           "ligne" : "Vous aviez décidé de vous y rendre, aussi vous continuez pour le moment dans cette idée, puis vous l’inspectez. Cette construction modeste a déjà servi de bergerie, d’habitation, puis actuellement c’est un genre de cabane de jardin. Tout y est à peu près en mauvais état, puisque les fuites dans la toiture ne datent pas d’hier, mais vous pouvez y récupérer une serpette qui pourrait servir d’arme de fortune. Elle n’est pas bien maniable et sans doute peu pratique pour parer les coups (caractéristiques : 1D+3 PI, AT-1, PRD-3, rupture 1 à 5)."
 		},
 		{
            "ligne" : "Lancez à présent 1D20 : si vous obtenez de 1 à 4, OU si vous avez les compétences Instinct du trésor et/ou Fouiller dans les poubelles, rendez-vous au paragraphe 18. Sinon, continuez."
