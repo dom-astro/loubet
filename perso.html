@@ -45,18 +45,16 @@
 		<div class="row">
 			<div class="col-2">
 				<form action="" class="was-validated">
-					<div class="card" style="width: 100%; height: 95%" onclick="choose('Barbare')">
+					<div class="card" style="width: 100%; height: 180px" onclick="choose('Barbare')">
 						<input id="nomPerso" type="text" pattern=".{3,}" class="form-control" placeholder="Nom" title="3 lettres minimum" required style="margin-left: 10px; margin-top: 5px; width: 90%">
 						<div class="invalid-feedback" style="margin-left: 10px;">Veuillez choisir un nom.</div>
-						<h3 id="typePerso" style="text-align: center;"></h3>
-						<img id="imgPerso" class="card-img-top img-thumbnail" src="img/site-titre-jdr.gif" alt="Card image" style="width: 100px; text-align: center;">
+						<h4 id="typePerso" style="text-align: center;"></h4>
+						<img id="imgPerso" class="card-img-top rounded-circle" src="img/site-titre-jdr.gif" alt="Card image" style="width: 100px; text-align: center;">
 						<div class="card-body">		
 							<p id="descPerso" class="card-text"></p>
 						</div>
 					</div>
 				</form>
-			</div>
-			<div class="col-2">
 				<div class="input-group" style="margin-top: 10px;">
 					<span class="caract-label">Courage</span>
 					<input id="courage" type="text" class="caract-valeur" placeholder="7">
@@ -83,58 +81,61 @@
 					<button class="btn btn-warning caract-btn" onclick="caractD6('adresse')">D6</button> 
 				</div>
 			</div>
-			<div class="col-2">
-				<div class="card" style="width: 100%; height: 95%;" onclick="origine('Barbare')">
-					<h3 id="typePerso" style="text-align: center;">Barbare</h3>
-					<img id="imgPerso" class="card-img-top img-thumbnail" src="img/Barbare.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+			<div class="col-10">
+				<div class="row">
+					<div class="col-2">
+						<div id="Barbare" class="card card-disabled" onclick="origine('Barbare')">
+							<img id="imgPerso" class="card-img-top rounded-circle" src="img/Barbare.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 id="typePerso" style="text-align: center;">Barbare</h4>
+						</div>
+					</div>
+					<div class="col-2">
+						<div id="Elfe" class="card card-disabled" onclick="origine('Elfe')">
+							<img id="imgPerso" class="card-img-top rounded-circle" src="img/Elfe.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 id="typePerso" style="text-align: center;">Elfe</h4>
+						</div>
+					</div>
+					<div class="col-2">
+						<div id="Magicienne" class="card card-disabled" onclick="origine('Magicienne')">
+							<img id="imgPerso" class="card-img-top rounded-circle" src="img/Magicienne.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 id="typePerso" style="text-align: center;">Magicienne</h4>
+						</div>
+					</div>
+					<div class="col-2">
+						<div id="Menestrel" class="card card-disabled" onclick="origine('Menestrel')">
+							<img id="imgPerso" class="card-img-top rounded-circle" src="img/Menestrel.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 id="typePerso" style="text-align: center;">Menestrel</h4>
+						</div>
+					</div>
 				</div>
-			</div>
-			<div class="col-2">
-				<div class="card" style="width: 100%; height: 95%" onclick="origine('Elfe')">
-					<h3 id="typePerso" style="text-align: center;">Elfe</h3>
-					<img id="imgPerso" class="card-img-top img-thumbnail" src="img/Elfe.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-				</div>
-			</div>
-			<div class="col-2">
-				<div class="card" style="width: 100%; height: 95%" onclick="origine('Magicienne')">
-					<h3 id="typePerso" style="text-align: center;">Magicienne</h3>
-					<img id="imgPerso" class="card-img-top img-thumbnail" src="img/Magicienne.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-				</div>
-			</div>
-			<div class="col-2">
-				<div class="card" style="width: 100%; height: 95%" onclick="origine('Menestrel')">
-					<h3 id="typePerso" style="text-align: center;">Menestrel</h3>
-					<img id="imgPerso" class="card-img-top img-thumbnail" src="img/Menestrel.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+				<div class="row">
+					<div class="col-2">
+						<div id="Nain" class="card card-disabled" onclick="origine('Nain')">
+							<img id="imgPerso" class="card-img-top rounded-circle" src="img/Nain.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 id="typePerso" style="text-align: center;">Nain</h4>
+						</div>
+					</div>
+					<div class="col-2">
+						<div id="Ogre" class="card card-disabled" onclick="origine('Ogre')">
+							<img id="imgPerso" class="card-img-top rounded-circle" src="img/Ogre.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 id="typePerso" style="text-align: center;">Ogre</h4>
+						</div>
+					</div>
+					<div class="col-2">
+						<div id="Ranger" class="card card-disabled" onclick="origine('Ranger')">
+							<img id="imgPerso" class="card-img-top rounded-circle" src="img/Ranger.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 id="typePerso" style="text-align: center;">Ranger</h4>
+						</div>
+					</div>
+					<div class="col-2">
+						<div id="Voleur" class="card card-disabled" onclick="origine('Voleur')">
+							<img id="imgPerso" class="card-img-top rounded-circle" src="img/Voleur.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 id="typePerso" style="text-align: center;">Voleur</h4>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-4">
-			</div>
-			<div class="col-2">
-				<div class="card" style="width: 100%; height: 95%" onclick="origine('Nain')">
-					<h3 id="typePerso" style="text-align: center;">Nain</h3>
-					<img id="imgPerso" class="card-img-top img-thumbnail" src="img/Nain.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-				</div>
-			</div>
-			<div class="col-2">
-				<div class="card" style="width: 100%; height: 95%" onclick="origine('Ogre')">
-					<h3 id="typePerso" style="text-align: center;">Ogre</h3>
-					<img id="imgPerso" class="card-img-top img-thumbnail" src="img/Ogre.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-				</div>
-			</div>
-			<div class="col-2">
-				<div class="card" style="width: 100%; height: 95%" onclick="origine('Ranger')">
-					<h3 id="typePerso" style="text-align: center;">Ranger</h3>
-					<img id="imgPerso" class="card-img-top img-thumbnail" src="img/Ranger.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-				</div>
-			</div>
-			<div class="col-2">
-				<div class="card" style="width: 100%; height: 95%" onclick="origine('Voleur')">
-					<h3 id="typePerso" style="text-align: center;">Voleur</h3>
-					<img id="imgPerso" class="card-img-top img-thumbnail" src="img/Voleur.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-				</div>
-			</div>
 	</div>
 </div>
 
