@@ -105,10 +105,11 @@ $('.listPerso').click(function(event) {
 function caractD6(caract) {
     result=7+Math.ceil(Math.random()*6);
     $("#"+caract).val(result);
-    $("#"+caract).next().prop("disabled",true);
+    //$("#"+caract).next().prop("disabled",true);
 
     localStorage.setItem(caract,result);
     verifIsToSave();
+    verifOrigine();
 }
 
 function destinD4() {
@@ -175,5 +176,83 @@ function initDonjon() {
         write(id);
     }
 }
+
+function origine(origine) {
+    alert("Origine: "+origine);
+}
+
+function verifOrigine() {
+    var courage=localStorage.getItem("courage"),
+    charisme=localStorage.getItem("charisme"),
+    force=localStorage.getItem("force"),
+    intelligence=localStorage.getItem("intelligence"),
+    adresse=localStorage.getItem("adresse");
+
+    // Barbare
+    if(force>=13 && courage>=12) {
+        $("#Barbare").removeClass("card-disabled");
+        $("#Barbare").addClass("card-enabled");
+    } else {
+        $("#Barbare").removeClass("card-enabled");
+        $("#Barbare").addClass("card-disabled");
+    }
+    // Elfe
+    if(charisme>=10 && adresse>=11) {
+        $("#Elfe").removeClass("card-disabled");
+        $("#Elfe").addClass("card-enabled");
+    } else {
+        $("#Elfe").removeClass("card-enabled");
+        $("#Elfe").addClass("card-disabled");
+    }
+    // Magicienne
+    if(intelligence>=12) {
+        $("#Magicienne").removeClass("card-disabled");
+        $("#Magicienne").addClass("card-enabled");
+    } else {
+        $("#Magicienne").removeClass("card-enabled");
+        $("#Magicienne").addClass("card-disabled");
+    }
+    // Menestrel
+    if(adresse>=11 && charisme>=12) {
+        $("#Menestrel").removeClass("card-disabled");
+        $("#Menestrel").addClass("card-enabled");
+    } else {
+        $("#Menestrel").removeClass("card-enabled");
+        $("#Menestrel").addClass("card-disabled");
+    }
+    // Nain
+    if(force>=12 && courage>=11) {
+        $("#Nain").removeClass("card-disabled");
+        $("#Nain").addClass("card-enabled");
+    } else {
+        $("#Nain").removeClass("card-enabled");
+        $("#Nain").addClass("card-disabled");
+    }
+    // Ogre
+    if(force>=13 && intelligence<=9 && adresse<=11 && charisme<=10) {
+        $("#Ogre").removeClass("card-disabled");
+        $("#Ogre").addClass("card-enabled");
+    } else {
+        $("#Ogre").removeClass("card-enabled");
+        $("#Ogre").addClass("card-disabled");
+    }
+    // Ranger
+    if(adresse>=10 && charisme>=10) {
+        $("#Ranger").removeClass("card-disabled");
+        $("#Ranger").addClass("card-enabled");
+    } else {
+        $("#Ranger").removeClass("card-enabled");
+        $("#Ranger").addClass("card-disabled");
+    }
+    // Voleur
+    if(adresse>=12) {
+        $("#Voleur").removeClass("card-disabled");
+        $("#Voleur").addClass("card-enabled");
+    } else {
+        $("#Voleur").removeClass("card-enabled");
+        $("#Voleur").addClass("card-disabled");
+    }
+}
+
 
 initDonjon();
