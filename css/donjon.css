@@ -210,3 +210,27 @@ hr {
 		color: #86b7fe;
 	}
 }
+
+.zombie {
+	margin-left: 500px;
+	transition-duration: 10s;
+}
+
+.zombie-in-progress {
+	margin-left: 50px;
+	transition-property: margin-left;
+}
+
+.wip {
+	position: absolute;
+	left: 50px;
+	font-size: 36px;
+	transition-duration: 10s;
+}
+
+.wip-in-progress {
+	left: 200px;
+	margin-top: 80px;
+	transition-property: margin-top left;
+	transition-timing-function: ease-in-out;
+}
