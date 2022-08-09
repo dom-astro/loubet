@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
 	<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/donjon.css">
-	<title>La tour de Loubet (partie 1)</title>
+	<title>Donjon de Naheulbeuk</title>
 
 	<meta name="author" content="Pen of Chaos">
 	<meta name="description" content="Le Donjon de Naheulbeuk est un jeu de rôle plus ou moins humoristique et médial-fantastique, à télécharger">
@@ -13,149 +13,43 @@
 <body >
 <noscript>Your browser does not support script</noscript>
 
-
-<center>
-	<h1>La tour de Loubet</h1>
-</center>
-
-<div class="row">
-	<div class="col-2">
-		<div class="row">
-			<form action="" class="was-validated">
-				<div class="card" style="width: 100%">
-					<div id="choixPerso">
-						<button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-							Choix du personnage
-						</button>
-						<ul class="dropdown-menu listPerso">
-							<li><a class="dropdown-item" href="#">Barbare</a></li>
-							<li><a class="dropdown-item" href="#">Elfe</a></li>
-							<li><a class="dropdown-item" href="#">Magicienne</a></li>
-							<li><a class="dropdown-item" href="#">Menestrel</a></li>
-							<li><a class="dropdown-item" href="#">Nain</a></li>
-							<li><a class="dropdown-item" href="#">Ogre</a></li>
-							<li><a class="dropdown-item" href="#">Ranger</a></li>
-							<li><a class="dropdown-item" href="#">Voleur</a></li>
-						</ul>
-					</div>
-					<input id="nomPerso" type="text" pattern=".{3,}" class="form-control" placeholder="Nom" title="3 lettres minimum" required>
-					<div class="invalid-feedback">Veuillez choisir un nom.</div>
-					<h3 id="typePerso" style="text-align: center;"></h3>
-					<img id="imgPerso" class="card-img-top img-thumbnail" src="img/site-titre-jdr.gif" alt="Card image" style="width: 100px; text-align: center;">
-					<div class="card-body">		
-						<p id="descPerso" class="card-text"></p>
-					</div>
-				</div>
-			</form>
-		</div>
-		<div class="row">
-			<table class="table table-hover">
-				<tbody>
-				  <tr>
-					<div class="input-group">
-						<span class="caract-label">Courage</span>
-						<input id="courage" type="text" class="caract-valeur" placeholder="7">
-						<button class="btn btn-warning caract-btn" onclick="caractD6('courage')">D6</button> 
-					</div>
-				  </tr>
-				  <tr>
-					<div class="input-group">
-						<span class="caract-label">Charisme</span>
-						<input id="charisme" type="text" class="caract-valeur" placeholder="7">
-						<button class="btn btn-warning caract-btn" onclick="caractD6('charisme')">D6</button> 
-					</div>
-				  </tr>
-				  <tr>
-					<div class="input-group">
-						<span class="caract-label">Force</span>
-						<input id="force" type="text" class="caract-valeur" placeholder="7">
-						<button class="btn btn-warning caract-btn" onclick="caractD6('force')">D6</button> 
-					</div>
-				  </tr>
-				  <tr>
-					<div class="input-group">
-						<span class="caract-label">Intelligence</span>
-						<input id="intelligence" type="text" class="caract-valeur" placeholder="7">
-						<button class="btn btn-warning caract-btn" onclick="caractD6('intelligence')">D6</button> 
-					</div>
-				  </tr>
-				  <tr>
-					<div class="input-group">
-						<span class="caract-label">Adresse</span>
-						<input id="adresse" type="text" class="caract-valeur" placeholder="7">
-						<button class="btn btn-warning caract-btn" onclick="caractD6('adresse')">D6</button> 
-					</div>
-				  </tr>
-				  <tr>
-					<td>
-						<div class="input-group">
-							<span class="combat-label" title="Attaque">ATT</span>
-							<input id="attaque" type="text" class="caract-valeur" value="8">
-						</div>
-					</td>
-					<td>
-						<div class="input-group">
-							<span class="combat-label" title="Parade">PRD</span>
-							<input id="parade" type="text" class="caract-valeur" value="10">
-						</div>
-					</td>
-				  </tr>
-				  <tr>
-					<td>
-						<div class="input-group">
-							<span class="combat-label" title="Energie vitale">EV</span>
-							<input id="ev" type="text" class="caract-valeur" value="8">
-						</div>
-					</td>
-					<td>
-						<div class="input-group">
-							<span class="combat-label" title="Energie astrale">EA</span>
-							<input id="ea" type="text" class="caract-valeur" value="10">
-						</div>
-					</td>
-				  </tr>
-				  <tr>
-					<td colspan="2">
-						<div class="input-group">
-							<span class="caract-label">Point destin</span>
-							<input id="destin" type="text" class="caract-valeur" placeholder="0">
-							<button class="btn btn-warning caract-btn" onclick="destinD4()">D4</button> 
-						</div>
-					</td>
-				  </tr>
-				</tbody>
-			</table>
-			<button type="button" class="btn btn-success btn-svg" onclick="savePJ()" disabled>Sauvegarde</button>
-		</div>
+<nav class="navbar navbar-expand-sm bg-transparent navbar-light">
+	<div id="menu" class="container-fluid">
 	</div>
-	<div class="col-10">
-		<div id="texte">
-			<p><strong>Avertissement</strong></p>
-			<p>Pour mener à bien cette aventure, le baroudeur que vous êtes
-			devra peut-être passer par des scènes violentes, douloureuses,
-			dégradantes, humiliantes ou même, allez savoir, des expériences
-			érotiques ! L'expérience, au final, peut être traumatisante pour
-			une personne sensible. Il vaut mieux donc réserver cette lecture
-			à un aventurier âgé de 16 ans ou plus.</p>
-			<p>L'auteur, le personnel de la Tour de Loubet ainsi que les
-				employés de la Caisse des Donjons ne sauraient être tenus pour
-				responsables des dépressions nerveuses ou des crises de larmes
-				consécutives à des échecs répétés dans le cadre de l'aventure.
-				Chacun doit assumer ses choix et son manque d'entraînement.</p>
-			<p>Il est possible de faire l'aventure avec de l'intelligence, du
-				charisme, des talents de voleur ou des talents au combat, et
-				parfois d'autres compétences. Si vous êtes vraiment fort, vous
-				pourrez peut-être même vous passer de combattre...</p>
-			<p>Avant de commencer, veuillez créer votre personnage depuis la partie gauche de la page.</p>
-		</div>
-		<div class="texte">
-			<div class="input-group mb-3">
-				<span class="input-group-text">Aller au paragraphe </span>
-				<input id="numParagraphe" type="text" class="form-control" placeholder="">
-				<button class="btn btn-success" onclick="goTo()">Go</button> 
-			</div>
-		</div>
-	</div>
+</nav>
+<br>
+<br>
+<div class="container">
+	<center>
+		<p><img src="img/site-titre-jdr.gif" width="466" height="103" alt="Donjon de Naheulbeuk JDR" title="Donjon de Naheulbeuk JDR" border="0"><br>
+	</center>
+	<hr>
+	<br>
+	<center>
+		<h1>Jouer à une <span style="animation: clignote 5s linear infinite; color:brown; font-size: 48px;">aventure</span> dont vous êtes le (<span style="text-decoration:line-through;">z</span>)héros</h1>
+	</center>
+	<br>
+	<p>Ce site vous permet de jouer à une aventure solo du jeu de rôle Donjon de Naheulbeuk.</p>
+	<p>Habituellement, une aventure solo est, à l'origine, un livre dont vous êtes le héros. Ici le livre s'est transformé en site internet dont vous êtes le héros!</p>
+	<br>
+	<p>Pour jouer, il vous faut&nbsp;:</p>	
+	<ul>
+		<li>Créer un personnage ou en charger un prêt à l'emploi</li>
+		<li>Acheter du matériel au Donjon facile</li>
+		<li>Sélectionner un scénario solo</li>
+	</ul>	
+	<br>
+	<hr>
+	<br>
+	<center>
+		<h1>Notes sur le site</h1>
+	</center>
+	<br>
+		<p>Les règles mises en place sur ce site sont celles du jeu de rôle Naheulbeuk mis au point pas Pen Of Chaos.</p>
+		<p>Cependant il existe quelques différences afin de faciliter l'utisation du site.</p>
+		<br>
+		<p>Ce site peut être télecharger et jouer en mode offline sur son pc / tablette / smartphone. Il est prévu pour fonctionner sans serveur!</p>
+
 </div>
 <br>
 
@@ -163,7 +57,11 @@
 <script type="text/javascript" src="json/pj.json"></script>
 <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript" src="js/donjon.js"></script>
+<script>
+	 setMenu("");
+</script>
 
 </body>
 </html>
