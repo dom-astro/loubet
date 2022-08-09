@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
 	<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/donjon.css">
-	<title>La tour de Loubet (partie 1)</title>
+	<title>Naheulbeuk - Création PJ</title>
 
 	<meta name="author" content="Pen of Chaos">
 	<meta name="description" content="Le Donjon de Naheulbeuk est un jeu de rôle plus ou moins humoristique et médial-fantastique, à télécharger">
@@ -14,47 +14,38 @@
 <noscript>Your browser does not support script</noscript>
 
 <nav class="navbar navbar-expand-sm bg-transparent navbar-light">
-	<div class="container-fluid">
-	  <img src="img/logo.png" width="50px"></img>
-	  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-		<span class="navbar-toggler-icon"></span>
-	  </button>
-	  <div class="collapse navbar-collapse" id="collapsibleNavbar" style="color: black;">
-		<ul class="navbar-nav">
-		  <li class="nav-item active">
-			<a class="nav-link" href="#">Personnage</a>
-		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" href="#">Donjon facile</a>
-		  </li>  
-		  <li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Scénario</a>
-			<ul class="dropdown-menu">
-			  <li><a class="dropdown-item" href="#">Tour de Loubet</a></li>
-			  <li><a class="dropdown-item" href="#">Autre</a></li>
-			</ul>
-		  </li>
-		</ul>
-	  </div>
+	<div id="menu" class="container-fluid">
 	</div>
 </nav>
-
+<br>
 <div class="container">
 	<img src="img/creation_pj.png"  style="height: 200px;" class="rounded"></img>
 	<div class="texte">
 		<div class="row">
-			<div class="col-2">
+			<div class="col-4">
+				<h3 title="Personnage joueur">Personnage</h3>
 				<form action="" class="was-validated">
-					<div class="card" style="width: 100%; height: 180px" onclick="choose('Barbare')">
+					<div class="card" style="width: 100%; height: 250px" onclick="choose('Barbare')">
 						<input id="nomPerso" type="text" pattern=".{3,}" class="form-control" placeholder="Nom" title="3 lettres minimum" required style="margin-left: 10px; margin-top: 5px; width: 90%">
 						<div class="invalid-feedback" style="margin-left: 10px;">Veuillez choisir un nom.</div>
-						<h4 id="typePerso" style="text-align: center;"></h4>
-						<img id="imgPerso" class="card-img-top rounded-circle" src="img/site-titre-jdr.gif" alt="Card image" style="width: 100px; text-align: center;">
-						<div class="card-body">		
-							<p id="descPerso" class="card-text"></p>
+						<div class="card-body">
+							<div class="row">
+								<div class="col-6">
+									<input type="radio" id="girl" name="genre" value="f"><label for="girl" style="margin-left: 5px">Fille</label>
+									<input type="radio" id="boy" name="genre" value="g" style="margin-left: 5px"><label for="boy" style="margin-left: 5px">Gars</label>
+									<br><br>
+									<p>Description</p>
+									<input type="text" id="description">
+								</div>
+								<div class="col-6" id="metier">
+									<img id="imgPerso" class="card-img-top rounded-circle" src="" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+									<h4 id="typePerso" style="text-align: center;"></h4>
+								</div>
+							</div>
 						</div>
 					</div>
 				</form>
+				<h5>Caractéristiques</h5>
 				<div class="input-group" style="margin-top: 10px;">
 					<span class="caract-label">Courage</span>
 					<input id="courage" type="text" class="caract-valeur" placeholder="7">
@@ -81,56 +72,57 @@
 					<button class="btn btn-warning caract-btn" onclick="caractD6('adresse')">D6</button> 
 				</div>
 			</div>
-			<div class="col-10">
+			<div class="col-8">
+				<h3>Liste des personnages sélectionnables</h3>
 				<div class="row">
-					<div class="col-2">
-						<div id="Barbare" class="card card-disabled" onclick="origine('Barbare')">
-							<img id="imgPerso" class="card-img-top rounded-circle" src="img/Barbare.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-							<h4 id="typePerso" style="text-align: center;">Barbare</h4>
+					<div class="col-3">
+						<div id="Barbare" class="card card-disabled" onclick="origine('Barbare')" title="force >= 13 et courage>=12">
+							<img class="card-img-top rounded-circle" src="img/Barbare.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 style="text-align: center;">Barbare</h4>
 						</div>
 					</div>
-					<div class="col-2">
-						<div id="Elfe" class="card card-disabled" onclick="origine('Elfe')">
-							<img id="imgPerso" class="card-img-top rounded-circle" src="img/Elfe.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-							<h4 id="typePerso" style="text-align: center;">Elfe</h4>
+					<div class="col-3">
+						<div id="Elfe" class="card card-disabled" onclick="origine('Elfe')" title="charisme>=10 et adresse>=11">
+							<img class="card-img-top rounded-circle" src="img/Elfe.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 style="text-align: center;">Elfe</h4>
 						</div>
 					</div>
-					<div class="col-2">
-						<div id="Magicienne" class="card card-disabled" onclick="origine('Magicienne')">
-							<img id="imgPerso" class="card-img-top rounded-circle" src="img/Magicienne.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-							<h4 id="typePerso" style="text-align: center;">Magicienne</h4>
+					<div class="col-3">
+						<div id="Magicienne" class="card card-disabled" onclick="origine('Magicienne')" title="intelligence>=12">
+							<img class="card-img-top rounded-circle" src="img/Magicienne.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 style="text-align: center;">Magicienne</h4>
 						</div>
 					</div>
-					<div class="col-2">
-						<div id="Menestrel" class="card card-disabled" onclick="origine('Menestrel')">
-							<img id="imgPerso" class="card-img-top rounded-circle" src="img/Menestrel.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-							<h4 id="typePerso" style="text-align: center;">Menestrel</h4>
+					<div class="col-3">
+						<div id="Menestrel" class="card card-disabled" onclick="origine('Menestrel')" title="adresse>=11 et charisme>=12">
+							<img class="card-img-top rounded-circle" src="img/Menestrel.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 style="text-align: center;">Menestrel</h4>
 						</div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-2">
-						<div id="Nain" class="card card-disabled" onclick="origine('Nain')">
-							<img id="imgPerso" class="card-img-top rounded-circle" src="img/Nain.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-							<h4 id="typePerso" style="text-align: center;">Nain</h4>
+					<div class="col-3">
+						<div id="Nain" class="card card-disabled" onclick="origine('Nain')" title="force>=12 et courage>=11">
+							<img class="card-img-top rounded-circle" src="img/Nain.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 style="text-align: center;">Nain</h4>
 						</div>
 					</div>
-					<div class="col-2">
-						<div id="Ogre" class="card card-disabled" onclick="origine('Ogre')">
-							<img id="imgPerso" class="card-img-top rounded-circle" src="img/Ogre.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-							<h4 id="typePerso" style="text-align: center;">Ogre</h4>
+					<div class="col-3">
+						<div id="Ogre" class="card card-disabled" onclick="origine('Ogre')" title="force>=13 et intelligence<=9 et adresse<=11 et charisme<=10">
+							<img class="card-img-top rounded-circle" src="img/Ogre.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 style="text-align: center;">Ogre</h4>
 						</div>
 					</div>
-					<div class="col-2">
-						<div id="Ranger" class="card card-disabled" onclick="origine('Ranger')">
-							<img id="imgPerso" class="card-img-top rounded-circle" src="img/Ranger.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-							<h4 id="typePerso" style="text-align: center;">Ranger</h4>
+					<div class="col-3">
+						<div id="Ranger" class="card card-disabled" onclick="origine('Ranger')" title="adresse>=10et&& charisme>=10">
+							<img class="card-img-top rounded-circle" src="img/Ranger.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 style="text-align: center;">Ranger</h4>
 						</div>
 					</div>
-					<div class="col-2">
-						<div id="Voleur" class="card card-disabled" onclick="origine('Voleur')">
-							<img id="imgPerso" class="card-img-top rounded-circle" src="img/Voleur.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-							<h4 id="typePerso" style="text-align: center;">Voleur</h4>
+					<div class="col-3">
+						<div id="Voleur" class="card card-disabled" onclick="origine('Voleur')" title="adresse>=12">
+							<img class="card-img-top rounded-circle" src="img/Voleur.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 style="text-align: center;">Voleur</h4>
 						</div>
 					</div>
 				</div>
@@ -143,7 +135,10 @@
 <script type="text/javascript" src="json/pj.json"></script>
 <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript" src="js/donjon.js"></script>
-
+<script>
+	 setMenu("Personnage");
+</script>
 </body>
 </html>
