@@ -178,7 +178,9 @@ function initDonjon() {
 }
 
 function origine(origine) {
-    alert("Origine: "+origine);
+    $("#imgPerso").attr("src","img/"+origine+".png");
+    $("#typePerso").html(origine);
+    $("#metier").show();
 }
 
 function verifOrigine() {
@@ -256,3 +258,4 @@ function verifOrigine() {
 
 
 initDonjon();
+$("#metier").hide();
