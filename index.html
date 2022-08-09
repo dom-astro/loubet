@@ -9,6 +9,7 @@
 	<meta name="author" content="Pen of Chaos">
 	<meta name="description" content="Le Donjon de Naheulbeuk est un jeu de rôle plus ou moins humoristique et médial-fantastique, à télécharger">
 	<meta name="Keywords" content="donjon, naheulbeuk, roleplay, roles, rôliste, officiel, téléchargement, aventure, jdr, scenario">
+	<link rel="icon" href="img/logo.png" />
 </head>
 <body >
 <noscript>Your browser does not support script</noscript>
@@ -17,6 +18,9 @@
 	<div id="menu" class="container-fluid">
 	</div>
 </nav>
+<br>
+<br>
+<span class="wip">Website in progress</span><img class="zombie" src="img/wip.png" width="100px" alt="Websit in progress" title="Websit in progress" border="0">
 <br>
 <br>
 <div class="container">
@@ -59,9 +63,13 @@
 <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript" src="js/donjon.js"></script>
-<script>
-	 setMenu("");
-</script>
 
+<script type="text/javascript">
+	setMenu("");
+	$(document).ready(function() {
+		$(".zombie").addClass("zombie-in-progress");
+		$(".wip").addClass("wip-in-progress");
+	});
+</script>
 </body>
 </html>
