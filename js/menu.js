@@ -13,13 +13,13 @@ var menus = [
              ]
     } ,
     { nom: "Scénario",
-      liste: [ { nom: "Loubet", page: "#" } ]
+      liste: [ { nom: "Loubet", page: "loubet.html" } ]
     }
 ];  
 
 function setMenu(choix) {
     var nav = $("#menu");
-    var html="<img src='img/logo.png' width='50px'></img> \
+    var html="<img  id='logo' src='img/logo.png' width='50px'></img> \
     <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#collapsibleNavbar'> \
       <span class='navbar-toggler-icon'></span> \
     </button> \
@@ -40,4 +40,8 @@ function setMenu(choix) {
              </div>";
 
     nav.html(html);
+
+    $("#logo").on('click', function() {
+        window.location = "./index.html";    
+   });
 }
