@@ -9,47 +9,20 @@
 	<meta name="author" content="Pen of Chaos">
 	<meta name="description" content="Le Donjon de Naheulbeuk est un jeu de rôle plus ou moins humoristique et médial-fantastique, à télécharger">
 	<meta name="Keywords" content="donjon, naheulbeuk, roleplay, roles, rôliste, officiel, téléchargement, aventure, jdr, scenario">
+	<link rel="icon" href="img/logo.png" />
 </head>
 <body >
 <noscript>Your browser does not support script</noscript>
 
 <nav class="navbar navbar-expand-sm bg-transparent navbar-light">
-	<div class="container-fluid">
-	  <img src="img/logo.png" width="50px"></img>
-	  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-		<span class="navbar-toggler-icon"></span>
-	  </button>
-	  <div class="collapse navbar-collapse" id="collapsibleNavbar" style="color: black;">
-		<ul class="navbar-nav">
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Personnage</a>
-				<ul class="dropdown-menu">
-				  <li><a class="dropdown-item" href="perso.html">Création</a></li>
-				  <li><a class="dropdown-item" href="#">Chargement</a></li>
-				  <li><a class="dropdown-item" href="#">Prêt à l'emploi</a></li>
-				</ul>
-			</li>
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Donjon facile</a>
-				<ul class="dropdown-menu">
-				  <li><a class="dropdown-item" href="#">Armes</a></li>
-				  <li><a class="dropdown-item" href="#">Armures</a></li>
-				  <li><a class="dropdown-item" href="#">Divers</a></li>
-				  <li><a class="dropdown-item" href="#">Potions</a></li>
-				</ul>
-			</li>
-		  <li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Scénario</a>
-			<ul class="dropdown-menu">
-			  <li><a class="dropdown-item" href="loubet.html">Tour de Loubet</a></li>
-			  <li><a class="dropdown-item" href="#">Autre</a></li>
-			</ul>
-		  </li>
-		</ul>
-	  </div>
+	<div id="menu" class="container-fluid">
 	</div>
 </nav>
-
+<br>
+<br>
+<span class="wip">Website in progress</span><img class="zombie" src="img/wip.png" width="100px" alt="Websit in progress" title="Websit in progress" border="0">
+<br>
+<br>
 <div class="row">
 	<div class="col-2">
 		<div class="row">
@@ -195,7 +168,15 @@
 <script type="text/javascript" src="json/pj.json"></script>
 <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript" src="js/donjon.js"></script>
+<script>
+	 setMenu("Scenario");
+	 $(document).ready(function() {
+		$(".zombie").addClass("zombie-in-progress");
+		$(".wip").addClass("wip-in-progress");
+	});
+</script>
 
 </body>
 </html>
