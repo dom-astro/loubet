@@ -65,6 +65,7 @@ body {
 .caract-label {
 	font-weight: bold;
     width: 100px;
+    height: 30px;
     border: 1px solid silver;
     border-radius: 5px;
     background-color: rgb(247, 247, 247);
@@ -121,9 +122,11 @@ body {
 }
 
 .btn-svg {
-	left: 17px;
-    position: relative;
-    width: 204px;
+    width: 100%;
+}
+
+.btn-export {
+    width: 100%;
 }
 
 .dropdown-toggle{
@@ -205,9 +208,9 @@ hr {
 
 @keyframes clignote {  
 	66% { 
-		opacity: 33%;
-		font-size: 36px;
-		color: #86b7fe;
+		opacity: 100%;
+		font-size: 40px;
+		color: black;
 	}
 }
 
@@ -233,4 +236,8 @@ hr {
 	margin-top: 80px;
 	transition-property: margin-top left;
 	transition-timing-function: ease-in-out;
+}
+
+#logo {
+	cursor: pointer;
 }
