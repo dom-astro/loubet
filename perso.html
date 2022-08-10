@@ -30,53 +30,99 @@
 			<div class="col-4">
 				<h3 title="Personnage joueur">Personnage</h3>
 				<form action="" class="was-validated">
-					<div class="card" style="width: 100%; height: 250px" onclick="choose('Barbare')">
-						<input id="nomPerso" type="text" pattern=".{3,}" class="form-control" placeholder="Nom" title="3 lettres minimum" required style="margin-left: 10px; margin-top: 5px; width: 90%">
-						<div class="invalid-feedback" style="margin-left: 10px;">Veuillez choisir un nom.</div>
+					<div class="card" style="width: 100%; height: 250px">
+						<div class="row">
+							<div class="col-3">
+								<input type="radio" id="girl" name="genre" value="f" style="margin-left: 15px; margin-top: 8px;" checked><label for="girl" style="margin-left: 5px">Fille</label><br>
+								<input type="radio" id="boy" name="genre" value="g" style="margin-left: 15px"><label for="boy" style="margin-left: 5px">Gars</label>
+							</div>
+							<div class="col-9">
+								<input id="nomPerso" type="text" pattern=".{3,}" class="form-control" placeholder="Nom" title="3 lettres minimum" required style="margin-left: 10px; margin-top: 5px; width: 90%">
+								<!--div class="invalid-feedback" style="margin-left: 10px;">Veuillez choisir un nom.</div-->
+							</div>
+						</div>
 						<div class="card-body">
 							<div class="row">
 								<div class="col-6">
-									<input type="radio" id="girl" name="genre" value="f"><label for="girl" style="margin-left: 5px">Fille</label>
-									<input type="radio" id="boy" name="genre" value="g" style="margin-left: 5px"><label for="boy" style="margin-left: 5px">Gars</label>
-									<br><br>
 									<p>Description</p>
-									<input type="text" id="description">
+									<textarea  id="description" rows="4" cols="20"></textarea>
 								</div>
 								<div class="col-6" id="metier">
-									<img id="imgPerso" class="card-img-top rounded-circle" src="" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-									<h4 id="typePerso" style="text-align: center;"></h4>
+									<img id="imgPerso" class="card-img-top rounded-circle" src="img/pj.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+									<h4 id="typePerso" style="text-align: center;">PJ</h4>
 								</div>
 							</div>
 						</div>
 					</div>
 				</form>
-				<h5>Caractéristiques</h5>
-				<div class="input-group" style="margin-top: 10px;">
-					<span class="caract-label">Courage</span>
-					<input id="courage" type="text" class="caract-valeur" placeholder="7">
-					<button class="btn btn-warning caract-btn" onclick="caractD6('courage')">D6</button> 
+				<div class="row">
+					<div class="col-6">
+						<h5>Caractéristiques</h5>
+						<div class="input-group" style="margin-top: 10px;">
+							<span class="caract-label" title="Détermine qui frappe le premier dans un combat">Courage</span>
+							<input id="courage" type="text" class="caract-valeur" placeholder="7">
+							<button class="btn btn-warning caract-btn" onclick="caractD6('courage')">D6</button> 
+						</div>
+						<div class="input-group">
+							<span class="caract-label" title="Apparence du héros, prestigieuse ou non...">Charisme</span>
+							<input id="charisme" type="text" class="caract-valeur" placeholder="7">
+							<button class="btn btn-warning caract-btn" onclick="caractD6('charisme')">D6</button> 
+						</div>
+						<div class="input-group">
+							<span class="caract-label" title="Permet notament de défoncer une porte">Force</span>
+							<input id="force" type="text" class="caract-valeur" placeholder="7">
+							<button class="btn btn-warning caract-btn" onclick="caractD6('force')">D6</button> 
+						</div>
+						<div class="input-group">
+							<span class="caract-label" title="Trouver son chemin dans un labyrinthe, entre autre...">Intelligence</span>
+							<input id="intelligence" type="text" class="caract-valeur" placeholder="7">
+							<button class="btn btn-warning caract-btn" onclick="caractD6('intelligence')">D6</button> 
+						</div>
+						<div class="input-group">
+							<span class="caract-label" title="Ne sert pas qu'au bière pong">Adresse</span>
+							<input id="adresse" type="text" class="caract-valeur" placeholder="7">
+							<button class="btn btn-warning caract-btn" onclick="caractD6('adresse')">D6</button> 
+						</div>
+					</div>
+					<div class="col-6">
+						<h5>Attributs</h5>
+						<div class="input-group" style="margin-top: 10px;">
+							<span class="caract-label"  title="Attaque">Attaque</span>
+							<input id="attaque" type="text" class="caract-valeur" value="8">
+						</div>
+						<div class="input-group">
+							<span class="caract-label" title="Parade">Parade</span>
+							<input id="parade" type="text" class="caract-valeur" value="10">
+						</div>
+						<div class="input-group">
+							<span class="caract-label" title="Energie vitale ou points de vie">E. vitale</span>
+							<input id="ev" type="text" class="caract-valeur" value="30">
+						</div>
+						<div class="input-group">
+							<span class="caract-label" title="Truc de magicien pour lancer des sorts">E. astrale</span>
+							<input id="ea" type="text" class="caract-valeur" value="0">
+						</div>
+						<div class="input-group">
+							<span class="caract-label" title="Avec des si, on ne serait pas mort. Marche aussi avec un point du destin!">Point destin</span>
+							<input id="destin" type="text" class="caract-valeur" placeholder="0">
+							<button class="btn btn-warning caract-btn" onclick="destinD4()">D4</button> 
+						</div>
+						<div class="input-group">
+							<span class="caract-label" title="Pièces d'or">Fortune</span>
+							<input id="po" type="text" class="caract-valeur" placeholder="0">
+							<button class="btn btn-warning caract-btn" onclick="fortuneD6()">D6</button> 
+						</div>
+					</div>
 				</div>
-				<div class="input-group">
-					<span class="caract-label">Charisme</span>
-					<input id="charisme" type="text" class="caract-valeur" placeholder="7">
-					<button class="btn btn-warning caract-btn" onclick="caractD6('charisme')">D6</button> 
+				<div class="row">
+					<div class="col-6">
+						<button type="button" class="btn btn-success btn-svg" style="margin-top: 10px;" onclick="savePJ()">Sauvegarde</button>
+					</div>
+					<div class="col-6">
+						<button type="button" class="btn btn-primary btn-export" style="margin-top: 10px;" onclick="exportPJ()">Export</button>
+					</div>
 				</div>
-				<div class="input-group">
-					<span class="caract-label">Force</span>
-					<input id="force" type="text" class="caract-valeur" placeholder="7">
-					<button class="btn btn-warning caract-btn" onclick="caractD6('force')">D6</button> 
-				</div>
-				<div class="input-group">
-					<span class="caract-label">Intelligence</span>
-					<input id="intelligence" type="text" class="caract-valeur" placeholder="7">
-					<button class="btn btn-warning caract-btn" onclick="caractD6('intelligence')">D6</button> 
-				</div>
-				<div class="input-group">
-					<span class="caract-label">Adresse</span>
-					<input id="adresse" type="text" class="caract-valeur" placeholder="7">
-					<button class="btn btn-warning caract-btn" onclick="caractD6('adresse')">D6</button> 
-				</div>
-			</div>
+		</div>
 			<div class="col-8">
 				<h3>Liste des personnages sélectionnables</h3>
 				<div class="row">
@@ -141,7 +187,7 @@
 <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
-<script type="text/javascript" src="js/donjon.js"></script>
+<script type="text/javascript" src="js/perso.js"></script>
 <script>
 	 setMenu("Personnage");
 	 $(document).ready(function() {
