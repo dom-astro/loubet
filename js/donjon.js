@@ -127,8 +127,5 @@ function initDonjon() {
         $("#ev").val(localStorage.getItem("ev"));
         $("#ea").val(localStorage.getItem("ea"));
         $("#destin").val(localStorage.getItem("destin"));
-        write(id);
     }
 }
-
-initDonjon();
