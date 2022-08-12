@@ -1,292 +1,241 @@
-function caractD6(caract) {
-    result=7+Math.ceil(Math.random()*6);
-    $("#"+caract).val(result);
-    $("#"+caract).next().prop("disabled",true);
+<html>
+<head>
+	<!--meta http-equiv="Content-Type" content="text/html; charset=windows-752"-->
+	<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+	<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/donjon.css">
+	<title>Naheulbeuk - Création PJ</title>
 
-    localStorage.setItem(caract,result);
-    verifOrigine();
-    verifMetier();
-}
+	<meta name="author" content="Pen of Chaos">
+	<meta name="description" content="Le Donjon de Naheulbeuk est un jeu de rôle plus ou moins humoristique et médial-fantastique, à télécharger">
+	<meta name="Keywords" content="donjon, naheulbeuk, roleplay, roles, rôliste, officiel, téléchargement, aventure, jdr, scenario">
+	<link rel="icon" href="img/logo.png" />
+</head>
+<body >
+<noscript>Your browser does not support script</noscript>
 
-function destinD4() {
-    result=Math.ceil(Math.random()*4)-1;
-    $("#destin").val(result);
-    $("#destin").next().prop("disabled",true);
+<nav class="navbar navbar-expand-sm bg-transparent navbar-light">
+	<div id="menu" class="container-fluid">
+	</div>
+</nav>
+<hr>
+<br>
+<br>
+<span class="wip">Website in progress</span><img class="zombie" src="img/wip.png" width="100px" alt="Websit in progress" title="Websit in progress" border="0">
+<br>
+<br>
+<div class="container">
+	<!-- img src="img/creation_pj.png"  style="height: 200px;" class="rounded"></img -->
+	<div class="texte">
+		<div class="row">
+			<div class="col-4">
+				<h3 title="Personnage joueur">Personnage</h3>
+				<form action="" class="was-validated">
+					<div class="card" style="width: 100%; height: 350px">
+						<div class="row">
+							<div class="col-8">
+								<input id="nomPerso" type="text" pattern=".{3,}" class="form-control" placeholder="Nom" title="3 lettres minimum" required style="margin-left: 10px; margin-top: 5px; width: 90%">
+								<input id="origine" type="text" class="form-control" placeholder="Origine du pj" title="Origine du pj" disabled            style="margin-left: 10px; margin-top: 5px; width: 90%">
+								<input id="metier" type="text" class="form-control" placeholder="Métier du pj" title="Métier du pj" disabled               style="margin-left: 10px; margin-top: 5px; width: 90%">
+								<!--div class="invalid-feedback" style="margin-left: 10px;">Veuillez choisir un nom.</div-->
+							</div>
+							<div class="col-4">
+								<input type="radio" id="girl" name="genre" value="f" style="margin-left: 15px; margin-top: 8px;" checked><label for="girl" style="margin-left: 5px">Fille</label><br>
+								<input type="radio" id="boy" name="genre" value="g" style="margin-left: 15px"><label for="boy" style="margin-left: 5px">Gars</label>
+							</div>
+						</div>
+						<div class="card-body">
+							<div class="row">
+								<div class="col-6">
+									<p>Description</p>
+									<textarea  id="description" rows="4" cols="20"></textarea>
+								</div>
+								<div class="col-6" id="metier">
+									<img id="imgPerso" class="card-img-top rounded-circle" src="img/pj.png" alt="Card image" style="width: 100px; height: 120px; text-align: center; margin-top: 30px;">
+									<h4 id="typePerso" style="text-align: center;"></h4>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+				<div class="row">
+					<div class="col-6">
+						<h5>Caractéristiques</h5>
+						<div class="input-group" style="margin-top: 10px;">
+							<span class="caract-label" title="Détermine qui frappe le premier dans un combat">Courage</span>
+							<input id="courage" type="text" class="caract-valeur" placeholder="7">
+							<button class="btn btn-warning caract-btn" onclick="caractD6('courage')">D6</button> 
+						</div>
+						<div class="input-group">
+							<span class="caract-label" title="Apparence du héros, prestigieuse ou non...">Charisme</span>
+							<input id="charisme" type="text" class="caract-valeur" placeholder="7">
+							<button class="btn btn-warning caract-btn" onclick="caractD6('charisme')">D6</button> 
+						</div>
+						<div class="input-group">
+							<span class="caract-label" title="Permet notament de défoncer une porte">Force</span>
+							<input id="force" type="text" class="caract-valeur" placeholder="7">
+							<button class="btn btn-warning caract-btn" onclick="caractD6('force')">D6</button> 
+						</div>
+						<div class="input-group">
+							<span class="caract-label" title="Trouver son chemin dans un labyrinthe, entre autre...">Intelligence</span>
+							<input id="intelligence" type="text" class="caract-valeur" placeholder="7">
+							<button class="btn btn-warning caract-btn" onclick="caractD6('intelligence')">D6</button> 
+						</div>
+						<div class="input-group">
+							<span class="caract-label" title="Ne sert pas qu'au bière pong">Adresse</span>
+							<input id="adresse" type="text" class="caract-valeur" placeholder="7">
+							<button class="btn btn-warning caract-btn" onclick="caractD6('adresse')">D6</button> 
+						</div>
+					</div>
+					<div class="col-6">
+						<h5>Attributs</h5>
+						<div class="input-group" style="margin-top: 10px;">
+							<span class="caract-label"  title="Attaque">Attaque</span>
+							<input id="attaque" type="text" class="caract-valeur" value="8">
+						</div>
+						<div class="input-group">
+							<span class="caract-label" title="Parade">Parade</span>
+							<input id="parade" type="text" class="caract-valeur" value="10">
+						</div>
+						<div class="input-group">
+							<span class="caract-label" title="Energie vitale ou points de vie">E. vitale</span>
+							<input id="ev" type="text" class="caract-valeur" value="30">
+						</div>
+						<div class="input-group">
+							<span class="caract-label" title="Truc de magicien pour lancer des sorts">E. astrale</span>
+							<input id="ea" type="text" class="caract-valeur" value="0">
+						</div>
+						<div class="input-group">
+							<span class="caract-label" title="Avec des si, on ne serait pas mort. Marche aussi avec un point du destin!">Point destin</span>
+							<input id="destin" type="text" class="caract-valeur" placeholder="0">
+							<button class="btn btn-warning caract-btn" onclick="destinD4()">D4</button> 
+						</div>
+						<div class="input-group">
+							<span class="caract-label" title="Pièces d'or">Fortune</span>
+							<input id="po" type="text" class="caract-valeur" placeholder="0">
+							<button class="btn btn-warning caract-btn" onclick="fortuneD6()">D6</button> 
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-6">
+						<button type="button" class="btn btn-success btn-svg" style="margin-top: 10px;" onclick="savePJ()">Sauvegarde</button>
+					</div>
+					<div class="col-6">
+						<button type="button" class="btn btn-primary btn-export" style="margin-top: 10px;" onclick="exportPJ()">Export</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-8">
+				<div class="row">
+					<h3>Origine</h3>
+					<div class="col-4" style="margin-top: -8px;">
+						<div id="Barbare" class="card card-disabled" onclick="setOrigine('Barbare')" title="force >= 13 et courage>=12">
+							<img class="card-img-top rounded-circle" src="img/Barbare.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 style="text-align: center;">Barbare</h4>
+						</div>
+					</div>
+					<div class="col-4" style="margin-top: -8px;">
+						<div id="Elfe" class="card card-disabled" onclick="setOrigine('Elfe')" title="charisme>=10 et adresse>=11">
+							<img class="card-img-top rounded-circle" src="img/Elfe.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 style="text-align: center;">Demi-Elfe</h4>
+						</div>
+					</div>
+					<div class="col-4" style="margin-top: -8px;">
+						<div id="Gobelin" class="card card-disabled" onclick="setOrigine('Gobelin')" title="charisme>=10 et adresse>=11">
+							<img class="card-img-top rounded-circle" src="img/Gobelin.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 style="text-align: center;">Gobelin</h4>
+						</div>
+					</div>
+					<div class="col-4">
+						<div id="Humain" class="card card-disabled" onclick="setOrigine('Humain')" title="Humain de base">
+							<img class="card-img-top rounded-circle" src="img/Humain.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 style="text-align: center;">Humain</h4>
+						</div>
+					</div>
+					<div class="col-4">
+						<div id="Nain" class="card card-disabled" onclick="setOrigine('Nain')" title="force>=12 et courage>=11">
+							<img class="card-img-top rounded-circle" src="img/Nain.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 style="text-align: center;">Nain</h4>
+						</div>
+					</div>
+					<div class="col-4">
+						<div id="Ogre" class="card card-disabled" onclick="setOrigine('Ogre')" title="force>=13 et intelligence<=9 et adresse<=11 et charisme<=10">
+							<img class="card-img-top rounded-circle" src="img/Ogre.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 style="text-align: center;">Ogre</h4>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<h3>Métier</h3>
+					<div class="col-4" style="margin-top: -8px;">
+						<div id="Assassin" class="card card-disabled" onclick="setMetier('Assassin')" title="adresse>=13">
+							<img class="card-img-top rounded-circle" src="img/Assassin.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 style="text-align: center;">Assassin</h4>
+						</div>
+					</div>
+					<div class="col-4" style="margin-top: -8px;">
+						<div id="Magicienne" class="card card-disabled" onclick="setMetier('Magicienne')" title="intelligence>=12">
+							<img class="card-img-top rounded-circle" src="img/Magicienne.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 style="text-align: center;">Mage</h4>
+						</div>
+					</div>
+					<div class="col-4" style="margin-top: -8px;">
+						<div id="Menestrel" class="card card-disabled" onclick="setMetier('Menestrel')" title="adresse>=11 et charisme>=12">
+							<img class="card-img-top rounded-circle" src="img/Menestrel.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 style="text-align: center;">Menestrel</h4>
+						</div>
+					</div>
+					<div class="col-4">
+						<div id="Prêtre" class="card card-disabled" onclick="setMetier('Prêtre')" title="charisme>=12">
+							<img class="card-img-top rounded-circle" src="img/Prêtre.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 style="text-align: center;">Prêtre</h4>
+						</div>
+					</div>
+					<div class="col-4">
+						<div id="Ranger" class="card card-disabled" onclick="setMetier('Ranger')" title="adresse>=10 et charisme>=10">
+							<img class="card-img-top rounded-circle" src="img/Ranger.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 style="text-align: center;">Ranger</h4>
+						</div>
+					</div>
+					<div class="col-4">
+						<div id="Voleur" class="card card-disabled" onclick="setMetier('Voleur')" title="adresse>=12">
+							<img class="card-img-top rounded-circle" src="img/Voleur.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
+							<h4 style="text-align: center;">Voleur</h4>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div id="c-nat" class="card" style="width: 100%; height: 100px; margin-left: 16px;">
+						<h4 style="margin-top: 5px; margin-left: 10px;">Compétences naturelles</h4>
+						<div class="row"></div>
+					</div>
+					<div class="card" style="width: 100%; height: 100px; margin-left: 16px;">
+						<h4 style="margin: 5px 0 0 10px">Compétences optionnelles</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-    localStorage.setItem("destin",result);
-}
+<script type="text/javascript" src="json/competences.json"></script>
+<script type="text/javascript" src="json/pj.json"></script>
+<script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/menu.js"></script>
+<script type="text/javascript" src="js/perso.js"></script>
+<script type="text/javascript" src="js/donjon.js"></script>
+<script>
+	 setMenu("Personnage");
+	 $(document).ready(function() {
+		$(".zombie").addClass("zombie-in-progress");
+		$(".wip").addClass("wip-in-progress");
+	});
 
-function fortuneD6() {
-    result=10*(Math.ceil(Math.random()*6)+Math.ceil(Math.random()*6));
-    $("#po").val(result);
-    $("#po").next().prop("disabled",true);
-
-    localStorage.setItem("po",result);
-}
-
-
-function setOrigine(origine) {
-    isEnabled = $("#"+origine).hasClass('card-enabled');
-    if (isEnabled) {
-        $("#imgPerso").attr("src","img/"+origine+".png");
-        $("#typePerso").html(origine);
-        $("#metier").show();
-        $("#origine").val(origine);
-
-        switch(origine) {
-            case "Barbare":
-                $("#attaque").val(9);
-                $("#parade").val(9);
-                $("#ev").val(35);
-                $("#ea").val(0);
-                break;
-            case "Nain":
-                $("#attaque").val(8);
-                $("#parade").val(10);
-                $("#ev").val(35);
-                $("#ea").val(0);
-                break;
-            case "Elfe":
-                $("#attaque").val(8);
-                $("#parade").val(10);
-                $("#ev").val(28);
-                $("#ea").val(0);
-                break;
-            case "Ogre":
-                $("#attaque").val(9);
-                $("#parade").val(9);
-                $("#ev").val(45);
-                $("#ea").val(0);
-                break;
-            case "Magicienne":
-                $("#attaque").val(8);
-                $("#parade").val(10);
-                $("#ev").val(20);
-                $("#ea").val(30);
-                break;
-            default:
-                $("#attaque").val(8);
-                $("#parade").val(10);
-                $("#ev").val(30);
-                $("#ea").val(0);
-        }
-        localStorage.setItem("origine",origine);
-    }
-}
-
-function setMetier(metier) {
-    isEnabled = $("#"+metier).hasClass('card-enabled');
-    if (isEnabled) {
-        /*$("#imgPerso").attr("src","img/"+origine+".png");
-        $("#typePerso").html(origine);
-        $("#metier").show();*/
-        $("#metier").val(metier);
-
-        switch(origine) {
-            case "Barbare":
-                $("#attaque").val(9);
-                $("#parade").val(9);
-                $("#ev").val(35);
-                $("#ea").val(0);
-                break;
-            case "Nain":
-                $("#attaque").val(8);
-                $("#parade").val(10);
-                $("#ev").val(35);
-                $("#ea").val(0);
-                break;
-            case "Elfe":
-                $("#attaque").val(8);
-                $("#parade").val(10);
-                $("#ev").val(28);
-                $("#ea").val(0);
-                break;
-            case "Ogre":
-                $("#attaque").val(9);
-                $("#parade").val(9);
-                $("#ev").val(45);
-                $("#ea").val(0);
-                break;
-            case "Magicienne":
-                $("#attaque").val(8);
-                $("#parade").val(10);
-                $("#ev").val(20);
-                $("#ea").val(30);
-                break;
-            default:
-                $("#attaque").val(8);
-                $("#parade").val(10);
-                $("#ev").val(30);
-                $("#ea").val(0);
-        }
-        localStorage.setItem("metier",metier);
-    }
-}
-
-function verifOrigine() {
-    var courage=localStorage.getItem("courage"),
-    charisme=localStorage.getItem("charisme"),
-    force=localStorage.getItem("force"),
-    intelligence=localStorage.getItem("intelligence"),
-    adresse=localStorage.getItem("adresse");
-
-    // Humain
-    $("#Humain").removeClass("card-disabled");
-    $("#Humain").addClass("card-enabled");
-    // Elfe
-    if(charisme>=10 && adresse>=11) {
-        $("#Elfe").removeClass("card-disabled");
-        $("#Elfe").addClass("card-enabled");
-    } else {
-        $("#Elfe").removeClass("card-enabled");
-        $("#Elfe").addClass("card-disabled");
-    }
-    // Gobelin
-    if(courage<=10 && intelligence<=10 && charisme<=8 && force<=9) {
-        $("#Gobelin").removeClass("card-disabled");
-        $("#Gobelin").addClass("card-enabled");
-    } else {
-        $("#Gobelin").removeClass("card-enabled");
-        $("#Gobelin").addClass("card-disabled");
-    }
-    // Nain
-    if(force>=12 && courage>=11) {
-        $("#Nain").removeClass("card-disabled");
-        $("#Nain").addClass("card-enabled");
-    } else {
-        $("#Nain").removeClass("card-enabled");
-        $("#Nain").addClass("card-disabled");
-    }
-    // Ogre
-    if(force>=13 && intelligence<=9 && adresse<=11 && charisme<=10) {
-        $("#Ogre").removeClass("card-disabled");
-        $("#Ogre").addClass("card-enabled");
-    } else {
-        $("#Ogre").removeClass("card-enabled");
-        $("#Ogre").addClass("card-disabled");
-    }
-}
-
-function verifMetier() {
-    var courage=localStorage.getItem("courage"),
-    charisme=localStorage.getItem("charisme"),
-    force=localStorage.getItem("force"),
-    intelligence=localStorage.getItem("intelligence"),
-    adresse=localStorage.getItem("adresse");
-
-    // Assassin
-    if(adresse>=13) {
-        $("#Assassin").removeClass("card-disabled");
-        $("#Assassin").addClass("card-enabled");
-    } else {
-        $("#Assassin").removeClass("card-enabled");
-        $("#Assassin").addClass("card-disabled");
-    }
-    // Barbare
-    if(force>=13 && courage>=12) {
-        $("#Barbare").removeClass("card-disabled");
-        $("#Barbare").addClass("card-enabled");
-    } else {
-        $("#Barbare").removeClass("card-enabled");
-        $("#Barbare").addClass("card-disabled");
-    }
-    // Magicienne
-    if(intelligence>=12) {
-        $("#Magicienne").removeClass("card-disabled");
-        $("#Magicienne").addClass("card-enabled");
-    } else {
-        $("#Magicienne").removeClass("card-enabled");
-        $("#Magicienne").addClass("card-disabled");
-    }
-    // Menestrel
-    if(adresse>=11 && charisme>=12) {
-        $("#Menestrel").removeClass("card-disabled");
-        $("#Menestrel").addClass("card-enabled");
-    } else {
-        $("#Menestrel").removeClass("card-enabled");
-        $("#Menestrel").addClass("card-disabled");
-    }
-    // Prêtre
-    if(charisme>=12) {
-        $("#Prêtre").removeClass("card-disabled");
-        $("#Prêtre").addClass("card-enabled");
-    } else {
-        $("#Prêtre").removeClass("card-enabled");
-        $("#Menestrel").addClass("card-disabled");
-    }
-    // Ranger
-    if(adresse>=10 && charisme>=10) {
-        $("#Ranger").removeClass("card-disabled");
-        $("#Ranger").addClass("card-enabled");
-    } else {
-        $("#Ranger").removeClass("card-enabled");
-        $("#Ranger").addClass("card-disabled");
-    }
-    // Voleur
-    if(adresse>=12) {
-        $("#Voleur").removeClass("card-disabled");
-        $("#Voleur").addClass("card-enabled");
-    } else {
-        $("#Voleur").removeClass("card-enabled");
-        $("#Voleur").addClass("card-disabled");
-    }
-}
-
-function savePJ() {
-    localStorage.setItem("nom",$("#nomPerso").val());
-    localStorage.setItem("ea",$("#ea").val());
-    localStorage.setItem("ev",$("#ev").val());
-    localStorage.setItem("attaque",$("#attaque").val());
-    localStorage.setItem("parade",$("#parade").val());
-    localStorage.setItem("destin",$("#destin").val());
-
-    $("#nomPerso").prop("disabled",true);
-}
-
-function exportPJ() {
-    var pj = {};
-
-    pj.nom=localStorage.getItem("nom");
-    pj.origine=localStorage.getItem("origine");
-    pj.metier=localStorage.getItem("metier");
-    pj.courage=localStorage.getItem("courage");
-    pj.charisme=localStorage.getItem("charisme");
-    pj.force=localStorage.getItem("force");
-    pj.intelligence=localStorage.getItem("intelligence");
-    pj.adresse=localStorage.getItem("adresse");
-    pj.ea=localStorage.getItem("ea");
-    pj.ev=localStorage.getItem("ev");
-    pj.destin=localStorage.getItem("destin");
-    pj.po=localStorage.getItem("po");
-    pj.attaque=localStorage.getItem("attaque");
-    pj.parade=localStorage.getItem("parade");
-
-    let dataStr = JSON.stringify(pj);
-    let dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-
-    let exportFileDefaultName = pj.nom+'.json';
-
-    let linkElement = document.createElement('a');
-    linkElement.setAttribute('href', dataUri);
-    linkElement.setAttribute('download', exportFileDefaultName);
-    linkElement.click();
-}
-
-function initPerso() {
-    $("#nomPerso").val(localStorage.getItem("nom"));
-    $("#ea").val(localStorage.getItem("ea"));
-    $("#ev").val(localStorage.getItem("ev"));
-    $("#attaque").val(localStorage.getItem("attaque"));
-    $("#parade").val(localStorage.getItem("parade"));
-    $("#destin").val(localStorage.getItem("destin"));
-    $("#po").val(localStorage.getItem("po"));
-    $("#courage").val(localStorage.getItem("courage"));
-    $("#force").val(localStorage.getItem("force"));
-    $("#intelligence").val(localStorage.getItem("intelligence"));
-    $("#adresse").val(localStorage.getItem("adresse"));
-    $("#charisme").val(localStorage.getItem("charisme"));
-    $("#origine").val(localStorage.getItem("origine"));
-    $("#metier").val(localStorage.getItem("metier"));
-
-    //$("#nomPerso").prop("disabled",true);
-}
+	initPerso();
+	setCompetencesNat();
+</script>
+</body>
+</html>
