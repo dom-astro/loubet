@@ -290,3 +290,19 @@ function initPerso() {
 
     //$("#nomPerso").prop("disabled",true);
 }
+
+
+function setCompetencesNat() {
+    console.info(competences);
+    competences.naturelles.forEach(function(competence) {
+        strCompetence = 
+        "<div class='col-3'> \
+            <div class='form-check' style='margin-left: 10px;''> \
+                <input class='form-check-input' type='checkbox' id='"+competence.nom+"' checked disabled> \
+                <label class='form-check-label' title='"+competence.desc+"'>"+competence.nom+"</label> \
+            </div> \
+         </div>";
+
+        $("#c-nat>.row").append(strCompetence);
+    })
+}
