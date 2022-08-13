@@ -291,18 +291,92 @@ function initPerso() {
     //$("#nomPerso").prop("disabled",true);
 }
 
+function chargePJ() {
+    $("#jsonFile").click();
+    /*document.getElementById('file').click();
+    var pj = {};
 
-function setCompetencesNat() {
+    pj.nom=localStorage.getItem("nom");
+    pj.origine=localStorage.getItem("origine");
+    pj.metier=localStorage.getItem("metier");
+    pj.courage=localStorage.getItem("courage");
+    pj.charisme=localStorage.getItem("charisme");
+    pj.force=localStorage.getItem("force");
+    pj.intelligence=localStorage.getItem("intelligence");
+    pj.adresse=localStorage.getItem("adresse");
+    pj.ea=localStorage.getItem("ea");
+    pj.ev=localStorage.getItem("ev");
+    pj.destin=localStorage.getItem("destin");
+    pj.po=localStorage.getItem("po");
+    pj.attaque=localStorage.getItem("attaque");
+    pj.parade=localStorage.getItem("parade");
+
+    let dataStr = JSON.stringify(pj);
+    let dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+
+    let exportFileDefaultName = pj.nom+'.json';
+
+    let linkElement = document.createElement('a');
+    linkElement.setAttribute('href', dataUri);
+    linkElement.setAttribute('download', exportFileDefaultName);
+    linkElement.click();*/
+}
+
+function initPJ(){
+    $("#nomPerso").val("");
+    $("#ea").val(0);
+    $("#ev").val(25);
+    $("#attaque").val(8);
+    $("#parade").val(10);
+    $("#destin").val(0);
+    $("#po").val(0);
+    $("#courage").val(7);
+    $("#force").val(7);
+    $("#intelligence").val(7);
+    $("#adresse").val(7);
+    $("#charisme").val(7);
+    $("#origine").val("");
+    $("#metier").val("");
+
+    //$("#nomPerso").prop("disabled",true);
+}
+
+function setCompetencesNat(choixOrigine) {
     console.info(competences);
-    competences.naturelles.forEach(function(competence) {
-        strCompetence = 
-        "<div class='col-3'> \
-            <div class='form-check' style='margin-left: 10px;''> \
-                <input class='form-check-input' type='checkbox' id='"+competence.nom+"' checked disabled> \
-                <label class='form-check-label' title='"+competence.desc+"'>"+competence.nom+"</label> \
+    console.info(origines);
+    origines.forEach(function(origine) {
+        if(origine.nom==choixOrigine) {
+            origine.competences.naissance.forEach(function(currentCompetence) {
+                competences.forEach(function(competence) {
+                    if(competence.nom.toLowerCase()==currentCompetence.toLowerCase()) {
+                        var nom=capitalizeFirstLetter(competence.nom);
+                        strCompetence = 
+                        "<div class='col-4'> \
+                            <div class='form-check' style='margin-left: 10px;''> \
+                                <input class='form-check-input' type='checkbox' id='"+nom+"' checked disabled> \
+                                <label class='form-check-label' title='"+competence.description+"'>"+nom+"</label> \
+                            </div> \
+                        </div>";
+            
+                        $("#c-nat>.row").append(strCompetence);
+                    }
+                });
+    });
+        }
+    })
+}
+
+function listeOrigine() {
+    origines.forEach(function(origine) {
+        strOrigine =
+        "<div class='col-4' style='margin-top: -8px;'> \
+            <div id='"+origine.nom+"' class='card card-disabled' onclick='setOrigine('"+origine.nom+"')' title='force >= 13 et courage>=12'> \
+                <img class='card-img-top rounded-circle' src='img/"+origine.nom+".png' alt='Card image' style='width: 100px; height: 120px; text-align: center;'> \
+                <h4 style='text-align: center;'>"+origine.nom+"</h4> \
             </div> \
          </div>";
 
-        $("#c-nat>.row").append(strCompetence);
-    })
+         $("#origines").append(strOrigine);
+
+    });
 }

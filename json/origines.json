@@ -1,7 +1,7 @@
 var origines = 
 [
     {
-        "origine": "Humain",
+        "nom": "Humain",
         "slogan": "Aventurier de base",
         "description": "Aucun score minimum dans les caractéristiques de base. C&apos;est le choix que tout le monde peut faire en tirant un personnage, quel que soit le résultat des dés. \
         L&apos;humain de base peut utiliser n’importe quelle forme de magie sur des objets ou des enchantements. Il peut utiliser des parchemins s&apos;il sait lire (compétence érudition). Il peut également choisir n&apos;importe quelle profession à condition d&apos;avoir les scores nécessaires, et s&apos;il n&apos;en choisit pas il peut sélectionner de base deux compétences au choix - sauf « Appel du sauvage ».",
@@ -36,7 +36,7 @@ var origines =
         }
     },
     {
-        "origine": "Barbare",
+        "nom": "Barbare",
         "slogan": "Aventurier bourrin des steppes",
         "description": "Le Barbare a une endurance très élevée. Il n&apos;aime pas tout ce qui est compliqué. Il résiste au froid, au chaud, à la douleur. C&apos;est un humain différent des autres, car plus robuste et beaucoup moins polyvalent.",
         "ev": 35,
@@ -81,7 +81,7 @@ var origines =
         }
     },
     {
-        "origine": "Nain",
+        "nom": "Nain",
         "slogan": "",
         "description": "",
         "ev": 35,
@@ -127,7 +127,7 @@ var origines =
         }
     },
     {
-        "origine": "Haut Elfe",
+        "nom": "Haut Elfe",
         "slogan": "",
         "description": "Les hauts-elfes sont les descendants des elfes ayant découvert la Terre de Fangh il y a bien longtemps. Plutôt que de \
         s&apos;enfuir dans la forêt pour monter une société arboricole, ils ont choisi de se fondre dans la population humaine, même s&apos;ils \
@@ -172,7 +172,7 @@ var origines =
         }
     },
     {
-        "origine": "Demi-Elfe",
+        "nom": "Demi-Elfe",
         "slogan": "D&apos;humain et elfe",
         "description": "Le demi-elfe, qu&apos;il soit issu d&apos;Elfe Sylvain ou de Haut-Elfe, a gardé un côté précieux et fragile mais aussi une part de la \
         beauté provenant de ses origines elfiques, et une adresse un peu supérieure à la moyenne. Il a gagné en robustesse et en \
@@ -224,7 +224,7 @@ var origines =
         }
     },
     {
-        "origine": "Elfe Sylvain",
+        "nom": "Elfe Sylvain",
         "slogan": "",
         "description": "Les Sylvains sont les descendants des elfes ayant découvert la Terre de Fangh il y a bien longtemps. Ils ont choisi de fuir la \
         compagnie des humains pour vivre dans la forêt car ils s&apos;y sentaient bien, et que tout le monde y est gentil. Ils ont une \
@@ -257,7 +257,7 @@ var origines =
                 "premiers soins",
                 "tirer correctement",
                 "tomber dans les pièges"
-            ]", "
+            ],
              "choix": [
                 "comprendre les animaux",
                 "déplacement silencieux",
@@ -269,7 +269,7 @@ var origines =
         }
     },
     {
-        "origine": "Elfe Noir",
+        "nom": "Elfe Noir",
         "slogan": "",
         "description": "Les Elfes Noirs sont le résultat, semble-t-il, d&apos;expériences chaotiques menées par les dieux sur les Elfes il y a bien \
         longtemps. Ils ont perdu toute l&apos;innocence de leurs ancêtres et ont développé une culture très marginale, loin de la plupart \
@@ -306,7 +306,7 @@ var origines =
                 "déplacement silencieux",
                 "détection",
                 "tirer correctement"
-            ]", "
+            ],
              "choix": [
                 "ambidextrie",
                 "chouraver",
@@ -321,7 +321,7 @@ var origines =
         }
     },
     {
-        "origine": "Orque",
+        "nom": "Orque",
         "slogan": "",
         "description": "L&apos;orque est un peu l&apos;équivalent du Barbare, mais en beaucoup plus idiot et sans aucun principe. Il est d&apos;un naturel fourbe, \
         vicieux et méchant, mais certains parviennent à se faire une place dans la société en abandonnant les cavernes et les \
@@ -332,7 +332,7 @@ var origines =
         C&apos;est un personnage qui n&apos;a aucune finesse mais peut se révéler ingénieux quand il s&apos;agit de sauver sa peau. Il n&apos;a pas \
         d&apos;honneur et pas de code de conduite. Il n&apos;est pas non plus très patient ! Son métabolisme s&apos;est adapté pour résister à la \
         plupart des maladies, et il peut manger relativement n&apos;importe quoi. \
-        L&apos;orque dispose de son propre langage mais ils apprend et parle assez facilement la langue commune, de façon rustre.", \
+        L&apos;orque dispose de son propre langage mais ils apprend et parle assez facilement la langue commune, de façon rustre.",
         "ev": 35,
         "courage": {
             "min": "Non",
@@ -363,7 +363,7 @@ var origines =
                 "instinct de survie",
                 "sentir des pieds",
                 "tête vide"
-            ]", "
+            ],
              "choix": [
                 "armes de bourrin",
                 "chercher des noises",
@@ -374,7 +374,7 @@ var origines =
         }
     },
     {
-        "origine": "Demi-Orque",
+        "nom": "Demi-Orque",
         "slogan": "",
         "description": "Le demi-orque a hérité de son origine peau-verte une certaine stupidité et une méfiance générale vis-à-vis du monde qui \
         l&apos;entoure. Il est né bâtard d&apos;une ethnie considérée par la plupart des gens comme un ennemi, et cela ne l&apos;a pas aidé à \
@@ -408,7 +408,7 @@ var origines =
                 "instinct de survie",
                 "sentir des pieds",
                 "tête vide"
-            ]", "
+            ],
             "choix": [
                 "armes de bourrin",
                 "bourre-pif",
@@ -422,7 +422,7 @@ var origines =
         }
     },
     {
-        "origine": "Gobelin",
+        "nom": "Gobelin",
         "slogan": "",
         "description": "Les gobelins sont les « petits frères pauvres » des orques. Ils ont également la peau verte et le visage contrefait, mais ils ne \
         sont ni intelligents, ni forts, ni courageux, ni beaux... Il ne leur reste pour survivre que l&apos;adresse et la fourberie. \
@@ -460,7 +460,7 @@ var origines =
                 "instinct du tresor",
                 "sentir des pieds",
                 "tête vide"
-            ]", "
+            ],
             "choix": [
                 "bricolo du dimanche",
                 "désamorcer",
@@ -470,7 +470,7 @@ var origines =
         }
     },
     {
-        "origine": "Ogre",
+        "nom": "Ogre",
         "slogan": "",
         "description": "Les ogres sont des créatures semi-géantes d&apos;un naturel placide mais assez promptes à la violence. Ils vivent dans tous \
         types de milieux à condition qu&apos;on y trouve de la nourriture, généralement assez loin des grandes villes. Parfois, un ogre \
@@ -511,7 +511,7 @@ var origines =
                 "intimider",
                 "sentir des pieds",
                 "tête vide"
-            ]", "
+            ],
              "choix": [
                 "bourre-pif",
                 "chercher des noises",
@@ -522,7 +522,7 @@ var origines =
         }
     },
     {
-        "origine": "Hobbit",
+        "nom": "Hobbit",
         "slogan": "",
         "description": "Les semi-hommes sont des gens simples vivant dans quelques parties de la Terre de Fangh, principalement là où il n&apos;y a \
         pas trop de danger et où on peut cultiver des légumes. Ils sont assez courageux pour leur taille, et parfois certains sont \
@@ -557,7 +557,7 @@ var origines =
                 "CUISTOT",
                 "instinct de survie",
                 "ressemble à rien"
-            ]", "
+            ],
              "choix": [
                 "appel des renforts",
                 "chouraver",
@@ -572,7 +572,7 @@ var origines =
         }
     },
     {
-        "origine": "Gnome",
+        "nom": "Gnome",
         "slogan": "Des forêts du Nord",
         "description": "Les gnômes des forêts du nord sont les aventuriers les plus improbables qui soient. Ils sont minuscules et hardis, très adroits, \
         silencieux, mais ils ont autant de force physique qu&apos;un flan aux fruits, et la constitution d&apos;un jeune gamin. Ils ont un \
@@ -610,7 +610,7 @@ var origines =
                 "chouraver",
                 "déplacement silencieux",
                 "instinct du tresor"
-            ]", "
+            ],
             "choix": [
                 "comprendre les animaux",
                 "désamorcer",

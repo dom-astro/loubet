@@ -28,7 +28,7 @@ var competences =
         "Rattrapage ": "les équipiers peuvent tenter une épreuve de CHA pour le raisonner.",
     },
     {
-        "nom": "APPEL DU TONNEAU",
+        "nom": "appel du tonneau",
         "description": "L$apos;alcool attire le héros, s$apos;il ne parvient pas à résister à son instinct de poivrot. Il devra passer une épreuve d$apos;intelligence +4 pour s$apos;en sortir... Ou décidera de s$apos;adonner à la boisson, quitte à finir allongé dans son vomi. C$apos;est vraiment la honte.",
         "caracteristiques": ["intelligence"],
         "Utilisation ": "en présence d$apos;alcool, épreuve INT+4 du héros pour ne pas s$apos;enivrer. Échec : le héros finit bourré.",
