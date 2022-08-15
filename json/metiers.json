@@ -1,28 +1,28 @@
 var metiers = 
 [
     {
-        "origine": "Guerrier",
+        "nom": "Guerrier",
         "ev": "+5",
         "ea": "",
         "courage": {
             "min": "12",
-            "max": ""
+            "max": "Non"
         },
         "intelligence": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "charisme": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "adresse": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "force": {
             "min": "12",
-            "max": ""
+            "max": "Non"
         },
         "competences": {
             "naissance": [
@@ -34,28 +34,28 @@ var metiers =
         }
     },
     {
-        "origine": "Gladiateur",
+        "nom": "Gladiateur",
         "ev": "+5",
         "ea": "",
         "courage": {
             "min": "12",
-            "max": ""
+            "max": "Non"
         },
         "intelligence": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "charisme": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "adresse": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "force": {
             "min": "12",
-            "max": ""
+            "max": "Non"
         },
         "competences": {
             "naissance": [
@@ -67,28 +67,28 @@ var metiers =
         }
     },
     {
-        "origine": "Ninja",
+        "nom": "Ninja",
         "ev": "",
         "ea": "",
         "courage": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "intelligence": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "charisme": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "adresse": {
             "min": "13",
-            "max": ""
+            "max": "Non"
         },
         "force": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "competences": {
             "naissance": [
@@ -100,28 +100,28 @@ var metiers =
         }
     },
     {
-        "origine": "Assassin",
+        "nom": "Assassin",
         "ev": "",
         "ea": "",
         "courage": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "intelligence": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "charisme": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "adresse": {
             "min": "13",
-            "max": ""
+            "max": "Non"
         },
         "force": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "competences": {
             "naissance": [
@@ -141,28 +141,28 @@ var metiers =
         }
     },
     {
-        "origine": "Voleur",
+        "nom": "Voleur",
         "ev": "",
         "ea": "",
         "courage": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "intelligence": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "charisme": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "adresse": {
             "min": "12",
-            "max": ""
+            "max": "Non"
         },
         "force": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "competences": {
             "naissance": [
@@ -174,28 +174,28 @@ var metiers =
         }
     },
     {
-        "origine": "Prêtre",
+        "nom": "Prêtre",
         "ev": "",
         "ea": "",
         "courage": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "intelligence": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "charisme": {
             "min": "12",
-            "max": ""
+            "max": "Non"
         },
         "adresse": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "force": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "competences": {
             "naissance": [
@@ -207,28 +207,28 @@ var metiers =
         }
     },
     {
-        "origine": "Mage",
+        "nom": "Mage",
         "ev": "",
         "ea": "",
         "courage": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "intelligence": {
             "min": "12",
-            "max": ""
+            "max": "Non"
         },
         "charisme": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "adresse": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "force": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "competences": {
             "naissance": [
@@ -240,28 +240,28 @@ var metiers =
         }
     },
     {
-        "origine": "Sorcier",
+        "nom": "Sorcier",
         "ev": "",
         "ea": "",
         "courage": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "intelligence": {
             "min": "12",
-            "max": ""
+            "max": "Non"
         },
         "charisme": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "adresse": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "force": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "competences": {
             "naissance": [
@@ -273,28 +273,28 @@ var metiers =
         }
     },
     {
-        "origine": "Paladin",
+        "nom": "Paladin",
         "ev": "",
         "ea": "",
         "courage": {
             "min": "12",
-            "max": ""
+            "max": "Non"
         },
         "intelligence": {
             "min": "10",
-            "max": ""
+            "max": "Non"
         },
         "charisme": {
             "min": "11",
-            "max": ""
+            "max": "Non"
         },
         "adresse": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "force": {
             "min": "9",
-            "max": ""
+            "max": "Non"
         },
         "competences": {
             "naissance": [
@@ -306,28 +306,28 @@ var metiers =
         }
     },
     {
-        "origine": "Ranger",
+        "nom": "Ranger",
         "ev": "",
         "ea": "",
         "courage": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "intelligence": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "charisme": {
             "min": "10",
-            "max": ""
+            "max": "Non"
         },
         "adresse": {
             "min": "10",
-            "max": ""
+            "max": "Non"
         },
         "force": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "competences": {
             "naissance": [
@@ -339,28 +339,28 @@ var metiers =
         }
     },
     {
-        "origine": "Ménestrel",
+        "nom": "Ménestrel",
         "ev": "",
         "ea": "",
         "courage": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "intelligence": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "charisme": {
             "min": "12",
-            "max": ""
+            "max": "Non"
         },
         "adresse": {
             "min": "11",
-            "max": ""
+            "max": "Non"
         },
         "force": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "competences": {
             "naissance": [
@@ -372,28 +372,28 @@ var metiers =
         }
     },
     {
-        "origine": "Marchand",
+        "nom": "Marchand",
         "ev": "",
         "ea": "",
         "courage": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "intelligence": {
             "min": "12",
-            "max": ""
+            "max": "Non"
         },
         "charisme": {
             "min": "11",
-            "max": ""
+            "max": "Non"
         },
         "adresse": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "force": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "competences": {
             "naissance": [
@@ -405,28 +405,28 @@ var metiers =
         }
     },
     {
-        "origine": "Négociant",
+        "nom": "Négociant",
         "ev": "",
         "ea": "",
         "courage": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "intelligence": {
             "min": "12",
-            "max": ""
+            "max": "Non"
         },
         "charisme": {
             "min": "11",
-            "max": ""
+            "max": "Non"
         },
         "adresse": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "force": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "competences": {
             "naissance": [
@@ -438,28 +438,28 @@ var metiers =
         }
     },
     {
-        "origine": "Ingénieur",
+        "nom": "Ingénieur",
         "ev": "",
         "ea": "",
         "courage": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "intelligence": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "charisme": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "adresse": {
             "min": "11",
-            "max": ""
+            "max": "Non"
         },
         "force": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "competences": {
             "naissance": [
@@ -471,28 +471,28 @@ var metiers =
         }
     },
     {
-        "origine": "Pirate",
+        "nom": "Pirate",
         "ev": "",
         "ea": "",
         "courage": {
             "min": "11",
-            "max": ""
+            "max": "Non"
         },
         "intelligence": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "charisme": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "adresse": {
             "min": "11",
-            "max": ""
+            "max": "Non"
         },
         "force": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "competences": {
             "naissance": [
@@ -504,61 +504,61 @@ var metiers =
         }
     },
     {
-        "origine": "Bourgeois",
+        "nom": "Bourgeois",
         "ev": "",
         "ea": "",
         "courage": {
             "min": "Non",
-            "max": ""
-        },
-        "intelligence": {
-            "min": "10",
-            "max": ""
-        },
-        "charisme": {
-            "min": "11",
-            "max": ""
-        },
-        "adresse": {
-            "min": "Non",
-            "max": ""
-        },
-        "force": {
-            "min": "Non",
-            "max": ""
-        },
-        "competences": {
-            "naissance": [
-                ""
-            ],
-            "choix": [
-                ""
-            ]
-        }
-    },
-    {
-        "origine": "Noble",
-        "ev": "",
-        "ea": "",
-        "courage": {
-            "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "intelligence": {
             "min": "10",
-            "max": ""
+            "max": "Non"
         },
         "charisme": {
             "min": "11",
-            "max": ""
+            "max": "Non"
         },
         "adresse": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
         },
         "force": {
             "min": "Non",
-            "max": ""
+            "max": "Non"
+        },
+        "competences": {
+            "naissance": [
+                ""
+            ],
+            "choix": [
+                ""
+            ]
+        }
+    },
+    {
+        "nom": "Noble",
+        "ev": "",
+        "ea": "",
+        "courage": {
+            "min": "Non",
+            "max": "Non"
+        },
+        "intelligence": {
+            "min": "10",
+            "max": "Non"
+        },
+        "charisme": {
+            "min": "11",
+            "max": "Non"
+        },
+        "adresse": {
+            "min": "Non",
+            "max": "Non"
+        },
+        "force": {
+            "min": "Non",
+            "max": "Non"
         },
         "competences": {
             "naissance": [

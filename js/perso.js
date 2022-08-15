@@ -1,3 +1,15 @@
+String.prototype.id = function () {
+    var str = this.valueOf();
+
+    return str.replace(' ','-').toLowerCase();
+};
+
+String.prototype.capitalize = function () {
+    var str = this.valueOf();
+
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
+
 function caractD6(caract) {
     result=7+Math.ceil(Math.random()*6);
     $("#"+caract).val(result);
@@ -26,12 +38,13 @@ function fortuneD6() {
 
 
 function setOrigine(origine) {
-    isEnabled = $("#"+origine).hasClass('card-enabled');
+    isEnabled = $("#origine-"+origine.id()).hasClass('card-enabled');
     if (isEnabled) {
         $("#imgPerso").attr("src","img/"+origine+".png");
         $("#typePerso").html(origine);
         $("#metier").show();
         $("#origine").val(origine);
+        setCompetencesOrigine(origine);
 
         switch(origine) {
             case "Barbare":
@@ -75,12 +88,13 @@ function setOrigine(origine) {
 }
 
 function setMetier(metier) {
-    isEnabled = $("#"+metier).hasClass('card-enabled');
+    isEnabled = $("#metier-"+metier.id()).hasClass('card-enabled');
     if (isEnabled) {
         /*$("#imgPerso").attr("src","img/"+origine+".png");
         $("#typePerso").html(origine);
         $("#metier").show();*/
         $("#metier").val(metier);
+        setCompetencesMetier(metier);
 
         switch(origine) {
             case "Barbare":
@@ -129,42 +143,29 @@ function verifOrigine() {
     force=localStorage.getItem("force"),
     intelligence=localStorage.getItem("intelligence"),
     adresse=localStorage.getItem("adresse");
+    var caracteristiques=["courage","charisme","force","intelligence","adresse"];
 
-    // Humain
-    $("#Humain").removeClass("card-disabled");
-    $("#Humain").addClass("card-enabled");
-    // Elfe
-    if(charisme>=10 && adresse>=11) {
-        $("#Elfe").removeClass("card-disabled");
-        $("#Elfe").addClass("card-enabled");
-    } else {
-        $("#Elfe").removeClass("card-enabled");
-        $("#Elfe").addClass("card-disabled");
-    }
-    // Gobelin
-    if(courage<=10 && intelligence<=10 && charisme<=8 && force<=9) {
-        $("#Gobelin").removeClass("card-disabled");
-        $("#Gobelin").addClass("card-enabled");
-    } else {
-        $("#Gobelin").removeClass("card-enabled");
-        $("#Gobelin").addClass("card-disabled");
-    }
-    // Nain
-    if(force>=12 && courage>=11) {
-        $("#Nain").removeClass("card-disabled");
-        $("#Nain").addClass("card-enabled");
-    } else {
-        $("#Nain").removeClass("card-enabled");
-        $("#Nain").addClass("card-disabled");
-    }
-    // Ogre
-    if(force>=13 && intelligence<=9 && adresse<=11 && charisme<=10) {
-        $("#Ogre").removeClass("card-disabled");
-        $("#Ogre").addClass("card-enabled");
-    } else {
-        $("#Ogre").removeClass("card-enabled");
-        $("#Ogre").addClass("card-disabled");
-    }
+    origines.forEach(function(origine) {
+        isEnabled=true;
+        /*caracteristiques.forEach(function(caracteristique) {
+
+        });*/
+        if(courage<(origine.courage.min == "Non" ? 0 : origine.courage.min)) isEnabled=false;
+        if(courage>(origine.courage.max == "Non" ? 99 : origine.courage.max)) isEnabled=false;
+        if(force<(origine.force.min == "Non" ? 0 : origine.force.min)) isEnabled=false;
+        if(force>(origine.force.max == "Non" ? 99 : origine.force.max)) isEnabled=false;
+        if(intelligence<(origine.intelligence.min == "Non" ? 0 : origine.intelligence.min)) isEnabled=false;
+        if(intelligence>(origine.intelligence.max == "Non" ? 99 : origine.intelligence.max)) isEnabled=false;
+        if(adresse<(origine.adresse.min == "Non" ? 0 : origine.adresse.min)) isEnabled=false;
+        if(adresse>(origine.adresse.max == "Non" ? 99 : origine.adresse.max)) isEnabled=false;
+        if(charisme<(origine.charisme.min == "Non" ? 0 : origine.charisme.min)) isEnabled=false;
+        if(charisme>(origine.charisme.max == "Non" ? 99 : origine.charisme.max)) isEnabled=false;
+
+        if (isEnabled) {
+            $("#origine-"+origine.nom.id()).removeClass("card-disabled");
+            $("#origine-"+origine.nom.id()).addClass("card-enabled");
+        }
+    });
 }
 
 function verifMetier() {
@@ -174,62 +175,27 @@ function verifMetier() {
     intelligence=localStorage.getItem("intelligence"),
     adresse=localStorage.getItem("adresse");
 
-    // Assassin
-    if(adresse>=13) {
-        $("#Assassin").removeClass("card-disabled");
-        $("#Assassin").addClass("card-enabled");
-    } else {
-        $("#Assassin").removeClass("card-enabled");
-        $("#Assassin").addClass("card-disabled");
-    }
-    // Barbare
-    if(force>=13 && courage>=12) {
-        $("#Barbare").removeClass("card-disabled");
-        $("#Barbare").addClass("card-enabled");
-    } else {
-        $("#Barbare").removeClass("card-enabled");
-        $("#Barbare").addClass("card-disabled");
-    }
-    // Magicienne
-    if(intelligence>=12) {
-        $("#Magicienne").removeClass("card-disabled");
-        $("#Magicienne").addClass("card-enabled");
-    } else {
-        $("#Magicienne").removeClass("card-enabled");
-        $("#Magicienne").addClass("card-disabled");
-    }
-    // Menestrel
-    if(adresse>=11 && charisme>=12) {
-        $("#Menestrel").removeClass("card-disabled");
-        $("#Menestrel").addClass("card-enabled");
-    } else {
-        $("#Menestrel").removeClass("card-enabled");
-        $("#Menestrel").addClass("card-disabled");
-    }
-    // Prêtre
-    if(charisme>=12) {
-        $("#Prêtre").removeClass("card-disabled");
-        $("#Prêtre").addClass("card-enabled");
-    } else {
-        $("#Prêtre").removeClass("card-enabled");
-        $("#Menestrel").addClass("card-disabled");
-    }
-    // Ranger
-    if(adresse>=10 && charisme>=10) {
-        $("#Ranger").removeClass("card-disabled");
-        $("#Ranger").addClass("card-enabled");
-    } else {
-        $("#Ranger").removeClass("card-enabled");
-        $("#Ranger").addClass("card-disabled");
-    }
-    // Voleur
-    if(adresse>=12) {
-        $("#Voleur").removeClass("card-disabled");
-        $("#Voleur").addClass("card-enabled");
-    } else {
-        $("#Voleur").removeClass("card-enabled");
-        $("#Voleur").addClass("card-disabled");
-    }
+    metiers.forEach(function(metier) {
+        isEnabled=true;
+        /*caracteristiques.forEach(function(caracteristique) {
+
+        });*/
+        if(courage<(metier.courage.min == "Non" ? 0 : metier.courage.min)) isEnabled=false;
+        if(courage>(metier.courage.max == "Non" ? 99 : metier.courage.max)) isEnabled=false;
+        if(force<(metier.force.min == "Non" ? 0 : metier.force.min)) isEnabled=false;
+        if(force>(metier.force.max == "Non" ? 99 : metier.force.max)) isEnabled=false;
+        if(intelligence<(metier.intelligence.min == "Non" ? 0 : metier.intelligence.min)) isEnabled=false;
+        if(intelligence>(metier.intelligence.max == "Non" ? 99 : metier.intelligence.max)) isEnabled=false;
+        if(adresse<(metier.adresse.min == "Non" ? 0 : metier.adresse.min)) isEnabled=false;
+        if(adresse>(metier.adresse.max == "Non" ? 99 : metier.adresse.max)) isEnabled=false;
+        if(charisme<(metier.charisme.min == "Non" ? 0 : metier.charisme.min)) isEnabled=false;
+        if(charisme>(metier.charisme.max == "Non" ? 99 : metier.charisme.max)) isEnabled=false;
+
+        if (isEnabled) {
+            $("#metier-"+metier.nom.id()).removeClass("card-disabled");
+            $("#metier-"+metier.nom.id()).addClass("card-enabled");
+        }
+    });
 }
 
 function savePJ() {
@@ -289,40 +255,17 @@ function initPerso() {
     $("#metier").val(localStorage.getItem("metier"));
 
     //$("#nomPerso").prop("disabled",true);
+    setCompetencesOrigine(localStorage.getItem("origine"));
+    setCompetencesMetier(localStorage.getItem("metier"));
+    verifOrigine();
+    verifMetier();
 }
 
 function chargePJ() {
     $("#jsonFile").click();
-    /*document.getElementById('file').click();
-    var pj = {};
-
-    pj.nom=localStorage.getItem("nom");
-    pj.origine=localStorage.getItem("origine");
-    pj.metier=localStorage.getItem("metier");
-    pj.courage=localStorage.getItem("courage");
-    pj.charisme=localStorage.getItem("charisme");
-    pj.force=localStorage.getItem("force");
-    pj.intelligence=localStorage.getItem("intelligence");
-    pj.adresse=localStorage.getItem("adresse");
-    pj.ea=localStorage.getItem("ea");
-    pj.ev=localStorage.getItem("ev");
-    pj.destin=localStorage.getItem("destin");
-    pj.po=localStorage.getItem("po");
-    pj.attaque=localStorage.getItem("attaque");
-    pj.parade=localStorage.getItem("parade");
-
-    let dataStr = JSON.stringify(pj);
-    let dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-
-    let exportFileDefaultName = pj.nom+'.json';
-
-    let linkElement = document.createElement('a');
-    linkElement.setAttribute('href', dataUri);
-    linkElement.setAttribute('download', exportFileDefaultName);
-    linkElement.click();*/
 }
 
-function initPJ(){
+function resetPJ(){
     $("#nomPerso").val("");
     $("#ea").val(0);
     $("#ev").val(25);
@@ -341,9 +284,38 @@ function initPJ(){
     //$("#nomPerso").prop("disabled",true);
 }
 
-function setCompetencesNat(choixOrigine) {
-    console.info(competences);
-    console.info(origines);
+function listeOrigine() {
+    origines.forEach(function(origine) {
+        strConditions  = '';
+        strConditions += origine.courage.min == "Non" ? "" : "<span>Courage >= "+origine.courage.min+ "</span><br>";
+        strConditions += origine.courage.max == "Non" ? "" : "<span>Courage <= "+origine.courage.max+ "</span><br>";
+        strConditions += origine.intelligence.min == "Non" ? "" : "<span>Intelligence >= "+origine.intelligence.min+ "</span><br>";
+        strConditions += origine.intelligence.max == "Non" ? "" : "<span>Intelligence <= "+origine.intelligence.max+ "</span><br>";
+        strConditions += origine.charisme.min == "Non" ? "" : "<span>Charisme >= "+origine.charisme.min+ "</span><br>";
+        strConditions += origine.charisme.max == "Non" ? "" : "<span>Charisme <= "+origine.charisme.max+ "</span><br>";
+        strConditions += origine.adresse.min == "Non" ? "" : "<span>Adresse >= "+origine.adresse.min+ "</span><br>";
+        strConditions += origine.adresse.max == "Non" ? "" : "<span>Adresse <= "+origine.adresse.max+ "</span><br>";
+        strConditions += origine.force.min == "Non" ? "" : "<span>Force >= "+origine.force.min+ "</span><br>";
+        strConditions += origine.force.max == "Non" ? "" : "<span>Force <= "+origine.force.max+ "</span><br>";
+        strConditions += "</ul>";
+
+        //strTitle = (strTitle.length==1 ? "" : strTitle.replace(" et .","."));
+        strOrigine =
+        "<div class='col-4' style='margin-top: -8px;'> \
+            <div id='origine-"+origine.nom.id()+"' class='card card-disabled' onclick='setOrigine(\""+origine.nom+"\")' title='"+origine.nom+"'> \
+                <img class='card-img-top rounded-circle' src='img/"+origine.nom+".png' alt='"+origine.nom+"'> \
+                <p style='position: absolute; left: 70px; top: 10px; font-weight: bold;'>"+origine.nom+"<br> \
+                <span style='font-weight: normal; font-size: 10px; text-align: center;'>"+origine.titre+"</span></p> \
+                <div style='font-size: 12px; position: relative; left: 10px; top: 10px;'>"+strConditions+"</div> \
+            </div> \
+         </div>";
+
+         $("#origines").append(strOrigine);
+    });
+}
+
+function setCompetencesOrigine(choixOrigine) {
+    $("#c-origine>.row").empty();
     origines.forEach(function(origine) {
         if(origine.nom==choixOrigine) {
             origine.competences.naissance.forEach(function(currentCompetence) {
@@ -358,7 +330,7 @@ function setCompetencesNat(choixOrigine) {
                             </div> \
                         </div>";
             
-                        $("#c-nat>.row").append(strCompetence);
+                        $("#c-origine>.row").append(strCompetence);
                     }
                 });
     });
@@ -366,17 +338,55 @@ function setCompetencesNat(choixOrigine) {
     })
 }
 
-function listeOrigine() {
-    origines.forEach(function(origine) {
-        strOrigine =
+function listeMetier() {
+    metiers.forEach(function(metier) {
+        strTitle  = metier.courage.min == "Non" ? "" : "courage >= "+metier.courage.min+ " et ";
+        strTitle += metier.courage.max == "Non" ? "" : "courage <= "+metier.courage.max+ " et ";
+        strTitle += metier.intelligence.min == "Non" ? "" : "intelligence >= "+metier.intelligence.min+ " et ";
+        strTitle += metier.intelligence.max == "Non" ? "" : "intelligence <= "+metier.intelligence.max+ " et ";
+        strTitle += metier.charisme.min == "Non" ? "" : "charisme >= "+metier.charisme.min+ " et ";
+        strTitle += metier.charisme.max == "Non" ? "" : "charisme <= "+metier.charisme.max+ " et ";
+        strTitle += metier.adresse.min == "Non" ? "" : "adresse >= "+metier.adresse.min+ " et ";
+        strTitle += metier.adresse.max == "Non" ? "" : "adresse <= "+metier.adresse.max+ " et ";
+        strTitle += metier.force.min == "Non" ? "" : "force  >= "+metier.force.min+ " et ";
+        strTitle += metier.force.max == "Non" ? "" : "force <= "+metier.force.max+ " et ";
+        strTitle += ".";
+
+        strTitle = (strTitle.length==1 ? "" : strTitle.replace(" et .","."));
+        strMetier =
         "<div class='col-4' style='margin-top: -8px;'> \
-            <div id='"+origine.nom+"' class='card card-disabled' onclick='setOrigine('"+origine.nom+"')' title='force >= 13 et courage>=12'> \
-                <img class='card-img-top rounded-circle' src='img/"+origine.nom+".png' alt='Card image' style='width: 100px; height: 120px; text-align: center;'> \
-                <h4 style='text-align: center;'>"+origine.nom+"</h4> \
+            <div id='metier-"+metier.nom.id()+"' class='card card-disabled' onclick='setMetier(\""+metier.nom+"\")' title='"+metier.nom+"'> \
+                <img class='card-img-top rounded-circle' src='img/"+metier.nom+".png' alt='"+metier.nom+"'> \
+                <p style='position: absolute; left: 70px; top: 10px; font-weight: bold;'>"+metier.nom+"<br> \
+                <span style='font-weight: normal; font-size: 10px; text-align: center;'>"+metier.titre+"</span></p> \
+                <div style='font-size: 12px; position: relative; left: 10px; top: 10px;'>"+strConditions+"</div> \
             </div> \
          </div>";
 
-         $("#origines").append(strOrigine);
-
+         $("#metiers").append(strMetier);
     });
+}
+
+function setCompetencesMetier(choixMetier) {
+    $("#c-metier>.row").empty();
+    metiers.forEach(function(metier) {
+        if(metier.nom==choixMetier) {
+            metier.competences.naissance.forEach(function(currentCompetence) {
+                competences.forEach(function(competence) {
+                    if(competence.nom.toLowerCase()==currentCompetence.toLowerCase()) {
+                        var nom=capitalizeFirstLetter(competence.nom);
+                        strCompetence = 
+                        "<div class='col-4'> \
+                            <div class='form-check' style='margin-left: 10px;''> \
+                                <input class='form-check-input' type='checkbox' id='"+nom+"' checked disabled> \
+                                <label class='form-check-label' title='"+competence.description+"'>"+nom+"</label> \
+                            </div> \
+                        </div>";
+            
+                        $("#c-metier>.row").append(strCompetence);
+                    }
+                });
+    });
+        }
+    })
 }

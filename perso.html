@@ -31,7 +31,7 @@
 			<div class="col-5">
 				<h3 title="Personnage joueur">Personnage</h3>
 				<form action="" class="was-validated">
-					<div class="card" style="width: 100%; height: 350px">
+					<div class="card" style="width: 100%; height: 360px">
 						<div class="row">
 							<div class="col-8">
 								<input id="nomPerso" type="text" pattern=".{3,}" class="form-control" placeholder="Nom" title="3 lettres minimum" required style="margin-left: 10px; margin-top: 5px; width: 90%">
@@ -48,11 +48,11 @@
 							<div class="row">
 								<div class="col-6">
 									<p>Description</p>
-									<textarea  id="description" rows="5" cols="28"></textarea>
+									<textarea  id="description" rows="6" cols="28"></textarea>
 								</div>
 								<div class="col-6" id="metier">
 									<img id="imgPerso" class="card-img-top rounded-circle" src="img/pj.png" alt="Card image" style="width: 100px; height: 120px; text-align: center; margin-top: 50px; margin-left: 60px;">
-									<h4 id="typePerso" style="text-align: center;"></h4>
+									<h4 id="typePerso" style="text-align: center; margin-left: 40px;"></h4>
 								</div>
 							</div>
 						</div>
@@ -129,97 +129,25 @@
 						<button type="button" class="btn btn-warning btn-export" style="margin-top: 10px;" onclick="chargePJ()">Charger</button>
 						<input type="file" style="display: none;" id="jsonFile" accept=".json" name="file"/></div>
 					<div class="col-6">
-						<button type="button" class="btn btn-danger btn-export" style="margin-top: 10px;" onclick="suppressPJ()">Effacer</button>
+						<button type="button" class="btn btn-danger btn-export" style="margin-top: 10px;" onclick="resetPJ()">Effacer</button>
 					</div>
 				</div>
 			</div>
 			<div class="col-7">
 				<div id="origines" class="row">
 					<h3>Origines</h3>
-					<!--div class="col-4" style="margin-top: -8px;">
-						<div id="Barbare" class="card card-disabled" onclick="setOrigine('Barbare')" title="force >= 13 et courage>=12">
-							<img class="card-img-top rounded-circle" src="img/Barbare.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-							<h4 style="text-align: center;">Barbare</h4>
-						</div>
-					</div>
-					<div class="col-4" style="margin-top: -8px;">
-						<div id="Elfe" class="card card-disabled" onclick="setOrigine('Elfe')" title="charisme>=10 et adresse>=11">
-							<img class="card-img-top rounded-circle" src="img/Elfe.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-							<h4 style="text-align: center;">Demi-Elfe</h4>
-						</div>
-					</div>
-					<div class="col-4" style="margin-top: -8px;">
-						<div id="Gobelin" class="card card-disabled" onclick="setOrigine('Gobelin')" title="charisme>=10 et adresse>=11">
-							<img class="card-img-top rounded-circle" src="img/Gobelin.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-							<h4 style="text-align: center;">Gobelin</h4>
-						</div>
-					</div>
-					<div class="col-4">
-						<div id="Humain" class="card card-disabled" onclick="setOrigine('Humain')" title="Humain de base">
-							<img class="card-img-top rounded-circle" src="img/Humain.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-							<h4 style="text-align: center;">Humain</h4>
-						</div>
-					</div>
-					<div class="col-4">
-						<div id="Nain" class="card card-disabled" onclick="setOrigine('Nain')" title="force>=12 et courage>=11">
-							<img class="card-img-top rounded-circle" src="img/Nain.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-							<h4 style="text-align: center;">Nain</h4>
-						</div>
-					</div>
-					<div class="col-4">
-						<div id="Ogre" class="card card-disabled" onclick="setOrigine('Ogre')" title="force>=13 et intelligence<=9 et adresse<=11 et charisme<=10">
-							<img class="card-img-top rounded-circle" src="img/Ogre.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-							<h4 style="text-align: center;">Ogre</h4>
-						</div>
-					</div -->
 				</div>
 				<br>
-				<div class="row">
+				<div id="metiers" class="row">
 					<h3>Métier</h3>
-					<div class="col-4" style="margin-top: -8px;">
-						<div id="Assassin" class="card card-disabled" onclick="setMetier('Assassin')" title="adresse>=13">
-							<img class="card-img-top rounded-circle" src="img/Assassin.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-							<h4 style="text-align: center;">Assassin</h4>
-						</div>
-					</div>
-					<div class="col-4" style="margin-top: -8px;">
-						<div id="Magicienne" class="card card-disabled" onclick="setMetier('Magicienne')" title="intelligence>=12">
-							<img class="card-img-top rounded-circle" src="img/Magicienne.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-							<h4 style="text-align: center;">Mage</h4>
-						</div>
-					</div>
-					<div class="col-4" style="margin-top: -8px;">
-						<div id="Menestrel" class="card card-disabled" onclick="setMetier('Menestrel')" title="adresse>=11 et charisme>=12">
-							<img class="card-img-top rounded-circle" src="img/Menestrel.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-							<h4 style="text-align: center;">Menestrel</h4>
-						</div>
-					</div>
-					<div class="col-4">
-						<div id="Prêtre" class="card card-disabled" onclick="setMetier('Prêtre')" title="charisme>=12">
-							<img class="card-img-top rounded-circle" src="img/Prêtre.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-							<h4 style="text-align: center;">Prêtre</h4>
-						</div>
-					</div>
-					<div class="col-4">
-						<div id="Ranger" class="card card-disabled" onclick="setMetier('Ranger')" title="adresse>=10 et charisme>=10">
-							<img class="card-img-top rounded-circle" src="img/Ranger.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-							<h4 style="text-align: center;">Ranger</h4>
-						</div>
-					</div>
-					<div class="col-4">
-						<div id="Voleur" class="card card-disabled" onclick="setMetier('Voleur')" title="adresse>=12">
-							<img class="card-img-top rounded-circle" src="img/Voleur.png" alt="Card image" style="width: 100px; height: 120px; text-align: center;">
-							<h4 style="text-align: center;">Voleur</h4>
-						</div>
-					</div>
 				</div>
 				<div class="row">
-					<div id="c-nat" class="card" style="width: 100%; height: 100px; margin-left: 16px;">
-						<h4 style="margin-top: 5px; margin-left: 10px;">Compétences naturelles</h4>
+					<div id="c-origine" class="card" style="width: 100%; height: 100px; margin-left: 16px;">
+						<h4 style="margin-top: 5px; margin-left: 10px;">Compétences d'origine</h4>
 						<div class="row"></div>
 					</div>
-					<div class="card" style="width: 100%; height: 100px; margin-left: 16px;">
-						<h4 style="margin: 5px 0 0 10px">Compétences optionnelles</h4>
+					<div id="c-metier" class="card" style="width: 100%; height: 100px; margin-left: 16px;">
+						<h4 style="margin: 5px 0 0 10px">Compétences métiers</h4>
 					</div>
 				</div>
 			</div>
@@ -229,6 +157,7 @@
 
 <script type="text/javascript" src="json/competences.json"></script>
 <script type="text/javascript" src="json/origines.json"></script>
+<script type="text/javascript" src="json/metiers.json"></script>
 <script type="text/javascript" src="json/pj.json"></script>
 <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
@@ -242,9 +171,9 @@
 		$(".wip").addClass("wip-in-progress");
 	});
 
-	initPerso();
-	setCompetencesNat('Nain');
 	listeOrigine();
+	listeMetier();
+	initPerso();
 </script>
 </body>
 </html>
