@@ -39,6 +39,13 @@ var origines =
         "nom": "Barbare",
         "titre": "Bourrin des steppes",
         "description": "Le Barbare a une endurance très élevée. Il n&apos;aime pas tout ce qui est compliqué. Il résiste au froid, au chaud, à la douleur. C&apos;est un humain différent des autres, car plus robuste et beaucoup moins polyvalent.",
+        "presentation": "Je suis un Barbare.\r\n\r\n\
+Rien à voir avec les paysans. Je suis né dans les grandes plaines, là où on chasse les bêtes poilues à la lance.\r\n\
+Le soir, on racontait des histoires de baston au coin du feu. Alors moi aussi, je voulais partir frapper des gens à l'aventure.\r\n\
+J'évite les trucs compliqués dans la vie, je n'aime pas trop la magie. Je n'aime pas grand-chose en fait, à part le vent dans mes cheveux, frapper des gens, essayer des nouvelles armes et m'entraîner.\r\n\
+Je ne porte jamais de grosse armure, parce que c'est un truc pour les lâches, et ça m'empêche de bouger.\r\n\
+Et sinon je ne sais pas lire, mais c'est pas grave parce que les livres parlent de trucs sans intérêt.\r\n\
+Des fois, je parle à un dieu, il s'appelle Crôm. Il aime donner des baffes.",
         "ev": 35,
         "courage": {
             "min": "12",
@@ -83,7 +90,16 @@ var origines =
     {
         "nom": "Nain",
         "titre": "Je vous emm...",
-        "description": "",
+        "description": "Personnage destiné au combat rapproché, à l'exploration. Bon pour la fouille et le marchandage. \
+        Les armes à 1 main classiques sont utilisées à 2 mains (+1 aux dégâts). Pas d'arme à distance sauf hache. \
+        Utilisation de bouclier possible avec arme « naine » à 1 main (d'artisan Nain ou Durandil). \
+        Relativement réfractaire à la Magie (sauf arme / protection). Pas de restriction d'armure.",
+        "presentation": "Je suis un Nain.\r\n\r\n\
+J'ai grandi sous les montagnes, dans les mines avec d'autres Nains. En fait, je ne connais pas grand-chose du monde extérieur, mais ça ne m'intéresse pas, du fait que c'est souvent tout pourri.\r\n\
+J'aime la bière, les pièces d'or, les minéraux, les cavernes, la pierre, les haches. Et c'est déjà bien.\r\n\
+Et quand on dit que je suis chiant, c'est même pas vrai : j'ai seulement du caractère.\r\n\
+Il paraît que j'ai un talent spécial pour trouver les trésors... Ouais, d'accord, mais à ce moment je ne vois pas pourquoi on devrait partager.\r\n\
+Je n'aime pas trop la magie, sauf quand c'est pour enchanter une arme ou une armure, parce que là c'est vachement bien du coup. D'ailleurs, on fait ça très bien chez nous, les armes enchantées.",
         "ev": 35,
         "courage": {
             "min": "11",
@@ -173,7 +189,7 @@ var origines =
     },
     {
         "nom": "Demi-Elfe",
-        "titre": "Mi-humain et mi-elfe",
+        "titre": "Mi-humain, mi-elfe",
         "description": "Le demi-elfe, qu&apos;il soit issu d&apos;Elfe Sylvain ou de Haut-Elfe, a gardé un côté précieux et fragile mais aussi une part de la \
         beauté provenant de ses origines elfiques, et une adresse un peu supérieure à la moyenne. Il a gagné en robustesse et en \
         force grâce à l&apos;apport génétique humain. \
@@ -375,7 +391,7 @@ var origines =
     },
     {
         "nom": "Demi-Orque",
-        "titre": "Mi-humain et mi-orque",
+        "titre": "Mi-humain, mi-orque",
         "description": "Le demi-orque a hérité de son origine peau-verte une certaine stupidité et une méfiance générale vis-à-vis du monde qui \
         l&apos;entoure. Il est né bâtard d&apos;une ethnie considérée par la plupart des gens comme un ennemi, et cela ne l&apos;a pas aidé à \
         développer une personnalité équilibrée. Il est cependant plus beau, plus intelligent, et moins robuste qu&apos;un orque. Il ne peut \

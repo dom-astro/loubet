@@ -2,6 +2,7 @@ var metiers =
 [
     {
         "nom": "Guerrier",
+        "titre": "",
         "ev": "+5",
         "ea": "",
         "courage": {
@@ -35,6 +36,7 @@ var metiers =
     },
     {
         "nom": "Gladiateur",
+        "titre": "",
         "ev": "+5",
         "ea": "",
         "courage": {
@@ -68,6 +70,7 @@ var metiers =
     },
     {
         "nom": "Ninja",
+        "titre": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -101,6 +104,7 @@ var metiers =
     },
     {
         "nom": "Assassin",
+        "titre": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -142,6 +146,7 @@ var metiers =
     },
     {
         "nom": "Voleur",
+        "titre": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -175,6 +180,7 @@ var metiers =
     },
     {
         "nom": "Prêtre",
+        "titre": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -208,6 +214,7 @@ var metiers =
     },
     {
         "nom": "Mage",
+        "titre": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -241,6 +248,7 @@ var metiers =
     },
     {
         "nom": "Sorcier",
+        "titre": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -274,6 +282,7 @@ var metiers =
     },
     {
         "nom": "Paladin",
+        "titre": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -307,6 +316,7 @@ var metiers =
     },
     {
         "nom": "Ranger",
+        "titre": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -340,6 +350,7 @@ var metiers =
     },
     {
         "nom": "Ménestrel",
+        "titre": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -373,6 +384,7 @@ var metiers =
     },
     {
         "nom": "Marchand",
+        "titre": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -406,6 +418,7 @@ var metiers =
     },
     {
         "nom": "Négociant",
+        "titre": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -439,6 +452,7 @@ var metiers =
     },
     {
         "nom": "Ingénieur",
+        "titre": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -472,6 +486,7 @@ var metiers =
     },
     {
         "nom": "Pirate",
+        "titre": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -505,6 +520,7 @@ var metiers =
     },
     {
         "nom": "Bourgeois",
+        "titre": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -538,6 +554,7 @@ var metiers =
     },
     {
         "nom": "Noble",
+        "titre": "",
         "ev": "",
         "ea": "",
         "courage": {
