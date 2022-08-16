@@ -161,9 +161,11 @@ function verifOrigine() {
         if(charisme<(origine.charisme.min == "Non" ? 0 : origine.charisme.min)) isEnabled=false;
         if(charisme>(origine.charisme.max == "Non" ? 99 : origine.charisme.max)) isEnabled=false;
 
+        $("#origine-"+origine.nom.id()+">button").prop("disabled",true);
         if (isEnabled) {
             $("#origine-"+origine.nom.id()).removeClass("card-disabled");
             $("#origine-"+origine.nom.id()).addClass("card-enabled");
+            $("#origine-"+origine.nom.id()+">button").prop("disabled",false);
         }
     });
 }
@@ -254,6 +256,7 @@ function initPerso() {
     $("#origine").val(localStorage.getItem("origine"));
     $("#metier").val(localStorage.getItem("metier"));
 
+    setGenre(localStorage.getItem("genre"));
     //$("#nomPerso").prop("disabled",true);
     setCompetencesOrigine(localStorage.getItem("origine"));
     setCompetencesMetier(localStorage.getItem("metier"));
@@ -302,11 +305,12 @@ function listeOrigine() {
         //strTitle = (strTitle.length==1 ? "" : strTitle.replace(" et .","."));
         strOrigine =
         "<div class='col-4' style='margin-top: -8px;'> \
-            <div id='origine-"+origine.nom.id()+"' class='card card-disabled' onclick='setOrigine(\""+origine.nom+"\")' title='"+origine.nom+"'> \
+            <div id='origine-"+origine.nom.id()+"' class='card card-disabled' title='"+origine.nom+"'> \
                 <img class='card-img-top rounded-circle' src='img/"+origine.nom+".png' alt='"+origine.nom+"'> \
                 <p style='position: absolute; left: 70px; top: 10px; font-weight: bold;'>"+origine.nom+"<br> \
                 <span style='font-weight: normal; font-size: 10px; text-align: center;'>"+origine.titre+"</span></p> \
                 <div style='font-size: 12px; position: relative; left: 10px; top: 10px;'>"+strConditions+"</div> \
+                <button type='button' class='btn btn-info btn-origine' onclick='descOrigine(\""+origine.nom+"\")' data-bs-toggle='modal' data-bs-target='#modal-origine'>Voir</button> \
             </div> \
          </div>";
 
@@ -318,6 +322,7 @@ function setCompetencesOrigine(choixOrigine) {
     $("#c-origine>.row").empty();
     origines.forEach(function(origine) {
         if(origine.nom==choixOrigine) {
+            $("#presentation").val(origine.presentation);
             origine.competences.naissance.forEach(function(currentCompetence) {
                 competences.forEach(function(competence) {
                     if(competence.nom.toLowerCase()==currentCompetence.toLowerCase()) {
@@ -360,6 +365,7 @@ function listeMetier() {
                 <p style='position: absolute; left: 70px; top: 10px; font-weight: bold;'>"+metier.nom+"<br> \
                 <span style='font-weight: normal; font-size: 10px; text-align: center;'>"+metier.titre+"</span></p> \
                 <div style='font-size: 12px; position: relative; left: 10px; top: 10px;'>"+strConditions+"</div> \
+                <button type='button' class='btn btn-info btn-origine' onclick='descMetier(\""+metier.nom+"\")' data-bs-toggle='modal' data-bs-target='#modal-metier'>Voir</button> \
             </div> \
          </div>";
 
@@ -389,4 +395,82 @@ function setCompetencesMetier(choixMetier) {
     });
         }
     })
+}
+
+function setGenre(genre) {
+    localStorage.setItem("genre",genre);
+
+    $("#Homme").attr("src","img/homme-disabled.svg");
+    $("#Femme").attr("src","img/femme-disabled.svg");
+    if(genre=="Femme") {
+        $("#Femme").attr("src","img/femme.svg");
+    } else {
+        $("#Homme").attr("src","img/homme.svg");
+    }
+}
+
+function descOrigine(choixOrigine) {
+
+    origines.forEach(function(origine) {
+        if (choixOrigine==origine.nom) {
+            $(".modal-title").html(origine.nom+": "+origine.titre.toLowerCase());
+            $("#modal-img").attr("src","img/"+origine.nom+".png");
+            $("#modal-description").html(origine.description);
+            var strComptences="";
+            competences.forEach(function(competence) {
+                origine.competences.naissance.forEach(function(competenceOrigine) {
+                    if(competence.nom.toLowerCase()==competenceOrigine) {
+                        strComptences += 
+                        "<div class='row'> \
+                            <div class='col-6' style='border-bottom: 1px solid black;'> \
+                                <span style='font-weight: bold;'>"+competence.nom.capitalize()+"</span>: "+competence.description+" \
+                            </div> \
+                            <div class='col-6' style='border-bottom: 1px solid black;'> \
+                                <span style='font-weight: bold;'>Utilisation:</span> "+competence.utilisation+"<br> \
+                                <span style='font-weight: bold;'>:</span> "+(competence.requis==undefined ? "" : competence.requis)+"<br> \
+                                <span style='font-weight: bold;'>Caractéristiques:</span> "+competence.caracteristiques+"<br> \
+                            </div> \
+                        </div>";
+                    }
+                });
+            });
+            $("#modal-competences").html(strComptences);
+            $(".modal-footer").empty();
+            $(".modal-footer").append("<button type='button' class='btn btn-success' data-bs-dismiss='modal' onclick='setOrigine(\""+choixOrigine+"\")'>Choisir</button>");
+            $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Femer</button>");
+        }
+    });
+}
+
+function descMetier(choixMetier) {
+
+    metiers.forEach(function(choixMetier) {
+        if (choixMetier==metier.nom) {
+            $(".modal-title").html(metier.nom+": "+metier.titre.toLowerCase());
+            $("#modal-img").attr("src","img/"+metier.nom+".png");
+            $("#modal-description").html(metier.description);
+            var strComptences="";
+            competences.forEach(function(competence) {
+                metier.competences.naissance.forEach(function(competenceMetier) {
+                    if(competence.nom.toLowerCase()==competenceMetier) {
+                        strComptences += 
+                        "<div class='row'> \
+                            <div class='col-6' style='border-bottom: 1px solid black;'> \
+                                <span style='font-weight: bold;'>"+competence.nom.capitalize()+"</span>: "+competence.description+" \
+                            </div> \
+                            <div class='col-6' style='border-bottom: 1px solid black;'> \
+                                <span style='font-weight: bold;'>Utilisation:</span> "+competence.utilisation+"<br> \
+                                <span style='font-weight: bold;'>:</span> "+(competence.requis==undefined ? "" : competence.requis)+"<br> \
+                                <span style='font-weight: bold;'>Caractéristiques:</span> "+competence.caracteristiques+"<br> \
+                            </div> \
+                        </div>";
+                    }
+                });
+            });
+            $("#modal-competences").html(strComptences);
+            $(".modal-footer").empty();
+            $(".modal-footer").append("<button type='button' class='btn btn-success' data-bs-dismiss='modal' onclick='setMetier(\""+choixMetier+"\")'>Choisir</button>");
+            $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Femer</button>");
+        }
+    });
 }
