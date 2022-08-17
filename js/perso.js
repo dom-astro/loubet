@@ -261,6 +261,7 @@ function initPerso() {
     setCompetencesOrigine(localStorage.getItem("origine"));
     setCompetencesMetier(localStorage.getItem("metier"));
     verifOrigine();
+    setOrigine(localStorage.getItem("origine"));
     verifMetier();
 }
 
