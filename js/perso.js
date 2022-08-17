@@ -310,7 +310,7 @@ function listeOrigine() {
                 <p style='position: absolute; left: 70px; top: 10px; font-weight: bold;'>"+origine.nom+"<br> \
                 <span style='font-weight: normal; font-size: 10px; text-align: center;'>"+origine.titre+"</span></p> \
                 <div style='font-size: 12px; position: relative; left: 10px; top: 10px;'>"+strConditions+"</div> \
-                <button type='button' class='btn btn-info btn-origine' onclick='descOrigine(\""+origine.nom+"\")' data-bs-toggle='modal' data-bs-target='#modal-origine'>Voir</button> \
+                <button type='button' class='btn btn-info btn-origine' onclick='descOrigine(\""+origine.nom+"\")' data-bs-toggle='modal' data-bs-target='#choix-modal'>Voir</button> \
             </div> \
          </div>";
 
@@ -360,12 +360,12 @@ function listeMetier() {
         strTitle = (strTitle.length==1 ? "" : strTitle.replace(" et .","."));
         strMetier =
         "<div class='col-4' style='margin-top: -8px;'> \
-            <div id='metier-"+metier.nom.id()+"' class='card card-disabled' onclick='setMetier(\""+metier.nom+"\")' title='"+metier.nom+"'> \
+            <div id='metier-"+metier.nom.id()+"' class='card card-disabled' title='"+metier.nom+"'> \
                 <img class='card-img-top rounded-circle' src='img/"+metier.nom+".png' alt='"+metier.nom+"'> \
                 <p style='position: absolute; left: 70px; top: 10px; font-weight: bold;'>"+metier.nom+"<br> \
                 <span style='font-weight: normal; font-size: 10px; text-align: center;'>"+metier.titre+"</span></p> \
                 <div style='font-size: 12px; position: relative; left: 10px; top: 10px;'>"+strConditions+"</div> \
-                <button type='button' class='btn btn-info btn-origine' onclick='descMetier(\""+metier.nom+"\")' data-bs-toggle='modal' data-bs-target='#modal-metier'>Voir</button> \
+                <button type='button' class='btn btn-info btn-origine' onclick='descMetier(\""+metier.nom+"\")' data-bs-toggle='modal' data-bs-target='#choix-modal'>Voir</button> \
             </div> \
          </div>";
 
@@ -427,7 +427,7 @@ function descOrigine(choixOrigine) {
                             </div> \
                             <div class='col-6' style='border-bottom: 1px solid black;'> \
                                 <span style='font-weight: bold;'>Utilisation:</span> "+competence.utilisation+"<br> \
-                                <span style='font-weight: bold;'>:</span> "+(competence.requis==undefined ? "" : competence.requis)+"<br> \
+                                <span style='font-weight: bold;'>Requis:</span> "+(competence.requis==undefined ? "" : competence.requis)+"<br> \
                                 <span style='font-weight: bold;'>Caractéristiques:</span> "+competence.caracteristiques+"<br> \
                             </div> \
                         </div>";
@@ -444,15 +444,15 @@ function descOrigine(choixOrigine) {
 
 function descMetier(choixMetier) {
 
-    metiers.forEach(function(choixMetier) {
+    metiers.forEach(function(metier) {
         if (choixMetier==metier.nom) {
-            $(".modal-title").html(metier.nom+": "+metier.titre.toLowerCase());
+            $(".modal-title").html(metier.nom);
             $("#modal-img").attr("src","img/"+metier.nom+".png");
             $("#modal-description").html(metier.description);
             var strComptences="";
             competences.forEach(function(competence) {
                 metier.competences.naissance.forEach(function(competenceMetier) {
-                    if(competence.nom.toLowerCase()==competenceMetier) {
+                    if(competence.nom.toLowerCase()==competenceMetier.toLowerCase()) {
                         strComptences += 
                         "<div class='row'> \
                             <div class='col-6' style='border-bottom: 1px solid black;'> \
@@ -460,7 +460,7 @@ function descMetier(choixMetier) {
                             </div> \
                             <div class='col-6' style='border-bottom: 1px solid black;'> \
                                 <span style='font-weight: bold;'>Utilisation:</span> "+competence.utilisation+"<br> \
-                                <span style='font-weight: bold;'>:</span> "+(competence.requis==undefined ? "" : competence.requis)+"<br> \
+                                <span style='font-weight: bold;'>Requis:</span> "+(competence.requis==undefined ? "" : competence.requis)+"<br> \
                                 <span style='font-weight: bold;'>Caractéristiques:</span> "+competence.caracteristiques+"<br> \
                             </div> \
                         </div>";
