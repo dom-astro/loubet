@@ -266,7 +266,21 @@ function initPerso() {
 
 function chargePJ() {
     $("#jsonFile").click();
-}
+ }
+
+
+$('#jsonFile').on('change', function () {
+    var file = $('#jsonFile').prop('files')[0];
+    var fileReader = new FileReader(); 
+    fileReader.readAsText(file); 
+    fileReader.onload = function() {
+        var jsonPerso = fileReader.result;
+        console.info(JSON.parse(jsonPerso));
+    }; 
+    fileReader.onerror = function() {
+      alert(fileReader.error);
+    }; 
+});
 
 function resetPJ(){
     $("#nomPerso").val("");
