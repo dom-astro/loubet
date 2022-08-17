@@ -63,7 +63,7 @@ var competences =
     },
     {
         "nom": "BOURRE-PIF",
-        "description": "l’art du bourre-pif consiste à taper n’importe comment avec les poings de manière efficace. Casser un bras ou se battre avec un tabouret rentre dans la compétence bourre-pif. Le personnage adepte du bourre-pif n&apos;aura pas de malus à son score d&apos;attaque, pourra utiliser la « table des critiques à mains nues » ainsi que les « coups spéciaux à mains nues ». Voir à ce sujet la page 13 du document des règles de base.",
+        "description": "l’art du bourre-pif consiste à taper n’importe comment avec les poings de manière efficace. Casser un bras ou se battre avec un tabouret rentre dans la compétence bourre-pif. Le personnage adepte du bourre-pif n&apos;aura pas de malus à son score d&apos;attaque, pourra utiliser la « table des critiques à mains nues » ainsi que les « coups spéciaux à mains nues ».",
         "caracteristiques": [""],
         "utilisation": "pas de malus au score AT, dégâts de base 1D6, coups critiques, accès aux coups spéciaux.",
     },

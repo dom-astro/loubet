@@ -3,6 +3,8 @@ var metiers =
     {
         "nom": "Guerrier",
         "titre": "",
+        "description": "Personnage destiné à la baston en première ligne.\r\n\
+N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée.",
         "ev": "+5",
         "ea": "",
         "courage": {
@@ -27,7 +29,7 @@ var metiers =
         },
         "competences": {
             "naissance": [
-                "ARMES DE BOURRIN, BOURRE-PIF"
+                "ARMES DE BOURRIN", "BOURRE-PIF"
             ],
             "choix": [
                 "ambidextrie, chercher des noises, chevaucher, forgeron, intimider, tirer correctement, truc de mauviette"
@@ -37,6 +39,8 @@ var metiers =
     {
         "nom": "Gladiateur",
         "titre": "",
+        "description": "Personnage destiné à la baston en première ligne.\r\n\
+N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée.",
         "ev": "+5",
         "ea": "",
         "courage": {
@@ -61,7 +65,7 @@ var metiers =
         },
         "competences": {
             "naissance": [
-                "ARMES DE BOURRIN, BOURRE-PIF"
+                "ARMES DE BOURRIN", "BOURRE-PIF"
             ],
             "choix": [
                 "ambidextrie, chercher des noises, chevaucher, forgeron, intimider, tirer correctement, truc de mauviette"
@@ -71,6 +75,7 @@ var metiers =
     {
         "nom": "Ninja",
         "titre": "",
+        "description": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -95,7 +100,7 @@ var metiers =
         },
         "competences": {
             "naissance": [
-                "DÉPLACEMENT SILENCIEUX, FRAPPER LÂCHEMENT, TIRER CORRECTEMENT"
+                "DÉPLACEMENT SILENCIEUX", "FRAPPER LÂCHEMENT", "TIRER CORRECTEMENT"
             ],
             "choix": [
                 "ambidextrie, chercher des noises, chevaucher, érudition, escalader, méfiance, nager, ressemble à rien"
@@ -105,6 +110,7 @@ var metiers =
     {
         "nom": "Assassin",
         "titre": "",
+        "description": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -137,7 +143,7 @@ var metiers =
         },
         "competences": {
             "naissance": [
-                "DÉPLACEMENT SILENCIEUX, FRAPPER LÂCHEMENT, TIRER CORRECTEMENT"
+                "DÉPLACEMENT SILENCIEUX", "FRAPPER LÂCHEMENT", "TIRER CORRECTEMENT"
             ],
             "choix": [
                 "ambidextrie, chercher des noises, chevaucher, érudition, escalader, méfiance, nager, ressemble à rien"
@@ -147,6 +153,7 @@ var metiers =
     {
         "nom": "Voleur",
         "titre": "",
+        "description": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -181,6 +188,7 @@ var metiers =
     {
         "nom": "Prêtre",
         "titre": "",
+        "description": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -215,6 +223,7 @@ var metiers =
     {
         "nom": "Mage",
         "titre": "",
+        "description": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -249,6 +258,7 @@ var metiers =
     {
         "nom": "Sorcier",
         "titre": "",
+        "description": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -283,6 +293,7 @@ var metiers =
     {
         "nom": "Paladin",
         "titre": "",
+        "description": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -317,6 +328,7 @@ var metiers =
     {
         "nom": "Ranger",
         "titre": "",
+        "description": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -351,6 +363,7 @@ var metiers =
     {
         "nom": "Ménestrel",
         "titre": "",
+        "description": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -385,6 +398,7 @@ var metiers =
     {
         "nom": "Marchand",
         "titre": "",
+        "description": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -419,6 +433,7 @@ var metiers =
     {
         "nom": "Négociant",
         "titre": "",
+        "description": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -453,6 +468,7 @@ var metiers =
     {
         "nom": "Ingénieur",
         "titre": "",
+        "description": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -487,6 +503,7 @@ var metiers =
     {
         "nom": "Pirate",
         "titre": "",
+        "description": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -521,6 +538,7 @@ var metiers =
     {
         "nom": "Bourgeois",
         "titre": "",
+        "description": "",
         "ev": "",
         "ea": "",
         "courage": {
@@ -555,6 +573,7 @@ var metiers =
     {
         "nom": "Noble",
         "titre": "",
+        "description": "",
         "ev": "",
         "ea": "",
         "courage": {
