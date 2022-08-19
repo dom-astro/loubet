@@ -41,7 +41,7 @@ function setOrigine(choix) {
         $("#typePerso").html(choix);
         $("#metier").show();
         $("#origine").val(choix);
-        setCompetencesOrigine(choix);
+        //setCompetencesOrigine(choix);
 
         origines.forEach(function(origine) {
             if(choix==origine.nom) {
@@ -51,64 +51,32 @@ function setOrigine(choix) {
                 $("#ea").val(origine.ea);
             }
         });
+
+        listeOrigine();
+        verifOrigine();
     }
 }
 
-function setMetier(metier) {
+function setMetier(pjMetier) {
     isEnabled = $("#metier-"+metier.id()).hasClass('card-enabled');
     if (isEnabled) {
         /*$("#imgPerso").attr("src","img/"+origine+".png");
         $("#typePerso").html(origine);
         $("#metier").show();*/
-        $("#metier").val(metier);
-        setCompetencesMetier(metier);
-
-        switch(origine) {
-            case "Barbare":
-                $("#attaque").val(9);
-                $("#parade").val(9);
-                $("#ev").val(35);
-                $("#ea").val(0);
-                break;
-            case "Nain":
-                $("#attaque").val(8);
-                $("#parade").val(10);
-                $("#ev").val(35);
-                $("#ea").val(0);
-                break;
-            case "Elfe":
-                $("#attaque").val(8);
-                $("#parade").val(10);
-                $("#ev").val(28);
-                $("#ea").val(0);
-                break;
-            case "Ogre":
-                $("#attaque").val(9);
-                $("#parade").val(9);
-                $("#ev").val(45);
-                $("#ea").val(0);
-                break;
-            case "Magicienne":
-                $("#attaque").val(8);
-                $("#parade").val(10);
-                $("#ev").val(20);
-                $("#ea").val(30);
-                break;
-            default:
-                $("#attaque").val(8);
-                $("#parade").val(10);
-                $("#ev").val(30);
-                $("#ea").val(0);
-        }
+        $("#metier").val(pjMetier);
+        //setCompetencesMetier(metier);
+        var metier = metiers.find(i => i.nom===pjMetier);
+        listeMetier();
+        verifMetier();
     }
 }
 
 function verifOrigine() {
-    var courage=localStorage.getItem("courage"),
-    charisme=localStorage.getItem("charisme"),
-    force=localStorage.getItem("force"),
-    intelligence=localStorage.getItem("intelligence"),
-    adresse=localStorage.getItem("adresse");
+    var courage=$("#courage").val(),
+    charisme=$("#charisme").val(),
+    force=$("#force").val(),
+    intelligence=$("#intelligence").val(),
+    adresse=$("#adresse").val();
     var caracteristiques=["courage","charisme","force","intelligence","adresse"];
 
     origines.forEach(function(origine) {
@@ -116,16 +84,16 @@ function verifOrigine() {
         /*caracteristiques.forEach(function(caracteristique) {
 
         });*/
-        if(courage<(origine.courage.min == "Non" ? 0 : origine.courage.min)) isEnabled=false;
-        if(courage>(origine.courage.max == "Non" ? 99 : origine.courage.max)) isEnabled=false;
-        if(force<(origine.force.min == "Non" ? 0 : origine.force.min)) isEnabled=false;
-        if(force>(origine.force.max == "Non" ? 99 : origine.force.max)) isEnabled=false;
-        if(intelligence<(origine.intelligence.min == "Non" ? 0 : origine.intelligence.min)) isEnabled=false;
-        if(intelligence>(origine.intelligence.max == "Non" ? 99 : origine.intelligence.max)) isEnabled=false;
-        if(adresse<(origine.adresse.min == "Non" ? 0 : origine.adresse.min)) isEnabled=false;
-        if(adresse>(origine.adresse.max == "Non" ? 99 : origine.adresse.max)) isEnabled=false;
-        if(charisme<(origine.charisme.min == "Non" ? 0 : origine.charisme.min)) isEnabled=false;
-        if(charisme>(origine.charisme.max == "Non" ? 99 : origine.charisme.max)) isEnabled=false;
+        if(courage<origine.courage.min) isEnabled=false;
+        if(courage>origine.courage.max) isEnabled=false;
+        if(force<origine.force.min) isEnabled=false;
+        if(force>origine.force.max) isEnabled=false;
+        if(intelligence<origine.intelligence.min) isEnabled=false;
+        if(intelligence>origine.intelligence.max) isEnabled=false;
+        if(adresse<origine.adresse.min) isEnabled=false;
+        if(adresse>origine.adresse.max) isEnabled=false;
+        if(charisme<origine.charisme.min) isEnabled=false;
+        if(charisme>origine.charisme.max) isEnabled=false;
 
         $("#origine-"+origine.nom.id()+">button").prop("disabled",true);
         if (isEnabled) {
@@ -137,27 +105,27 @@ function verifOrigine() {
 }
 
 function verifMetier() {
-    var courage=localStorage.getItem("courage"),
-    charisme=localStorage.getItem("charisme"),
-    force=localStorage.getItem("force"),
-    intelligence=localStorage.getItem("intelligence"),
-    adresse=localStorage.getItem("adresse");
+    var courage=$("#courage").val(),
+    charisme=$("#charisme").val(),
+    force=$("#force").val(),
+    intelligence=$("#intelligence").val(),
+    adresse=$("#adresse").val();
 
     metiers.forEach(function(metier) {
         isEnabled=true;
         /*caracteristiques.forEach(function(caracteristique) {
 
         });*/
-        if(courage<(metier.courage.min == "Non" ? 0 : metier.courage.min)) isEnabled=false;
-        if(courage>(metier.courage.max == "Non" ? 99 : metier.courage.max)) isEnabled=false;
-        if(force<(metier.force.min == "Non" ? 0 : metier.force.min)) isEnabled=false;
-        if(force>(metier.force.max == "Non" ? 99 : metier.force.max)) isEnabled=false;
-        if(intelligence<(metier.intelligence.min == "Non" ? 0 : metier.intelligence.min)) isEnabled=false;
-        if(intelligence>(metier.intelligence.max == "Non" ? 99 : metier.intelligence.max)) isEnabled=false;
-        if(adresse<(metier.adresse.min == "Non" ? 0 : metier.adresse.min)) isEnabled=false;
-        if(adresse>(metier.adresse.max == "Non" ? 99 : metier.adresse.max)) isEnabled=false;
-        if(charisme<(metier.charisme.min == "Non" ? 0 : metier.charisme.min)) isEnabled=false;
-        if(charisme>(metier.charisme.max == "Non" ? 99 : metier.charisme.max)) isEnabled=false;
+        if(courage<metier.courage.min) isEnabled=false;
+        if(courage>metier.courage.max) isEnabled=false;
+        if(force<metier.force.min) isEnabled=false;
+        if(force>metier.force.max) isEnabled=false;
+        if(intelligence<metier.intelligence.min) isEnabled=false;
+        if(intelligence>metier.intelligence.max) isEnabled=false;
+        if(adresse<metier.adresse.min) isEnabled=false;
+        if(adresse>metier.adresse.max) isEnabled=false;
+        if(charisme<metier.charisme.min) isEnabled=false;
+        if(charisme>metier.charisme.max) isEnabled=false;
 
         if (isEnabled) {
             $("#metier-"+metier.nom.id()).removeClass("card-disabled");
@@ -243,13 +211,13 @@ function initPerso() {
 
     setGenre(pj.genre);
     //$("#nomPerso").prop("disabled",true);
-    setCompetencesOrigine(pj.origine);
-    setCompetencesMetier(pj.metier);
     listeOrigine();
     verifOrigine();
-    setOrigine(pj.origine);
+    setCompetencesOrigine(pj.origine);
+    //setOrigine(pj.origine);
     listeMetier();
     verifMetier();
+    setCompetencesMetier(pj.metier);
 }
 
 function chargePJ() {
@@ -289,117 +257,147 @@ function nouveauPJ(){
     $("#origine").val("");
     $("#metier").val("");
 
+    listeOrigine();
+    listeMetier();
+
     //$("#nomPerso").prop("disabled",true);
 }
 
 function listeOrigine() {
-    origines.forEach(function(origine) {
-        strConditions  = '';
-        strConditions += origine.courage.min == "Non" ? "" : "<span>Courage >= "+origine.courage.min+ "</span><br>";
-        strConditions += origine.courage.max == "Non" ? "" : "<span>Courage <= "+origine.courage.max+ "</span><br>";
-        strConditions += origine.intelligence.min == "Non" ? "" : "<span>Intelligence >= "+origine.intelligence.min+ "</span><br>";
-        strConditions += origine.intelligence.max == "Non" ? "" : "<span>Intelligence <= "+origine.intelligence.max+ "</span><br>";
-        strConditions += origine.charisme.min == "Non" ? "" : "<span>Charisme >= "+origine.charisme.min+ "</span><br>";
-        strConditions += origine.charisme.max == "Non" ? "" : "<span>Charisme <= "+origine.charisme.max+ "</span><br>";
-        strConditions += origine.adresse.min == "Non" ? "" : "<span>Adresse >= "+origine.adresse.min+ "</span><br>";
-        strConditions += origine.adresse.max == "Non" ? "" : "<span>Adresse <= "+origine.adresse.max+ "</span><br>";
-        strConditions += origine.force.min == "Non" ? "" : "<span>Force >= "+origine.force.min+ "</span><br>";
-        strConditions += origine.force.max == "Non" ? "" : "<span>Force <= "+origine.force.max+ "</span><br>";
-        strConditions += "</ul>";
+    $("#origines").empty();
 
-        //strTitle = (strTitle.length==1 ? "" : strTitle.replace(" et .","."));
+    var pjOrigine = $("#origine").val();
+    if (pjOrigine == "") {
+        $("#origines").append("<h3>Origines</h3>");
+        origines.forEach(function(origine) {
+            strConditions  = '';
+            strConditions += origine.courage.min == 0 ? "" : "<span>Courage >= "+origine.courage.min+ "</span><br>";
+            strConditions += origine.courage.max == 99 ? "" : "<span>Courage <= "+origine.courage.max+ "</span><br>";
+            strConditions += origine.intelligence.min == 0 ? "" : "<span>Intelligence >= "+origine.intelligence.min+ "</span><br>";
+            strConditions += origine.intelligence.max == 99 ? "" : "<span>Intelligence <= "+origine.intelligence.max+ "</span><br>";
+            strConditions += origine.charisme.min == 0 ? "" : "<span>Charisme >= "+origine.charisme.min+ "</span><br>";
+            strConditions += origine.charisme.max == 99 ? "" : "<span>Charisme <= "+origine.charisme.max+ "</span><br>";
+            strConditions += origine.adresse.min == 0 ? "" : "<span>Adresse >= "+origine.adresse.min+ "</span><br>";
+            strConditions += origine.adresse.max == 99 ? "" : "<span>Adresse <= "+origine.adresse.max+ "</span><br>";
+            strConditions += origine.force.min == 0 ? "" : "<span>Force >= "+origine.force.min+ "</span><br>";
+            strConditions += origine.force.max == 99 ? "" : "<span>Force <= "+origine.force.max+ "</span><br>";
+            strConditions += "</ul>";
+
+            //strTitle = (strTitle.length==1 ? "" : strTitle.replace(" et .","."));
+            strOrigine =
+            "<div class='col-4' style='margin-top: -8px;'> \
+                <div id='origine-"+origine.nom.id()+"' class='card card-disabled' title='"+origine.nom+"'> \
+                    <img class='card-img-top rounded-circle' src='img/"+origine.nom+".png' alt='"+origine.nom+"'> \
+                    <p style='position: absolute; left: 70px; top: 10px; font-weight: bold;'>"+origine.nom+"<br> \
+                    <span style='font-weight: normal; font-size: 10px; text-align: center;'>"+origine.titre+"</span></p> \
+                    <div style='font-size: 12px; position: relative; left: 10px; top: 10px;'>"+strConditions+"</div> \
+                    <button type='button' class='btn btn-info btn-origine' onclick='descOrigine(\""+origine.nom+"\")' data-bs-toggle='modal' data-bs-target='#choix-modal'>Voir</button> \
+                </div> \
+            </div>";
+
+            $("#origines").append(strOrigine);
+        });
+    } else {
+        $("#origines").append("<h3>Origine</h3>");
+        var origine = origines.find(i => i.nom===pjOrigine);
         strOrigine =
-        "<div class='col-4' style='margin-top: -8px;'> \
+        "<div class='col-12' style='margin-top: -8px;'> \
             <div id='origine-"+origine.nom.id()+"' class='card card-disabled' title='"+origine.nom+"'> \
                 <img class='card-img-top rounded-circle' src='img/"+origine.nom+".png' alt='"+origine.nom+"'> \
-                <p style='position: absolute; left: 70px; top: 10px; font-weight: bold;'>"+origine.nom+"<br> \
-                <span style='font-weight: normal; font-size: 10px; text-align: center;'>"+origine.titre+"</span></p> \
-                <div style='font-size: 12px; position: relative; left: 10px; top: 10px;'>"+strConditions+"</div> \
-                <button type='button' class='btn btn-info btn-origine' onclick='descOrigine(\""+origine.nom+"\")' data-bs-toggle='modal' data-bs-target='#choix-modal'>Voir</button> \
+                <p style='position: absolute; left: 70px; top: 10px;'><span style='font-weight: bold;'>"+origine.nom+": </span> "+origine.titre+"<br> \
             </div> \
-         </div>";
-
-         $("#origines").append(strOrigine);
-    });
+        </div>";
+        $("#origines").append(strOrigine);
+    }
 }
 
-function setCompetencesOrigine(choixOrigine) {
+function setCompetencesOrigine(pjOrigine) {
     $("#c-origine>.row").empty();
-    origines.forEach(function(origine) {
-        if(origine.nom==choixOrigine) {
-            $("#presentation").val(origine.presentation);
-            origine.competences.naissance.forEach(function(currentCompetence) {
-                competences.forEach(function(competence) {
-                    if(competence.nom.toLowerCase()==currentCompetence.toLowerCase()) {
-                        var nom=capitalizeFirstLetter(competence.nom);
-                        strCompetence = 
-                        "<div class='col-4'> \
-                            <div class='form-check' style='margin-left: 10px;''> \
-                                <input class='form-check-input' type='checkbox' id='"+nom+"' checked disabled> \
-                                <label class='form-check-label' title='"+competence.description+"'>"+nom+"</label> \
-                            </div> \
-                        </div>";
-            
-                        $("#c-origine>.row").append(strCompetence);
-                    }
-                });
-    });
+    var origine = origines.find(i => i.nom===pjOrigine);
+
+    $("#presentation").val(origine.presentation);
+    origine.competences.naissance.forEach(function(currentCompetence) {
+        var competence = competences.find(i => i.nom.toLowerCase()===currentCompetence.toLowerCase());
+
+        if(competence.nom.toLowerCase()==currentCompetence.toLowerCase()) {
+            var nom=capitalizeFirstLetter(competence.nom);
+            strCompetence = 
+            "<p style='margin-left: 10px; width: 95%;'> \
+                    <span style='font-weight: bold'>"+nom+": </span> \
+                    <span>"+competence.resume+"</span> \
+            </p>";
+            $("#origine-"+origine.nom.id()).append(strCompetence);
+            $("#origine-"+origine.nom.id()).css("height", "unset");
         }
-    })
+    });
 }
 
 function listeMetier() {
-    metiers.forEach(function(metier) {
-        strTitle  = metier.courage.min == "Non" ? "" : "courage >= "+metier.courage.min+ " et ";
-        strTitle += metier.courage.max == "Non" ? "" : "courage <= "+metier.courage.max+ " et ";
-        strTitle += metier.intelligence.min == "Non" ? "" : "intelligence >= "+metier.intelligence.min+ " et ";
-        strTitle += metier.intelligence.max == "Non" ? "" : "intelligence <= "+metier.intelligence.max+ " et ";
-        strTitle += metier.charisme.min == "Non" ? "" : "charisme >= "+metier.charisme.min+ " et ";
-        strTitle += metier.charisme.max == "Non" ? "" : "charisme <= "+metier.charisme.max+ " et ";
-        strTitle += metier.adresse.min == "Non" ? "" : "adresse >= "+metier.adresse.min+ " et ";
-        strTitle += metier.adresse.max == "Non" ? "" : "adresse <= "+metier.adresse.max+ " et ";
-        strTitle += metier.force.min == "Non" ? "" : "force  >= "+metier.force.min+ " et ";
-        strTitle += metier.force.max == "Non" ? "" : "force <= "+metier.force.max+ " et ";
-        strTitle += ".";
+    $("#metiers").empty();
 
-        strTitle = (strTitle.length==1 ? "" : strTitle.replace(" et .","."));
+    var pjMetier= $("#metier").val();
+    if (pjMetier == "") {
+        $("#metiers").append("<h3>Metiers</h3>");
+        metiers.forEach(function(metier) {
+            strTitle  = metier.courage.min == 0 ? "" : "courage >= "+metier.courage.min+ " et ";
+            strTitle += metier.courage.max == 99 ? "" : "courage <= "+metier.courage.max+ " et ";
+            strTitle += metier.intelligence.min == 0 ? "" : "intelligence >= "+metier.intelligence.min+ " et ";
+            strTitle += metier.intelligence.max == 99 ? "" : "intelligence <= "+metier.intelligence.max+ " et ";
+            strTitle += metier.charisme.min == 0 ? "" : "charisme >= "+metier.charisme.min+ " et ";
+            strTitle += metier.charisme.max == 99 ? "" : "charisme <= "+metier.charisme.max+ " et ";
+            strTitle += metier.adresse.min == 0 ? "" : "adresse >= "+metier.adresse.min+ " et ";
+            strTitle += metier.adresse.max == 99 ? "" : "adresse <= "+metier.adresse.max+ " et ";
+            strTitle += metier.force.min == 0 ? "" : "force  >= "+metier.force.min+ " et ";
+            strTitle += metier.force.max == 99 ? "" : "force <= "+metier.force.max+ " et ";
+            strTitle += ".";
+
+            strTitle = (strTitle.length==1 ? "" : strTitle.replace(" et .","."));
+            strMetier =
+            "<div class='col-4' style='margin-top: -8px;'> \
+                <div id='metier-"+metier.nom.id()+"' class='card card-disabled' title='"+metier.nom+"'> \
+                    <img class='card-img-top rounded-circle' src='img/"+metier.nom+".png' alt='"+metier.nom+"'> \
+                    <p style='position: absolute; left: 70px; top: 10px; font-weight: bold;'>"+metier.nom+"<br> \
+                    <span style='font-weight: normal; font-size: 10px; text-align: center;'>"+metier.titre+"</span></p> \
+                    <div style='font-size: 12px; position: relative; left: 10px; top: 10px;'>"+strConditions+"</div> \
+                    <button type='button' class='btn btn-info btn-origine' onclick='descMetier(\""+metier.nom+"\")' data-bs-toggle='modal' data-bs-target='#choix-modal'>Voir</button> \
+                </div> \
+            </div>";
+
+            $("#metiers").append(strMetier);
+        });
+    } else {
+        $("#metiers").append("<h3>Metier</h3>");
+        var metier = metiers.find(i => i.nom===pjMetier);
         strMetier =
-        "<div class='col-4' style='margin-top: -8px;'> \
+        "<div class='col-12' style='margin-top: -8px;'> \
             <div id='metier-"+metier.nom.id()+"' class='card card-disabled' title='"+metier.nom+"'> \
                 <img class='card-img-top rounded-circle' src='img/"+metier.nom+".png' alt='"+metier.nom+"'> \
-                <p style='position: absolute; left: 70px; top: 10px; font-weight: bold;'>"+metier.nom+"<br> \
-                <span style='font-weight: normal; font-size: 10px; text-align: center;'>"+metier.titre+"</span></p> \
-                <div style='font-size: 12px; position: relative; left: 10px; top: 10px;'>"+strConditions+"</div> \
-                <button type='button' class='btn btn-info btn-origine' onclick='descMetier(\""+metier.nom+"\")' data-bs-toggle='modal' data-bs-target='#choix-modal'>Voir</button> \
+                <p style='position: absolute; left: 70px; top: 10px;'><span style='font-weight: bold;'>"+metier.nom+": </span> "+metier.titre+"<br> \
             </div> \
-         </div>";
-
-         $("#metiers").append(strMetier);
-    });
+        </div>";
+        $("#metiers").append(strMetier);
+    }
 }
 
-function setCompetencesMetier(choixMetier) {
+function setCompetencesMetier(pjMetier) {
     $("#c-metier>.row").empty();
-    metiers.forEach(function(metier) {
-        if(metier.nom==choixMetier) {
-            metier.competences.naissance.forEach(function(currentCompetence) {
-                competences.forEach(function(competence) {
-                    if(competence.nom.toLowerCase()==currentCompetence.toLowerCase()) {
-                        var nom=capitalizeFirstLetter(competence.nom);
-                        strCompetence = 
-                        "<div class='col-4'> \
-                            <div class='form-check' style='margin-left: 10px;''> \
-                                <input class='form-check-input' type='checkbox' id='"+nom+"' checked disabled> \
-                                <label class='form-check-label' title='"+competence.description+"'>"+nom+"</label> \
-                            </div> \
-                        </div>";
-            
-                        $("#c-metier>.row").append(strCompetence);
-                    }
-                });
-    });
+    var metier = metiers.find(i => i.nom===pjMetier);
+
+    metier.competences.naissance.forEach(function(metierCompetence) {
+        var competence = competences.find(i => i.nom.toLowerCase()===metierCompetence.toLowerCase());
+
+        if(competence.nom.toLowerCase()==metierCompetence.toLowerCase()) {
+            var nom=capitalizeFirstLetter(competence.nom);
+            strCompetence = 
+            "<p style='margin-left: 10px; width: 95%;'> \
+                    <span style='font-weight: bold'>"+nom+": </span> \
+                    <span>"+competence.resume+"</span> \
+            </p>";
+    
+            $("#metier-"+metier.nom.id()).append(strCompetence);
+            $("#metier-"+origine.nom.id()).css("height", "unset");
         }
-    })
+    });
 }
 
 function setGenre(genre) {
