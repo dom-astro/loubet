@@ -10,24 +10,24 @@ var origines =
         "attaque": 8,
         "parade": 10,
         "courage": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "intelligence": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "charisme": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "adresse": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "force": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "competences": {
             "naissance": [
@@ -54,24 +54,24 @@ Des fois, je parle à un dieu, il s'appelle Crôm. Il aime donner des baffes.",
         "attaque": 9,
         "parade": 9,
         "courage": {
-            "min": "12",
-            "max": "Non"
+            "min": 12,
+            "max": 99
         },
         "intelligence": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "charisme": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "adresse": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "force": {
-            "min": "13",
-            "max": "Non"
+            "min": 13,
+            "max": 99
         },
         "competences": {
             "naissance": [
@@ -111,24 +111,24 @@ Je n'aime pas trop la magie, sauf quand c'est pour enchanter une arme ou une arm
         "attaque": 8,
         "parade": 10,
         "courage": {
-            "min": "11",
-            "max": "Non"
+            "min": 11,
+            "max": 99
         },
         "intelligence": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "charisme": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "adresse": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "force": {
-            "min": "12",
-            "max": "Non"
+            "min": 12,
+            "max": 99
         },
         "competences": {
             "naissance": [
@@ -164,24 +164,24 @@ Je n'aime pas trop la magie, sauf quand c'est pour enchanter une arme ou une arm
         "attaque": 8,
         "parade": 10,
         "courage": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "intelligence": {
-            "min": "11",
-            "max": "Non"
+            "min": 11,
+            "max": 99
         },
         "charisme": {
-            "min": "12",
-            "max": "Non"
+            "min": 12,
+            "max": 99
         },
         "adresse": {
-            "min": "12",
-            "max": "Non"
+            "min": 12,
+            "max": 99
         },
         "force": {
-            "min": "Non",
-            "max": "12"
+            "min": 0,
+            "max": 12
         },
         "competences": {
             "naissance": [
@@ -216,24 +216,24 @@ Je n'aime pas trop la magie, sauf quand c'est pour enchanter une arme ou une arm
         "attaque": 8,
         "parade": 10,
         "courage": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "intelligence": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "charisme": {
-            "min": "10",
-            "max": "Non"
+            "min": 10,
+            "max": 99
         },
         "adresse": {
-            "min": "11",
-            "max": "Non"
+            "min": 11,
+            "max": 99
         },
         "force": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "competences": {
             "naissance": [
@@ -265,24 +265,24 @@ Je n'aime pas trop la magie, sauf quand c'est pour enchanter une arme ou une arm
         "attaque": 8,
         "parade": 10,
         "courage": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "intelligence": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "charisme": {
-            "min": "12",
-            "max": "Non"
+            "min": 12,
+            "max": 99
         },
         "adresse": {
-            "min": "10",
-            "max": "Non"
+            "min": 10,
+            "max": 99
         },
         "force": {
-            "min": "Non",
-            "max": "11"
+            "min": 0,
+            "max": 11
         },
         "competences": {
             "naissance": [
@@ -318,24 +318,24 @@ Je n'aime pas trop la magie, sauf quand c'est pour enchanter une arme ou une arm
         "attaque": 8,
         "parade": 10,
         "courage": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "intelligence": {
-            "min": "12",
-            "max": "Non"
+            "min": 12,
+            "max": 99
         },
         "charisme": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "adresse": {
-            "min": "13",
-            "max": "Non"
+            "min": 13,
+            "max": 99
         },
         "force": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "competences": {
             "naissance": [
@@ -375,24 +375,24 @@ Je n'aime pas trop la magie, sauf quand c'est pour enchanter une arme ou une arm
         "attaque": 8,
         "parade": 10,
         "courage": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "intelligence": {
-            "min": "Non",
-            "max": "8"
+            "min": 0,
+            "max": 8
         },
         "charisme": {
-            "min": "Non",
-            "max": "10"
+            "min": 0,
+            "max": 10
         },
         "adresse": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "force": {
-            "min": "12",
-            "max": "Non"
+            "min": 12,
+            "max": 99
         },
         "competences": {
             "naissance": [
@@ -425,24 +425,24 @@ Je n'aime pas trop la magie, sauf quand c'est pour enchanter une arme ou une arm
         "attaque": 8,
         "parade": 10,
         "courage": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "intelligence": {
-            "min": "Non",
-            "max": "10"
+            "min": 0,
+            "max": 10
         },
         "charisme": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "adresse": {
-            "min": "Non",
-            "max": "11"
+            "min": 0,
+            "max": 11
         },
         "force": {
-            "min": "12",
-            "max": "Non"
+            "min": 12,
+            "max": 99
         },
         "competences": {
             "naissance": [
@@ -477,24 +477,24 @@ Je n'aime pas trop la magie, sauf quand c'est pour enchanter une arme ou une arm
         "attaque": 8,
         "parade": 10,
         "courage": {
-            "min": "Non",
-            "max": "10"
+            "min": 0,
+            "max": 10
         },
         "intelligence": {
-            "min": "Non",
-            "max": "10"
+            "min": 0,
+            "max": 10
         },
         "charisme": {
-            "min": "Non",
-            "max": "8"
+            "min": 0,
+            "max": 8
         },
         "adresse": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "force": {
-            "min": "Non",
-            "max": "9"
+            "min": 0,
+            "max": 9
         },
         "competences": {
             "naissance": [
@@ -532,24 +532,24 @@ Je n'aime pas trop la magie, sauf quand c'est pour enchanter une arme ou une arm
         "attaque": 8,
         "parade": 10,
         "courage": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "intelligence": {
-            "min": "Non",
-            "max": "9"
+            "min": 0,
+            "max": 9
         },
         "charisme": {
-            "min": "Non",
-            "max": "10"
+            "min": 0,
+            "max": 10
         },
         "adresse": {
-            "min": "Non",
-            "max": "11"
+            "min": 0,
+            "max": 11
         },
         "force": {
-            "min": "13",
-            "max": "Non"
+            "min": 13,
+            "max": 99
         },
         "competences": {
             "naissance": [
@@ -583,24 +583,24 @@ Je n'aime pas trop la magie, sauf quand c'est pour enchanter une arme ou une arm
         "attaque": 8,
         "parade": 10,
         "courage": {
-            "min": "12",
-            "max": "Non"
+            "min": 12,
+            "max": 99
         },
         "intelligence": {
-            "min": "10",
-            "max": "Non"
+            "min": 10,
+            "max": 99
         },
         "charisme": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "adresse": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "force": {
-            "min": "Non",
-            "max": "10"
+            "min": 0,
+            "max": 10
         },
         "competences": {
             "naissance": [
@@ -638,24 +638,24 @@ Je n'aime pas trop la magie, sauf quand c'est pour enchanter une arme ou une arm
         "attaque": 8,
         "parade": 10,
         "courage": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "intelligence": {
-            "min": "10",
-            "max": "Non"
+            "min": 10,
+            "max": 99
         },
         "charisme": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "adresse": {
-            "min": "13",
-            "max": "Non"
+            "min": 13,
+            "max": 99
         },
         "force": {
-            "min": "Non",
-            "max": "8"
+            "min": 0,
+            "max": 8
         },
         "competences": {
             "naissance": [

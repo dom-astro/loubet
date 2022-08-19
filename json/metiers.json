@@ -2,30 +2,30 @@ var metiers =
 [
     {
         "nom": "Guerrier",
-        "titre": "",
-        "description": "Personnage destiné à la baston en première ligne.\r\n\
-N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée.",
+        "titre": "personnage destiné à la baston en première ligne.",
+        "description": "J'aime le combat ! C'est mon truc. Je veux des armes, des armures, je veux rentrer dans le tas. Je veux courir vers mon \
+        destin, et marcher sur les cadavres de ceux qui vont se mettre en travers de mon chemin. À mort, les mauviettes !",
         "ev": "+5",
         "ea": "",
         "courage": {
-            "min": "12",
-            "max": "Non"
+            "min": 12,
+            "max": 99
         },
         "intelligence": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "charisme": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "adresse": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "force": {
-            "min": "12",
-            "max": "Non"
+            "min": 12,
+            "max": 99
         },
         "competences": {
             "naissance": [
@@ -44,24 +44,24 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         "ev": "+5",
         "ea": "",
         "courage": {
-            "min": "12",
-            "max": "Non"
+            "min": 12,
+            "max": 99
         },
         "intelligence": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "charisme": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "adresse": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "force": {
-            "min": "12",
-            "max": "Non"
+            "min": 12,
+            "max": 99
         },
         "competences": {
             "naissance": [
@@ -79,24 +79,24 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         "ev": "",
         "ea": "",
         "courage": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "intelligence": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "charisme": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "adresse": {
-            "min": "13",
-            "max": "Non"
+            "min": 13,
+            "max": 99
         },
         "force": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "competences": {
             "naissance": [
@@ -114,24 +114,24 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         "ev": "",
         "ea": "",
         "courage": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "intelligence": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "charisme": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "adresse": {
-            "min": "13",
-            "max": "Non"
+            "min": 13,
+            "max": 99
         },
         "force": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "competences": {
             "naissance": [
@@ -157,24 +157,24 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         "ev": "",
         "ea": "",
         "courage": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "intelligence": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "charisme": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "adresse": {
-            "min": "12",
-            "max": "Non"
+            "min": 12,
+            "max": 99
         },
         "force": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "competences": {
             "naissance": [
@@ -192,24 +192,24 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         "ev": "",
         "ea": "",
         "courage": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "intelligence": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "charisme": {
-            "min": "12",
-            "max": "Non"
+            "min": 12,
+            "max": 99
         },
         "adresse": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "force": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "competences": {
             "naissance": [
@@ -227,24 +227,24 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         "ev": "",
         "ea": "",
         "courage": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "intelligence": {
-            "min": "12",
-            "max": "Non"
+            "min": 12,
+            "max": 99
         },
         "charisme": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "adresse": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "force": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "competences": {
             "naissance": [
@@ -262,24 +262,24 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         "ev": "",
         "ea": "",
         "courage": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "intelligence": {
-            "min": "12",
-            "max": "Non"
+            "min": 12,
+            "max": 99
         },
         "charisme": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "adresse": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "force": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "competences": {
             "naissance": [
@@ -297,24 +297,24 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         "ev": "",
         "ea": "",
         "courage": {
-            "min": "12",
-            "max": "Non"
+            "min": 12,
+            "max": 99
         },
         "intelligence": {
-            "min": "10",
-            "max": "Non"
+            "min": 10,
+            "max": 99
         },
         "charisme": {
-            "min": "11",
-            "max": "Non"
+            "min": 11,
+            "max": 99
         },
         "adresse": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "force": {
-            "min": "9",
-            "max": "Non"
+            "min": 9,
+            "max": 99
         },
         "competences": {
             "naissance": [
@@ -332,24 +332,24 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         "ev": "",
         "ea": "",
         "courage": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "intelligence": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "charisme": {
-            "min": "10",
-            "max": "Non"
+            "min": 10,
+            "max": 99
         },
         "adresse": {
-            "min": "10",
-            "max": "Non"
+            "min": 10,
+            "max": 99
         },
         "force": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "competences": {
             "naissance": [
@@ -367,24 +367,24 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         "ev": "",
         "ea": "",
         "courage": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "intelligence": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "charisme": {
-            "min": "12",
-            "max": "Non"
+            "min": 12,
+            "max": 99
         },
         "adresse": {
-            "min": "11",
-            "max": "Non"
+            "min": 11,
+            "max": 99
         },
         "force": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "competences": {
             "naissance": [
@@ -402,24 +402,24 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         "ev": "",
         "ea": "",
         "courage": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "intelligence": {
-            "min": "12",
-            "max": "Non"
+            "min": 12,
+            "max": 99
         },
         "charisme": {
-            "min": "11",
-            "max": "Non"
+            "min": 11,
+            "max": 99
         },
         "adresse": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "force": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "competences": {
             "naissance": [
@@ -437,24 +437,24 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         "ev": "",
         "ea": "",
         "courage": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "intelligence": {
-            "min": "12",
-            "max": "Non"
+            "min": 12,
+            "max": 99
         },
         "charisme": {
-            "min": "11",
-            "max": "Non"
+            "min": 11,
+            "max": 99
         },
         "adresse": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "force": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "competences": {
             "naissance": [
@@ -472,24 +472,24 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         "ev": "",
         "ea": "",
         "courage": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "intelligence": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "charisme": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "adresse": {
-            "min": "11",
-            "max": "Non"
+            "min": 11,
+            "max": 99
         },
         "force": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "competences": {
             "naissance": [
@@ -507,24 +507,24 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         "ev": "",
         "ea": "",
         "courage": {
-            "min": "11",
-            "max": "Non"
+            "min": 11,
+            "max": 99
         },
         "intelligence": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "charisme": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "adresse": {
-            "min": "11",
-            "max": "Non"
+            "min": 11,
+            "max": 99
         },
         "force": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "competences": {
             "naissance": [
@@ -542,24 +542,24 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         "ev": "",
         "ea": "",
         "courage": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "intelligence": {
-            "min": "10",
-            "max": "Non"
+            "min": 10,
+            "max": 99
         },
         "charisme": {
-            "min": "11",
-            "max": "Non"
+            "min": 11,
+            "max": 99
         },
         "adresse": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "force": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "competences": {
             "naissance": [
@@ -577,24 +577,24 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         "ev": "",
         "ea": "",
         "courage": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "intelligence": {
-            "min": "10",
-            "max": "Non"
+            "min": 10,
+            "max": 99
         },
         "charisme": {
-            "min": "11",
-            "max": "Non"
+            "min": 11,
+            "max": 99
         },
         "adresse": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "force": {
-            "min": "Non",
-            "max": "Non"
+            "min": 0,
+            "max": 99
         },
         "competences": {
             "naissance": [

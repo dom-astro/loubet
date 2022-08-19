@@ -2,6 +2,7 @@ var competences =
 [
     {
         "nom": "ambidextrie",
+        "resume": "possibilité d'utiliser deux armes en même temps dans les combats – sujet à restrictions.",
         "description": "Pure compétence de guerrier en mêlée. À partir du niveau 2, le héros peut prendre une arme dans chaque main. En plus d&apos;avoir l&apos;air méchant, il pourra donner deux attaques par assaut s&apos;il atteint ou dépasse un score d&apos;adresse de 14. Ce qui lui donne, bien sûr, deux fois plus de chance de se blesser tout seul... Car la deuxième attaque est plus difficile à réussir. Il ne peut parer qu&apos;une fois, ambidextre ou non.",
         "caracteristiques": ["adresse"],
         "requis": "avoir 2 armes à 1 main, minimum AD 14.",
@@ -29,6 +30,7 @@ var competences =
     },
     {
         "nom": "appel du tonneau",
+        "resume": "le héros a du mal à se tenir en présence d'alcool.",
         "description": "l&apos;alcool attire le héros, s&apos;il ne parvient pas à résister à son instinct de poivrot. Il devra passer une épreuve d&apos;intelligence +4 pour s&apos;en sortir... Ou décidera de s&apos;adonner à la boisson, quitte à finir allongé dans son vomi. C&apos;est vraiment la honte.",
         "caracteristiques": ["intelligence"],
         "utilisation": "en présence d&apos;alcool, épreuve INT+4 du héros pour ne pas s&apos;enivrer. Échec : le héros finit bourré.",
@@ -43,6 +45,7 @@ var competences =
     },
     {
         "nom": "ARMES DE BOURRIN",
+        "resume": "possibilité d'utiliser des armes à deux mains (sous réserve de restriction d'origine).",
         "description": "le personnage est capable d&apos;utiliser toutes les armes qui sont lourdes et font très mal, comme les grosses haches, les grosses épées, les grosses massues... En bref, ils ont la capacité d&apos;utiliser des armes portant l&apos;étiquette « à deux mains ». Cette compétence n&apos;est pas utilisable par les Nains et certaines autres créatures.",
         "caracteristiques": [""],
         "requis": "avoir la force nécessaire (donc, n&apos;avoir pas de restriction d&apos;origine sur les armes à deux mains).",
@@ -63,6 +66,7 @@ var competences =
     },
     {
         "nom": "BOURRE-PIF",
+        "resume": "le héros peut se battre à mains nues de façon efficace et accéder à des coups spéciaux.",
         "description": "l’art du bourre-pif consiste à taper n’importe comment avec les poings de manière efficace. Casser un bras ou se battre avec un tabouret rentre dans la compétence bourre-pif. Le personnage adepte du bourre-pif n&apos;aura pas de malus à son score d&apos;attaque, pourra utiliser la « table des critiques à mains nues » ainsi que les « coups spéciaux à mains nues ».",
         "caracteristiques": [""],
         "utilisation": "pas de malus au score AT, dégâts de base 1D6, coups critiques, accès aux coups spéciaux.",
@@ -86,6 +90,7 @@ var competences =
     },
     {
         "nom": "cHERCHER DES NOISES",
+        "resume": "le héros frappe toujours en premier lors d'un combat.",
         "description": "À moins d&apos;être surpris, le personnage qui sait chercher des noises frappe toujours en premier quand il se retrouve au corps-à-corps avec un ennemi. Ceci évite de confronter les scores de courage, et ça peut faire la différence contre quelqu&apos;un qui a une plus grosse épée.",
         "caracteristiques": [""],
         "utilisation": "le héros a l&apos;initiative sur tous les combats au corps-à-corps.",
@@ -108,7 +113,7 @@ var competences =
         "caracteristiques": ["intelligence"],
     },
     {
-        "nom": "cUISTOT",
+        "nom": "CUISTOT",
         "description": "c&apos;est l&apos;ami de tout le monde, ce cuistot !. Grâce à ses talents, il peut préparer à manger pour tous ses amis en utilisant quelques ingrédients de base, et en plus, c&apos;est bon !. Chaque repas préparé par le cuistot permettra de récupérer 2PV au lieu d&apos;un seul. De plus, on n&apos;attrape pas de maladie liée à la nourriture. Pas d&apos;épreuve nécessaire.",
         "caracteristiques": ["adresse"],
         "requis": "disposer d&apos;ingrédients et de matériel de cuisine, avoir 30 minutes pour cuisiner.",
@@ -179,6 +184,7 @@ var competences =
     },
     {
         "nom": "INSTINCT DU TRESOR",
+        "resume": "donne un bonus aux épreuves pour trouver des trésors.",
         "description": "le héros a du flair pour trouver les choses cachées, surtout quand elles ont de la valeur ! Cette compétence donne un bonus de +3 aux épreuves d&apos;intelligence pour sentir les trésors et cachettes.",
         "caracteristiques": ["intelligence"],
         "utilisation": "+3 à l&apos;épreuve INT sur une épreuve de fouille ou détection de trésor/cachette.",
@@ -196,7 +202,7 @@ var competences =
         "utilisation": "possibilité d&apos;essayer des prestations artistiques sans malus à l&apos;épreuve AD.",
     },
     {
-        "nom": "lANGUES DES MONSTRES",
+        "nom": "LANGUES DES MONSTRES",
         "description": "les monstres disent n&apos;importe quoi, c&apos;est bien connu. Pour le héros qui a fait des études dans ce domaine, pas de problème !. Il comprendra les propos de la plupart des créatures douées de parole : les ogres, les trolls, les gnômes des forêts du nord, les kobolds, etc.",
         "caracteristiques": [""],
         "utilisation": "compréhension générale des langues de monstres sans épreuve.",
@@ -228,6 +234,7 @@ var competences =
     },
     {
         "nom": "PÉNIBLE",
+        "resume": "le héros agace les membre de son groupe, et ça peut lui valoir des baffes.",
         "description": "le héros est chiant, même quand il ne dit rien. Il agace les gens, aussi bien les aventuriers de sa compagnie que les personnages rencontrés au cours du jeu. Le Grand Vilain MJ peut lui demander de faire une épreuve d&apos;intelligence dans ce genre de cas, pour savoir s&apos;il se fait frapper ou non.",
         "caracteristiques": ["intelligence"],
         "utilisation": "en cours de partie, le MJ décide que le héros a été chiant et que ses compagnons sont fâchés.",
@@ -247,6 +254,7 @@ var competences =
     },
     {
         "nom": "RADIN",
+        "resume": "donne un bonus au marchandage, mais également un malus au partage !",
         "description": "cette compétence est innée chez les Nains... Le héros radin disposera d&apos;un bonus de +4 sur son épreuve de charisme pour marchander (dans la limite d&apos;une remise de 20%, non cumulable avec d&apos;autres bonus). En contrepartie, il devra passer une épreuve d&apos;intelligence +4 quand il faut partager un butin ou une dépense avec le reste du groupe. S&apos;il échoue, il y aura sans doute un conflit à régler !.",
         "caracteristiques": ["charisme", "intelligence"],
         "utilisation": "+4 à l&apos;épreuve CHA pour le marchandage, épreuve nécessaire INT+4 en cas de partage de butin (conflit).",
@@ -271,6 +279,7 @@ var competences =
     },
     {
         "nom": "SENTIR DES PIEDS",
+        "resume": "éloigne les animaux (bivouac milieu naturel) – gêne les alliés pour dormir en milieu confiné.",
         "description": "le héros concerné, s&apos;il enlève ses bottes, éloigne les animaux (dangereux ou pas) quand il dort en milieu naturel. Dans une chambre d&apos;auberge ou un dortoir, il incommode les autres équipiers qui dormiront moins bien (récupération moins bonne). Les équipiers qui sentent eux-mêmes des pieds ne sont pas incommodés.",
         "caracteristiques": [""],
         "utilisation": "éloigne les prédateurs la nuit en bivouac, mais diminue le confort des chambres partagées par les alliés.",
@@ -283,6 +292,7 @@ var competences =
     },
     {
         "nom": "TÊTE VIDE",
+        "resume": "immunité à certains sortilèges ayant pour cible l'esprit du héros.",
         "description": "les sorts affectant le psychique n&apos;ont pas prise sur ce héros, car il ne dispose pas du capital nécessaire. C&apos;est le cas des sorts de prise de contrôle, de terreur, d&apos;illusion, de télépathie.",
         "caracteristiques": [""],
         "utilisation": "résiste automatiquement à certains types de sortilèges, illusions ou malédictions.",
