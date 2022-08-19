@@ -6,6 +6,9 @@ var origines =
         "description": "Aucun score minimum dans les caractéristiques de base. C&apos;est le choix que tout le monde peut faire en tirant un personnage, quel que soit le résultat des dés. \
         L&apos;humain de base peut utiliser n’importe quelle forme de magie sur des objets ou des enchantements. Il peut utiliser des parchemins s&apos;il sait lire (compétence érudition). Il peut également choisir n&apos;importe quelle profession à condition d&apos;avoir les scores nécessaires, et s&apos;il n&apos;en choisit pas il peut sélectionner de base deux compétences au choix - sauf « Appel du sauvage ».",
         "ev": 30,
+        "ea": 0,
+        "attaque": 8,
+        "parade": 10,
         "courage": {
             "min": "Non",
             "max": "Non"
@@ -47,6 +50,9 @@ Je ne porte jamais de grosse armure, parce que c'est un truc pour les lâches, e
 Et sinon je ne sais pas lire, mais c'est pas grave parce que les livres parlent de trucs sans intérêt.\r\n\
 Des fois, je parle à un dieu, il s'appelle Crôm. Il aime donner des baffes.",
         "ev": 35,
+        "ea": 0,
+        "attaque": 9,
+        "parade": 9,
         "courage": {
             "min": "12",
             "max": "Non"
@@ -101,6 +107,9 @@ Et quand on dit que je suis chiant, c'est même pas vrai : j'ai seulement du car
 Il paraît que j'ai un talent spécial pour trouver les trésors... Ouais, d'accord, mais à ce moment je ne vois pas pourquoi on devrait partager.\r\n\
 Je n'aime pas trop la magie, sauf quand c'est pour enchanter une arme ou une armure, parce que là c'est vachement bien du coup. D'ailleurs, on fait ça très bien chez nous, les armes enchantées.",
         "ev": 35,
+        "ea": 0,
+        "attaque": 8,
+        "parade": 10,
         "courage": {
             "min": "11",
             "max": "Non"
@@ -151,6 +160,9 @@ Je n'aime pas trop la magie, sauf quand c'est pour enchanter une arme ou une arm
         longévité ils ont le plus souvent fondé des familles nobles et riches. Ils sont hautains, propres sur eux, respectueux de \
         l&apos;environnement et de toute forme d&apos;activité artistique mais ne sont pas fascinés par leurs cousins les Elfes Sylvains.",
         "ev": 25,
+        "ea": 0,
+        "attaque": 8,
+        "parade": 10,
         "courage": {
             "min": "Non",
             "max": "Non"
@@ -200,6 +212,9 @@ Je n'aime pas trop la magie, sauf quand c'est pour enchanter une arme ou une arm
         Leurs origines elfiques peuvent être assez discrètes, souvent un oeil avisé pourra les deviner, mais il est assez facile de \
         cacher les oreilles légèrement pointues sous des cheveux ou une capuche.",
         "ev": 28,
+        "ea": 0,
+        "attaque": 8,
+        "parade": 10,
         "courage": {
             "min": "Non",
             "max": "Non"
@@ -246,6 +261,9 @@ Je n'aime pas trop la magie, sauf quand c'est pour enchanter une arme ou une arm
         compagnie des humains pour vivre dans la forêt car ils s&apos;y sentaient bien, et que tout le monde y est gentil. Ils ont une \
         culture particulière, des styles de vie particuliers et sont enclins à la niaiserie et à l&apos;innocence.",
         "ev": 25,
+        "ea": 0,
+        "attaque": 8,
+        "parade": 10,
         "courage": {
             "min": "Non",
             "max": "Non"
@@ -296,6 +314,9 @@ Je n'aime pas trop la magie, sauf quand c'est pour enchanter une arme ou une arm
         Au niveau du physique, l&apos;Elfe Noir à la peau sombre et bleutée,  les cheveux blancs la plupart du temps. Cependant, ces \
         caractéristiques ne les privent aucunement de charisme.",
         "ev": 25,
+        "ea": 0,
+        "attaque": 8,
+        "parade": 10,
         "courage": {
             "min": "Non",
             "max": "Non"
@@ -350,6 +371,9 @@ Je n'aime pas trop la magie, sauf quand c'est pour enchanter une arme ou une arm
         plupart des maladies, et il peut manger relativement n&apos;importe quoi. \
         L&apos;orque dispose de son propre langage mais ils apprend et parle assez facilement la langue commune, de façon rustre.",
         "ev": 35,
+        "ea": 0,
+        "attaque": 8,
+        "parade": 10,
         "courage": {
             "min": "Non",
             "max": "Non"
@@ -397,6 +421,9 @@ Je n'aime pas trop la magie, sauf quand c'est pour enchanter une arme ou une arm
         développer une personnalité équilibrée. Il est cependant plus beau, plus intelligent, et moins robuste qu&apos;un orque. Il ne peut \
         jamais apprendre à lire, par déficience mentale générale, et ne sera jamais non plus très adroit.",
         "ev": 35,
+        "ea": 0,
+        "attaque": 8,
+        "parade": 10,
         "courage": {
             "min": "Non",
             "max": "Non"
@@ -446,6 +473,9 @@ Je n'aime pas trop la magie, sauf quand c'est pour enchanter une arme ou une arm
         mots de la langue commune. On peut donc les comprendre seulement si on connaît les langues des monstres. Ils ne voient \
         pas les couleurs comme les autres gens, mais seulement des nuances de vert.",
         "ev": 20,
+        "ea": 0,
+        "attaque": 8,
+        "parade": 10,
         "courage": {
             "min": "Non",
             "max": "10"
@@ -498,6 +528,9 @@ Je n'aime pas trop la magie, sauf quand c'est pour enchanter une arme ou une arm
         Ils parlent une langue bizarre extrêmement simple, à base de concepts. Ils n&apos;arrivent que très rarement à articuler des \
         mots de la langue commune. On peut donc les comprendre seulement si on connaît les langues des monstres.",
         "ev": 45,
+        "ea": 0,
+        "attaque": 8,
+        "parade": 10,
         "courage": {
             "min": "Non",
             "max": "Non"
@@ -546,6 +579,9 @@ Je n'aime pas trop la magie, sauf quand c'est pour enchanter une arme ou une arm
         Leur principal centre d&apos;intérêt est la nourriture, et ils excellent dans tous les domaines culinaires. Leurs spécialités sont \
         réputées. On les prend souvent pour des enfants, mais les monstres ont une fâcheuse tendance à leur foncer dessus.",
         "ev": 25,
+        "ea": 0,
+        "attaque": 8,
+        "parade": 10,
         "courage": {
             "min": "12",
             "max": "Non"
@@ -598,6 +634,9 @@ Je n'aime pas trop la magie, sauf quand c'est pour enchanter une arme ou une arm
         communication écrite et n&apos;ont jamais appris à compter. Cependant, ils peuvent élaborer des pièges complexes et fabriquer \
         des objets superbes, ou trouver la solution",
         "ev": 15,
+        "ea": 0,
+        "attaque": 8,
+        "parade": 10,
         "courage": {
             "min": "Non",
             "max": "Non"

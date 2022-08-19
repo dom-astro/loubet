@@ -1,17 +1,22 @@
-pj = {
+var pj = {
     "nom:": "Mortadel",
-    "race": "Humain",
+    "origine": "Humain",
     "metier": "Voleur",
-    "caract": {
-        "courage": 7,
-        "charisme": 7,
-        "force": 7,
-        "intelligence": 7,
-        "adresse": 7
-    },
-    "autres":{
-        "pv": 10,
-        "mana": 0,
-        "pr":3
-    }
+    "desciription": "",
+    "courage": 7,
+    "charisme": 7,
+    "force": 7,
+    "intelligence": 7,
+    "adresse": 7,
+    "ev": 10,
+    "ea": 0,
+    "pr":3,
+    "attaque": 8,
+    "parade": 10,
+    "fortune": 0,
+    "destin": 0,
+    "competences": [],
+    "armes": [],
+    "armures":  [],
+    "divers": ""
 }

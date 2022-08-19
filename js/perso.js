@@ -10,12 +10,13 @@ String.prototype.capitalize = function () {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
+var pj = {};
+
 function caractD6(caract) {
     result=7+Math.ceil(Math.random()*6);
     $("#"+caract).val(result);
     $("#"+caract).next().prop("disabled",true);
 
-    localStorage.setItem(caract,result);
     verifOrigine();
     verifMetier();
 }
@@ -24,66 +25,32 @@ function destinD4() {
     result=Math.ceil(Math.random()*4)-1;
     $("#destin").val(result);
     $("#destin").next().prop("disabled",true);
-
-    localStorage.setItem("destin",result);
 }
 
 function fortuneD6() {
     result=10*(Math.ceil(Math.random()*6)+Math.ceil(Math.random()*6));
-    $("#po").val(result);
-    $("#po").next().prop("disabled",true);
-
-    localStorage.setItem("po",result);
+    $("#fortune").val(result);
+    $("#fortune").next().prop("disabled",true);
 }
 
 
-function setOrigine(origine) {
-    isEnabled = $("#origine-"+origine.id()).hasClass('card-enabled');
+function setOrigine(choix) {
+    isEnabled = $("#origine-"+choix.id()).hasClass('card-enabled');
     if (isEnabled) {
-        $("#imgPerso").attr("src","img/"+origine+".png");
-        $("#typePerso").html(origine);
+        $("#imgPerso").attr("src","img/"+choix+".png");
+        $("#typePerso").html(choix);
         $("#metier").show();
-        $("#origine").val(origine);
-        setCompetencesOrigine(origine);
+        $("#origine").val(choix);
+        setCompetencesOrigine(choix);
 
-        switch(origine) {
-            case "Barbare":
-                $("#attaque").val(9);
-                $("#parade").val(9);
-                $("#ev").val(35);
-                $("#ea").val(0);
-                break;
-            case "Nain":
-                $("#attaque").val(8);
-                $("#parade").val(10);
-                $("#ev").val(35);
-                $("#ea").val(0);
-                break;
-            case "Elfe":
-                $("#attaque").val(8);
-                $("#parade").val(10);
-                $("#ev").val(28);
-                $("#ea").val(0);
-                break;
-            case "Ogre":
-                $("#attaque").val(9);
-                $("#parade").val(9);
-                $("#ev").val(45);
-                $("#ea").val(0);
-                break;
-            case "Magicienne":
-                $("#attaque").val(8);
-                $("#parade").val(10);
-                $("#ev").val(20);
-                $("#ea").val(30);
-                break;
-            default:
-                $("#attaque").val(8);
-                $("#parade").val(10);
-                $("#ev").val(30);
-                $("#ea").val(0);
-        }
-        localStorage.setItem("origine",origine);
+        origines.forEach(function(origine) {
+            if(choix==origine.nom) {
+                $("#attaque").val(origine.attaque);
+                $("#parade").val(origine.parade);
+                $("#ev").val(origine.ev);
+                $("#ea").val(origine.ea);
+            }
+        });
     }
 }
 
@@ -133,7 +100,6 @@ function setMetier(metier) {
                 $("#ev").val(30);
                 $("#ea").val(0);
         }
-        localStorage.setItem("metier",metier);
     }
 }
 
@@ -201,20 +167,37 @@ function verifMetier() {
 }
 
 function savePJ() {
-    localStorage.setItem("nom",$("#nomPerso").val());
-    localStorage.setItem("ea",$("#ea").val());
-    localStorage.setItem("ev",$("#ev").val());
-    localStorage.setItem("attaque",$("#attaque").val());
-    localStorage.setItem("parade",$("#parade").val());
-    localStorage.setItem("destin",$("#destin").val());
+    pj.nom = $("#nomPerso").val();
+    pj.origine = $("#origine").val();
+    pj.metier = $("#metier").val();
+    pj.description = $("#presentation").val();
+    pj.courage = $("#courage").val();
+    pj.charisme = $("#charisme").val();
+    pj.intelligence = $("#intelligence").val();
+    pj.force = $("#force").val();
+    pj.adresse = $("#adresse").val();
+    pj.ev = $("#ev").val();
+    pj.ea = $("#ea").val();
+    pj.attaque = $("#attaque").val();
+    pj.parade = $("#parade").val();
+    //pj.pr = $("#pr").val();
+    pj.fortune = $("#fortune").val();
+    pj.destin = $("#destin").val();
 
+    if($("#Homme").attr("src")=="img/homme-disabled.svg") {
+        pj.genre="Homme";
+    } else {
+        pj.genre="Femme";
+    }
+
+    localStorage.setItem("pj",JSON.stringify(pj));
     $("#nomPerso").prop("disabled",true);
 }
 
 function exportPJ() {
-    var pj = {};
+    pj = JSON.parse(localStorage.getItem("pj"));
 
-    pj.nom=localStorage.getItem("nom");
+    /*pj.nom=localStorage.getItem("nom");
     pj.origine=localStorage.getItem("origine");
     pj.metier=localStorage.getItem("metier");
     pj.courage=localStorage.getItem("courage");
@@ -227,7 +210,7 @@ function exportPJ() {
     pj.destin=localStorage.getItem("destin");
     pj.po=localStorage.getItem("po");
     pj.attaque=localStorage.getItem("attaque");
-    pj.parade=localStorage.getItem("parade");
+    pj.parade=localStorage.getItem("parade");*/
 
     let dataStr = JSON.stringify(pj);
     let dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
@@ -241,27 +224,31 @@ function exportPJ() {
 }
 
 function initPerso() {
-    $("#nomPerso").val(localStorage.getItem("nom"));
-    $("#ea").val(localStorage.getItem("ea"));
-    $("#ev").val(localStorage.getItem("ev"));
-    $("#attaque").val(localStorage.getItem("attaque"));
-    $("#parade").val(localStorage.getItem("parade"));
-    $("#destin").val(localStorage.getItem("destin"));
-    $("#po").val(localStorage.getItem("po"));
-    $("#courage").val(localStorage.getItem("courage"));
-    $("#force").val(localStorage.getItem("force"));
-    $("#intelligence").val(localStorage.getItem("intelligence"));
-    $("#adresse").val(localStorage.getItem("adresse"));
-    $("#charisme").val(localStorage.getItem("charisme"));
-    $("#origine").val(localStorage.getItem("origine"));
-    $("#metier").val(localStorage.getItem("metier"));
+    pj = JSON.parse(localStorage.getItem("pj"));
 
-    setGenre(localStorage.getItem("genre"));
+    $("#nomPerso").val(pj.nom);
+    $("#ea").val(pj.ea);
+    $("#ev").val(pj.ev);
+    $("#attaque").val(pj.attaque);
+    $("#parade").val(pj.parade);
+    $("#destin").val(pj.destin);
+    $("#fortune").val(pj.fortune);
+    $("#courage").val(pj.courage);
+    $("#force").val(pj.force);
+    $("#intelligence").val(pj.intelligence);
+    $("#adresse").val(pj.adresse);
+    $("#charisme").val(pj.charisme);
+    $("#origine").val(pj.origine);
+    $("#metier").val(pj.metier);
+
+    setGenre(pj.genre);
     //$("#nomPerso").prop("disabled",true);
-    setCompetencesOrigine(localStorage.getItem("origine"));
-    setCompetencesMetier(localStorage.getItem("metier"));
+    setCompetencesOrigine(pj.origine);
+    setCompetencesMetier(pj.metier);
+    listeOrigine();
     verifOrigine();
-    setOrigine(localStorage.getItem("origine"));
+    setOrigine(pj.origine);
+    listeMetier();
     verifMetier();
 }
 
@@ -276,21 +263,24 @@ $('#jsonFile').on('change', function () {
     fileReader.readAsText(file); 
     fileReader.onload = function() {
         var jsonPerso = fileReader.result;
-        console.info(JSON.parse(jsonPerso));
+        var pj=JSON.parse(jsonPerso);
+        localStorage.setItem("pj",jsonPerso);
+        initPerso();
+        console.info(pj);
     }; 
     fileReader.onerror = function() {
       alert(fileReader.error);
     }; 
 });
 
-function resetPJ(){
+function nouveauPJ(){
     $("#nomPerso").val("");
     $("#ea").val(0);
     $("#ev").val(25);
     $("#attaque").val(8);
     $("#parade").val(10);
     $("#destin").val(0);
-    $("#po").val(0);
+    $("#fortune").val(0);
     $("#courage").val(7);
     $("#force").val(7);
     $("#intelligence").val(7);
@@ -413,7 +403,6 @@ function setCompetencesMetier(choixMetier) {
 }
 
 function setGenre(genre) {
-    localStorage.setItem("genre",genre);
 
     $("#Homme").attr("src","img/homme-disabled.svg");
     $("#Femme").attr("src","img/femme-disabled.svg");
@@ -422,6 +411,8 @@ function setGenre(genre) {
     } else {
         $("#Homme").attr("src","img/homme.svg");
     }
+    $("#Homme").prop("disbaled",true);
+    $("#Femme").prop("disbaled",true);
 }
 
 function descOrigine(choixOrigine) {

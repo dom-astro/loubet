@@ -42,7 +42,7 @@
 							<div class="col-4">
 								<img id="Femme" src="img/femme.svg"  width="32px" alt="Femme" title="Femme" onclick="setGenre('Femme')"" style="margin-top: 5px; margin-left: -35px;">
 								<img id="Homme" src="img/homme.svg"  width="32px" alt="Homme" title="Homme" onclick="setGenre('Homme')"" style="margin-top: 5px;">
-								<img id="imgPerso" class="card-img-top rounded-circle" src="img/pj.png" alt="Card image" style="width: 100px; height: 100px; position: relative; left: -20px;">
+								<img id="imgPerso" class="card-img-top rounded-circle" src="img/pj.png" alt="Card image" style="width: 100px; height: 90px; position: relative; left: -20px;">
 
 								<!--input type="radio" id="girl" name="genre" value="f" style="margin-left: 15px; margin-top: 8px;" checked><label for="girl" style="margin-left: 5px">Fille</label><br>
 								<input type="radio" id="boy" name="genre" value="g" style="margin-left: 15px"><label for="boy" style="margin-left: 5px">Gars</label-->
@@ -108,7 +108,7 @@
 						</div>
 						<div class="input-group">
 							<span class="caract-label" title="Pièces d'or">Fortune</span>
-							<input id="po" type="text" class="caract-valeur" placeholder="0">
+							<input id="fortune" type="text" class="caract-valeur" placeholder="0">
 							<button class="btn btn-warning caract-btn" onclick="fortuneD6()">D6</button> 
 						</div>
 					</div>
@@ -125,7 +125,7 @@
 						<button type="button" class="btn btn-warning btn-export" style="margin-top: 10px;" onclick="chargePJ()">Charger</button>
 						<input type="file" style="display: none;" id="jsonFile" accept=".json" name="file"/></div>
 					<div class="col-6">
-						<button type="button" class="btn btn-danger btn-export" style="margin-top: 10px;" onclick="resetPJ()">Effacer</button>
+						<button type="button" class="btn btn-danger btn-export" style="margin-top: 10px;" onclick="nouveauPJ()">Nouveau</button>
 					</div>
 				</div>
 			</div>
