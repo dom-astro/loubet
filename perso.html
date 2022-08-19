@@ -40,9 +40,9 @@
 								<!--div class="invalid-feedback" style="margin-left: 10px;">Veuillez choisir un nom.</div-->
 							</div>
 							<div class="col-4">
-								<img id="Femme" src="img/femme.svg"  width="32px" alt="Femme" title="Femme" onclick="setGenre('Femme')"" style="margin-top: 5px; margin-left: -35px;">
+								<img id="Femme" src="img/femme.svg"  width="32px" alt="Femme" title="Femme" onclick="setGenre('Femme')"" style="margin-top: 5px;">
 								<img id="Homme" src="img/homme.svg"  width="32px" alt="Homme" title="Homme" onclick="setGenre('Homme')"" style="margin-top: 5px;">
-								<img id="imgPerso" class="card-img-top rounded-circle" src="img/pj.png" alt="Card image" style="width: 100px; height: 90px; position: relative; left: -20px;">
+								<img id="imgPerso" class="card-img-top rounded-circle" src="img/pj.png" alt="Card image" style="width: 100px; height: 90px; position: relative; left: -20px; top:10px">
 
 								<!--input type="radio" id="girl" name="genre" value="f" style="margin-left: 15px; margin-top: 8px;" checked><label for="girl" style="margin-left: 5px">Fille</label><br>
 								<input type="radio" id="boy" name="genre" value="g" style="margin-left: 15px"><label for="boy" style="margin-left: 5px">Gars</label-->
@@ -50,7 +50,7 @@
 						</div>
 						<div class="card-body" style="position: relative; top: -20px;">
 							<p>Présentation</p>
-							<textarea  id="presentation" rows="5" rows="35" style="width: 100%;"></textarea>
+							<textarea  id="presentation" rows="6" cols="35" style="width: 100%;"></textarea>
 						</div>
 					</div>
 				</form>
@@ -113,21 +113,6 @@
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-6">
-						<button type="button" class="btn btn-success btn-svg" style="margin-top: 10px;" onclick="savePJ()">Sauvegarder</button>
-					</div>
-					<div class="col-6">
-						<button type="button" class="btn btn-primary btn-export" style="margin-top: 10px;" onclick="exportPJ()">Exporter</button>
-					</div>
-					<div class="col-6">
-						<!-- input type="file" class="form-control" accept=".json" id="jsFile" style="margin-top: 10px; background: #FFC107;" / -->
-						<button type="button" class="btn btn-warning btn-export" style="margin-top: 10px;" onclick="chargePJ()">Charger</button>
-						<input type="file" style="display: none;" id="jsonFile" accept=".json" name="file"/></div>
-					<div class="col-6">
-						<button type="button" class="btn btn-danger btn-export" style="margin-top: 10px;" onclick="nouveauPJ()">Nouveau</button>
-					</div>
-				</div>
 			</div>
 			<div class="col-7">
 				<div id="origines" class="row">
@@ -138,16 +123,34 @@
 					<h3>Métier</h3>
 				</div>
 				<div class="row">
-					<div id="c-origine" class="card" style="width: 100%; height: 100px; margin-left: 16px;">
+					<!--div id="c-origine" class="card" style="width: 100%; height: 100px; margin-left: 16px;">
 						<h4 style="margin-top: 5px; margin-left: 10px;">Compétences d'origine</h4>
 						<div class="row"></div>
-					</div>
-					<div id="c-metier" class="card" style="width: 100%; height: 100px; margin-left: 16px;">
+					</div-->
+					<!--div id="c-metier" class="card" style="width: 100%; height: 100px; margin-left: 16px;">
 						<h4 style="margin: 5px 0 0 10px">Compétences métiers</h4>
-					</div>
+					</div-->
 				</div>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-8"></div>
+			<div class="col-2">
+					<button type="button" class="btn btn-success btn-svg" style="margin-top: 10px;" onclick="savePJ()">Sauvegarder</button>
+			</div>
+			<div class="col-2">
+				<button type="button" class="btn btn-primary btn-export" style="margin-top: 10px;" onclick="exportPJ()">Exporter</button>
+			</div>
+			<div class="col-8"></div>
+			<div class="col-2">
+				<!-- input type="file" class="form-control" accept=".json" id="jsFile" style="margin-top: 10px; background: #FFC107;" / -->
+				<button type="button" class="btn btn-warning btn-export" style="margin-top: 10px;" onclick="chargePJ()">Charger</button>
+				<input type="file" style="display: none;" id="jsonFile" accept=".json" name="file"/></div>
+			<div class="col-2">
+				<button type="button" class="btn btn-danger btn-export" style="margin-top: 10px;" onclick="nouveauPJ()">Nouveau</button>
+			</div>
+		</div>
+
 	</div>
 </div>
 
@@ -196,8 +199,6 @@
 		$(".wip").addClass("wip-in-progress");
 	});
 
-	listeOrigine();
-	listeMetier();
 	initPerso();
 </script>
 </body>
