@@ -19,18 +19,31 @@ function caractD6(caract) {
 
     verifOrigine();
     verifMetier();
+    var courage=+$("#courage").val();
+    var force=+$("#force").val();
+    var intelligence=+$("#intelligence").val();
+    var adresse=+$("#adresse").val();
+    var charisme=+$("#charisme").val();
+    var rm = (courage+force+intelligence)/3;
+    $("#rm").val(Math.ceil(rm));
+
+    if (courage>7 && force>7 && intelligence>7 && adresse>7 && charisme>7) {
+        $('#btn-valider').prop("disabled",false);
+    }
 }
 
 function destinD4() {
     result=Math.ceil(Math.random()*4)-1;
     $("#destin").val(result);
     $("#destin").next().prop("disabled",true);
+    $('#btn-valider').prop("disabled",false);
 }
 
 function fortuneD6() {
     result=10*(Math.ceil(Math.random()*6)+Math.ceil(Math.random()*6));
     $("#fortune").val(result);
     $("#fortune").next().prop("disabled",true);
+    $('#btn-valider').prop("disabled",false);
 }
 
 
@@ -41,7 +54,6 @@ function setOrigine(choix) {
         $("#typePerso").html(choix);
         $("#metier").show();
         $("#origine").val(choix);
-        //setCompetencesOrigine(choix);
 
         origines.forEach(function(origine) {
             if(choix==origine.nom) {
@@ -54,6 +66,7 @@ function setOrigine(choix) {
 
         listeOrigine();
         verifOrigine();
+        validation("origine");
     }
 }
 
@@ -68,6 +81,7 @@ function setMetier(pjMetier) {
         var metier = metiers.find(i => i.nom===pjMetier);
         listeMetier();
         verifMetier();
+        validation("metier");
     }
 }
 
@@ -148,9 +162,11 @@ function savePJ() {
     pj.ea = $("#ea").val();
     pj.attaque = $("#attaque").val();
     pj.parade = $("#parade").val();
-    //pj.pr = $("#pr").val();
+    pj.rm = $("#rm").val();
     pj.fortune = $("#fortune").val();
     pj.destin = $("#destin").val();
+    pj.xp=0;
+    pj.niveau=1;
 
     if($("#Homme").attr("src")=="img/homme-disabled.svg") {
         pj.genre="Homme";
@@ -164,21 +180,6 @@ function savePJ() {
 
 function exportPJ() {
     pj = JSON.parse(localStorage.getItem("pj"));
-
-    /*pj.nom=localStorage.getItem("nom");
-    pj.origine=localStorage.getItem("origine");
-    pj.metier=localStorage.getItem("metier");
-    pj.courage=localStorage.getItem("courage");
-    pj.charisme=localStorage.getItem("charisme");
-    pj.force=localStorage.getItem("force");
-    pj.intelligence=localStorage.getItem("intelligence");
-    pj.adresse=localStorage.getItem("adresse");
-    pj.ea=localStorage.getItem("ea");
-    pj.ev=localStorage.getItem("ev");
-    pj.destin=localStorage.getItem("destin");
-    pj.po=localStorage.getItem("po");
-    pj.attaque=localStorage.getItem("attaque");
-    pj.parade=localStorage.getItem("parade");*/
 
     let dataStr = JSON.stringify(pj);
     let dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
@@ -208,6 +209,9 @@ function initPerso() {
     $("#charisme").val(pj.charisme);
     $("#origine").val(pj.origine);
     $("#metier").val(pj.metier);
+    $("#rm").val(pj.rm);
+    $("#xp").val(pj.xp);
+    $("#niveau").val(pj.niveau);
 
     setGenre(pj.genre);
     //$("#nomPerso").prop("disabled",true);
@@ -257,10 +261,15 @@ function nouveauPJ(){
     $("#origine").val("");
     $("#metier").val("");
 
-    listeOrigine();
-    listeMetier();
+    //listeOrigine();
+    $("#origines").hide();
+    //listeMetier();
+    $("#metiers").hide();
+    $("#femme").attr("src","img/femme.svg");
+    $("#homme").attr("src","img/homme.svg");
 
-    //$("#nomPerso").prop("disabled",true);
+    $("#aide").show();
+    aide("nom");
 }
 
 function listeOrigine() {
@@ -308,6 +317,7 @@ function listeOrigine() {
             </div> \
         </div>";
         $("#origines").append(strOrigine);
+        setCompetencesOrigine(pjOrigine);
     }
 }
 
@@ -395,22 +405,27 @@ function setCompetencesMetier(pjMetier) {
             </p>";
     
             $("#metier-"+metier.nom.id()).append(strCompetence);
-            $("#metier-"+origine.nom.id()).css("height", "unset");
+            $("#metier-"+metier.nom.id()).css("height", "unset");
         }
     });
 }
 
-function setGenre(genre) {
-
-    $("#Homme").attr("src","img/homme-disabled.svg");
-    $("#Femme").attr("src","img/femme-disabled.svg");
-    if(genre=="Femme") {
-        $("#Femme").attr("src","img/femme.svg");
-    } else {
-        $("#Homme").attr("src","img/homme.svg");
+function enableGenre(genre, isEnabled) {
+    $("#"+genre).attr("src","img/"+genre+"-disabled.svg");
+    //$("#"+genre).prop("disbaled", true);
+    if(isEnabled) {
+        $("#"+genre).attr("src","img/"+genre+".svg");
+        //$("#"+genre).prop("disbaled", false);
     }
-    $("#Homme").prop("disbaled",true);
-    $("#Femme").prop("disbaled",true);
+
+}
+
+function setGenre(genre) {
+    enableGenre("homme",false);
+    enableGenre("femme",false);
+    enableGenre(genre,true);
+    
+    $('#btn-valider').prop("disabled",false);
 }
 
 function descOrigine(choixOrigine) {
@@ -477,4 +492,88 @@ function descMetier(choixMetier) {
             $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Femer</button>");
         }
     });
+}
+
+function aide(etape) {
+    $("#aide-texte").empty();
+
+    switch(etape) {
+        case "nom":
+            $("#aide-texte").append("<p class='aide'><span class='bold'>Première étape:</span> on choisit un nom.</p>")
+            break;
+        case "genre":
+            $("#aide-texte").append("<p class='aide'><span class='bold'>Deuxième étape:</span> choisissez le genre de \
+            votre personnage.</p>");
+            break;
+        case "caracteristique":
+            $("#aide-texte").append("<p class='aide'><span class='bold'>Troisième étape:</span> obtenez vos caractéristiques \
+            principales en tirant un d6.</p>");
+            break;
+        case "destin":
+            $("#aide-texte").append("<p class='aide'><span class='bold'>Quatrième étape:</span> obtenez vos points du destin.</p>");
+            break;
+        case "fortune":
+            $("#aide-texte").append("<p class='aide'><span class='bold'>Cinquième étape:</span> héritez de votre fortune.</p>");
+            break;
+        case "origine":
+            $("#aide-texte").append("<p class='aide'><span class='bold'>Sixième étape:</span> choisissez votre origine.</p>");
+            $("#origines").show();
+            listeOrigine();
+            verifOrigine();
+            break;
+        case "metier":
+            $("#aide-texte").append("<p class='aide'><span class='bold'>Septième étape:</span> choisissez votre métier.</p>");
+            $("#metiers").show();
+            listeMetier();
+            verifierMetier();
+            break;
+    }
+    $("#aide-texte").append("<button id='btn-valider' type='button' class='btn btn-success' style='float: right; margin-right: 20px;' \
+    onclick='validation(\""+etape+"\")' disabled>Valider</button>")
+}
+
+function validation(etape) {
+    switch(etape) {
+        case "nom":
+            var nom = $('#nomPerso').val();
+            $('#nomPerso').prop("disbaled",true);
+            if (nom.length>=3) {
+                pj.nom=nom;
+                aide("genre");
+            }
+            break;
+        case "genre":
+            $("#femme").prop("disabled",true);
+            $("#homme").prop("disabled",true);
+            $("#aide-texte").append("<p class='aide'><span class='bold'>Deuxième étape:</span> choisissez le genre de \
+            votre personnage.</p>");
+            aide("caracteristique");
+            break;
+        case "caracteristique":
+            //$("adresse").attr("disabled","disabled");
+            $("#adresse").prop("disabled",true);
+            aide("destin");
+            break;
+        case "destin":
+            aide("fortune");
+            break;
+        case "fortune":
+            aide("origine");
+            break;
+        case "origine":
+            aide("metier");
+            break;
+        case "metier":
+            $("#aide").hide();
+            break;
+    }
+}
+
+
+function verifNom() {
+    var nom = $('#nomPerso').val();
+    $('#btn-valider').prop("disabled",true);
+    if (nom.length>=3) {
+        $('#btn-valider').prop("disabled",false);
+    }
 }

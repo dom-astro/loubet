@@ -93,7 +93,7 @@ body {
 
 .caract-valeur {
 	font-weight: normal;
-    width: 35px;
+    width: 40px;
     border: 1px solid silver;
     border-radius: 5px;
     background-color: white;
@@ -256,4 +256,14 @@ hr {
 
 .modal-dialog {
     max-width: 1000px;
+}
+
+.aide {
+	position: relative;
+	top: 5px;
+	left: 5px;
+}
+
+.bold {
+	font-weight: bold;
 }
