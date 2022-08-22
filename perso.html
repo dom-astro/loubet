@@ -39,13 +39,11 @@
 								<input id="metier" type="text" class="form-control" placeholder="Métier du pj" title="Métier du pj" disabled               style="margin-left: 10px; margin-top: 5px; width: 90%">
 								<!--div class="invalid-feedback" style="margin-left: 10px;">Veuillez choisir un nom.</div-->
 							</div>
-							<div class="col-4">
-								<img id="femme" src="img/femme.svg"  width="32px" alt="Femme" title="Femme" onclick="setGenre('femme')" style="margin-top: 5px;">
-								<img id="homme" src="img/homme.svg"  width="32px" alt="Homme" title="Homme" onclick="setGenre('homme')" style="margin-top: 5px;">
+							<div id="desc-genre" class="col-4">
+								<!--img id="femme" src="img/femme.svg"  width="32px" alt="Femme" title="Femme" onclick="setGenre('femme')" style="margin-top: 5px; margin-left: -28px;">
+								<img id="homme" src="img/homme.svg"  width="32px" alt="Homme" title="Homme" onclick="setGenre('homme')" style="margin-top: 5px"-->
+								<span id="genre" style="font-weight: bold; font-size: 18px; position: relative; top: 5px;">Homme</span>
 								<img id="imgPerso" class="card-img-top rounded-circle" src="img/pj.png" alt="Card image" style="width: 100px; height: 90px; position: relative; left: -20px; top:10px">
-
-								<!--input type="radio" id="girl" name="genre" value="f" style="margin-left: 15px; margin-top: 8px;" checked><label for="girl" style="margin-left: 5px">Fille</label><br>
-								<input type="radio" id="boy" name="genre" value="g" style="margin-left: 15px"><label for="boy" style="margin-left: 5px">Gars</label-->
 							</div>
 						</div>
 						<div class="card-body" style="position: relative; top: -20px;">
@@ -128,7 +126,7 @@
 			</div>
 			<div class="col-7">
 				<div id="aide" class="card" style="display: none; top: 35px;">
-					<h4 class="aide"> Bienvenue sur la page de création du PJ !</h4>
+					<h4 class="aide">Aide à la création du PJ</h4>
 					<p id="aide-texte" class="aide"></p>
 
 				</div>
@@ -150,7 +148,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row" style="position: relative; top: 40px;">
 			<div class="col-8"></div>
 			<div class="col-2">
 					<button type="button" class="btn btn-success btn-svg" style="margin-top: 10px;" onclick="savePJ()">Sauvegarder</button>
