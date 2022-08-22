@@ -213,10 +213,10 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         },
         "competences": {
             "naissance": [
-                ""
+                "ÉRUDITION", "MÉFIANCE", "RÉCUPÉRATION"
             ],
             "choix": [
-                ""
+                "Arnaque et carambouille", "Chevaucher", "Cuistot", "Fariboles", "Premiers soins", "Radin", "Runes bizarres"
             ]
         }
     },
@@ -248,10 +248,10 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         },
         "competences": {
             "naissance": [
-                ""
+                "ÉRUDITION","RÉCUPÉRATION","RUNES BIZARRES"
             ],
             "choix": [
-                ""
+                "Appel des renforts", "Chef de groupe", "Chevaucher", "Fariboles", "Langues des monstres", "Premiers soins"
             ]
         }
     },
@@ -283,10 +283,10 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         },
         "competences": {
             "naissance": [
-                ""
+                "ÉRUDITION","RÉCUPÉRATION","RUNES BIZARRES"
             ],
             "choix": [
-                ""
+                "Appel des renforts", "Chef de groupe", "Chevaucher", "Fariboles", "Langues des monstres", "Premiers soins"
             ]
         }
     },
@@ -318,10 +318,10 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         },
         "competences": {
             "naissance": [
-                ""
+                "CHEVAUCHER", "INTIMIDER", "RÉCUPÉRATION"
             ],
             "choix": [
-                ""
+                "Armes de bourrin", "Chercher des noises", "Érudition", "Fariboles", "Premiers soins"
             ]
         }
     },
@@ -353,7 +353,7 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         },
         "competences": {
             "naissance": [
-                ""
+                "DÉPLACEMENT SILENCIEUX", "DÉTECTION", "CHEVAUCHER", "NAGER", "PISTER"
             ],
             "choix": [
                 ""
