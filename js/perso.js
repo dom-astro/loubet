@@ -71,7 +71,7 @@ function setOrigine(choix) {
 }
 
 function setMetier(pjMetier) {
-    isEnabled = $("#metier-"+metier.id()).hasClass('card-enabled');
+    isEnabled = $("#metier-"+pjMetier.id()).hasClass('card-enabled');
     if (isEnabled) {
         /*$("#imgPerso").attr("src","img/"+origine+".png");
         $("#typePerso").html(origine);
@@ -150,6 +150,7 @@ function verifMetier() {
 
 function savePJ() {
     pj.nom = $("#nomPerso").val();
+    pj.genre = $("#genre").html();
     pj.origine = $("#origine").val();
     pj.metier = $("#metier").val();
     pj.description = $("#presentation").val();
@@ -168,11 +169,11 @@ function savePJ() {
     pj.xp=0;
     pj.niveau=1;
 
-    if($("#Homme").attr("src")=="img/homme-disabled.svg") {
+/*if($("#Homme").attr("src")=="img/homme-disabled.svg") {
         pj.genre="Homme";
     } else {
         pj.genre="Femme";
-    }
+    }*/
 
     localStorage.setItem("pj",JSON.stringify(pj));
     $("#nomPerso").prop("disabled",true);
@@ -213,7 +214,7 @@ function initPerso() {
     $("#xp").val(pj.xp);
     $("#niveau").val(pj.niveau);
 
-    setGenre(pj.genre);
+    setGenre(pj.genre.toLowerCase());
     //$("#nomPerso").prop("disabled",true);
     listeOrigine();
     verifOrigine();
@@ -222,6 +223,22 @@ function initPerso() {
     listeMetier();
     verifMetier();
     setCompetencesMetier(pj.metier);
+}
+
+function initGenre() {
+    $("#femme").remove();
+    $("#homme").remove();
+    $("#genre").remove();
+    $("#imgPerso").remove();
+
+    strImgFemme = "<img id='homme' src='img/homme.svg'  width='32px' alt='Homme' title='Homme' onclick='setGenre(\"homme\")' style='margin-top: 5px; margin-left: -28px;'></img>";
+    strImgHomme = "<img id='femme' src='img/femme.svg'  width='32px' alt='Femme' title='Femme' onclick='setGenre(\"femme\")' style='margin-top: 5px;margin-left: 5px;'></img>";
+    strGenre = "<span id='genre' style='font-weight: bold; font-size: 18px; position: relative; top: 5px;'></span>";
+    strImgPerso = "<img id='imgPerso' class='card-img-top rounded-circle' src='img/pj.png' alt='Card image' style='width: 100px; height: 90px; position: relative; left: -20px; top:10px'></img>";
+    $("#desc-genre").append(strImgFemme);
+    $("#desc-genre").append(strImgHomme);
+    $("#desc-genre").append(strGenre);
+    $("#desc-genre").append(strImgPerso);
 }
 
 function chargePJ() {
@@ -260,13 +277,15 @@ function nouveauPJ(){
     $("#charisme").val(7);
     $("#origine").val("");
     $("#metier").val("");
+    $("#presentation").val("");
 
     //listeOrigine();
     $("#origines").hide();
     //listeMetier();
     $("#metiers").hide();
-    $("#femme").attr("src","img/femme.svg");
-    $("#homme").attr("src","img/homme.svg");
+
+    // Genre
+    initGenre();
 
     $("#aide").show();
     aide("nom");
@@ -325,10 +344,11 @@ function setCompetencesOrigine(pjOrigine) {
     $("#c-origine>.row").empty();
     var origine = origines.find(i => i.nom===pjOrigine);
 
-    $("#presentation").val(origine.presentation);
+    $("#presentation").val(origine.description);
     origine.competences.naissance.forEach(function(currentCompetence) {
         var competence = competences.find(i => i.nom.toLowerCase()===currentCompetence.toLowerCase());
 
+        competence = (competence== undefined ? {nom: "none"} : competence);
         if(competence.nom.toLowerCase()==currentCompetence.toLowerCase()) {
             var nom=capitalizeFirstLetter(competence.nom);
             strCompetence = 
@@ -349,19 +369,19 @@ function listeMetier() {
     if (pjMetier == "") {
         $("#metiers").append("<h3>Metiers</h3>");
         metiers.forEach(function(metier) {
-            strTitle  = metier.courage.min == 0 ? "" : "courage >= "+metier.courage.min+ " et ";
-            strTitle += metier.courage.max == 99 ? "" : "courage <= "+metier.courage.max+ " et ";
-            strTitle += metier.intelligence.min == 0 ? "" : "intelligence >= "+metier.intelligence.min+ " et ";
-            strTitle += metier.intelligence.max == 99 ? "" : "intelligence <= "+metier.intelligence.max+ " et ";
-            strTitle += metier.charisme.min == 0 ? "" : "charisme >= "+metier.charisme.min+ " et ";
-            strTitle += metier.charisme.max == 99 ? "" : "charisme <= "+metier.charisme.max+ " et ";
-            strTitle += metier.adresse.min == 0 ? "" : "adresse >= "+metier.adresse.min+ " et ";
-            strTitle += metier.adresse.max == 99 ? "" : "adresse <= "+metier.adresse.max+ " et ";
-            strTitle += metier.force.min == 0 ? "" : "force  >= "+metier.force.min+ " et ";
-            strTitle += metier.force.max == 99 ? "" : "force <= "+metier.force.max+ " et ";
-            strTitle += ".";
+            strConditions  = metier.courage.min == 0 ? "" : "courage >= "+metier.courage.min+ " et ";
+            strConditions += metier.courage.max == 99 ? "" : "courage <= "+metier.courage.max+ " et ";
+            strConditions += metier.intelligence.min == 0 ? "" : "intelligence >= "+metier.intelligence.min+ " et ";
+            strConditions += metier.intelligence.max == 99 ? "" : "intelligence <= "+metier.intelligence.max+ " et ";
+            strConditions += metier.charisme.min == 0 ? "" : "charisme >= "+metier.charisme.min+ " et ";
+            strConditions += metier.charisme.max == 99 ? "" : "charisme <= "+metier.charisme.max+ " et ";
+            strConditions += metier.adresse.min == 0 ? "" : "adresse >= "+metier.adresse.min+ " et ";
+            strConditions += metier.adresse.max == 99 ? "" : "adresse <= "+metier.adresse.max+ " et ";
+            strConditions += metier.force.min == 0 ? "" : "force  >= "+metier.force.min+ " et ";
+            strConditions += metier.force.max == 99 ? "" : "force <= "+metier.force.max+ " et ";
+            strConditions += ".";
 
-            strTitle = (strTitle.length==1 ? "" : strTitle.replace(" et .","."));
+            strConditions = (strConditions.length==1 ? "" : strConditions.replace(" et .","."));
             strMetier =
             "<div class='col-4' style='margin-top: -8px;'> \
                 <div id='metier-"+metier.nom.id()+"' class='card card-disabled' title='"+metier.nom+"'> \
@@ -386,6 +406,7 @@ function listeMetier() {
             </div> \
         </div>";
         $("#metiers").append(strMetier);
+        setCompetencesMetier(pjMetier);
     }
 }
 
@@ -412,7 +433,7 @@ function setCompetencesMetier(pjMetier) {
 
 function enableGenre(genre, isEnabled) {
     $("#"+genre).attr("src","img/"+genre+"-disabled.svg");
-    //$("#"+genre).prop("disbaled", true);
+    
     if(isEnabled) {
         $("#"+genre).attr("src","img/"+genre+".svg");
         //$("#"+genre).prop("disbaled", false);
@@ -421,11 +442,16 @@ function enableGenre(genre, isEnabled) {
 }
 
 function setGenre(genre) {
-    enableGenre("homme",false);
-    enableGenre("femme",false);
-    enableGenre(genre,true);
-    
+    if(genre=="homme") {
+        $("#homme").attr("src","img/homme.svg");
+        $("#femme").attr("src","img/femme-disabled.svg");
+    } else {
+        $("#homme").attr("src","img/homme-disabled.svg");
+        $("#femme").attr("src","img/femme.svg");
+    }
+    pj.genre=genre;
     $('#btn-valider').prop("disabled",false);
+    $("#genre").html(genre.capitalize());
 }
 
 function descOrigine(choixOrigine) {
@@ -525,7 +551,7 @@ function aide(etape) {
             $("#aide-texte").append("<p class='aide'><span class='bold'>Septième étape:</span> choisissez votre métier.</p>");
             $("#metiers").show();
             listeMetier();
-            verifierMetier();
+            verifMetier();
             break;
     }
     $("#aide-texte").append("<button id='btn-valider' type='button' class='btn btn-success' style='float: right; margin-right: 20px;' \
@@ -543,10 +569,13 @@ function validation(etape) {
             }
             break;
         case "genre":
-            $("#femme").prop("disabled",true);
-            $("#homme").prop("disabled",true);
-            $("#aide-texte").append("<p class='aide'><span class='bold'>Deuxième étape:</span> choisissez le genre de \
-            votre personnage.</p>");
+            $("#femme").remove();
+            $("#homme").remove();
+            strImg = "<img id='"+pj.genre+"' src='img/"+pj.genre+".svg'  width='32px' alt='"+pj.genre.capitalize()+"' \
+            title='"+pj.genre.capitalize()+"' \
+            style='margin-top: 5px; margin-left: -28px;'></img>";
+            $("#genre").parent().prepend(strImg);
+       
             aide("caracteristique");
             break;
         case "caracteristique":

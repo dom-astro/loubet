@@ -1,7 +1,6 @@
 var menus = [
     { nom: "Personnage",
-      liste: [ { nom: "Création", page: "perso.html" },
-               { nom: "Chargement", page: "#" },
+      liste: [ { nom: "Création / chargement", page: "perso.html" },
                { nom: "Prêt à l'emploi", page: "#" }
              ]
     } ,
@@ -13,7 +12,9 @@ var menus = [
              ]
     } ,
     { nom: "Scénario",
-      liste: [ { nom: "Loubet", page: "loubet.html" } ]
+      liste: [ { nom: "La tour de Loubet", page: "loubet.html" },
+               { nom: "La foire de Ravsgalat", page: "ravsgalat.html"}
+             ]
     }
 ];  
 
