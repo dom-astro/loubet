@@ -4,11 +4,10 @@ var menus = [
                { nom: "Prêt à l'emploi", page: "#" }
              ]
     } ,
-    { nom: "Caisse des Donjons",
-      liste: [ { nom: "Armes", page: "perso.html" },
-               { nom: "Armures", page: "#" },
-               { nom: "Armures", page: "#" },
-               { nom: "Divers", page: "#"}
+    { nom: "Donjon facile",
+      liste: [ { nom: "Armes", page: "armes.html" },
+               { nom: "Armures", page: "armures.html" },
+               { nom: "Divers", page: "divers.html"}
              ]
     } ,
     { nom: "Scénario",
