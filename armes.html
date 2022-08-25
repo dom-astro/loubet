@@ -3,6 +3,7 @@
 	<!--meta http-equiv="Content-Type" content="text/html; charset=windows-752"-->
 	<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
 	<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" href="css/bootstrap-icons.css">
 	<link rel="stylesheet" type="text/css" href="css/donjon.css">
 	<title>Naheulbeuk - Création PJ</title>
 
@@ -170,68 +171,51 @@
 				</div>
 			</div>
 			<div class="col-7">
-				<div id="aide" class="card" style="display: none; top: 35px;">
-					<h4 class="aide">Aide à la création du PJ</h4>
+				<h4 class="aide">Armes</h4>
+				<div id="armes" class="card">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+						  		<th>Armes</th>
+						  		<th>Prix (PO)</th>
+						  		<th>Dégâts (D6)</th>
+						  		<th>Rupture</th>
+						  		<th></th>
+							</tr>
+					  	</thead>
+						 <tbody id="t-armes">
+
+						 </tbody>
+					</table>
+
+				</div>
+				<h4 class="aide">Armures</h4>
+				<div id="armures" class="card">
 					<p id="aide-texte" class="aide"></p>
 
 				</div>
-				<div id="origines" class="row" style="position :relative; top: 35px;">
-					<h3 style="margin-left: 5px;">Origines</h3>
+				<h4 class="aide">Divers</h4>
+				<div id="divers" class="card">
+					<p id="aide-texte" class="aide"></p>
+
 				</div>
-				<br>
-				<div id="metiers" class="row"  style="position :relative; top: 35px;">
-					<h3 style="margin-left: 5px;">Métier</h3>
-				</div>
-				<div class="row">
-					<!--div id="c-origine" class="card" style="width: 100%; height: 100px; margin-left: 16px;">
-						<h4 style="margin-top: 5px; margin-left: 10px;">Compétences d'origine</h4>
-						<div class="row"></div>
-					</div-->
-					<!--div id="c-metier" class="card" style="width: 100%; height: 100px; margin-left: 16px;">
-						<h4 style="margin: 5px 0 0 10px">Compétences métiers</h4>
-					</div-->
-				</div>
-			</div>
-		</div>
-		<div class="row" style="position: relative; top: 40px;">
-			<div class="col-8"></div>
-			<div class="col-2">
-				<button type="button" class="btn btn-success btn-svg" style="margin-top: 10px;" onclick="savePJ()">Sauvegarder</button>
-			</div>
-			<div class="col-2">
-				<button type="button" class="btn btn-primary btn-export" style="margin-top: 10px;" onclick="exportPJ()">Exporter</button>
-			</div>
-			<div class="col-8"></div>
-			<div class="col-2">
-				<!-- input type="file" class="form-control" accept=".json" id="jsFile" style="margin-top: 10px; background: #FFC107;" / -->
-				<button type="button" class="btn btn-warning btn-export" style="margin-top: 10px;" onclick="chargePJ()">Charger</button>
-				<input type="file" style="display: none;" id="jsonFile" accept=".json" name="file"/></div>
-			<div class="col-2">
-				<button type="button" class="btn btn-danger btn-export" style="margin-top: 10px;" onclick="nouveauPJ()">Nouveau</button>
 			</div>
 		</div>
 
 	</div>
 </div>
 
-<div class="modal" id="choix-modal" heigth="66%">
+<div class="modal" id="action-modal" heigth="66%">
 	<div class="modal-dialog modal-dialog-scrollable">
 	  <div class="modal-content">
 		<!-- Modal Header -->
 		<div class="modal-header">
-		  <h4 class="modal-title">Modal Heading</h4>
+		  <h4 class="modal-title">Action</h4>
 		  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 		</div>
   
 		<!-- Modal body -->
 		<div class="modal-body">
-			<img id="modal-img" class="card-img-top rounded-circle" src="img/pj.png" alt="Card image" style="width: 100px; height: 120px; text-align: center; margin-top: 0px; margin-left: 5px; margin-right: 10px;">
-			<p id="modal-description" style="margin-left: 5px;"></p>
-			<div>
-				<h5>Compétences</h5>
-				<hr>
-				<p id="modal-competences" style="margin-left: 5px;"></p>
-			</div>
 		</div>
   
 		<!-- Modal footer -->
@@ -246,12 +230,13 @@
 <script type="text/javascript" src="json/competences.json"></script>
 <script type="text/javascript" src="json/origines.json"></script>
 <script type="text/javascript" src="json/metiers.json"></script>
-<script type="text/javascript" src="json/pj.json"></script>
+<script type="text/javascript" src="json/armres.json"></script>
 <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript" src="js/donjon.js"></script>
 <script type="text/javascript" src="js/perso.js"></script>
+<script type="text/javascript" src="js/armes.js"></script>
 <script>
 	 setMenu("Personnage");
 	 $(document).ready(function() {
@@ -260,6 +245,7 @@
 	});
 
 	initPerso();
+	listeArmes();
 </script>
 </body>
 </html>
