@@ -1,18 +1,18 @@
 var menus = [
     { nom: "Personnage",
-      liste: [ { nom: "Création / chargement", page: "perso.html" },
-               { nom: "Prêt à l'emploi", page: "#" }
+      liste: [ { nom: "Création / chargement", icon: "ra ra-player ra-lg", page: "perso.html" },
+               { nom: "Prêt à l'emploi", icon: "ra ra-aura ra-lg", page: "#" }
              ]
     } ,
     { nom: "Donjon facile",
-      liste: [ { nom: "Armes", page: "armes.html" },
-               { nom: "Armures", page: "armures.html" },
-               { nom: "Divers", page: "divers.html"}
+      liste: [ { nom: "Armes", icon: "ra ra-sword ra-lg", page: "armes.html" },
+               { nom: "Armures", icon: "ra ra-helmet ra-lg", page: "armures.html" },
+               { nom: "Divers", icon: "ra ra-meat ra-lg", page: "divers.html"}
              ]
     } ,
     { nom: "Scénario",
-      liste: [ { nom: "La tour de Loubet", page: "loubet.html" },
-               { nom: "La foire de Ravsgalat", page: "ravsgalat.html"}
+      liste: [ { nom: "La tour de Loubet", icon: "ra ra-tower ra-lg", page: "loubet.html" },
+               { nom: "La foire de Ravsgalat", icon: "ra ra-wooden-sign ra-lg", page: "ravsgalat.html"}
              ]
     }
 ];  
@@ -28,10 +28,10 @@ function setMenu(choix) {
 
     menus.forEach(function(menu) {
         html += "<li class='nav-item dropdown'> \
-                   <a class='nav-link dropdown-toggle"+(choix==menu.nom ? " active" : "")+"' href='#' role='button' data-bs-toggle='dropdown'>"+menu.nom+"</a> \
+                   <a class='nav-link dropdown-toggle"+(choix==menu.nom ? " active" : "")+" ' href='#' role='button' data-bs-toggle='dropdown'>"+menu.nom+"</a> \
                     <ul class='dropdown-menu'>";
         menu.liste.forEach(function(sousMenu) {
-            html += "<li><a class='dropdown-item' href='"+sousMenu.page+"'>"+sousMenu.nom+"</a></li>";
+            html += "<li><a class='dropdown-item "+sousMenu.icon+"' href='"+sousMenu.page+"'> "+sousMenu.nom+"</a></li>";
         });
         html += "  </ul> \
                  </li>";

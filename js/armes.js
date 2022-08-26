@@ -1,15 +1,9 @@
 function listeArmes() {
   strButton=
   "<div class='dropdown'> \
-    <button type='button' class='btn btn-success dropdown-toggle' data-bs-toggle='dropdown'> \
-      Action \
+    <button type='button' class='btn btn-success btn-sm' onclick='voir(\"objet\")' data-bs-toggle='modal' data-bs-target='#action-modal'> \
+      Voir \
     </button> \
-    <ul class='dropdown-menu'> \
-      <li><h5 class='dropdown-header' style='color: silver; border-bottom: 1px solid silver;'>En toute honnêteté</h5></li>\
-      <li><a class='dropdown-item' href='#' onclick='achat(\"objet\")' data-bs-toggle='modal' data-bs-target='#action-modal'>Acheter</a></li> \
-      <li><a class='dropdown-item' href='#'>Marchander</a></li> \
-      <li><a class='dropdown-item' href='#'>Voler</a></li> \
-    </ul> \
   </div>";
   strButton2 = "<button type='button' class='btn btn-success'><img src='img/eye-solid.svg' style='width: 16px;'></img></span></button>";
   //strButton2 = "<img src='img/eye-solid.svg'></img>";
@@ -19,20 +13,57 @@ function listeArmes() {
     strLigne +="<td>"+arme.prix+"</td>";
     strLigne +="<td>"+arme.degat+"</td>";
     strLigne +="<td>"+arme.rupture+"</td>";
-    strLigne +="<td>"+strButton2+"</td>";
+    strLigne +="<td>"+strButton.replace("objet",arme.nom)+"</td>";
     strLigne += "</tr>";
     $("#t-armes").append(strLigne);    
   });
 
 }
 
-function achat(objet) {
-  $(".modal-title").html("Achat "+objet);
+function voir(nomArme) {
+  $(".modal-title").html(nomArme);
+
+  var arme = armes.find(arme => arme.nom===nomArme);
+
+  $("#bonus").empty();
+  $("#malus").empty();
+  setBonusMalus(arme,"attaque");
+  setBonusMalus(arme,"parade");
+  setBonusMalus(arme,"adresse");
+  setBonusMalus(arme,"courage");
+  setBonusMalus(arme,"charisme");
+  setBonusMalus(arme,"force");
+  setBonusMalus(arme,"intelligence");
 
   $(".modal-footer").empty();
-  $(".modal-footer").append("<button type='button' class='btn btn-success' data-bs-dismiss='modal' onclick='Acheter(\""+objet+"\")'>Acheter</button>");
-  $(".modal-footer").append("<button type='button' class='btn btn-warning' data-bs-dismiss='modal'>Marchander</button>");
-  $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Voler</button>");
+  $(".modal-footer").append("<button type='button' class='btn btn-success' data-bs-dismiss='modal' onclick='acheter(\""+nomArme+"\")'>Acheter</button>");
+  $(".modal-footer").append("<button type='button' class='btn btn-warning' data-bs-dismiss='modal' onclick='marchander(\""+nomArme+"\")'>Marchander</button>");
+  $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal' onclick='voler(\""+nomArme+"\")'>Voler</button>");
 
 }
-//<button type='button' class='btn btn-info btn-origine' onclick='descOrigine(\""+origine.nom+"\")' data-bs-toggle='modal' data-bs-target='#choix-modal'>Voir</button>
+
+function setBonusMalus(arme,caract) {
+  if (arme[caract]>0) {
+    $("#bonus").append("<li class='list-group-item'>"+caract.capitalize()+": "+arme[caract]+"</li>");
+  }
+  if (arme[caract]<0) {
+    $("#malus").append("<li class='list-group-item'>"+caract.capitalize()+": "+arme[caract]+"</li>");
+  }
+}
+
+function acheter(nomArme) {
+  var arme = armes.find(arme => arme.nom===nomArme);
+
+  var fortune=$("#fortune").val();
+  fortune -= arme.prix;
+  $("#fortune").val(fortune);
+  if(!pj.hasOwnProperty(armes)) {
+    pj.armes = [];
+  }
+  pj.armes.push(nomArme);
+  console.info(pj);
+}
+
+function tirageD20(caract) {
+
+}

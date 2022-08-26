@@ -456,8 +456,10 @@ function setGenre(genre) {
 
 function descOrigine(choixOrigine) {
 
-    origines.forEach(function(origine) {
-        if (choixOrigine==origine.nom) {
+    var origine = origines.find(i => i.nom===choixOrigine);
+
+//    origines.forEach(function(origine) {
+//        if (choixOrigine==origine.nom) {
             $(".modal-title").html(origine.nom+": "+origine.titre.toLowerCase());
             $("#modal-img").attr("src","img/"+origine.nom+".png");
             $("#modal-description").html(origine.description);
@@ -483,14 +485,15 @@ function descOrigine(choixOrigine) {
             $(".modal-footer").empty();
             $(".modal-footer").append("<button type='button' class='btn btn-success' data-bs-dismiss='modal' onclick='setOrigine(\""+choixOrigine+"\")'>Choisir</button>");
             $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Femer</button>");
-        }
-    });
+//        }
+//    });
 }
 
 function descMetier(choixMetier) {
+    var metier = metiers.find(i => i.nom===choixMetier);
 
-    metiers.forEach(function(metier) {
-        if (choixMetier==metier.nom) {
+//    metiers.forEach(function(metier) {
+//        if (choixMetier==metier.nom) {
             $(".modal-title").html(metier.nom);
             $("#modal-img").attr("src","img/"+metier.nom+".png");
             $("#modal-description").html(metier.description);
@@ -516,8 +519,8 @@ function descMetier(choixMetier) {
             $(".modal-footer").empty();
             $(".modal-footer").append("<button type='button' class='btn btn-success' data-bs-dismiss='modal' onclick='setMetier(\""+choixMetier+"\")'>Choisir</button>");
             $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Femer</button>");
-        }
-    });
+//        }
+//    });
 }
 
 function aide(etape) {
