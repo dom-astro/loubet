@@ -5,6 +5,7 @@
 	<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
 	<link rel="stylesheet" href="css/bootstrap-icons.css">
 	<link rel="stylesheet" type="text/css" href="css/donjon.css">
+	<link rel="stylesheet" type="text/css" href="css/rpg-awesome.min.css">
 	<title>Naheulbeuk - Création PJ</title>
 
 	<meta name="author" content="Pen of Chaos">
@@ -25,9 +26,8 @@
 <span class="wip">Website in progress</span><img class="zombie" src="img/wip.png" width="100px" alt="Websit in progress" title="Websit in progress" border="0">
 <br>
 <br>
-<div class="container">
-	<!-- img src="img/creation_pj.png"  style="height: 200px;" class="rounded"></img -->
-	<div class="texte">
+<div class="container-fluid">
+	<div class="">
 		<div class="row">
 			<div class="col-5">
 				<h3 title="Personnage joueur">Personnage</h3>
@@ -60,35 +60,35 @@
 							<div class="input-group">
 								<span class="caract-label" title="Détermine qui frappe le premier dans un combat">Courage</span>
 								<input id="courage" type="number" class="caract-valeur" value="7" disabled>
-								<button class="btn btn-warning caract-btn" onclick="caractD6('courage')" disabled>D6</button> 
+								<!--i class="ra ra-perspective-dice-six ra-lg dice" onclick="tirageD20('courage')"></i-->
 							</div>
 						</div>
 						<div class="col-5">
 							<div class="input-group">
 								<span class="caract-label" title="Apparence du héros, prestigieuse ou non...">Charisme</span>
 								<input id="charisme" type="number" class="caract-valeur" value="7" disabled>
-								<button class="btn btn-warning caract-btn" onclick="caractD6('charisme')" disabled>D6</button> 
+								<!--i class="ra ra-perspective-dice-six ra-lg dice" onclick="tirageD20('charisme')"></i-->
 							</div>
 						</div>
 						<div class="col-5">
 							<div class="input-group">
 								<span class="caract-label" title="Permet notament de défoncer une porte">Force</span>
 								<input id="force" type="number" class="caract-valeur" value="7" disabled>
-								<button class="btn btn-warning caract-btn" onclick="caractD6('force')" disabled>D6</button> 
+								<!--i class="ra ra-perspective-dice-six ra-lg dice" onclick="tirageD20('force')"></i-->
 							</div>
 						</div>
 						<div class="col-5">
 							<div class="input-group">
 								<span class="caract-label" title="Trouver son chemin dans un labyrinthe, entre autre...">Intelligence</span>
 								<input id="intelligence" type="number" class="caract-valeur" value="7" disabled>
-								<button class="btn btn-warning caract-btn" onclick="caractD6('intelligence')" disabled>D6</button> 
+								<!--i class="ra ra-perspective-dice-six ra-lg dice" onclick="tirageD20('intelligence')"></i-->
 							</div>
 						</div>
 						<div class="col-5">
 							<div class="input-group">
 								<span class="caract-label" title="Ne sert pas qu'au bière pong">Adresse</span>
 								<input id="adresse" type="number" class="caract-valeur" value="7" disabled>
-								<button class="btn btn-warning caract-btn" onclick="caractD6('adresse')" disabled>D6</button> 
+								<!--i class="ra ra-perspective-dice-six ra-lg dice" onclick="tirageD20('adresse')"></i-->
 							</div>
 						</div>
 						<div class="col-5"></div>
@@ -96,14 +96,15 @@
 							<div class="input-group">
 								<span class="caract-label" title="Avec des si, on ne serait pas mort. Marche aussi avec un point du destin!">Point destin</span>
 								<input id="destin" type="number" class="caract-valeur" value="0" disabled>
-								<button class="btn btn-warning caract-btn" onclick="destinD4()" disabled>D4</button> 
+								<!--button class="btn btn-warning caract-btn" onclick="destin()" disabled>Use</button--> 
 							</div>
 						</div>
 						<div class="col-5">
 							<div class="input-group">
-								<span class="caract-label" title="Pièces d'or">Fortune</span>
+								<span class="caract-label" title="Elle n'est pas belle vie avec toutes ces pièces d'or?">Fortune</span>
 								<input id="fortune" type="number" class="caract-valeur" style="width: 48px;" value="0" disabled>
-								<button class="btn btn-warning caract-btn" onclick="fortuneD6()" disabled>D6</button> 
+								<span class="" style="width: 100%; position: relative; left: 5px; top: 5px;" >Pièces d'or</span>
+								<!--button class="btn btn-warning caract-btn" onclick="fortuneD6()" disabled>D20</button--> 
 							</div>
 						</div>
 					</div>
@@ -205,7 +206,7 @@
 	</div>
 </div>
 
-<div class="modal" id="action-modal" heigth="66%">
+<div class="modal fade" id="action-modal" heigth="66%">
 	<div class="modal-dialog modal-dialog-scrollable">
 	  <div class="modal-content">
 		<!-- Modal Header -->
@@ -216,6 +217,16 @@
   
 		<!-- Modal body -->
 		<div class="modal-body">
+			<div class="row">
+				<div class="col-3">
+					<h5>Bonus</h5>
+					<ul id="bonus" class="list-group"></ul>
+				</div>
+				<div class="col-3">
+					<h5>Malus</h5>
+					<ul id="malus" class="list-group"></ul>
+				</div>
+			</div>
 		</div>
   
 		<!-- Modal footer -->
@@ -230,7 +241,7 @@
 <script type="text/javascript" src="json/competences.json"></script>
 <script type="text/javascript" src="json/origines.json"></script>
 <script type="text/javascript" src="json/metiers.json"></script>
-<script type="text/javascript" src="json/armres.json"></script>
+<script type="text/javascript" src="json/armes.json"></script>
 <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
