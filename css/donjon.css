@@ -279,3 +279,10 @@ hr {
 svg {
 	fill: white;
 }
+
+.dice {
+	position: relative;
+	top: 12px;
+	left: 5px; 
+	color: goldenrod;
+}
