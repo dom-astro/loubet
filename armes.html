@@ -3,7 +3,6 @@
 	<!--meta http-equiv="Content-Type" content="text/html; charset=windows-752"-->
 	<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
 	<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
-	<link rel="stylesheet" href="css/bootstrap-icons.css">
 	<link rel="stylesheet" type="text/css" href="css/donjon.css">
 	<link rel="stylesheet" type="text/css" href="css/rpg-awesome.min.css">
 	<title>Naheulbeuk - Création PJ</title>
@@ -60,7 +59,7 @@
 							<div class="input-group">
 								<span class="caract-label" title="Détermine qui frappe le premier dans un combat">Courage</span>
 								<input id="courage" type="number" class="caract-valeur" value="7" disabled>
-								<!--i class="ra ra-perspective-dice-six ra-lg dice" onclick="tirageD20('courage')"></i-->
+								<!--li class="ra ra-perspective-dice-six ra-lg dice" onclick="tirageD20('courage')"></i-->
 							</div>
 						</div>
 						<div class="col-5">
@@ -211,7 +210,7 @@
 	  <div class="modal-content">
 		<!-- Modal Header -->
 		<div class="modal-header">
-		  <h4 class="modal-title">Action</h4>
+		  <h4 class="modal-title"></h4>
 		  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 		</div>
   
@@ -219,12 +218,26 @@
 		<div class="modal-body">
 			<div class="row">
 				<div class="col-3">
-					<h5>Bonus</h5>
-					<ul id="bonus" class="list-group"></ul>
+					<p id="txt-marchand"></p>
+					<img src="img/df-marchand.jpg" class="rounded-circle img-thumbnail" style="width: 150px";>
 				</div>
-				<div class="col-3">
-					<h5>Malus</h5>
-					<ul id="malus" class="list-group"></ul>
+				<div class="col-9">
+					<h3 id="objet"></h3>
+					<br>
+					<div class="row">
+						<div class="col-4">
+							<h5>Caractéristiques</h5>
+							<ul id="caract" class="list-group"></ul>
+						</div>
+						<div class="col-4">
+							<h5>Bonus</h5>
+							<ul id="bonus" class="list-group"></ul>
+						</div>
+						<div class="col-4">
+							<h5>Malus</h5>
+							<ul id="malus" class="list-group"></ul>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -237,6 +250,29 @@
 	</div>
 </div>
 
+<div class="modal fade" id="result-modal" heigth="50%">
+	<div class="modal-dialog modal-dialog-scrollable">
+	  <div class="modal-content">
+		<!-- Modal Header -->
+		<div class="modal-header">
+		  <h4 class="modal-title"></h4>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+		</div>
+  
+		<!-- Modal body -->
+		<div class="modal-body">
+			<img src="img/df-marchand.jpg" class="rounded-circle img-thumbnail" style="width: 150px";>
+			<span id="txt-result" style="position: relative; top: 10px;"></span>
+		</div>
+  
+		<!-- Modal footer -->
+		<div class="modal-footer">
+			<button type='button' class='btn btn-outline-danger' data-bs-dismiss='modal'>Fermer</button>;
+		</div>
+  
+	  </div>
+	</div>
+</div>
 
 <script type="text/javascript" src="json/competences.json"></script>
 <script type="text/javascript" src="json/origines.json"></script>

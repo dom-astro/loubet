@@ -1,13 +1,16 @@
 String.prototype.id = function () {
     var str = this.valueOf();
-
     return str.replace(' ','-').toLowerCase();
 };
 
 String.prototype.capitalize = function () {
     var str = this.valueOf();
-
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
+
+String.prototype.replaceAll = function(find, replace) {
+    var str = this.valueOf();
+    return str.replace(new RegExp(find.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), replace);
 }
 
 var pj = {};
