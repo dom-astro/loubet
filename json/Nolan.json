@@ -1,1 +1,23 @@
-{"nom":"Nolan","origine":"Barbare","metier":"Guerrier","description":"Je suis un Barbare.\n\nRien à voir avec les paysans. Je suis né dans les grandes plaines, là où on chasse les bêtes poilues à la lance.\nLe soir, on racontait des histoires de baston au coin du feu. Alors moi aussi, je voulais partir frapper des gens à l'aventure.\nJ'évite les trucs compliqués dans la vie, je n'aime pas trop la magie. Je n'aime pas grand-chose en fait, à part le vent dans mes cheveux, frapper des gens, essayer des nouvelles armes et m'entraîner.\nJe ne porte jamais de grosse armure, parce que c'est un truc pour les lâches, et ça m'empêche de bouger.\nEt sinon je ne sais pas lire, mais c'est pas grave parce que les livres parlent de trucs sans intérêt.\nDes fois, je parle à un dieu, il s'appelle Crôm. Il aime donner des baffes.","courage":"13","charisme":"13","intelligence":"13","force":"13","adresse":"8","ev":"35","ea":"0","attaque":"9","parade":"9","fortune":"70","destin":"3","genre":"Homme","xp":0,"niveau":1,"rm":"13"}
+{
+    "nom": "Nolan",
+    "origine": "Barbare",
+    "metier": "Guerrier",
+    "description": "Je suis un Barbare.\n\nRien à voir avec les paysans. Je suis né dans les grandes plaines, là où on chasse les bêtes poilues à la lance.\nLe soir, on racontait des histoires de baston au coin du feu. Alors moi aussi, je voulais partir frapper des gens à l'aventure.\nJ'évite les trucs compliqués dans la vie, je n'aime pas trop la magie. Je n'aime pas grand-chose en fait, à part le vent dans mes cheveux, frapper des gens, essayer des nouvelles armes et m'entraîner.\nJe ne porte jamais de grosse armure, parce que c'est un truc pour les lâches, et ça m'empêche de bouger.\nEt sinon je ne sais pas lire, mais c'est pas grave parce que les livres parlent de trucs sans intérêt.\nDes fois, je parle à un dieu, il s'appelle Crôm. Il aime donner des baffes.",
+    "courage": 13,
+    "charisme": 13,
+    "intelligence": 13,
+    "force": 13,
+    "adresse": 8,
+    "ev": 35,
+    "ea": "0",
+    "attaque": 9,
+    "parade": 9,
+    "fortune": 120,
+    "destin": 3,
+    "genre": "Homme",
+    "xp": 0,
+    "niveau": 1,
+    "rm": 13,
+    "armes": [],
+    "competences": []
+}

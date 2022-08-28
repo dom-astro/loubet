@@ -160,7 +160,7 @@ function savePJ() {
     pj.courage = $("#courage").val();
     pj.charisme = $("#charisme").val();
     pj.intelligence = $("#intelligence").val();
-    pj.force = $("#force").val();
+    pj.force = +$("#force").val();
     pj.adresse = $("#adresse").val();
     pj.ev = $("#ev").val();
     pj.ea = $("#ea").val();
@@ -172,11 +172,16 @@ function savePJ() {
     pj.xp=0;
     pj.niveau=1;
 
-/*if($("#Homme").attr("src")=="img/homme-disabled.svg") {
-        pj.genre="Homme";
-    } else {
-        pj.genre="Femme";
-    }*/
+    // Compétences d'origine
+    var origine = origines.find(origine => origine.nom===pj.origine);
+    pj.competences=origine.competences.naissance;
+
+    if (pj.metier!="") {
+        var metier = metiers.find(metier => metier.nom===pj.metier);
+        metier.competences.naissance.forEach(function(competence) {
+            pj.competences.push(competence.toLowerCase());
+        })
+    }
 
     localStorage.setItem("pj",JSON.stringify(pj));
     $("#nomPerso").prop("disabled",true);
@@ -540,12 +545,19 @@ function aide(etape) {
         case "caracteristique":
             $("#aide-texte").append("<p class='aide'><span class='bold'>Troisième étape:</span> obtenez vos caractéristiques \
             principales en tirant un d6.</p>");
+            $("#adresse").next().prop("disabled", false);
+            $("#charisme").next().prop("disabled", false);
+            $("#courage").next().prop("disabled", false);
+            $("#force").next().prop("disabled", false);
+            $("#intelligence").next().prop("disabled", false);
             break;
         case "destin":
             $("#aide-texte").append("<p class='aide'><span class='bold'>Quatrième étape:</span> obtenez vos points du destin.</p>");
+            $("#destin").next().prop("disabled", false);
             break;
         case "fortune":
             $("#aide-texte").append("<p class='aide'><span class='bold'>Cinquième étape:</span> héritez de votre fortune.</p>");
+            $("#fortune").next().prop("disabled", false);
             break;
         case "origine":
             $("#aide-texte").append("<p class='aide'><span class='bold'>Sixième étape:</span> choisissez votre origine.</p>");

@@ -86,7 +86,7 @@ var armes = [
     {
         "type": "Lames 1 main",
         "nom": "Sabre 1 main perrave",
-        "icon": "ra ra-crossed-sabers",
+        "icon": "ra ra-crossed-sabres",
         "prix": 50,
         "degat": "1D+3",
         "rupture": "1-4",
@@ -128,7 +128,7 @@ var armes = [
     {
         "type": "Lames 1 main",
         "nom": "Rapière 1 main correcte",
-        "icon": "ra ra-crossed-sabers",
+        "icon": "ra ra-crossed-sabres",
         "prix": 100,
         "degat": "1D+3",
         "rupture": "1-3",
@@ -149,7 +149,7 @@ var armes = [
     {
         "type": "Lames 1 main",
         "nom": "Sabre 1 main correcte",
-        "icon": "ra ra-crossed-sabers",
+        "icon": "ra ra-crossed-sabres",
         "prix": 100,
         "degat": "1D+3",
         "rupture": "1-3",
@@ -191,7 +191,7 @@ var armes = [
     {
         "type": "Lames 1 main",
         "nom": "Rapière 1 main bonne qualité",
-        "icon": "ra ra-crossed-sabers",
+        "icon": "ra ra-crossed-sabres",
         "prix": 200,
         "degat": "1D+4",
         "rupture": "1-3",
@@ -212,7 +212,7 @@ var armes = [
     {
         "type": "Lames 1 main",
         "nom": "Sabre 1 main bonne qualité",
-        "icon": "ra ra-crossed-sabers",
+        "icon": "ra ra-crossed-sabres",
         "prix": 200,
         "degat": "1D+4",
         "rupture": "1-3",

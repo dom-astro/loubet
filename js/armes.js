@@ -1,7 +1,7 @@
 function listeArmes() {
   strButton=
   "<div class='dropdown'> \
-    <button type='button' class='btn btn-success dropdown-toggle' data-bs-toggle='dropdown'> Action </button> \
+    <button type='button' class='btn btn-primary dropdown-toggle' data-bs-toggle='dropdown'> Action </button> \
     <ul class='dropdown-menu'> \
     <li><button type='button' class='btn' onclick='acheter(\"objet\")' data-bs-toggle='modal' data-bs-target='#action-modal'>Acheter</button> \
     <li><button type='button' class='btn' onclick='marchander(\"objet\")' data-bs-toggle='modal' data-bs-target='#action-modal'>Marchander</button> \
@@ -47,15 +47,25 @@ function acheter(nomArme) {
   setBonusMalus(arme,"intelligence");
 
   $(".modal-footer").empty();
-  $(".modal-footer").append("<button type='button' class='btn btn-success' data-bs-dismiss='modal' onclick='resultAcheter(\""+arme.nom+"\")' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter</button>");
+  $(".modal-footer").append("<button type='button' class='btn btn-primary' data-bs-dismiss='modal' onclick='resultAcheter(\""+arme.nom+"\")' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter</button>");
   $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
 }
 
 function resultAcheter(nomArme) {
   var arme = armes.find(arme => arme.nom===nomArme);
+  var fortune=pj.fortune;
 
-  $(".modal-title").html("Achat effectué");
-  $("#txt-result").html(nomArme+" vient d'être acheté pour "+arme.prix+" pièces d'or.");
+  if (fortune>=arme.prix) {
+    $(".modal-title").html("Achat effectué");
+    $("#txt-result").html("<span style='font-weight: bold;'>"+nomArme+"</span> vient d'être acheté pour "+arme.prix+" pièces d'or.");
+    pj.fortune -= arme.prix;
+    pj.armes.push(nomArme);
+    $("#fortune").val(pj.fortune);
+    localStorage.setItem("pj",JSON.stringify(pj));
+  } else {
+    $(".modal-title").html("Achat non effectué");
+    $("#txt-result").html("<span style='font-weight: bold;'>"+nomArme+"</span> est beaucoup trop cher pour vous!");
+  }
 
   $(".modal-footer").empty();
   $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
@@ -83,8 +93,18 @@ function marchander(nomArme) {
   setBonusMalus(arme,"force");
   setBonusMalus(arme,"intelligence");
 
+  var radin=pj.competences.find(competence => competence==="radin");
+  var charisme=+pj.charisme;
+  if (radin !="") {
+    $("#txt-comptences").html("Vous posséder la compétence \"Radin\". Vous aves un bonus de +4 au marchandage!");
+    charisme += 4;
+  }
+  $("#txt-explication").html("Vous pouvez marchander en effectuant un jet de charisme.");
+
   $(".modal-footer").empty();
-  $(".modal-footer").append("<button type='button' class='btn btn-warning' data-bs-dismiss='modal' onclick='resultMarchander(\""+arme.nom+"\")'>Marchander</button>");
+  $(".modal-footer").append("<p>Vous pouvez marchander en effectuant un jet de charisme <= "+charisme+".<p>");
+  $(".modal-footer").append("<button type='button' class='btn btn-primary' data-bs-dismiss='modal' onclick='tirageD20("+charisme+")'>Marchander</button>");
+  $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
 }
 
 function voler(nomArme) {
@@ -135,13 +155,13 @@ function setBonusMalus(arme,caract) {
   console.info(pj);
 }*/
 
-function tirageD20(caract) {
+function tirageD20(seuil) {
   result=Math.ceil(Math.random()*20);
 
-  if(result<=pj[caract]) {
-    alert(result+" sur "+pj[caract]+" C'est tout bon!");
+  if(result<=seuil) {
+    alert(result+" sur "+seuil+" C'est tout bon!");
   } else {
-    alert(result+" sur "+pj[caract]+" Ca marche pas...");
+    alert(result+" sur "+seuil+" Ca marche pas...");
   }
 
 }
