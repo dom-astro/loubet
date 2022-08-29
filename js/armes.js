@@ -11,9 +11,18 @@ function listeArmes() {
   //data-bs-toggle='modal' data-bs-target='#action-modal'
   strButton2 = "<button type='button' class='btn btn-success'><img src='img/eye-solid.svg' style='width: 16px;'></img></span></button>";
   //strButton2 = "<img src='img/eye-solid.svg'></img>";
+  type="";
   armes.forEach(function(arme) {
-    strLigne="<tr>";
-    strLigne +="<td> <i class='"+arme.icon+"'> "+arme.nom+"</i></td>";
+    if (type != arme.type) {
+      type=arme.type;
+      strLigne=" \
+      <tr> \
+        <td colspan='5' style='background-color: burlywood;' onclick='$(\".c-"+arme.type.id().id()+"\").toggle()'><i class='"+arme.icon+"'><span style='font-weight: bold;'> "+arme.type+"</span></i></td> \
+      </tr>";
+      $("#t-armes").append(strLigne);    
+    }
+    strLigne="<tr class='c-"+arme.type.id().id()+"' style='display: none;'>";
+    strLigne +="<td>"+arme.nom+"</i></td>";
     strLigne +="<td>"+arme.prix+"</td>";
     strLigne +="<td>"+arme.degat+"</td>";
     strLigne +="<td>"+arme.rupture+"</td>";
@@ -21,18 +30,17 @@ function listeArmes() {
     strLigne += "</tr>";
     $("#t-armes").append(strLigne);    
   });
-
 }
 
 function acheter(nomArme) {
-  $(".modal-title").html("Acheter");
-  $("#objet").html(nomArme);
-  $("#txt-marchand").html("C'est une lame de bonne qualité. C'est un prix d'ami que je vous fait!");
-
   var arme = armes.find(arme => arme.nom===nomArme);
 
+  $(".modal-title").html("Acheter");
+  $("#objet").html("<i class='"+arme.icon+"'> "+nomArme+"<hr>");
+  $("#txt-marchand").html("C'est une lame de bonne qualité. C'est un prix d'ami que je vous fait!");
+
   $("#caract").empty();
-  $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Type:</span> "+arme.type+"</li>");
+  $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Dégâts:</span> "+arme.degat+"</li>");
   $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Prix:</span> "+arme.prix+" pièces d'or</li>");
   $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Rupture:</span> "+arme.rupture+"</li>");
 
@@ -47,22 +55,23 @@ function acheter(nomArme) {
   setBonusMalus(arme,"intelligence");
 
   $(".modal-footer").empty();
-  $(".modal-footer").append("<button type='button' class='btn btn-primary' data-bs-dismiss='modal' onclick='resultAcheter(\""+arme.nom+"\")' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter</button>");
+  $(".modal-footer").append("<button type='button' class='btn btn-primary' data-bs-dismiss='modal' onclick='resultAcheter(\""+arme.nom+"\",0)' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter</button>");
   $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
 }
 
-function resultAcheter(nomArme) {
+function resultAcheter(nomArme, prix) {
   var arme = armes.find(arme => arme.nom===nomArme);
   var fortune=pj.fortune;
 
-  if (fortune>=arme.prix) {
+  prix = (prix==0 ? arme.prix : prix);
+  if (fortune>=prix) {
     $(".modal-title").html("Achat effectué");
     $("#txt-result").html("<span style='font-weight: bold;'>"+nomArme+"</span> vient d'être acheté pour "+arme.prix+" pièces d'or.");
-    pj.fortune -= arme.prix;
+    pj.fortune -= prix;
     pj.armes.push(nomArme);
     $("#fortune").val(pj.fortune);
     localStorage.setItem("pj",JSON.stringify(pj));
-    $("#equipement").append("<li class='list-group-item'><span style='font-weight: bold;'>"+nomArme+"</span></li>");
+    $("#eq-armes").append("<li><span style='font-weight: bold;'>"+arme.nom+"</span> ("+arme.degat+")</li>");
   } else {
     $(".modal-title").html("Achat non effectué");
     $("#txt-result").html("<span style='font-weight: bold;'>"+nomArme+"</span> est beaucoup trop cher pour vous!");
@@ -73,14 +82,13 @@ function resultAcheter(nomArme) {
 }
 
 function marchander(nomArme) {
+  var arme = armes.find(arme => arme.nom===nomArme);
   $(".modal-title").html("Marchander");
-  $("#objet").html(nomArme);
+  $("#objet").html("<i class='"+arme.icon+"'> "+nomArme+"<hr>");
   $("#txt-marchand").html("Attention je n'aime pas les arnaques. Cela a tendance à faire monter les prix!");
 
-  var arme = armes.find(arme => arme.nom===nomArme);
-
   $("#caract").empty();
-  $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Type:</span> "+arme.type+"</li>");
+  $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Dégâts:</span> "+arme.degat+"</li>");
   $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Prix:</span> "+arme.prix+" pièces d'or</li>");
   $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Rupture:</span> "+arme.rupture+"</li>");
 
@@ -119,14 +127,14 @@ function resultMarchander(nomArme, vlCaract) {
   if(result==1) {
     $(".modal-title").html("Marchandage effectué");
     $("#txt-tirage").html("Réussite critique du marchandage ("+result+" sur "+vlCaract+").");
-    $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Maintenant que vous le dite, il y avait bien une erreur de prix!</p>");
+    $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Maintenant que vous le dite, il y avait bien une erreur sur le prix!</p>");
     $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Du coup je vous fait <span style='font-weight: bold;'>"+nomArme+"</span> à moitié prix, soit "+arme.prix/2+" pièces d'or.</p>");
-    $(".modal-footer").append("<button type='button' class='btn btn-success' data-bs-dismiss='modal' onclick='resultAcheter(\""+arme.nom+"\")' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter</button>");
+    $(".modal-footer").append("<button type='button' class='btn btn-success' data-bs-dismiss='modal' onclick='resultAcheter(\""+arme.nom+"\","+arme.prix/2+")' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter</button>");
   } else if(result<=vlCaract) {
     $(".modal-title").html("Marchandage effectué");
     $("#txt-tirage").html("Réussite du marchandage ("+result+" sur "+vlCaract+").");
     $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Bon c'est parce que c'est vous, je vous fait <span style='font-weight: bold;'>"+nomArme+"</span> pour "+arme.prix*0.8+" pièces d'or.</p>");
-    $(".modal-footer").append("<button type='button' class='btn btn-success' data-bs-dismiss='modal' onclick='resultAcheter(\""+arme.nom+"\")' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter</button>");
+    $(".modal-footer").append("<button type='button' class='btn btn-success' data-bs-dismiss='modal' onclick='resultAcheter(\""+arme.nom+"\","+arme.prix*0.8+")' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter</button>");
     /*pj.fortune -= arme.prix;
     pj.armes.push(nomArme);
     $("#fortune").val(pj.fortune);
@@ -139,9 +147,9 @@ function resultMarchander(nomArme, vlCaract) {
   } else {
     $(".modal-title").html("Marchandage raté");
     $("#txt-tirage").html("Echec du marchandage ("+result+" sur "+vlCaract+").");
-    $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>En fait je viens de me souvenir que <span style='font-weight: bold;'>"+nomArme+"</span> appertenait à Glud l'Ancien.</p>");
+    $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>En fait je viens de me souvenir que <span style='font-weight: bold;'>"+nomArme+"</span> appartenait à Glud l'Ancien.</p>");
     $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Du coup le prix augmente à "+arme.prix*1.2+" pièces d'or.</p>");
-    $(".modal-footer").append("<button type='button' class='btn btn-warning' data-bs-dismiss='modal' onclick='resultAcheter(\""+arme.nom+"\")' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter ?</button>");
+    $(".modal-footer").append("<button type='button' class='btn btn-warning' data-bs-dismiss='modal' onclick='resultAcheter(\""+arme.nom+"\","+arme.prix*1.2+")' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter ?</button>");
   }
 
 
@@ -149,14 +157,13 @@ function resultMarchander(nomArme, vlCaract) {
 }
 
 function voler(nomArme) {
+  var arme = armes.find(arme => arme.nom===nomArme);
   $(".modal-title").html("Voler");
-  $("#objet").html(nomArme);
+  $("#objet").html("<i class='"+arme.icon+"'> "+nomArme+"<hr>");
   $("#txt-marchand").html("Si l'envie vous prend de voler, j'ai un garde à l'entrée du magasin!");
 
-  var arme = armes.find(arme => arme.nom===nomArme);
-
   $("#caract").empty();
-  $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Type:</span> "+arme.type+"</li>");
+  $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Dégâts:</span> "+arme.degat+"</li>");
   $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Prix:</span> "+arme.prix+" pièces d'or</li>");
   $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Rupture:</span> "+arme.rupture+"</li>");
 
@@ -171,7 +178,8 @@ function voler(nomArme) {
   setBonusMalus(arme,"intelligence");
 
   $(".modal-footer").empty();
-  $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal' onclick='resultVoler()'>Voler</button>");
+  $(".modal-footer").append("<button type='button' class='btn btn-warning' data-bs-dismiss='modal' onclick='resultVoler()'>Voler</button>");
+  $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
 }
 
 function setBonusMalus(arme,caract) {

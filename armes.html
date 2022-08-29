@@ -26,187 +26,187 @@
 <br>
 <br>
 <div class="container-fluid">
-	<div class="">
-		<div class="row">
-			<div class="col-5">
-				<h3 title="Personnage joueur">Personnage</h3>
-				<form action="" class="was-validated">
-					<div class="card" style="width: 100%; height: 360px">
-						<div class="row">
-							<div class="col-8">
-								<input id="nomPerso" type="text" pattern=".{3,}" class="form-control" placeholder="Nom" title="3 lettres minimum" required style="margin-left: 10px; margin-top: 5px; width: 90%" onkeyup="verifNom()">
-								<input id="origine" type="text" class="form-control" placeholder="Origine du pj" title="Origine du pj" disabled            style="margin-left: 10px; margin-top: 5px; width: 90%">
-								<input id="metier" type="text" class="form-control" placeholder="Métier du pj" title="Métier du pj" disabled               style="margin-left: 10px; margin-top: 5px; width: 90%">
-								<!--div class="invalid-feedback" style="margin-left: 10px;">Veuillez choisir un nom.</div-->
-							</div>
-							<div id="desc-genre" class="col-4">
-								<!--img id="femme" src="img/femme.svg"  width="32px" alt="Femme" title="Femme" onclick="setGenre('femme')" style="margin-top: 5px; margin-left: -28px;">
-								<img id="homme" src="img/homme.svg"  width="32px" alt="Homme" title="Homme" onclick="setGenre('homme')" style="margin-top: 5px"-->
-								<span id="genre" style="font-weight: bold; font-size: 18px; position: relative; top: 5px;">Homme</span>
-								<img id="imgPerso" class="card-img-top rounded-circle" src="img/pj.png" alt="Card image" style="width: 100px; height: 90px; position: relative; left: -20px; top:10px">
-							</div>
-						</div>
-						<div class="card-body" style="position: relative; top: -20px;">
-							<p>Présentation</p>
-							<textarea  id="presentation" rows="6" cols="35" style="width: 100%;"></textarea>
-						</div>
-					</div>
-				</form>
-				<h4 style="top: 20px;">Caractéristiques</h4>
-				<div class="card" style="height: 150px;">
+	<div class="row">
+		<div class="col-5">
+			<h3 title="Personnage joueur">Personnage</h3>
+			<form action="" class="was-validated">
+				<div class="card" style="width: 100%; height: 360px">
 					<div class="row">
-							<div class="col-5">
-							<div class="input-group">
-								<span class="caract-label" title="Détermine qui frappe le premier dans un combat">Courage</span>
-								<input id="courage" type="number" class="caract-valeur" value="7" disabled>
-								<!--li class="ra ra-perspective-dice-six ra-lg dice" onclick="tirageD20('courage')"></i-->
-							</div>
+						<div class="col-8">
+							<input id="nomPerso" type="text" pattern=".{3,}" class="form-control" placeholder="Nom" title="3 lettres minimum" required style="margin-left: 10px; margin-top: 5px; width: 90%" onkeyup="verifNom()">
+							<input id="origine" type="text" class="form-control" placeholder="Origine du pj" title="Origine du pj" disabled            style="margin-left: 10px; margin-top: 5px; width: 90%">
+							<input id="metier" type="text" class="form-control" placeholder="Métier du pj" title="Métier du pj" disabled               style="margin-left: 10px; margin-top: 5px; width: 90%">
+							<!--div class="invalid-feedback" style="margin-left: 10px;">Veuillez choisir un nom.</div-->
 						</div>
-						<div class="col-5">
-							<div class="input-group">
-								<span class="caract-label" title="Apparence du héros, prestigieuse ou non...">Charisme</span>
-								<input id="charisme" type="number" class="caract-valeur" value="7" disabled>
-								<!--i class="ra ra-perspective-dice-six ra-lg dice" onclick="tirageD20('charisme')"></i-->
-							</div>
-						</div>
-						<div class="col-5">
-							<div class="input-group">
-								<span class="caract-label" title="Permet notament de défoncer une porte">Force</span>
-								<input id="force" type="number" class="caract-valeur" value="7" disabled>
-								<!--i class="ra ra-perspective-dice-six ra-lg dice" onclick="tirageD20('force')"></i-->
-							</div>
-						</div>
-						<div class="col-5">
-							<div class="input-group">
-								<span class="caract-label" title="Trouver son chemin dans un labyrinthe, entre autre...">Intelligence</span>
-								<input id="intelligence" type="number" class="caract-valeur" value="7" disabled>
-								<!--i class="ra ra-perspective-dice-six ra-lg dice" onclick="tirageD20('intelligence')"></i-->
-							</div>
-						</div>
-						<div class="col-5">
-							<div class="input-group">
-								<span class="caract-label" title="Ne sert pas qu'au bière pong">Adresse</span>
-								<input id="adresse" type="number" class="caract-valeur" value="7" disabled>
-								<!--i class="ra ra-perspective-dice-six ra-lg dice" onclick="tirageD20('adresse')"></i-->
-							</div>
-						</div>
-						<div class="col-5"></div>
-						<div class="col-5">
-							<div class="input-group">
-								<span class="caract-label" title="Avec des si, on ne serait pas mort. Marche aussi avec un point du destin!">Point destin</span>
-								<input id="destin" type="number" class="caract-valeur" value="0" disabled>
-								<!--button class="btn btn-warning caract-btn" onclick="destin()" disabled>Use</button--> 
-							</div>
-						</div>
-						<div class="col-5">
-							<div class="input-group">
-								<span class="caract-label" title="Elle n'est pas belle vie avec toutes ces pièces d'or?">Fortune</span>
-								<input id="fortune" type="number" class="caract-valeur" style="width: 48px;" value="0" disabled>
-								<span class="" style="width: 100%; position: relative; left: 5px; top: 5px;" >Pièces d'or</span>
-								<!--button class="btn btn-warning caract-btn" onclick="fortuneD6()" disabled>D20</button--> 
-							</div>
+						<div id="desc-genre" class="col-4">
+							<!--img id="femme" src="img/femme.svg"  width="32px" alt="Femme" title="Femme" onclick="setGenre('femme')" style="margin-top: 5px; margin-left: -28px;">
+							<img id="homme" src="img/homme.svg"  width="32px" alt="Homme" title="Homme" onclick="setGenre('homme')" style="margin-top: 5px"-->
+							<span id="genre" style="font-weight: bold; font-size: 18px; position: relative; top: 5px;">Homme</span>
+							<img id="imgPerso" class="card-img-top rounded-circle" src="img/pj.png" alt="Card image" style="width: 100px; height: 90px; position: relative; left: -20px; top:10px">
 						</div>
 					</div>
-				</div>
-				<br>
-				<h4 style="top: 20px;">Attributs</h4>
-				<div class="card" style="height: 90px;">
-					<div class="row" style="margin-top: 5px;">
-						<div class="col-4">
-							<div class="input-group"style="left: 6px;">
-								<span class="caract-label" title="Attaque">Attaque</span>
-								<input id="attaque" type="number" class="caract-valeur" value="8" disabled>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="input-group" style="left: 0px;">
-								<span class="caract-label" title="Parade">Parade</span>
-								<input id="parade" type="number" class="caract-valeur" value="10" disabled>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="input-group" style="left: -10px;">
-								<span class="caract-label" title="Point de protection (armure)">Protection</span>
-								<input id="pr" type="number" class="caract-valeur" value="0" disabled>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="input-group" style="left: 5px;">
-								<span class="caract-label" title="Energie vitale ou points de vie">E. vitale</span>
-								<input id="ev" type="number" class="caract-valeur" value="30" disabled>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="input-group" style="left: 0px;">
-								<span class="caract-label" title="Truc de magicien pour lancer des sorts">E. astrale</span>
-								<input id="ea" type="number" class="caract-valeur" value="0" disabled>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="input-group" style="left: -10px;">
-								<span class="caract-label" title="Tenter de résister à un sortilège">Rés. magie</span>
-								<input id="rm" type="number" class="caract-valeur" value="0" disabled>
-							</div>
-						</div>
+					<div class="card-body" style="position: relative; top: -20px;">
+						<p>Présentation</p>
+						<textarea  id="presentation" rows="6" cols="35" style="width: 100%;"></textarea>
 					</div>
 				</div>
-				<br>
-				<h4>Expérience</h4>
-				<div class="card" style="height: 50px;">
-					<div class="row" style="margin-top: 4px;">
-
-						<div class="col-6">
-							<div class="input-group" style="left: 20px;">
-								<span class="caract-label" title="Point d'expérience">Point d'XP</span>
-								<input id="xp" type="number" class="caract-valeur" style="width: 48px;" placeholder="0" disabled>
-							</div>
-						</div>
-						<div class="col-6">
-							<div class="input-group">
-								<span class="caract-label" title="Point d'expérience">Niveau</span>
-								<input id="niveau" type="number" class="caract-valeur" placeholder="1" disabled>
-							</div>
+			</form>
+			<h4 style="top: 20px;">Caractéristiques</h4>
+			<div class="card" style="height: 150px;">
+				<div class="row">
+						<div class="col-5">
+						<div class="input-group">
+							<span class="caract-label" title="Détermine qui frappe le premier dans un combat">Courage</span>
+							<input id="courage" type="number" class="caract-valeur" value="7" disabled>
+							<!--li class="ra ra-perspective-dice-six ra-lg dice" onclick="tirageD20('courage')"></i-->
 						</div>
 					</div>
-				</div>
-				<br>
-				<h4>Equipements</h4>
-				<div class="card">
-					<ul id="eq-armes" style="top: 5px; position: relative; width: 95%; left: 10px;"></ul>
+					<div class="col-5">
+						<div class="input-group">
+						<span class="caract-label" title="Apparence du héros, prestigieuse ou non...">Charisme</span>
+							<input id="charisme" type="number" class="caract-valeur" value="7" disabled>
+							<!--i class="ra ra-perspective-dice-six ra-lg dice" onclick="tirageD20('charisme')"></i-->
+						</div>
+					</div>
+					<div class="col-5">
+						<div class="input-group">
+							<span class="caract-label" title="Permet notament de défoncer une porte">Force</span>
+							<input id="force" type="number" class="caract-valeur" value="7" disabled>
+							<!--i class="ra ra-perspective-dice-six ra-lg dice" onclick="tirageD20('force')"></i-->
+						</div>
+					</div>
+					<div class="col-5">
+						<div class="input-group">
+							<span class="caract-label" title="Trouver son chemin dans un labyrinthe, entre autre...">Intelligence</span>
+							<input id="intelligence" type="number" class="caract-valeur" value="7" disabled>
+							<!--i class="ra ra-perspective-dice-six ra-lg dice" onclick="tirageD20('intelligence')"></i-->
+						</div>
+					</div>
+					<div class="col-5">
+						<div class="input-group">
+							<span class="caract-label" title="Ne sert pas qu'au bière pong">Adresse</span>
+							<input id="adresse" type="number" class="caract-valeur" value="7" disabled>
+							<!--i class="ra ra-perspective-dice-six ra-lg dice" onclick="tirageD20('adresse')"></i-->
+						</div>
+					</div>
+					<div class="col-5"></div>
+					<div class="col-5">
+						<div class="input-group">
+							<span class="caract-label" title="Avec des si, on ne serait pas mort. Marche aussi avec un point du destin!">Point destin</span>
+							<input id="destin" type="number" class="caract-valeur" value="0" disabled>
+							<!--button class="btn btn-warning caract-btn" onclick="destin()" disabled>Use</button--> 
+						</div>
+					</div>
+					<div class="col-5">
+						<div class="input-group">
+							<span class="caract-label" title="Elle n'est pas belle vie avec toutes ces pièces d'or?">Fortune</span>
+							<input id="fortune" type="number" class="caract-valeur" style="width: 48px;" value="0" disabled>
+							<span class="" style="width: 100%; position: relative; left: 5px; top: 5px;" >Pièces d'or</span>
+							<!--button class="btn btn-warning caract-btn" onclick="fortuneD6()" disabled>D20</button--> 
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="col-7">
-				<h4 class="aide">Armes</h4>
-				<div id="armes" class="card">
-					<table class="table table-hover">
-						<thead>
-							<tr>
-						  		<th>Armes</th>
-						  		<th>Prix (PO)</th>
-						  		<th>Dégâts (D6)</th>
-						  		<th>Rupture</th>
-						  		<th></th>
-							</tr>
-					  	</thead>
-						 <tbody id="t-armes">
-
-						 </tbody>
-					</table>
-
+			<br>
+			<h4 style="top: 20px;">Attributs</h4>
+			<div class="card" style="height: 90px;">
+				<div class="row" style="margin-top: 5px;">
+					<div class="col-4">
+						<div class="input-group"style="left: 6px;">
+							<span class="caract-label" title="Attaque">Attaque</span>
+							<input id="attaque" type="number" class="caract-valeur" value="8" disabled>
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="input-group" style="left: 0px;">
+							<span class="caract-label" title="Parade">Parade</span>
+							<input id="parade" type="number" class="caract-valeur" value="10" disabled>
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="input-group" style="left: -10px;">
+							<span class="caract-label" title="Point de protection (armure)">Protection</span>
+							<input id="pr" type="number" class="caract-valeur" value="0" disabled>
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="input-group" style="left: 5px;">
+							<span class="caract-label" title="Energie vitale ou points de vie">E. vitale</span>
+							<input id="ev" type="number" class="caract-valeur" value="30" disabled>
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="input-group" style="left: 0px;">
+							<span class="caract-label" title="Truc de magicien pour lancer des sorts">E. astrale</span>
+							<input id="ea" type="number" class="caract-valeur" value="0" disabled>
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="input-group" style="left: -10px;">
+							<span class="caract-label" title="Tenter de résister à un sortilège">Rés. magie</span>
+							<input id="rm" type="number" class="caract-valeur" value="0" disabled>
+						</div>
+					</div>
 				</div>
-				<h4 class="aide">Armures</h4>
-				<div id="armures" class="card">
-					<p id="aide-texte" class="aide"></p>
-
+			</div>
+			<br>
+			<h4>Expérience</h4>
+			<div class="card" style="height: 50px;">
+				<div class="row" style="margin-top: 4px;">
+						<div class="col-6">
+						<div class="input-group" style="left: 20px;">
+							<span class="caract-label" title="Point d'expérience">Point d'XP</span>
+							<input id="xp" type="number" class="caract-valeur" style="width: 48px;" placeholder="0" disabled>
+						</div>
+					</div>
+					<div class="col-6">
+						<div class="input-group">
+							<span class="caract-label" title="Point d'expérience">Niveau</span>
+							<input id="niveau" type="number" class="caract-valeur" placeholder="1" disabled>
+						</div>
+					</div>
 				</div>
-				<h4 class="aide">Divers</h4>
-				<div id="divers" class="card">
-					<p id="aide-texte" class="aide"></p>
-
-				</div>
+			</div>
+			<br>
+			<h4>Equipements</h4>
+			<div class="card">
+				<ul id="eq-armes" style="top: 5px; position: relative; width: 95%; left: 10px;"></ul>
 			</div>
 		</div>
-
+		<div class="col-7">
+			<h4 class="aide">Armes</h4>
+			<div id="armes" class="card">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+					  		<th>Armes</th>
+					  		<th>Prix (PO)</th>
+					  		<th>Dégâts (D6)</th>
+					  		<th>Rupture</th>
+					  		<th></th>
+						</tr>
+				  	</thead>
+					<tbody id="t-armes">
+					</tbody>
+				</table>
+			</div>
+			<h4 class="aide">Armures</h4>
+			<div id="armures" class="card">
+			</div>
+			<h4 class="aide">Divers</h4>
+			<div id="divers" class="card">
+				<p id="aide-texte" class="aide"></p>
+			</div>
+		</div>
+	</div>
+	<div class="row" style="position: relative; top: 20px;">
+		<div class="col-8"></div>
+		<div class="col-2">
+			<button type="button" class="btn btn-success btn-svg" onclick="savePJ()">Sauvegarder</button>
+		</div>
+		<div class="col-2">
+			<button type="button" class="btn btn-primary btn-export" onclick="exportPJ()">Exporter</button>
+		</div>
 	</div>
 </div>
 
