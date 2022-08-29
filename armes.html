@@ -169,6 +169,11 @@
 						</div>
 					</div>
 				</div>
+				<br>
+				<h4>Equipements</h4>
+				<div class="card">
+					<ul id="eq-armes" style="top: 5px; position: relative; width: 95%; left: 10px;"></ul>
+				</div>
 			</div>
 			<div class="col-7">
 				<h4 class="aide">Armes</h4>
@@ -264,8 +269,22 @@
   
 		<!-- Modal body -->
 		<div class="modal-body">
-			<img src="img/df-marchand.jpg" class="rounded-circle img-thumbnail" style="width: 150px";>
-			<span id="txt-result" style="position: relative; top: 10px;"></span>
+			<div class="row">
+				<div class="col-3">
+					<img src="img/df-marchand.jpg" class="rounded-circle img-thumbnail" style="width: 150px";>
+				</div>
+				<div class="col-9">
+					<div class="row">
+						<div id="txt-result">
+						</div>
+					</div>
+					<div class="row">
+						<div>
+							<p id="txt-tirage" style='position: absolute; bottom: 0px; right: 10px;'></p>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
   
 		<!-- Modal footer -->
@@ -295,6 +314,7 @@
 	});
 
 	initPerso();
+	initArmes();
 	listeArmes();
 </script>
 </body>
