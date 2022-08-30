@@ -32,6 +32,69 @@ function listeArmes() {
   });
 }
 
+function listeArmures() {
+  strButton=
+  "<div class='dropdown'> \
+    <button type='button' class='btn btn-primary dropdown-toggle' data-bs-toggle='dropdown'> Action </button> \
+    <ul class='dropdown-menu'> \
+    <li><button type='button' class='btn' onclick='acheter(\"objet\")' data-bs-toggle='modal' data-bs-target='#action-modal'>Acheter</button> \
+    <li><button type='button' class='btn' onclick='marchander(\"objet\")' data-bs-toggle='modal' data-bs-target='#action-modal'>Marchander</button> \
+    <li><button type='button' class='btn' onclick='voler(\"objet\")' data-bs-toggle='modal' data-bs-target='#action-modal'>Voler</button> \
+  </ul> \
+  </div>";
+
+  type="";
+  armures.forEach(function(armure) {
+    if (type != armure.type) {
+      type=armure.type;
+      strLigne=" \
+      <tr> \
+        <td colspan='5' style='background-color: burlywood;' onclick='$(\".c-"+armure.type.id().id()+"\").toggle()'><i class='"+armure.icon+"' style='color: black;'><span style='font-weight: bold;'> "+armure.type+"</span></i></td> \
+      </tr>";
+      $("#t-armures").append(strLigne);    
+    }
+    strLigne="<tr class='c-"+armure.type.id().id()+"' style='display: none;'>";
+    strLigne +="<td>"+armure.nom+"</i></td>";
+    strLigne +="<td>"+armure.prix+"</td>";
+    strLigne +="<td>"+armure.pr+"</td>";
+    strLigne +="<td>"+armure.rupture+"</td>";
+    strLigne +="<td>"+strButton.replaceAll("objet",armure.nom)+"</td>";
+    strLigne += "</tr>";
+    $("#t-armures").append(strLigne);    
+  });
+}
+
+function listeDivers() {
+  strButton=
+  "<div class='dropdown'> \
+    <button type='button' class='btn btn-primary dropdown-toggle' data-bs-toggle='dropdown'> Action </button> \
+    <ul class='dropdown-menu'> \
+    <li><button type='button' class='btn' onclick='acheter(\"objet\")' data-bs-toggle='modal' data-bs-target='#action-modal'>Acheter</button> \
+    <li><button type='button' class='btn' onclick='marchander(\"objet\")' data-bs-toggle='modal' data-bs-target='#action-modal'>Marchander</button> \
+    <li><button type='button' class='btn' onclick='voler(\"objet\")' data-bs-toggle='modal' data-bs-target='#action-modal'>Voler</button> \
+  </ul> \
+  </div>";
+
+  type="";
+  divers.forEach(function(objet) {
+    if (type != objet.type) {
+      type=objet.type;
+      strLigne=" \
+      <tr> \
+        <td colspan='5' style='background-color: burlywood;' onclick='$(\".c-"+objet.type.id().id()+"\").toggle()'><i class='"+objet.icon+"' style='color: black;'><span style='font-weight: bold;'> "+objet.type+"</span></i></td> \
+      </tr>";
+      $("#t-divers").append(strLigne);    
+    }
+    strLigne="<tr class='c-"+objet.type.id().id()+"' style='display: none;'>";
+    strLigne +="<td>"+objet.nom+"</i></td>";
+    strLigne +="<td>"+objet.prix+"</td>";
+    strLigne +="<td>"+objet.poids+"</td>";
+    strLigne +="<td>"+strButton.replaceAll("objet",objet.nom)+"</td>";
+    strLigne += "</tr>";
+    $("#t-divers").append(strLigne);    
+  });
+}
+
 function acheter(nomArme) {
   var arme = armes.find(arme => arme.nom===nomArme);
 
@@ -103,8 +166,9 @@ function marchander(nomArme) {
   setBonusMalus(arme,"intelligence");
 
   var radin=pj.competences.find(competence => competence==="radin");
+  var arnaque=pj.competences.find(competence => competence==="arnaque et carambouille");
   var charisme=+pj.charisme;
-  if (radin !="") {
+  if (radin != undefined) {
     $("#txt-comptences").html("Vous posséder la compétence \"Radin\". Vous aves un bonus de +4 au marchandage!");
     charisme += 4;
   }
@@ -118,7 +182,6 @@ function marchander(nomArme) {
 
 function resultMarchander(nomArme, vlCaract) {
   var arme = armes.find(arme => arme.nom===nomArme);
-  var fortune=pj.fortune;
 
   $(".modal-footer").empty();
   $("#txt-result").empty();
@@ -160,7 +223,7 @@ function voler(nomArme) {
   var arme = armes.find(arme => arme.nom===nomArme);
   $(".modal-title").html("Voler");
   $("#objet").html("<i class='"+arme.icon+"'> "+nomArme+"<hr>");
-  $("#txt-marchand").html("Si l'envie vous prend de voler, j'ai un garde à l'entrée du magasin!");
+  $("#txt-marchand").html("<span style='font-weight: bold;'>Attention</span> si l'envie vous prend de voler, j'ai un garde à l'entrée du magasin!");
 
   $("#caract").empty();
   $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Dégâts:</span> "+arme.degat+"</li>");
@@ -177,8 +240,58 @@ function voler(nomArme) {
   setBonusMalus(arme,"force");
   setBonusMalus(arme,"intelligence");
 
+  var chouraver=pj.competences.find(competence => competence==="chouraver");
+  var adresse=+pj.adresse;
+  if (chouraver != undefined) {
+    $("#txt-comptences").html("Vous posséder la compétence \"Chouraver\". Vous aves un bonus de +4 au vol!");
+    adresse += 4;
+  }
+
   $(".modal-footer").empty();
-  $(".modal-footer").append("<button type='button' class='btn btn-warning' data-bs-dismiss='modal' onclick='resultVoler()'>Voler</button>");
+  $(".modal-footer").append("<p>Vous pouvez voler en effectuant un jet d'adresse <= "+adresse+".<p>");
+  $(".modal-footer").append("<button type='button' class='btn btn-warning' data-bs-dismiss='modal' onclick='resultVoler(\""+arme.nom+"\","+adresse+")' data-bs-toggle='modal' data-bs-target='#result-modal'>Voler</button>");
+  $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
+}
+
+function resultVoler(nomArme, vlCaract) {
+  var arme = armes.find(arme => arme.nom===nomArme);
+  
+  $(".modal-footer").empty();
+  $("#txt-result").empty();
+  
+  result=Math.ceil(Math.random()*20);
+  if(result==1) {
+    $(".modal-title").html("Vol effectué");
+    $("#txt-tirage").html("Réussite critique du vol ("+result+" sur "+vlCaract+").");
+    $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Vous voulez autre chose?</p>");
+    $(".modal-footer").append("<button type='button' class='btn btn-success' data-bs-dismiss='modal' onclick='resultAcheter(\""+arme.nom+"\",0)' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter</button>");
+  } else if(result<=vlCaract) {
+    $(".modal-title").html("Vol effectué");
+    $("#txt-tirage").html("Réussite du vol ("+result+" sur "+vlCaract+").");
+    $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Tiens, j'aurais juré que <span style='font-weight: bold;'>"+nomArme+"</span> était posée ici tout à l'heure.</p>");
+    //$(".modal-footer").append("<button type='button' class='btn btn-success' data-bs-dismiss='modal' onclick='resultAcheter(\""+arme.nom+"\",0)' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter</button>");
+    /*pj.fortune -= arme.prix;
+    pj.armes.push(nomArme);
+    $("#fortune").val(pj.fortune);
+    localStorage.setItem("pj",JSON.stringify(pj));*/
+  } else if(result==20){
+    $(".modal-title").html("Vol raté");
+    $("#txt-tirage").html("Echec critique du vol ("+result+" sur "+vlCaract+").");
+    $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Zeus, Apollon attaquez ce voleur de bas étage!</p>");
+    $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'><span style='font-weight: bold;'>"+nomArme+"</span> ne fera pas parti de votre équipement!</p>");
+    $(".modal-footer").append("<button type='button' class='btn btn-warning' data-bs-dismiss='modal' onclick='' data-bs-toggle='modal' data-bs-target='#result-modal'>Fuir</button>");
+    $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal' onclick='' data-bs-toggle='modal' data-bs-target='#result-modal'>Combattre</button>");
+  } else {
+    $(".modal-title").html("Vol raté");
+    $("#txt-tirage").html("Echec du Vol ("+result+" sur "+vlCaract+").");
+    $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Dite donc mon ami... Vous n'essayerai pas de voler <span style='font-weight: bold;'>"+nomArme+"</span>?</p>");
+    $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>J'ai un garde qui pourrai vous en faire passer l'envie!</p>");
+    $(".modal-footer").append("<button type='button' class='btn btn-primary' data-bs-primary='modal' onclick='' data-bs-toggle='modal' data-bs-target='#result-modal'>Reposer l'arme</button>");
+    $(".modal-footer").append("<button type='button' class='btn btn-warning' data-bs-dismiss='modal' onclick='' data-bs-toggle='modal' data-bs-target='#result-modal'>Fuir</button>");
+    $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal' onclick='' data-bs-toggle='modal' data-bs-target='#result-modal'>Combattre</button>");
+  }
+
+
   $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
 }
 
