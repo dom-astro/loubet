@@ -48,7 +48,7 @@ var competences =
         "rattrapage": "épreuve de CHA (difficile) pour le convaincre ou épreuve de FO (difficile) pour le ceinturer.",
     },
     {
-        "nom": "ARMES DE BOURRIN",
+        "nom": "armes de bourrin",
         "resume": "possibilité d'utiliser des armes à deux mains (sous réserve de restriction d'origine).",
         "description": "le personnage est capable d&apos;utiliser toutes les armes qui sont lourdes et font très mal, comme les grosses haches, les grosses épées, les grosses massues... En bref, ils ont la capacité d&apos;utiliser des armes portant l&apos;étiquette « à deux mains ». Cette compétence n&apos;est pas utilisable par les Nains et certaines autres créatures.",
         "caracteristiques": [""],
@@ -56,7 +56,7 @@ var competences =
         "utilisation": "peut s&apos;équiper d&apos;armes à deux mains et les utiliser (une à la fois !.).",
     },
     {
-        "nom": "ARNAQUE ET CARAMBOUILLE",
+        "nom": "arnaque et carambouille",
         "resume": "permet d'arnaquer les marchands pour obtenir des remises.",
         "description": "Il faut parfois faire des concessions à la moralité pour augmenter ses revenus. Le personnage arnaqueur obtiendra une remise de 20% sur le prix à l&apos;achat d&apos;objets neufs, sans faire la moindre épreuve au dé. Il est libre ensuite d&apos;en profiter pour faire du trafic au sein du groupe, à condition que le marchand ne flaire pas l&apos;arnaque (sur décision du MJ). Il peut gagner également 10% sur la revente de matériel usagé (butin), mais il faut savoir que le prix de base d&apos;un matériel revendu est toujours diminué d&apos;au moins 50% par rapport au neuf.",
         "caracteristiques": [""],
@@ -64,28 +64,28 @@ var competences =
         "Roleplay": "pas d&apos;épreuve au dé, mais le joueur doit convaincre le MJ avec un discours abracadabrant !.",
     },
     {
-        "nom": "ATTIRE LES MONSTRES",
+        "nom": "attire les monstres",
         "resume": "au début du combat, le héros est toujours pris pour cible par les monstres et les ennemis.",
         "description": "le héros qui attire les monstres sera toujours le premier visé dans le cas où une bestiole ou un méchant doit faire un choix de victime. Dommage pour lui, il a sans doute une tête à baffes !.",
         "caracteristiques": [""],
         "utilisation": "dans le cas d&apos;une rencontre avec des ennemis, le héros est attaqué en premier.",
     },
     {
-        "nom": "BOURRE-PIF",
+        "nom": "bourre-pif",
         "resume": "le héros peut se battre à mains nues de façon efficace et accéder à des coups spéciaux.",
         "description": "l’art du bourre-pif consiste à taper n’importe comment avec les poings de manière efficace. Casser un bras ou se battre avec un tabouret rentre dans la compétence bourre-pif. Le personnage adepte du bourre-pif n&apos;aura pas de malus à son score d&apos;attaque, pourra utiliser la « table des critiques à mains nues » ainsi que les « coups spéciaux à mains nues ».",
         "caracteristiques": [""],
         "utilisation": "pas de malus au score AT, dégâts de base 1D6, coups critiques, accès aux coups spéciaux.",
     },
     {
-        "nom": "BRICOLO DU DIMANCHE",
+        "nom": "bricolo du dimanche",
         "resume": "possibilité de fabriquer des objets variés à partir de matières premières, des réparations.",
         "description": "À l&apos;aide de cette compétence, un personnage pourra tenter de réparer ou de fabriquer des objets rudimentaires, pour peu qu&apos;il réussisse une épreuve d&apos;adresse, et sans avoir besoin de connaître le sujet en particulier. C&apos;est au Grand Vilain MJ de s&apos;arranger pour que la difficulté de l&apos;épreuve soit adaptée au profil du héros ainsi qu&apos;à l&apos;objet désiré. Un gobelin fabriquera plus facilement une baliste qu&apos;un nécessaire de coiffure !. Il aura bien entendu besoin d&apos;un certain nombre d&apos;outils et de matériel de construction.",
         "caracteristiques": ["adresse"],
         "utilisation": "fabrication ou réparation possible d&apos;armes rudimentaires, de matériel varié, consolidation : épreuve AD.",
     },
     {
-        "nom": "cHANCE DU REMPAILLEUR",
+        "nom": "chance du rempailleur",
         "resume": "le héros a une chance invesement proportionnelle à ses compétences pourries...",
         "description": "le personnage qui n&apos;a que des caractéristiques pourries peut bénéficier de cette compétence, sur décision du Grand Vilain MJ. Les dieux sont parfois cléments avec ceux qui ont une existence difficile. Le personnage bénéficiant de la chance du rempailleur ne pourra mourir dans un combat, il se passera toujours quelque chose de bizarre au moment on son énergie vitale approche de zéro... Il peut en revanche mourir de maladie ou d&apos;accident.",
         "caracteristiques": [""],
@@ -98,7 +98,7 @@ var competences =
         "utilisation": "le vote du chef du groupe compte pour 2 voix, et s&apos;il y a égalité, c&apos;est le chef de groupe qui a raison.",
     },
     {
-        "nom": "cHERCHER DES NOISES",
+        "nom": "cherhcer des noises",
         "resume": "le héros frappe toujours en premier lors d'un combat.",
         "description": "À moins d&apos;être surpris, le personnage qui sait chercher des noises frappe toujours en premier quand il se retrouve au corps-à-corps avec un ennemi. Ceci évite de confronter les scores de courage, et ça peut faire la différence contre quelqu&apos;un qui a une plus grosse épée.",
         "caracteristiques": [""],
@@ -248,7 +248,7 @@ var competences =
         "utilisation": "gagner de l&apos;or entre deux aventures, sur jet de dé (1D20 PO max.).",
     },
     {
-        "nom": "NAGER",
+        "nom": "nager",
         "resume": "le héros a déjà appris à nager et peut passer des épreuves en immersion.",
         "description": "Pas besoin de faire un dessin, le héros aura eu la chance d&apos;apprendre à nager pendant sa jeunesse. Il bénéficie donc, non seulement de la possibilité de nager sans jeter un dé, mais d&apos;un bonus de +5 aux épreuves liées à la nage (comme par exemple, essayer de sauver un équipier tombé dans la rivière).",
         "caracteristiques": ["adresse", "force"],
@@ -270,7 +270,7 @@ var competences =
         "utilisation": "en cours de partie, le MJ décide que le héros a été chiant et que ses compagnons sont fâchés.",
     },
     {
-        "nom": "PISTER",
+        "nom": "pister",
         "resume": "bonus aux épreuves de pistage, recherche de traces, filature.",
         "description": "Tout le monde peut suivre un troll à la trace, vu que généralement tout est cassé sur son chemin, mais pister peut également servir à poursuivre des animaux ou des adversaires beaucoup plus discrets, en se repérant à tous les signaux qu’ils ont pu laisser derrière eux. La compétence permet de bénéficier d&apos;un bonus de +3 aux épreuves liées à cette discipline. Il est interdit de dire « Moi j&apos;ai envie de pister ».",
         "caracteristiques": ["intelligence"],
@@ -285,7 +285,7 @@ var competences =
         "Particularité": "sur un échec critique, le héros parvient à blesser encore plus son compagnon (-1D6 PV).",
     },
     {
-        "nom": "RADIN",
+        "nom": "radin",
         "resume": "donne un bonus au marchandage, mais également un malus au partage !",
         "description": "cette compétence est innée chez les Nains... Le héros radin disposera d&apos;un bonus de +4 sur son épreuve de charisme pour marchander (dans la limite d&apos;une remise de 20%, non cumulable avec d&apos;autres bonus). En contrepartie, il devra passer une épreuve d&apos;intelligence +4 quand il faut partager un butin ou une dépense avec le reste du groupe. S&apos;il échoue, il y aura sans doute un conflit à régler !.",
         "caracteristiques": ["charisme", "intelligence"],

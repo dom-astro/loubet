@@ -1,0 +1,142 @@
+var divers = [
+    {
+        "type": "Sacs",
+        "nom": "Besace de base",
+        "icon": "",
+        "prix": 1,
+        "poids": "Charge Max 3 kilos"
+    },
+    {
+        "type": "Sacs",
+        "nom": "Besace de qualité",
+        "icon": "",
+        "prix": 2,
+        "poids": "Charge Max 5 kilos"
+    },
+    {
+        "type": "Sacs",
+        "nom": "Sac à dos de base",
+        "icon": "",
+        "prix": 5,
+        "poids": "Charge Max 10 kilos"
+    },
+    {
+        "type": "Sacs",
+        "nom": "Sac à dos de qualité",
+        "icon": "",
+        "prix": 10,
+        "poids": "Charge Max 15 kilos"
+    },
+    {
+        "type": "Boisson",
+        "nom": "Bière",
+        "icon": "ra ra-beer",
+        "prix": 1,
+        "ev": 1,
+        "poids": 0.5
+    },
+    {
+        "type": "Boisson",
+        "nom": "Tisane",
+        "icon": "ra ra-beer",
+        "prix": 1,
+        "ev": 1,
+        "poids": 0.5
+    },
+    {
+        "type": "Boisson",
+        "nom": "Eau en bouteille",
+        "icon": "ra ra-brandy-bottle",
+        "prix": 1,
+        "ev": 1,
+        "poids": 0.5
+    },
+    {
+        "type": "Ration",
+        "nom": "Fromage",
+        "icon": "ra ra-meat",
+        "prix": 1,
+        "ev": 1,
+        "poids": 0.5
+    },
+    {
+        "type": "Ration",
+        "nom": "Jambon",
+        "icon": "ra ra-meat",
+        "prix": 1,
+        "ev": 1,
+        "poids": 0.5
+    },
+    {
+        "type": "Ration",
+        "nom": "Poulet",
+        "icon": "ra ra-meat",
+        "prix": 1,
+        "ev": 1,
+        "poids": 0.5
+    },
+    {
+        "type": "Potions",
+        "nom": "Potion revitalisante",
+        "icon": "ra ra-potion",
+        "prix": 1,
+        "ev": 1,
+        "poids": 0.5
+    },
+    {
+        "type": "Potions",
+        "nom": "Potion énergisante",
+        "icon": "ra ra-potion",
+        "prix": 1,
+        "ev": 1,
+        "poids": 0.5
+    },
+    {
+        "type": "Potions",
+        "nom": "Potion d'intelligence",
+        "icon": "ra ra-potion",
+        "prix": 1,
+        "ev": 1,
+        "poids": 0.5
+    },
+    {
+        "type": "Kit",
+        "nom": "Premiers secours",
+        "icon": "ra ra-health",
+        "prix": 1,
+        "ev": 1,
+        "poids": 0.5
+    },
+    {
+        "type": "Boisson",
+        "nom": "Eau en bouteille",
+        "icon": "ra ra-brandy-bottle",
+        "prix": 1,
+        "ev": 1,
+        "poids": 0.5
+    },
+    {
+        "type": "Ration",
+        "nom": "Fromage",
+        "icon": "ra ra-cheese",
+        "prix": 1,
+        "ev": 1,
+        "poids": 0.5
+    },
+    {
+        "type": "Ration",
+        "nom": "Jambon",
+        "icon": "ra ra-meat",
+        "prix": 1,
+        "ev": 1,
+        "poids": 0.5
+    },
+    {
+        "type": "Ration",
+        "nom": "Poulet",
+        "icon": "ra ra-chicken-leg",
+        "prix": 1,
+        "ev": 1,
+        "poids": 0.5
+    },
+]

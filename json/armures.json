@@ -1,0 +1,149 @@
+var armures = [
+    {
+        "type": "Vestes",
+        "nom": "Gambison de base avec manches",
+        "icon": "ra ra-vest",
+        "prix": 20,
+        "pr": 2,
+        "rupture": "1-4",
+        "attaque": 0,
+        "parade": 0,
+        "adresse": 0,
+        "charisme": -1,
+        "courage": 0,
+        "force": 0,
+        "intelligence": 0,
+        "origines": [
+            ""
+        ],
+        "exclusions": [
+            ""
+        ]
+    },
+    {
+        "type": "Vestes",
+        "nom": "Gambison correct avec manches",
+        "icon": "ra ra-vest",
+        "prix": 30,
+        "pr": 2,
+        "rupture": "1-4",
+        "attaque": 0,
+        "parade": 0,
+        "adresse": 0,
+        "charisme": 0,
+        "courage": 0,
+        "force": 0,
+        "intelligence": 0,
+        "origines": [
+            ""
+        ],
+        "exclusions": [
+            ""
+        ]
+    },
+    {
+        "type": "Plastrons",
+        "nom": "Plastron de cuir de base",
+        "icon": "ra ra-vest",
+        "prix": 30,
+        "pr": 3,
+        "rupture": "1-4",
+        "attaque": 0,
+        "parade": 0,
+        "adresse": 0,
+        "charisme": -1,
+        "courage": 0,
+        "force": 0,
+        "intelligence": 0,
+        "origines": [
+            ""
+        ],
+        "exclusions": [
+            ""
+        ]
+    },
+    {
+        "type": "Plastrons",
+        "nom": "Plastron de cuir bouilli correct",
+        "icon": "ra ra-vest",
+        "prix": 50,
+        "pr": 3,
+        "rupture": "1-4",
+        "attaque": 0,
+        "parade": 0,
+        "adresse": 0,
+        "charisme": 0,
+        "courage": 0,
+        "force": 0,
+        "intelligence": 0,
+        "origines": [
+            ""
+        ],
+        "exclusions": [
+            ""
+        ]
+    },
+    {
+        "type": "Plastrons",
+        "nom": "Plastron de cuir moulé sur mesure",
+        "icon": "ra ra-vest",
+        "prix": 100,
+        "pr": 3,
+        "rupture": "1-3",
+        "attaque": 0,
+        "parade": 0,
+        "adresse": 1,
+        "charisme": 0,
+        "courage": 0,
+        "force": 0,
+        "intelligence": 0,
+        "origines": [
+            ""
+        ],
+        "exclusions": [
+            ""
+        ]
+    },
+    {
+        "type": "Boucliers",
+        "nom": "Bouclier de base",
+        "icon": "ra ra-shield",
+        "prix": 30,
+        "pr": 1,
+        "rupture": "1-4",
+        "attaque": -2,
+        "parade": 1,
+        "adresse": -1,
+        "charisme": 0,
+        "courage": 0,
+        "force": 0,
+        "intelligence": 0,
+        "origines": [
+            ""
+        ],
+        "exclusions": [
+            ""
+        ]
+    },
+    {
+        "type": "Boucliers",
+        "nom": "Bouclier ordinaire",
+        "icon": "ra ra-shield",
+        "prix": 50,
+        "pr": 2,
+        "rupture": "1-3",
+        "attaque": -3,
+        "parade": 2,
+        "adresse": -2,
+        "charisme": 0,
+        "courage": 0,
+        "force": 0,
+        "intelligence": 0,
+        "origines": [
+            ""
+        ],
+        "exclusions": [
+            ""
+        ]
+    },
+]
