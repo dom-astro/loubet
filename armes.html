@@ -219,6 +219,7 @@
 				  	</thead>
 					<tbody id="t-divers">
 					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
@@ -331,18 +332,20 @@
 <script type="text/javascript" src="js/donjon.js"></script>
 <script type="text/javascript" src="js/perso.js"></script>
 <script type="text/javascript" src="js/armes.js"></script>
+<script type="text/javascript" src="js/combat.js"></script>
 <script>
 	 setMenu("Personnage");
 	 $(document).ready(function() {
 		$(".zombie").addClass("zombie-in-progress");
 		$(".wip").addClass("wip-in-progress");
 	});
-
+	
 	initPerso();
 	initArmes();
 	listeArmes();
 	listeArmures();
 	listeDivers();
+	combat();
 </script>
 </body>
 </html>

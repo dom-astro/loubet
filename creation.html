@@ -2,7 +2,8 @@
 <head>
 	<!--meta http-equiv="Content-Type" content="text/html; charset=windows-752"-->
 	<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-	<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css"  href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css"  href="css/driver.min.css">
 	<link rel="stylesheet" type="text/css" href="css/donjon.css">
 	<link rel="stylesheet" type="text/css" href="css/rpg-awesome.min.css">
 	<title>Naheulbeuk - Création PJ</title>
@@ -30,7 +31,7 @@
 	<div class="">
 		<div class="row">
 			<div class="col-5">
-				<h3 title="Personnage joueur">Personnage</h3>
+				<h3 style="position: relative; left: 10px;">Personnage  <button class="btn btn-primary" title="Aide à la création du PJ" onclick="aideCreationPJ();"><i class="ra ra-help"></i></button></h3>
 				<form action="" class="was-validated">
 					<div class="card" style="width: 100%; height: 360px">
 						<div class="row">
@@ -41,13 +42,14 @@
 								<!--div class="invalid-feedback" style="margin-left: 10px;">Veuillez choisir un nom.</div-->
 							</div>
 							<div id="desc-genre" class="col-4">
-								<!--img id="femme" src="img/femme.svg"  width="32px" alt="Femme" title="Femme" onclick="setGenre('femme')" style="margin-top: 5px; margin-left: -28px;">
-								<img id="homme" src="img/homme.svg"  width="32px" alt="Homme" title="Homme" onclick="setGenre('homme')" style="margin-top: 5px"-->
-								<span id="genre" style="font-weight: bold; font-size: 18px; position: relative; top: 5px;">Homme</span>
-								<img id="imgPerso" class="card-img-top rounded-circle" src="img/pj.png" alt="Card image" style="width: 100px; height: 90px; position: relative; left: -20px; top:10px">
+								<img id="femme" src="img/femme.svg"  width="32px" alt="Femme" title="Femme" onclick="setGenre('femme')" style="margin-top: 5px; margin-left: -10px;">
+								<img id="homme" src="img/homme.svg"  width="32px" alt="Homme" title="Homme" onclick="setGenre('homme')" style="margin-top: 5px">
+								<!--span id="genre" style="font-weight: bold; font-size: 18px; position: relative; top: 5px;">Homme</span>
+								<img id="imgPerso" class="card-img-top rounded-circle" src="img/pj.png" alt="Card image" style="width: 100px; height: 90px; position: relative; left: -40px; top:10px"!-->
 							</div>
 						</div>
 						<div class="card-body" style="position: relative; top: -20px;">
+							<br>
 							<p>Présentation</p>
 							<textarea  id="presentation" rows="6" cols="35" style="width: 100%;"></textarea>
 						</div>
@@ -56,54 +58,54 @@
 				<h4 style="top: 20px;">Caractéristiques</h4>
 				<div class="card" style="height: 150px;">
 					<div class="row">
-							<div class="col-5">
-							<div class="input-group">
-								<span class="caract-label" title="Détermine qui frappe le premier dans un combat">Courage</span>
-								<input id="courage" type="number" class="caract-valeur" value="7" >
-								<button class="btn btn-warning caract-btn" onclick="caractD6('courage')" disabled>D6</button> 
-							</div>
-						</div>
 						<div class="col-5">
-							<div class="input-group">
-								<span class="caract-label" title="Apparence du héros, prestigieuse ou non...">Charisme</span>
-								<input id="charisme" type="number" class="caract-valeur" value="7" >
-								<button class="btn btn-warning caract-btn" onclick="caractD6('charisme')" disabled>D6</button> 
-							</div>
-						</div>
-						<div class="col-5">
-							<div class="input-group">
-								<span class="caract-label" title="Permet notament de défoncer une porte">Force</span>
-								<input id="force" type="number" class="caract-valeur" value="7" >
-								<button class="btn btn-warning caract-btn" onclick="caractD6('force')" disabled>D6</button> 
-							</div>
-						</div>
-						<div class="col-5">
-							<div class="input-group">
-								<span class="caract-label" title="Trouver son chemin dans un labyrinthe, entre autre...">Intelligence</span>
-								<input id="intelligence" type="number" class="caract-valeur" value="7" >
-								<button class="btn btn-warning caract-btn" onclick="caractD6('intelligence')" disabled>D6</button> 
-							</div>
-						</div>
-						<div class="col-5">
-							<div class="input-group">
+							<div id="g-adresse" class="input-group">
 								<span class="caract-label" title="Ne sert pas qu'au bière pong">Adresse</span>
 								<input id="adresse" type="number" class="caract-valeur" value="7" >
-								<button class="btn btn-warning caract-btn" onclick="caractD6('adresse')" disabled>D6</button> 
+								<button class="btn btn-warning caract-btn" onclick="caractD6('adresse')">D6</button> 
+							</div>
+						</div>
+						<div class="col-5">
+							<div id="g-charisme" class="input-group">
+								<span class="caract-label" title="Apparence du héros, prestigieuse ou non...">Charisme</span>
+								<input id="charisme" type="number" class="caract-valeur" value="7" >
+								<button class="btn btn-warning caract-btn" onclick="caractD6('charisme')">D6</button> 
+							</div>
+						</div>
+						<div class="col-5">
+							<div id="g-courage" class="input-group">
+								<span class="caract-label" title="Détermine qui frappe le premier dans un combat">Courage</span>
+								<input id="courage" type="number" class="caract-valeur" value="7" >
+								<button class="btn btn-warning caract-btn" onclick="caractD6('courage')">D6</button> 
+							</div>
+						</div>
+						<div class="col-5">
+							<div id="g-force" class="input-group">
+								<span class="caract-label" title="Permet notament de défoncer une porte">Force</span>
+								<input id="force" type="number" class="caract-valeur" value="7" >
+								<button class="btn btn-warning caract-btn" onclick="caractD6('force')">D6</button> 
+							</div>
+						</div>
+						<div class="col-5">
+							<div id="g-intelligence" class="input-group">
+								<span class="caract-label" title="Trouver son chemin dans un labyrinthe, entre autre...">Intelligence</span>
+								<input id="intelligence" type="number" class="caract-valeur" value="7" >
+								<button class="btn btn-warning caract-btn" onclick="caractD6('intelligence')">D6</button> 
 							</div>
 						</div>
 						<div class="col-5"></div>
 						<div class="col-5">
-							<div class="input-group">
+							<div id="g-destin" class="input-group">
 								<span class="caract-label" title="Avec des si, on ne serait pas mort. Marche aussi avec un point du destin!">Point destin</span>
 								<input id="destin" type="number" class="caract-valeur" value="0" disabled>
-								<button class="btn btn-warning caract-btn" onclick="destinD4()" disabled>D4</button> 
+								<button class="btn btn-warning caract-btn" onclick="destinD4()">D4</button> 
 							</div>
 						</div>
 						<div class="col-5">
-							<div class="input-group">
+							<div id="g-fortune" class="input-group">
 								<span class="caract-label" title="Pièces d'or">Fortune</span>
 								<input id="fortune" type="number" class="caract-valeur" style="width: 48px;" value="0" disabled>
-								<button class="btn btn-warning caract-btn" onclick="fortuneD6()" disabled>D6</button> 
+								<button class="btn btn-warning caract-btn" onclick="fortuneD6()">D6</button> 
 							</div>
 						</div>
 					</div>
@@ -172,8 +174,10 @@
 			</div>
 			<div class="col-7">
 				<div id="aide" class="card" style="display: none; top: 35px;">
-					<h4 class="aide">Aide à la création du PJ</h4>
-					<p id="aide-texte" class="aide"></p>
+					<h4 class="aide">Choisir son Nom</h4>
+					<p id="aide-texte" class="aide">
+						Le nom de votre personnage doit comporter 3 lettres au minimum.
+					</p>
 
 				</div>
 				<div id="origines" class="row" style="position :relative;">
@@ -194,21 +198,15 @@
 				</div>
 			</div>
 		</div>
-		<div class="row" style="position: relative; top: 40px;">
-			<div class="col-8"></div>
-			<div class="col-2">
-				<button type="button" class="btn btn-success btn-svg" style="margin-top: 10px;" onclick="savePJ()">Sauvegarder</button>
+		<div class="row" style="position: relative; top: 20px; height: 60px;">
+			<div class="col-2" style="position: relative; left: 5px;">
+				<button type="button" class="btn btn-danger btn-export w-75" style="margin-top: 10px;" onclick="nouveauPJ()">Nouveau</button>
 			</div>
 			<div class="col-2">
-				<button type="button" class="btn btn-primary btn-export" style="margin-top: 10px;" onclick="exportPJ()">Exporter</button>
+				<button type="button" class="btn btn-success btn-svg w-75" style="margin-top: 10px; margin-left: -30px;" onclick="savePJ()">Sauvegarder</button>
 			</div>
-			<div class="col-8"></div>
 			<div class="col-2">
-				<!-- input type="file" class="form-control" accept=".json" id="jsFile" style="margin-top: 10px; background: #FFC107;" / -->
-				<button type="button" class="btn btn-warning btn-export" style="margin-top: 10px;" onclick="chargePJ()">Charger</button>
-				<input type="file" style="display: none;" id="jsonFile" accept=".json" name="file"/></div>
-			<div class="col-2">
-				<button type="button" class="btn btn-danger btn-export" style="margin-top: 10px;" onclick="nouveauPJ()">Nouveau</button>
+				<button type="button" class="btn btn-primary btn-export w-75" style="margin-top: 10px; margin-left: -70px;" onclick="exportPJ()">Exporter</button>
 			</div>
 		</div>
 
@@ -247,13 +245,12 @@
 <script type="text/javascript" src="json/competences.json"></script>
 <script type="text/javascript" src="json/origines.json"></script>
 <script type="text/javascript" src="json/metiers.json"></script>
-<script type="text/javascript" src="json/pj.json"></script>
-<script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="js/driver.min.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
-<script type="text/javascript" src="js/donjon.js"></script>
-<script type="text/javascript" src="js/perso.js"></script>
+<script type="text/javascript" src="js/creation.js"></script>
 <script>
 	 setMenu("Personnage");
 	 $(document).ready(function() {
@@ -261,7 +258,8 @@
 		$(".wip").addClass("wip-in-progress");
 	});
 
-	//initPerso();
+	pj = new PJ();
+	nouveauPJ();
 </script>
 </body>
 </html>
