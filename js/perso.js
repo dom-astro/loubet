@@ -1,19 +1,5 @@
-String.prototype.id = function () {
-    var str = this.valueOf();
-    return str.replace(' ','-').toLowerCase();
-};
-
-String.prototype.capitalize = function () {
-    var str = this.valueOf();
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-}
-
-String.prototype.replaceAll = function(find, replace) {
-    var str = this.valueOf();
-    return str.replace(new RegExp(find.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), replace);
-}
-
-var pj = {};
+// On déclare la varible globale pj
+pj = new PJ();
 
 function caractD6(caract) {
     result=7+Math.ceil(Math.random()*6);
@@ -152,7 +138,7 @@ function verifMetier() {
 }
 
 function savePJ() {
-    pj.nom = $("#nomPerso").val();
+    pj.nom = $("#nom").val();
     pj.genre = $("#genre").html();
     pj.origine = $("#origine").val();
     pj.metier = $("#metier").val();
@@ -184,7 +170,7 @@ function savePJ() {
     }
 
     localStorage.setItem("pj",JSON.stringify(pj));
-    $("#nomPerso").prop("disabled",true);
+    $("#nom").prop("disabled",true);
 }
 
 function exportPJ() {
@@ -204,7 +190,9 @@ function exportPJ() {
 function initPerso() {
     pj = JSON.parse(localStorage.getItem("pj"));
 
-    $("#nomPerso").val(pj.nom);
+    if(pj == undefined) return;
+
+    $("#nom").val(pj.nom);
     $("#ea").val(pj.ea);
     $("#ev").val(pj.ev);
     $("#attaque").val(pj.attaque);
@@ -223,7 +211,7 @@ function initPerso() {
     $("#niveau").val(pj.niveau);
 
     setGenre(pj.genre.toLowerCase());
-    //$("#nomPerso").prop("disabled",true);
+    //$("#nom").prop("disabled",true);
     listeOrigine();
     verifOrigine();
     setCompetencesOrigine(pj.origine);
@@ -271,21 +259,30 @@ $('#jsonFile').on('change', function () {
 });
 
 function nouveauPJ(){
-    $("#nomPerso").val("");
-    $("#ea").val(0);
-    $("#ev").val(25);
-    $("#attaque").val(8);
-    $("#parade").val(10);
-    $("#destin").val(0);
-    $("#fortune").val(0);
+    $("#nom").val("");
+    $("#genre").val("");
+    $("#presentation").val("");
+
     $("#courage").val(7);
     $("#force").val(7);
     $("#intelligence").val(7);
     $("#adresse").val(7);
     $("#charisme").val(7);
+
     $("#origine").val("");
     $("#metier").val("");
-    $("#presentation").val("");
+
+    $("#destin").val(0);
+    $("#fortune").val(0);
+
+    $("#attaque").val(8);
+    $("#parade").val(10);
+
+    $("#ea").val(0);
+    $("#ev").val(25);
+
+    $("#niveau").val(1);
+    $("#xp").val(0);
 
     //listeOrigine();
     $("#origines").hide();
@@ -294,6 +291,7 @@ function nouveauPJ(){
 
     // Genre
     initGenre();
+    console.info(pj.toJSON());
 
     $("#aide").show();
     aide("nom");
@@ -317,7 +315,6 @@ function listeOrigine() {
             strConditions += origine.adresse.max == 99 ? "" : "<span>Adresse <= "+origine.adresse.max+ "</span><br>";
             strConditions += origine.force.min == 0 ? "" : "<span>Force >= "+origine.force.min+ "</span><br>";
             strConditions += origine.force.max == 99 ? "" : "<span>Force <= "+origine.force.max+ "</span><br>";
-            strConditions += "</ul>";
 
             //strTitle = (strTitle.length==1 ? "" : strTitle.replace(" et .","."));
             strOrigine =
@@ -449,19 +446,6 @@ function enableGenre(genre, isEnabled) {
 
 }
 
-function setGenre(genre) {
-    if(genre=="homme") {
-        $("#homme").attr("src","img/homme.svg");
-        $("#femme").attr("src","img/femme-disabled.svg");
-    } else {
-        $("#homme").attr("src","img/homme-disabled.svg");
-        $("#femme").attr("src","img/femme.svg");
-    }
-    pj.genre=genre;
-    $('#btn-valider').prop("disabled",false);
-    $("#genre").html(genre.capitalize());
-}
-
 function descOrigine(choixOrigine) {
 
     var origine = origines.find(i => i.nom===choixOrigine);
@@ -579,8 +563,8 @@ function aide(etape) {
 function validation(etape) {
     switch(etape) {
         case "nom":
-            var nom = $('#nomPerso').val();
-            $('#nomPerso').prop("disbaled",true);
+            var nom = $('#nom').val();
+            $('#nom').prop("disbaled",true);
             if (nom.length>=3) {
                 pj.nom=nom;
                 aide("genre");
@@ -613,14 +597,5 @@ function validation(etape) {
         case "metier":
             $("#aide").hide();
             break;
-    }
-}
-
-
-function verifNom() {
-    var nom = $('#nomPerso').val();
-    $('#btn-valider').prop("disabled",true);
-    if (nom.length>=3) {
-        $('#btn-valider').prop("disabled",false);
     }
 }
