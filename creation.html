@@ -31,7 +31,7 @@
 	<div class="">
 		<div class="row">
 			<div class="col-5">
-				<h3 style="position: relative; left: 10px;">Personnage  <button class="btn btn-primary" title="Aide à la création du PJ" onclick="aideCreationPJ();"><i class="ra ra-help"></i></button></h3>
+				<h3 style="position: relative; left: 10px;">Personnage  <button class="btn btn-primary" title="Aide à la création du PJ" onclick="aideCreationPJ();"><i class="ra ra-help"> Aide à la création</i></button></h3>
 				<form action="" class="was-validated">
 					<div class="card" style="width: 100%; height: 360px">
 						<div class="row">
@@ -44,8 +44,8 @@
 							<div id="desc-genre" class="col-4">
 								<img id="femme" src="img/femme.svg"  width="32px" alt="Femme" title="Femme" onclick="setGenre('femme')" style="margin-top: 5px; margin-left: -10px;">
 								<img id="homme" src="img/homme.svg"  width="32px" alt="Homme" title="Homme" onclick="setGenre('homme')" style="margin-top: 5px">
-								<!--span id="genre" style="font-weight: bold; font-size: 18px; position: relative; top: 5px;">Homme</span>
-								<img id="imgPerso" class="card-img-top rounded-circle" src="img/pj.png" alt="Card image" style="width: 100px; height: 90px; position: relative; left: -40px; top:10px"!-->
+								<span id="genre" style="font-weight: bold; font-size: 18px; position: relative; top: 5px;"></span>
+								<!--img id="imgPerso" class="card-img-top rounded-circle" src="img/pj.png" alt="Card image" style="width: 100px; height: 90px; position: relative; left: -40px; top:10px"!-->
 							</div>
 						</div>
 						<div class="card-body" style="position: relative; top: -20px;">
@@ -173,15 +173,8 @@
 				</div>
 			</div>
 			<div class="col-7">
-				<div id="aide" class="card" style="display: none; top: 35px;">
-					<h4 class="aide">Choisir son Nom</h4>
-					<p id="aide-texte" class="aide">
-						Le nom de votre personnage doit comporter 3 lettres au minimum.
-					</p>
-
-				</div>
 				<div id="origines" class="row" style="position :relative;">
-					<h3 style="margin-left: 5px;">Origines</h3>
+					<h3 style="margin-left: 5px;">Choix de l'origine</h3>
 				</div>
 				<br>
 				<div id="metiers" class="row"  style="position :relative;">
@@ -260,6 +253,7 @@
 
 	pj = new PJ();
 	nouveauPJ();
+	listeOrigine();
 </script>
 </body>
 </html>

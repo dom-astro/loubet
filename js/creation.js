@@ -3,23 +3,15 @@ driver = new Driver({
 });
 
 function aideCreationPJ() {
-
-
-   /* driver.highlight({
-        element: '#nom',
-        popover: {
-            title: 'Choisir son Nom',
-            description: 'Le nom doit avoir au minimum 3 caractères.',
-            position: 'right'
-        }
-    });*/
-
     driver.defineSteps([
         {
             element: '#nom',
             popover: {
                 title: 'Choisir son Nom',
-                description: 'Le nom doit avoir au minimum 3 caractères.',
+                description: 'Le nom doit avoir au minimum 3 caractères.<br><br>  \
+                <em>- Un nom c\'est important, il nous suit toute notre vie!</em><br><br> \
+                <img id="imgPerso" class="card-img-top rounded-circle" src="img/pj.png" alt="Card image" style="width: 50px; height: 45px; position: relative; top: -10px"!>\
+                <span style="position: relative; left: 10px;">Emile Grosçon, inventeur de la cédille.</span>',
                 position: 'right'
             }
         },
@@ -87,70 +79,26 @@ function aideCreationPJ() {
                 description: "Héritez de votre fortune ou... méritez la un peu plus tard!",
                 position: 'right'
             }
+        },
+        {
+            element: '#origines',
+            popover: {
+                title: 'Choisir son origine',
+                description: "L'origine de votre personnage est fonction des vos caractéristiques \
+                et déterminera vos compétences naturelles.",
+                position: 'top'
+            }
+        },
+        {
+            element: '#metiers',
+            popover: {
+                title: 'Choisir son métier',
+                description: "Un métier vous permet d'acquérir de nouvelles compétences.",
+                position: 'top'
+            }
         }
     ]);
     driver.start();
-    /*driver.defineSteps([
-        {
-            element: '#nom',
-            popover: {
-                className: 'first-step-popover-class',
-                title: 'Choisir son Nom',
-                description: 'Le nom doit avoir au minimum 3 caractères.',
-                position: 'right'
-            }
-        },
-        {
-            element: '#desc-genre',
-            popover: {
-                title: 'Choisir son genre',
-                description: 'Homme ou Femme?',
-                position: 'right'
-            }
-        },
-        {
-            element: '#g-adresse',
-            popover: {
-                title: 'Adresse',
-                description: 'Faite un jet de D6 pour connaître votre adresse',
-                position: 'right'
-            }
-        },
-        {
-            element: '#g-charisme',
-            popover: {
-                title: 'Charisme',
-                description: 'Faite un jet de D6 pour connaître votre adresse',
-                position: 'right'
-            }
-        },
-        {
-            element: '#g-courage',
-            popover: {
-                title: 'Courage',
-                description: 'Faite un jet de D6 pour connaître votre adresse',
-                position: 'right'
-            }
-        },
-        {
-            element: '#g-force',
-            popover: {
-                title: 'Force',
-                description: 'Faite un jet de D6 pour connaître votre adresse',
-                position: 'right'
-            }
-        },
-        {
-            element: '#g-intelligence',
-            popover: {
-                title: 'Intelligence',
-                description: 'Faite un jet de D6 pour connaître votre adresse',
-                position: 'right'
-            }
-        },
-    ]);
-
-    driver.start();*/
 }
 
 function nouveauPJ() {
@@ -178,110 +126,6 @@ function nouveauPJ() {
 
     $("#niveau").val(1);
     $("#xp").val(0);
-
-    //listeOrigine();
-    $("#origines").hide();
-    //listeMetier();
-    $("#metiers").hide();
-
-    // Genre
-    //initGenre();
-
-    //$("#aide").show();
-    //aide("nom");
-}
-
-function aide(etape) {
-    $("#aide-texte").empty();
-
-    switch (etape) {
-        case "nom":
-            $("#aide-texte").append("<p class='aide'>Le nom de votre personnage doit comporter 3 lettres au minimum.</p>")
-            /*driver.highlight({
-                element: '#nom',
-                popover: {
-                  title: 'Choisir son Nom',
-                  description: 'Le nom doit avoir au minimum 3 caractères.',
-                }
-              });*/
-
-            break;
-        case "genre":
-            $("#aide-texte").append("<p class='aide'><span class='bold'>Deuxième étape:</span> choisissez le genre de \
-            votre personnage.</p>");
-            break;
-        case "caracteristique":
-            $("#aide-texte").append("<p class='aide'><span class='bold'>Troisième étape:</span> obtenez vos caractéristiques \
-            principales en tirant un d6.</p>");
-            $("#adresse").next().prop("disabled", false);
-            $("#charisme").next().prop("disabled", false);
-            $("#courage").next().prop("disabled", false);
-            $("#force").next().prop("disabled", false);
-            $("#intelligence").next().prop("disabled", false);
-            break;
-        case "destin":
-            $("#aide-texte").append("<p class='aide'><span class='bold'>Quatrième étape:</span> obtenez vos points du destin.</p>");
-            $("#destin").next().prop("disabled", false);
-            break;
-        case "fortune":
-            $("#aide-texte").append("<p class='aide'><span class='bold'>Cinquième étape:</span> héritez de votre fortune.</p>");
-            $("#fortune").next().prop("disabled", false);
-            break;
-        case "origine":
-            $("#aide-texte").append("<p class='aide'><span class='bold'>Sixième étape:</span> choisissez votre origine.</p>");
-            $("#origines").show();
-            listeOrigine();
-            verifOrigine();
-            break;
-        case "metier":
-            $("#aide-texte").append("<p class='aide'><span class='bold'>Septième étape:</span> choisissez votre métier.</p>");
-            $("#metiers").show();
-            listeMetier();
-            verifMetier();
-            break;
-    }
-    $("#aide-texte").append("<button id='btn-valider' type='button' class='btn btn-success' style='float: right; margin-right: 20px;' \
-    onclick='validation(\""+ etape + "\")' disabled>Valider</button>")
-}
-
-function validation(etape) {
-    switch (etape) {
-        case "nom":
-            var nom = $('#nom').val();
-            $('#nom').prop("disbaled", true);
-            if (nom.length >= 3) {
-                pj.nom = nom;
-                aide("genre");
-            }
-            break;
-        case "genre":
-            $("#femme").remove();
-            $("#homme").remove();
-            strImg = "<img id='" + pj.genre + "' src='img/" + pj.genre + ".svg'  width='32px' alt='" + pj.genre.capitalize() + "' \
-            title='"+ pj.genre.capitalize() + "' \
-            style='margin-top: 5px; margin-left: -28px;'></img>";
-            $("#genre").parent().prepend(strImg);
-
-            aide("caracteristique");
-            break;
-        case "caracteristique":
-            //$("adresse").attr("disabled","disabled");
-            $("#adresse").prop("disabled", true);
-            aide("destin");
-            break;
-        case "destin":
-            aide("fortune");
-            break;
-        case "fortune":
-            aide("origine");
-            break;
-        case "origine":
-            aide("metier");
-            break;
-        case "metier":
-            $("#aide").hide();
-            break;
-    }
 }
 
 function initGenre() {
@@ -338,5 +182,31 @@ function caractD6(caract) {
 
     if (courage > 7 && force > 7 && intelligence > 7 && adresse > 7 && charisme > 7) {
         $('#btn-valider').prop("disabled", false);
-    }
+    };
+    listeOrigine()
+}
+
+function destinD4() {
+    result=Math.ceil(Math.random()*4)-1;
+    $("#destin").val(result);
+    $("#destin").next().prop("disabled",true);
+    $('#btn-valider').prop("disabled",false);
+}
+
+function fortuneD6() {
+    result=10*(Math.ceil(Math.random()*6)+Math.ceil(Math.random()*6));
+    $("#fortune").val(result);
+    $("#fortune").next().prop("disabled",true);
+    $('#btn-valider').prop("disabled",false);
+}
+
+
+function listeOrigine() {
+    $("#origines").empty();
+    $("#origines").append("<h3>Choix de l'origines</h3>");
+
+    origines.forEach(function(origine) {
+        let cardOrigine = new Origine(origine);
+        cardOrigine.appendCard();
+    });
 }
