@@ -126,6 +126,15 @@ function nouveauPJ() {
 
     $("#niveau").val(1);
     $("#xp").val(0);
+
+    $("#adresse").next().prop("disabled", false);
+    $("#charisme").next().prop("disabled", false);
+    $("#courage").next().prop("disabled", false);
+    $("#force").next().prop("disabled", false);
+    $("#intelligence").next().prop("disabled", false);
+
+    listeOrigine();
+    listeMetier();
 }
 
 function initGenre() {
@@ -183,7 +192,9 @@ function caractD6(caract) {
     if (courage > 7 && force > 7 && intelligence > 7 && adresse > 7 && charisme > 7) {
         $('#btn-valider').prop("disabled", false);
     };
-    listeOrigine()
+    
+    listeOrigine();
+    listeMetier();
 }
 
 function destinD4() {
@@ -203,10 +214,56 @@ function fortuneD6() {
 
 function listeOrigine() {
     $("#origines").empty();
-    $("#origines").append("<h3>Choix de l'origines</h3>");
+    $("#origines").append("<h3>Choix de l'origine</h3>");
 
     origines.forEach(function(origine) {
-        let cardOrigine = new Origine(origine);
+        let cardOrigine = new Classe("origine", origine);
         cardOrigine.appendCard();
     });
+}
+
+function listeMetier() {
+    $("#metiers").empty();
+    $("#metiers").append("<h3>Choix du métier</h3>");
+
+    metiers.forEach(function(metier) {
+        let cardMetier = new Classe("metier", metier);
+        cardMetier.appendCard();
+    });
+
+};
+
+function descOrigine(choixOrigine) {
+
+    var origine = origines.find(i => i.nom===choixOrigine);
+
+//    origines.forEach(function(origine) {
+//        if (choixOrigine==origine.nom) {
+            $(".modal-title").html(origine.nom+": "+origine.titre.toLowerCase());
+            $("#modal-img").attr("src","img/"+origine.nom+".png");
+            $("#modal-description").html(origine.description);
+            var strComptences="";
+            competences.forEach(function(competence) {
+                origine.competences.naissance.forEach(function(competenceOrigine) {
+                    if(competence.nom.toLowerCase()==competenceOrigine) {
+                        strComptences += 
+                        "<div class='row'> \
+                            <div class='col-6' style='border-bottom: 1px solid black;'> \
+                                <span style='font-weight: bold;'>"+competence.nom.capitalize()+"</span>: "+competence.description+" \
+                            </div> \
+                            <div class='col-6' style='border-bottom: 1px solid black;'> \
+                                <span style='font-weight: bold;'>Utilisation:</span> "+competence.utilisation+"<br> \
+                                <span style='font-weight: bold;'>Requis:</span> "+(competence.requis==undefined ? "" : competence.requis)+"<br> \
+                                <span style='font-weight: bold;'>Caractéristiques:</span> "+competence.caracteristiques+"<br> \
+                            </div> \
+                        </div>";
+                    }
+                });
+            });
+            $("#modal-competences").html(strComptences);
+            $(".modal-footer").empty();
+            $(".modal-footer").append("<button type='button' class='btn btn-success' data-bs-dismiss='modal' onclick='setOrigine(\""+choixOrigine+"\")'>Choisir</button>");
+            $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Femer</button>");
+//        }
+//    });
 }

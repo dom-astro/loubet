@@ -104,12 +104,14 @@ class PJ {
     }
 }
 
-// Class Origine
-class Origine extends PJ {
-    constructor(origine) {
+// Classe Origine / Metier
+class Classe extends PJ {
+    constructor(typeClasse, classe) {
         super();
         
-        this.origine=origine;
+        this.typeClasse = typeClasse;
+        this.classe = classe;
+        
     }
 
     appendCard() {
@@ -119,30 +121,64 @@ class Origine extends PJ {
         strConditions += this.attributCaract("force");
         strConditions += this.attributCaract("intelligence");
 
-        let strOrigine = " \
+        let strClasse = " \
             <div class='col-4' style='margin-top: -8px;'> \
-                <div id='origine-"+this.origine.nom.id()+"' class='card card-disabled' title='"+this.origine.nom+"'> \
-                    <img class='card-img-top rounded-circle' src='img/"+this.origine.nom+".png' alt='"+this.origine.nom+"'> \
-                    <p style='position: absolute; left: 70px; top: 10px; font-weight: bold;'>"+this.origine.nom+"<br> \
-                    <span style='font-weight: normal; font-size: 10px; text-align: center;'>"+this.origine.titre+"</span></p> \
+                <div id='"+this.typeClasse+"-"+this.classe.nom.id()+"' class='card card-disabled' title='"+this.classe.nom+"'> \
+                    <img class='card-img-top rounded-circle' src='img/"+this.classe.nom+".png' alt='"+this.classe.nom+"'> \
+                    <p style='position: absolute; left: 70px; top: 10px; font-weight: bold;'>"+this.classe.nom+"<br> \
+                    <span style='font-weight: normal; font-size: 10px; text-align: center;'>"+this.classe.titre+"</span></p> \
                     <div style='font-size: 12px; position: relative; left: 10px; top: 10px;'>"+strConditions+"</div> \
-                    <button type='button' class='btn btn-info btn-origine' onclick='descOrigine(\""+this.origine.nom+"\")' data-bs-toggle='modal' data-bs-target='#choix-modal'>Voir</button> \
+                    <button type='button' class='btn btn-info btn-classe' data-bs-toggle='modal' data-bs-target='#choix-modal'>Voir</button> \
                 </div> \
             </div>";
 
-            $("#origines").append(strOrigine);
+            $("#"+this.typeClasse+"s").append(strClasse);
             this.verif();
 
-            /*$("#origine-"+origine.nom.id()+">button").prop("disabled",true);
-            if (isEnabled) {
-                $("#origine-"+origine.nom.id()).removeClass("card-disabled");
-                $("#origine-"+origine.nom.id()).addClass("card-enabled");
-                $("#origine-"+origine.nom.id()+">button").prop("disabled",false);
-            }*/    
+            var self=this;
+            $("#"+this.typeClasse+"-"+this.classe.nom.id()+">button").on("click", function() {
+                $(".modal-title").html(self.classe.nom+": "+self.classe.titre.toLowerCase());
+                $("#modal-img").attr("src","img/"+self.classe.nom+".png");
+                $("#modal-description").html(self.classe.description);
+
+                var strComptences="";
+                competences.forEach(function(competence) {
+                    self.classe.competences.naissance.forEach(function(competenceClasse) {
+                        if(competence.nom.toLowerCase()==competenceClasse) {
+                            strComptences += 
+                            "<div class='row'> \
+                                <div class='col-6' style='border-bottom: 1px solid black;'> \
+                                    <span style='font-weight: bold;'>"+competence.nom.capitalize()+"</span>: "+competence.description+" \
+                                </div> \
+                                <div class='col-6' style='border-bottom: 1px solid black;'> \
+                                    <span style='font-weight: bold;'>Utilisation:</span> "+competence.utilisation+"<br> \
+                                    <span style='font-weight: bold;'>Requis:</span> "+(competence.requis==undefined ? "" : competence.requis)+"<br> \
+                                    <span style='font-weight: bold;'>Caractéristiques:</span> "+competence.caracteristiques+"<br> \
+                                </div> \
+                            </div>";
+                        }
+                    });
+                });
+                $("#modal-competences").html(strComptences);
+                $(".modal-footer").empty();
+                $(".modal-footer").append("<button id='btn-class' type='button' class='btn btn-success' data-bs-dismiss='modal'>Choisir</button>");
+                $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Femer</button>");
+
+                $("#btn-class").on("click", function() {
+                    $("#"+self.typeClasse).val(self.classe.nom);
+            
+                    $("#attaque").val(self.classe.attaque);
+                    $("#parade").val(self.classe.parade);
+                    $("#ev").val(self.classe.ev);
+                    $("#ea").val(self.classe.ea);
+                });
+            });
+
+
     }
     
     attributCaract(nomCaract) {
-        let caract=this.origine[nomCaract];
+        let caract=this.classe[nomCaract];
         var str = caract.min == 0 ? "" : "<span>"+nomCaract.capitalize()+" >= "+caract.min+ "</span><br>";
         str += caract.max == 99 ? "" : "<span>"+nomCaract.capitalize()+" <= "+caract.max+ "</span><br>";
 
@@ -151,7 +187,7 @@ class Origine extends PJ {
 
 
     removeCard() {
-        $("#origine-"+this.origine.nom.id()).prev().remove();
+        $("#"+this.typeClasse+"-"+this.classe.nom.id()).prev().remove();
     }
 
     verif() {
@@ -164,98 +200,26 @@ class Origine extends PJ {
         isEnabled = this.validCaract("intelligence") && isEnabled;
 
         if (isEnabled) {
-            $("#origine-"+this.origine.nom.id()).removeClass("card-disabled");
-            $("#origine-"+this.origine.nom.id()).addClass("card-enabled");
-            $("#origine-"+this.origine.nom.id()+">button").prop("disabled",false);
+            $("#"+this.typeClasse+"-"+this.classe.nom.id()).removeClass("card-disabled");
+            $("#"+this.typeClasse+"-"+this.classe.nom.id()).addClass("card-enabled");
+            $("#"+this.typeClasse+"-"+this.classe.nom.id()+">button").prop("disabled",false);
         } else {
-            $("#origine-"+this.origine.nom.id()).addClass("card-disabled");
-            $("#origine-"+this.origine.nom.id()).removeClass("card-enabled");
-            $("#origine-"+this.origine.nom.id()+">button").prop("disabled",true);
+            $("#"+this.typeClasse+"-"+this.classe.nom.id()).addClass("card-disabled");
+            $("#"+this.typeClasse+"-"+this.classe.nom.id()).removeClass("card-enabled");
+            $("#"+this.typeClasse+"-"+this.classe.nom.id()+">button").prop("disabled",true);
         }
     }
 
     validCaract(nomCaract) {
         let isValid=true;
         let caractPJ = this.pj.caracts.find(caract => caract.nom==nomCaract);  
-        let caractOrigine = this.origine[nomCaract];
+        let caractClasse = this.classe[nomCaract];
 
-        isValid = isValid == (caractPJ.valeur<caractOrigine.min);
-        isValid = isValid == (caractPJ.valeur>caractOrigine.max);
+        isValid = isValid == (caractPJ.valeur<caractClasse.min);
+        isValid = isValid == (caractPJ.valeur>caractClasse.max);
 
         return isValid;
     }
-
-}
-
-// Class Metier
-class Metier extends PJ {
-    constructor(nomMetier) {
-        super();
-
-        this.metier=metiers.find(metier => metier.nom===nomMetier);    
-    }
-
-    appendCard() {
-        strConditions  = "";
-        strConditions += metier.courage.min == 0 ? "" : "<span>Courage >= "+metier.courage.min+ "</span><br>";
-        strConditions += metier.courage.max == 99 ? "" : "<span>Courage <= "+metier.courage.max+ "</span><br>";
-        strConditions += metier.intelligence.min == 0 ? "" : "<span>Intelligence >= "+metier.intelligence.min+ "</span><br>";
-        strConditions += metier.intelligence.max == 99 ? "" : "<span>Intelligence <= "+metier.intelligence.max+ "</span><br>";
-        strConditions += metier.charisme.min == 0 ? "" : "<span>Charisme >= "+metier.charisme.min+ "</span><br>";
-        strConditions += metier.charisme.max == 99 ? "" : "<span>Charisme <= "+metier.charisme.max+ "</span><br>";
-        strConditions += metier.adresse.min == 0 ? "" : "<span>Adresse >= "+metier.adresse.min+ "</span><br>";
-        strConditions += metier.adresse.max == 99 ? "" : "<span>Adresse <= "+metier.adresse.max+ "</span><br>";
-        strConditions += metier.force.min == 0 ? "" : "<span>Force >= "+metier.force.min+ "</span><br>";
-        strConditions += metier.force.max == 99 ? "" : "<span>Force <= "+metier.force.max+ "</span><br>";
-        strConditions += "</ul>";
-
-        strmetier = " \
-            <div class='col-4' style='margin-top: -8px;'> \
-                <div id='metier-"+this.metier.nom.id()+"' class='card card-disabled' title='"+this.metier.nom+"'> \
-                    <img class='card-img-top rounded-circle' src='img/"+this.metier.nom+".png' alt='"+this.metier.nom+"'> \
-                    <p style='position: absolute; left: 70px; top: 10px; font-weight: bold;'>"+this.metier.nom+"<br> \
-                    <span style='font-weight: normal; font-size: 10px; text-align: center;'>"+this.metier.titre+"</span></p> \
-                    <div style='font-size: 12px; position: relative; left: 10px; top: 10px;'>"+strConditions+"</div> \
-                    <button type='button' class='btn btn-info btn-metier' onclick='descmetier(\""+this.metier.nom+"\")' data-bs-toggle='modal' data-bs-target='#choix-modal'>Voir</button> \
-                </div> \
-            </div>";
-
-            $("#metiers").append(strmetier);
-
-    
-            $("#metier-"+metier.nom.id()+">button").prop("disabled",true);
-            if (isEnabled) {
-                $("#metier-"+metier.nom.id()).removeClass("card-disabled");
-                $("#metier-"+metier.nom.id()).addClass("card-enabled");
-                $("#metier-"+metier.nom.id()+">button").prop("disabled",false);
-            }
-    
-    }
-
-    removeCard() {
-        $("#metier-"+this.metier.nom.id()).prev().remove();
-    }
-
-    verif() {
-        isEnabled=true;
-
-        isEnabled = this.courage.validCaract(metier.adresse)==isEnabled;
-        isEnabled = this.courage.validCaract(metier.charisme)==isEnabled;
-        isEnabled = this.courage.validCaract(metier.courage)==isEnabled;
-        isEnabled = this.courage.validCaract(metier.force)==isEnabled;
-        isEnabled = this.courage.validCaract(metier.intelligence)==isEnabled;
-
-        if (isEnabled) {
-            $("#metier-"+metier.nom.id()).removeClass("card-disabled");
-            $("#metier-"+metier.nom.id()).addClass("card-enabled");
-            $("#metier-"+metier.nom.id()+">button").prop("disabled",false);
-        } else {
-            $("#metier-"+metier.nom.id()).addClass("card-disabled");
-            $("#metier-"+metier.nom.id()).removeClass("card-enabled");
-            $("#metier-"+metier.nom.id()+">button").prop("disabled",true);
-        }
-    }
-
 }
 
 class Competences {
