@@ -118,11 +118,11 @@ function nouveauPJ() {
     $("#destin").val(0);
     $("#fortune").val(0);
 
-    $("#attaque").val(8);
-    $("#parade").val(10);
+    //$("#attaque").val(8);
+    //$("#parade").val(10);
 
-    $("#ea").val(0);
-    $("#ev").val(25);
+    //$("#ea").val(0);
+    //$("#ev").val(25);
 
     $("#niveau").val(1);
     $("#xp").val(0);

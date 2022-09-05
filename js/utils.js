@@ -123,7 +123,7 @@ class Classe extends PJ {
 
         let strClasse = " \
             <div class='col-4' style='margin-top: -8px;'> \
-                <div id='"+this.typeClasse+"-"+this.classe.nom.id()+"' class='card card-disabled' title='"+this.classe.nom+"'> \
+                <div id='"+this.typeClasse+"-"+this.classe.nom.id()+"' class='card card-disabled card-"+this.typeClasse+"' title='"+this.classe.nom+"'> \
                     <img class='card-img-top rounded-circle' src='img/"+this.classe.nom+".png' alt='"+this.classe.nom+"'> \
                     <p style='position: absolute; left: 70px; top: 10px; font-weight: bold;'>"+this.classe.nom+"<br> \
                     <span style='font-weight: normal; font-size: 10px; text-align: center;'>"+this.classe.titre+"</span></p> \
@@ -166,15 +166,21 @@ class Classe extends PJ {
 
                 $("#btn-class").on("click", function() {
                     $("#"+self.typeClasse).val(self.classe.nom);
+                    $("#"+self.typeClasse+"s").hide();
+                    $("#classes").show();
+                    console.info($("#"+self.typeClasse+"-"+self.classe.nom.id()).html());
+                    let strHTML ='<div class="col-5 card card-'+self.typeClasse+'" style="height: 220px;" title="'+self.classe.nom.capitalize()+'">';
+                    strHTML    +=$("#"+self.typeClasse+"-"+self.classe.nom.id()).html()+"</div>";
+                    $("#classes").append(strHTML);
+                    //$("#"+self.typeClasse+"-"+self.classe.nom.id()).show();
+                    //$("#"+self.typeClasse+"s>h3").html(self.typeClasse.capitalize());
             
-                    $("#attaque").val(self.classe.attaque);
-                    $("#parade").val(self.classe.parade);
-                    $("#ev").val(self.classe.ev);
-                    $("#ea").val(self.classe.ea);
+                    $("#attaque").val(+$("#attaque").val()+self.classe.attaque);
+                    $("#parade").val(+$("#parade").val()+self.classe.parade);
+                    $("#ev").val(+$("#ev").val()+self.classe.ev);
+                    $("#ea").val(+$("#ea").val()+self.classe.ea);
                 });
             });
-
-
     }
     
     attributCaract(nomCaract) {

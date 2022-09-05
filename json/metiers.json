@@ -224,8 +224,8 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         "nom": "Mage",
         "titre": "",
         "description": "",
-        "ev": "",
-        "ea": "",
+        "ev": -10,
+        "ea": 30,
         "courage": {
             "min": 0,
             "max": 99
