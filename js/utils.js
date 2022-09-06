@@ -161,10 +161,10 @@ class Classe extends PJ {
                 });
                 $("#modal-competences").html(strComptences);
                 $(".modal-footer").empty();
-                $(".modal-footer").append("<button id='btn-class' type='button' class='btn btn-success' data-bs-dismiss='modal'>Choisir</button>");
+                $(".modal-footer").append("<button id='btn-choisir' type='button' class='btn btn-success' data-bs-dismiss='modal'>Choisir</button>");
                 $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Femer</button>");
 
-                $("#btn-class").on("click", function() {
+                $("#btn-choisir").on("click", function() {
                     $("#"+self.typeClasse).val(self.classe.nom);
                     $("#"+self.typeClasse+"s").hide();
                     $("#classes").show();
@@ -172,9 +172,18 @@ class Classe extends PJ {
                     let strHTML ='<div class="col-5 card card-'+self.typeClasse+'" style="height: 220px;" title="'+self.classe.nom.capitalize()+'">';
                     strHTML    +=$("#"+self.typeClasse+"-"+self.classe.nom.id()).html()+"</div>";
                     $("#classes").append(strHTML);
+                    $(".card-"+self.typeClasse+">div").empty();
+                    $(".card-"+self.typeClasse+">div").addClass("row");
+                    $(".card-"+self.typeClasse+">div").append("<h6>Compétences</h6>");
                     //$("#"+self.typeClasse+"-"+self.classe.nom.id()).show();
                     //$("#"+self.typeClasse+"s>h3").html(self.typeClasse.capitalize());
-            
+                    competences.forEach(function(competence) {
+                        self.classe.competences.naissance.forEach(function(competenceClasse) {
+                            if(competence.nom.toLowerCase()==competenceClasse.toLowerCase()) {
+                                $(".card-"+self.typeClasse+">div").append("<div class='col-5'>- "+competence.nom.capitalize()+"</div>" )
+                            }
+                        });
+                    });           
                     $("#attaque").val(+$("#attaque").val()+self.classe.attaque);
                     $("#parade").val(+$("#parade").val()+self.classe.parade);
                     $("#ev").val(+$("#ev").val()+self.classe.ev);

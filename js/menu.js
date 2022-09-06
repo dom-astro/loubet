@@ -2,7 +2,7 @@ var menus = [
   {
     nom: "Personnage",
     liste: [{ nom: "Création", icon: "ra ra-player ra-lg", page: "creation.html" },
-    { nom: "Chargement", icon: "ra ra-player-teleport ra-lg", page: "chargement.html" },
+    { nom: "Chargement", icon: "ra ra-player-teleport ra-lg", page: "perso.html" },
     { nom: "Prêt à l'emploi", icon: "ra ra-aura ra-lg", page: "#" }
     ]
   },
