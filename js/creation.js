@@ -133,8 +133,10 @@ function nouveauPJ() {
     $("#force").next().prop("disabled", false);
     $("#intelligence").next().prop("disabled", false);
 
-    listeOrigine();
-    listeMetier();
+    $("#classes").empty();
+    $("#classes").append('<h3 style="margin-left: 5px;">Origine et métier</h3>');
+    $("#classes").hide();
+
 }
 
 function initGenre() {
@@ -191,10 +193,8 @@ function caractD6(caract) {
 
     if (courage > 7 && force > 7 && intelligence > 7 && adresse > 7 && charisme > 7) {
         $('#btn-valider').prop("disabled", false);
-    };
-    
-    listeOrigine();
-    listeMetier();
+        listeOrigine();
+    };    
 }
 
 function destinD4() {
@@ -214,6 +214,7 @@ function fortuneD6() {
 
 function listeOrigine() {
     $("#origines").empty();
+    $("#origines").show();
     $("#origines").append("<h3>Choix de l'origine</h3>");
 
     origines.forEach(function(origine) {
@@ -224,6 +225,7 @@ function listeOrigine() {
 
 function listeMetier() {
     $("#metiers").empty();
+    $("#metiers").show();
     $("#metiers").append("<h3>Choix du métier</h3>");
 
     metiers.forEach(function(metier) {

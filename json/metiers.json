@@ -29,7 +29,7 @@ var metiers =
         },
         "competences": {
             "naissance": [
-                "ARMES DE BOURRIN", "BOURRE-PIF"
+                "armes de bourrin", "bourre-pif"
             ],
             "choix": [
                 "ambidextrie, chercher des noises, chevaucher, forgeron, intimider, tirer correctement, truc de mauviette"
@@ -65,7 +65,7 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         },
         "competences": {
             "naissance": [
-                "ARMES DE BOURRIN", "BOURRE-PIF"
+                "armes de bourrin", "bourre-pif"
             ],
             "choix": [
                 "ambidextrie, chercher des noises, chevaucher, forgeron, intimider, tirer correctement, truc de mauviette"
@@ -100,7 +100,7 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         },
         "competences": {
             "naissance": [
-                "DÉPLACEMENT SILENCIEUX", "FRAPPER LÂCHEMENT", "TIRER CORRECTEMENT"
+                "déplacement silencieux", "frapper lâchement", "tirer correctement"
             ],
             "choix": [
                 "ambidextrie, chercher des noises, chevaucher, érudition, escalader, méfiance, nager, ressemble à rien"
@@ -143,7 +143,7 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         },
         "competences": {
             "naissance": [
-                "DÉPLACEMENT SILENCIEUX", "FRAPPER LÂCHEMENT", "TIRER CORRECTEMENT"
+                "déplacement silencieux", "frapper lâchement", "tirer correctement"
             ],
             "choix": [
                 "ambidextrie, chercher des noises, chevaucher, érudition, escalader, méfiance, nager, ressemble à rien"
@@ -213,10 +213,10 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         },
         "competences": {
             "naissance": [
-                "ÉRUDITION", "MÉFIANCE", "RÉCUPÉRATION"
+                "érudition", "méfiance", "récupération"
             ],
             "choix": [
-                "Arnaque et carambouille", "Chevaucher", "Cuistot", "Fariboles", "Premiers soins", "Radin", "Runes bizarres"
+                "Arnaque et carambouille", "chevaucher", "Cuistot", "Fariboles", "Premiers soins", "Radin", "Runes bizarres"
             ]
         }
     },
@@ -248,10 +248,10 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         },
         "competences": {
             "naissance": [
-                "ÉRUDITION","RÉCUPÉRATION","RUNES BIZARRES"
+                "érudition","récupération","RUNES BIZARRES"
             ],
             "choix": [
-                "Appel des renforts", "Chef de groupe", "Chevaucher", "Fariboles", "Langues des monstres", "Premiers soins"
+                "Appel des renforts", "Chef de groupe", "chevaucher", "Fariboles", "Langues des monstres", "Premiers soins"
             ]
         }
     },
@@ -283,10 +283,10 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         },
         "competences": {
             "naissance": [
-                "ÉRUDITION","RÉCUPÉRATION","RUNES BIZARRES"
+                "érudition","récupération","RUNES BIZARRES"
             ],
             "choix": [
-                "Appel des renforts", "Chef de groupe", "Chevaucher", "Fariboles", "Langues des monstres", "Premiers soins"
+                "Appel des renforts", "Chef de groupe", "chevaucher", "Fariboles", "Langues des monstres", "Premiers soins"
             ]
         }
     },
@@ -318,10 +318,10 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         },
         "competences": {
             "naissance": [
-                "CHEVAUCHER", "INTIMIDER", "RÉCUPÉRATION"
+                "chevaucher", "intimider", "récupération"
             ],
             "choix": [
-                "Armes de bourrin", "Chercher des noises", "Érudition", "Fariboles", "Premiers soins"
+                "armes de bourrin", "Chercher des noises", "érudition", "Fariboles", "Premiers soins"
             ]
         }
     },
@@ -353,7 +353,7 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         },
         "competences": {
             "naissance": [
-                "DÉPLACEMENT SILENCIEUX", "DÉTECTION", "CHEVAUCHER", "NAGER", "PISTER"
+                "déplacement silencieux", "détection", "chevaucher", "nager", "pister"
             ],
             "choix": [
                 ""

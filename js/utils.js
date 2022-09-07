@@ -168,9 +168,9 @@ class Classe extends PJ {
                     $("#"+self.typeClasse).val(self.classe.nom);
                     $("#"+self.typeClasse+"s").hide();
                     $("#classes").show();
-                    console.info($("#"+self.typeClasse+"-"+self.classe.nom.id()).html());
-                    let strHTML ='<div class="col-5 card card-'+self.typeClasse+'" style="height: 220px;" title="'+self.classe.nom.capitalize()+'">';
-                    strHTML    +=$("#"+self.typeClasse+"-"+self.classe.nom.id()).html()+"</div>";
+
+                    let strHTML  = '<div class="col-5 card card-'+self.typeClasse+'" style="height: 220px;" title="'+self.classe.nom.capitalize()+'">';
+                        strHTML += $("#"+self.typeClasse+"-"+self.classe.nom.id()).html()+"</div>";
                     $("#classes").append(strHTML);
                     $(".card-"+self.typeClasse+">div").empty();
                     $(".card-"+self.typeClasse+">div").addClass("row");
@@ -188,6 +188,10 @@ class Classe extends PJ {
                     $("#parade").val(+$("#parade").val()+self.classe.parade);
                     $("#ev").val(+$("#ev").val()+self.classe.ev);
                     $("#ea").val(+$("#ea").val()+self.classe.ea);
+
+                    if(self.typeClasse=="origine") {
+                        listeMetier();
+                    }
                 });
             });
     }
