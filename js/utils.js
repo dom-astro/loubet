@@ -19,9 +19,10 @@ String.prototype.capitalize = function () {
 class PJ {
     constructor() {
         this.pj = {};
-        this.bob=$("#nom").val();
         this.pj.nom=$("#nom").val();
         this.pj.genre=$("#genre").val();
+        this.pj.origine=$("#origine").val();
+        this.pj.metier=$("#metier").val();
 
         this.pj.caracts=[];
         this.pj.caracts.push({"nom": "adresse", "valeur": +$("#adresse").val()});
@@ -46,7 +47,7 @@ class PJ {
     set genre(value) { this.pj.genre=value; }
 
     get adresse() {
-        let index = this.pj.caracts.find(caract => caract.nom=="adresse");    
+        let adresse = this.pj.caracts.find(caract => caract.nom=="adresse");    
         return adresse.valeur;
     }
     set adresse(value) {
@@ -96,7 +97,53 @@ class PJ {
     get fortune() { return this.pj.fortune; }
     set fortune(value) { this.pj.fortune=value; }
 
-    appendCard() {
+    get origine() { return this.pj.origine; }
+    set origine(value) { this.pj.origine=value; }
+
+    get metier() { return this.pj.metier; }
+    set metier(value) { this.pj.metier=value; }
+
+    get attaque() { return this.pj.attaque; }
+    set attaque(value) { this.pj.attaque=value; }
+
+    get parade() { return this.pj.parade; }
+    set parade(value) { this.pj.parade=value; }
+
+    get xp() { return this.pj.xp; }
+    set xp(value) { this.pj.xp=value; }
+
+    get niveau() { return this.pj.niveau; }
+    set niveau(value) { this.pj.niveau=value; }
+
+    save() {       
+        localStorage.setItem("pj",JSON.stringify(this.pj));
+    }
+    
+    load() {
+        if ("pj" in localStorage) {
+            this.pj=JSON.parse(localStorage.getItem("pj"));
+
+            $("#nom").html(this.nom);
+            $("#genre").val(this.genre);
+            $("#origine").val(this.origine);
+            $("#metier").val(this.metier);
+
+            $("#adresse").val(this.adresse);
+            $("#charisme").val(this.charisme);
+            $("#courage").val(this.courage);
+            $("#force").val(this.force);
+            $("#intelligence").val(this.intelligence);
+
+            $("#destin").val(this.destin);
+            $("#fortune").val(this.fortune);
+            $("#attaque").val(this.attaque);
+            $("#parade").val(this.parade);
+
+            $("#niveau").val(this.pj.niveau);
+            $("#xp").val(this.pj.xp);
+        } else {
+            alert("Pas de pj sélectionné !");
+        }
     }
 
     toJSON() {

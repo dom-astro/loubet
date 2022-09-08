@@ -269,3 +269,31 @@ function descOrigine(choixOrigine) {
 //        }
 //    });
 }
+
+function savePJ() {
+    pj.nom = $("#nom").val();
+    pj.genre = $("#genre").html();
+    pj.origine = $("#origine").val();
+    pj.metier = $("#metier").val();
+    pj.description = $("#presentation").val();
+
+    pj.adresse =+ $("#adresse").val();
+    pj.charisme = +$("#charisme").val();
+    pj.courage = +$("#courage").val();
+    pj.force = +$("#force").val();
+    pj.intelligence = +$("#intelligence").val();
+
+    pj.ev = +$("#ev").val();
+    pj.ea = +$("#ea").val();
+    pj.attaque = +$("#attaque").val();
+    pj.parade = +$("#parade").val();
+    pj.rm = +$("#rm").val();
+
+    pj.fortune = +$("#fortune").val();
+    pj.destin = +$("#destin").val();
+
+    pj.xp=0;
+    pj.niveau=1;
+
+    pj.save();
+}
