@@ -100,7 +100,7 @@ function acheter(nomArme) {
 
   $(".modal-title").html("Acheter");
   $("#objet").html("<i class='"+arme.icon+"'> "+nomArme+"<hr>");
-  $("#txt-marchand").html("C'est une lame de bonne qualité. C'est un prix d'ami que je vous fait!");
+  $("#txt-marchand").html("C'est une lame de bonne qualité. C'est un prix d'ami que je vous fais!");
 
   $("#caract").empty();
   $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Dégâts:</span> "+arme.degat+"</li>");
@@ -165,10 +165,10 @@ function marchander(nomArme) {
   setBonusMalus(arme,"force");
   setBonusMalus(arme,"intelligence");
 
-  var radin=pj.competences.find(competence => competence==="radin");
-  var arnaque=pj.competences.find(competence => competence==="arnaque et carambouille");
+  //var radin=pj.competences.find(competence => competence==="radin");
+  //var arnaque=pj.competences.find(competence => competence==="arnaque et carambouille");
   var charisme=+pj.charisme;
-  if (radin != undefined) {
+  if (pj.competences.includes("radin") || pj.competences.includes("arnaque et carambouille")) {
     $("#txt-comptences").html("Vous posséder la compétence \"Radin\". Vous aves un bonus de +4 au marchandage!");
     charisme += 4;
   }
@@ -191,12 +191,12 @@ function resultMarchander(nomArme, vlCaract) {
     $(".modal-title").html("Marchandage effectué");
     $("#txt-tirage").html("Réussite critique du marchandage ("+result+" sur "+vlCaract+").");
     $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Maintenant que vous le dite, il y avait bien une erreur sur le prix!</p>");
-    $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Du coup je vous fait <span style='font-weight: bold;'>"+nomArme+"</span> à moitié prix, soit "+arme.prix/2+" pièces d'or.</p>");
+    $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Du coup je vous fais <span style='font-weight: bold;'>"+nomArme+"</span> à moitié prix, soit "+arme.prix/2+" pièces d'or.</p>");
     $(".modal-footer").append("<button type='button' class='btn btn-success' data-bs-dismiss='modal' onclick='resultAcheter(\""+arme.nom+"\","+arme.prix/2+")' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter</button>");
   } else if(result<=vlCaract) {
     $(".modal-title").html("Marchandage effectué");
     $("#txt-tirage").html("Réussite du marchandage ("+result+" sur "+vlCaract+").");
-    $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Bon c'est parce que c'est vous, je vous fait <span style='font-weight: bold;'>"+nomArme+"</span> pour "+arme.prix*0.8+" pièces d'or.</p>");
+    $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Bon c'est parce que c'est vous, je vous fais <span style='font-weight: bold;'>"+nomArme+"</span> pour "+arme.prix*0.8+" pièces d'or.</p>");
     $(".modal-footer").append("<button type='button' class='btn btn-success' data-bs-dismiss='modal' onclick='resultAcheter(\""+arme.nom+"\","+arme.prix*0.8+")' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter</button>");
     /*pj.fortune -= arme.prix;
     pj.armes.push(nomArme);

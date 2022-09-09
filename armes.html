@@ -2,11 +2,11 @@
 <head>
 	<!--meta http-equiv="Content-Type" content="text/html; charset=windows-752"-->
 	<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" type="text/css"  href="css/bootstrap.min.css">
+	<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css"  href="css/driver.min.css">
-	<link rel="stylesheet" type="text/css" href="css/rpg-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/donjon.css">
-	<title>Naheulbeuk - Armurie</title>
+	<link rel="stylesheet" type="text/css" href="css/rpg-awesome.min.css">
+	<title>Naheulbeuk - Création PJ</title>
 
 	<meta name="author" content="Pen of Chaos">
 	<meta name="description" content="Le Donjon de Naheulbeuk est un jeu de rôle plus ou moins humoristique et médial-fantastique, à télécharger">
@@ -16,7 +16,7 @@
 <body >
 <noscript>Your browser does not support script</noscript>
 
-<nav class="navbar navbar-expand-sm bg-transparent navbar-light">
+<nav class="navbar sticky-top navbar-expand-sm navbar-light" style="background-color : #E7E7D2;">
 	<div id="menu" class="container-fluid">
 	</div>
 </nav>
@@ -27,39 +27,35 @@
 <br>
 <br>
 <div class="container-fluid">
-	<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
-		Open Offcanvas Sidebar
-	</button>
-	<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" style="width: 350px;" id="demo">
-		<div class="offcanvas-header">
-			<h1 class="offcanvas-title" id="nom"></h1>
-			<button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-		</div>
-		<div class="offcanvas-body">
-			<div class="card" style="width: 90%; height: 360px">
-				<div class="row">
-					<div class="col-8">
-						<input id="origine" type="text" class="form-control" placeholder="Origine du pj" title="Origine du pj" disabled            style="margin-left: 10px; margin-top: 5px; width: 90%">
-						<input id="metier" type="text" class="form-control" placeholder="Métier du pj" title="Métier du pj" disabled               style="margin-left: 10px; margin-top: 5px; width: 90%">
-						<!--div class="invalid-feedback" style="margin-left: 10px;">Veuillez choisir un nom.</div-->
+	<div class="row">
+		<div class="col-5">
+			<h3 title="Personnage joueur">Personnage</h3>
+			<form action="" class="was-validated">
+				<div class="card" style="width: 100%; height: 360px">
+					<div class="row">
+						<div class="col-8">
+							<input id="nom" type="text" pattern=".{3,}" class="form-control" placeholder="Nom" title="3 lettres minimum" required style="margin-left: 10px; margin-top: 5px; width: 90%" onkeyup="verifNom()">
+							<input id="origine" type="text" class="form-control" placeholder="Origine du pj" title="Origine du pj" disabled            style="margin-left: 10px; margin-top: 5px; width: 90%">
+							<input id="metier" type="text" class="form-control" placeholder="Métier du pj" title="Métier du pj" disabled               style="margin-left: 10px; margin-top: 5px; width: 90%">
+							<!--div class="invalid-feedback" style="margin-left: 10px;">Veuillez choisir un nom.</div-->
+						</div>
+						<div id="desc-genre" class="col-4">
+							<!--img id="femme" src="img/femme.svg"  width="32px" alt="Femme" title="Femme" onclick="setGenre('femme')" style="margin-top: 5px; margin-left: -28px;">
+							<img id="homme" src="img/homme.svg"  width="32px" alt="Homme" title="Homme" onclick="setGenre('homme')" style="margin-top: 5px"-->
+							<span id="genre" style="font-weight: bold; font-size: 18px; position: relative; top: 5px;">Homme</span>
+							<img id="imgPerso" class="card-img-top rounded-circle" src="img/pj.png" alt="Card image" style="width: 100px; height: 90px; position: relative; left: -20px; top:10px">
+						</div>
 					</div>
-					<div id="desc-genre" class="col-4">
-						<!--img id="femme" src="img/femme.svg"  width="32px" alt="Femme" title="Femme" onclick="setGenre('femme')" style="margin-top: 5px; margin-left: -28px;">
-						<img id="homme" src="img/homme.svg"  width="32px" alt="Homme" title="Homme" onclick="setGenre('homme')" style="margin-top: 5px"-->
-						<span id="genre" style="font-weight: bold; font-size: 18px; position: relative; top: 5px;">Homme</span>
-						<!-- img id="imgPerso" class="card-img-top rounded-circle" src="img/pj.png" alt="Card image" style="width: 100px; height: 90px; position: relative; left: -20px; top:10px" -->
+					<div class="card-body" style="position: relative; top: -20px;">
+						<p>Présentation</p>
+						<textarea  id="presentation" rows="6" cols="35" style="width: 100%;"></textarea>
 					</div>
 				</div>
-				<div class="card-body" style="position: relative; top: -20px;">
-					<p>Présentation</p>
-					<textarea  id="presentation" rows="6" cols="35" style="width: 100%;"></textarea>
-				</div>
-			</div>
-
+			</form>
 			<h4 style="top: 20px;">Caractéristiques</h4>
 			<div class="card" style="height: 150px;">
 				<div class="row">
-					<div class="col-5">
+						<div class="col-5">
 						<div class="input-group">
 							<span class="caract-label" title="Détermine qui frappe le premier dans un combat">Courage</span>
 							<input id="courage" type="number" class="caract-valeur" value="7" disabled>
@@ -158,7 +154,7 @@
 			<h4>Expérience</h4>
 			<div class="card" style="height: 50px;">
 				<div class="row" style="margin-top: 4px;">
-					<div class="col-6">
+						<div class="col-6">
 						<div class="input-group" style="left: 20px;">
 							<span class="caract-label" title="Point d'expérience">Point d'XP</span>
 							<input id="xp" type="number" class="caract-valeur" style="width: 48px;" placeholder="0" disabled>
@@ -172,11 +168,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-	  
-	<div class="row">
-		<div class="col-5">
 			<br>
 			<h4>Equipements</h4>
 			<div class="card">
@@ -355,11 +346,13 @@
 	pj = new PJ();
 	pj.load();
 
-/*	initPerso();
-	initArmes();
+	//initArmes();
 	listeArmes();
 	listeArmures();
 	listeDivers();
+	/*initPerso();
+	initArmes();
+	listeArmes();
 	combat();*/
 </script>
 </body>

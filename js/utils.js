@@ -23,6 +23,7 @@ class PJ {
         this.pj.genre=$("#genre").val();
         this.pj.origine=$("#origine").val();
         this.pj.metier=$("#metier").val();
+        this.pj.competences=[];
 
         this.pj.caracts=[];
         this.pj.caracts.push({"nom": "adresse", "valeur": +$("#adresse").val()});
@@ -37,6 +38,8 @@ class PJ {
         this.pj.parade=+$("#parade").val();
         this.pj.niveau=+$("#niveau").val();
         this.pj.xp=+$("#xp").val();
+
+        this.pj.armes=[];
     }
 
     // Getters & Setters
@@ -103,6 +106,9 @@ class PJ {
     get metier() { return this.pj.metier; }
     set metier(value) { this.pj.metier=value; }
 
+    get competences() { return this.pj.competences; }
+    set comptences(value) { this.pj.competences.push(value); }
+
     get attaque() { return this.pj.attaque; }
     set attaque(value) { this.pj.attaque=value; }
 
@@ -115,7 +121,14 @@ class PJ {
     get niveau() { return this.pj.niveau; }
     set niveau(value) { this.pj.niveau=value; }
 
-    save() {       
+    get armes() { return this.pj.armes; }
+    set armes(value) { this.pj.armes.push(value); }
+
+    save() {      
+        let origine= origines.find(origine => origine.nom===this.pj.origine);
+        let metier= metiers.find(metier => metier.nom===this.pj.metier);
+        this.pj.competences=origine.competences.naissance;
+        this.pj.competences.concat(metier.competences.naissance);
         localStorage.setItem("pj",JSON.stringify(this.pj));
     }
     
@@ -123,7 +136,7 @@ class PJ {
         if ("pj" in localStorage) {
             this.pj=JSON.parse(localStorage.getItem("pj"));
 
-            $("#nom").html(this.nom);
+            $("#nom").val(this.nom);
             $("#genre").val(this.genre);
             $("#origine").val(this.origine);
             $("#metier").val(this.metier);
@@ -146,6 +159,10 @@ class PJ {
         }
     }
 
+    addCompetence(competence) {
+        this.pj.competences.push(competence);
+    }
+
     toJSON() {
         return this.pj;
     }
@@ -158,7 +175,6 @@ class Classe extends PJ {
         
         this.typeClasse = typeClasse;
         this.classe = classe;
-        
     }
 
     appendCard() {
