@@ -2,28 +2,28 @@ var divers = [
     {
         "type": "Sacs",
         "nom": "Besace de base",
-        "icon": "",
+        "icon": "ra ra-ammo-bag",
         "prix": 1,
         "poids": "Charge Max 3 kilos"
     },
     {
         "type": "Sacs",
         "nom": "Besace de qualité",
-        "icon": "",
+        "icon": "ra ra-ammo-bag",
         "prix": 2,
         "poids": "Charge Max 5 kilos"
     },
     {
         "type": "Sacs",
         "nom": "Sac à dos de base",
-        "icon": "",
+        "icon": "ra ra-ammo-bag",
         "prix": 5,
         "poids": "Charge Max 10 kilos"
     },
     {
         "type": "Sacs",
         "nom": "Sac à dos de qualité",
-        "icon": "",
+        "icon": "ra ra-ammo-bag",
         "prix": 10,
         "poids": "Charge Max 15 kilos"
     },

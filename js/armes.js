@@ -21,6 +21,7 @@ class Armes {
 
     let type="";
     let self=this;
+    $("#t-armes").empty();
     this.armes.forEach(function(arme) {
       if (type != arme.type) {
         type=arme.type;
@@ -104,6 +105,7 @@ class Armes {
 
   marchander(nomArme) {
     var arme = this.armes.find(arme => arme.nom===nomArme);
+
     $(".modal-title").html("Marchander");
     $("#objet").html("<i class='"+arme.icon+"'> "+nomArme+"<hr>");
     $("#txt-marchand").html("Attention je n'aime pas les arnaques. Cela a tendance à faire monter les prix!");
@@ -125,16 +127,60 @@ class Armes {
     setBonusMalus(arme,"intelligence");
   
     var charisme=+pj.charisme;
-    if (pj.competences.includes("radin") || pj.competences.includes("arnaque et carambouille")) {
+    if (pj.competences.includes("radin")) {
       $("#txt-comptences").html("Vous posséder la compétence \"Radin\". Vous aves un bonus de +4 au marchandage!");
+      charisme += 4;
+    } else if (pj.competences.includes("arnaque et carambouille")) {
+      $("#txt-comptences").html("Vous posséder la compétence \"Arnaque et carambouille\". Vous aves un bonus de +4 au marchandage!");
       charisme += 4;
     }
     $("#txt-explication").html("Vous pouvez marchander en effectuant un jet de charisme.");
   
     $(".modal-footer").empty();
     $(".modal-footer").append("<p>Vous pouvez marchander en effectuant un jet de charisme <= "+charisme+".<p>");
-    $(".modal-footer").append("<button type='button' class='btn btn-primary' data-bs-dismiss='modal' onclick='resultMarchander(\""+arme.nom+"\","+charisme+")' data-bs-toggle='modal' data-bs-target='#result-modal'>Marchander</button>");
+    $(".modal-footer").append("<button id='btn-marachandage-"+arme.nom.id()+"' type='button' class='btn btn-primary' data-bs-dismiss='modal' data-bs-toggle='modal' data-bs-target='#result-modal'>Marchander</button>");
     $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
+
+    var self=this;
+    $("#btn-marachandage-"+arme.nom.id()).on("click", function() {
+      let arme = armes.find(arme => arme.nom===nomArme);
+
+      $(".modal-footer").empty();
+      $("#txt-result").empty();
+      
+      let result=Math.ceil(Math.random()*20);
+      if(result==1) {
+        $(".modal-title").html("Marchandage effectué");
+        $("#txt-tirage").html("Réussite critique du marchandage ("+result+" sur "+charisme+").");
+        $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Maintenant que vous le dite, il y avait bien une erreur sur le prix!</p>");
+        $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Du coup je vous fais <span style='font-weight: bold;'>"+nomArme+"</span> à moitié prix, soit "+arme.prix/2+" pièces d'or.</p>");
+        arme.prix = arme.prix/2;
+      } else if(result<=charisme) {
+        $(".modal-title").html("Marchandage effectué");
+        $("#txt-tirage").html("Réussite du marchandage ("+result+" sur "+charisme+").");
+        $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Bon c'est parce que c'est vous, je vous fais <span style='font-weight: bold;'>"+nomArme+"</span> pour "+arme.prix*0.8+" pièces d'or.</p>");
+        arme.prix = arme.prix*0.8;
+      } else if(result==20){
+        $(".modal-title").html("Marchandage raté");
+        $("#txt-tirage").html("Echec critique du marchandage ("+result+" sur "+charisme+").");
+        $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Je n'aime pas le marchandage et le fait qu'on essaye de me la faire.</p>");
+        $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'><span style='font-weight: bold;'>"+nomArme+"</span> ne fera pas parti de votre équipement!</p>");
+        arme.prix = arme.prix*100;
+      } else {
+        $(".modal-title").html("Marchandage raté");
+        $("#txt-tirage").html("Echec du marchandage ("+result+" sur "+charisme+").");
+        $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>En fait je viens de me souvenir que <span style='font-weight: bold;'>"+nomArme+"</span> appartenait à Glud l'Ancien.</p>");
+        $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Du coup le prix augmente à "+arme.prix*1.2+" pièces d'or.</p>");
+        arme.prix = arme.prix*1.2;
+      }
+
+      self.updatePrix(arme);
+      //$(".modal-footer").append("<button type='button' class='btn btn-warning' data-bs-dismiss='modal' onclick='resultAcheter(\""+arme.nom+"\","+arme.prix*1.2+")' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter ?</button>");
+      if (result<20) {
+        $(".modal-footer").append("<button type='button' class='btn btn-success' data-bs-dismiss='modal' onclick='resultAcheter(\""+arme.nom+"\","+arme.prix+")' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter</button>");      
+      }
+      $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");    });
+      this.liste();
   }
 
   voler(nomArme) {
@@ -170,6 +216,15 @@ class Armes {
     $(".modal-footer").append("<p>Vous pouvez voler en effectuant un jet d'adresse <= "+adresse+".<p>");
     $(".modal-footer").append("<button type='button' class='btn btn-warning' data-bs-dismiss='modal' onclick='resultVoler(\""+arme.nom+"\","+adresse+")' data-bs-toggle='modal' data-bs-target='#result-modal'>Voler</button>");
     $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
+  }
+
+  updatePrix(majArme) {
+    armes.forEach(function(arme) {
+      if(arme.nom==majArme.nom) {
+        arme.prix=majArme.prix;
+      }
+      
+    });
   }
 }
 
@@ -236,66 +291,8 @@ function listeDivers() {
   });
 }
 
-function resultAcheter(nomArme, prix) {
-  var arme = armes.find(arme => arme.nom===nomArme);
-  var fortune=pj.fortune;
-
-  prix = (prix==0 ? arme.prix : prix);
-  if (fortune>=prix) {
-    $(".modal-title").html("Achat effectué");
-    $("#txt-result").html("<span style='font-weight: bold;'>"+nomArme+"</span> vient d'être acheté pour "+arme.prix+" pièces d'or.");
-    pj.fortune -= prix;
-    pj.armes.push(nomArme);
-    $("#fortune").val(pj.fortune);
-    localStorage.setItem("pj",JSON.stringify(pj));
-    $("#eq-armes").append("<li><span style='font-weight: bold;'>"+arme.nom+"</span> ("+arme.degat+")</li>");
-  } else {
-    $(".modal-title").html("Achat non effectué");
-    $("#txt-result").html("<span style='font-weight: bold;'>"+nomArme+"</span> est beaucoup trop cher pour vous!");
-  }
-
-  $(".modal-footer").empty();
-  $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
-}
-
-
 function resultMarchander(nomArme, vlCaract) {
-  var arme = armes.find(arme => arme.nom===nomArme);
 
-  $(".modal-footer").empty();
-  $("#txt-result").empty();
-  
-  result=Math.ceil(Math.random()*20);
-  if(result==1) {
-    $(".modal-title").html("Marchandage effectué");
-    $("#txt-tirage").html("Réussite critique du marchandage ("+result+" sur "+vlCaract+").");
-    $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Maintenant que vous le dite, il y avait bien une erreur sur le prix!</p>");
-    $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Du coup je vous fais <span style='font-weight: bold;'>"+nomArme+"</span> à moitié prix, soit "+arme.prix/2+" pièces d'or.</p>");
-    $(".modal-footer").append("<button type='button' class='btn btn-success' data-bs-dismiss='modal' onclick='resultAcheter(\""+arme.nom+"\","+arme.prix/2+")' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter</button>");
-  } else if(result<=vlCaract) {
-    $(".modal-title").html("Marchandage effectué");
-    $("#txt-tirage").html("Réussite du marchandage ("+result+" sur "+vlCaract+").");
-    $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Bon c'est parce que c'est vous, je vous fais <span style='font-weight: bold;'>"+nomArme+"</span> pour "+arme.prix*0.8+" pièces d'or.</p>");
-    $(".modal-footer").append("<button type='button' class='btn btn-success' data-bs-dismiss='modal' onclick='resultAcheter(\""+arme.nom+"\","+arme.prix*0.8+")' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter</button>");
-    /*pj.fortune -= arme.prix;
-    pj.armes.push(nomArme);
-    $("#fortune").val(pj.fortune);
-    localStorage.setItem("pj",JSON.stringify(pj));*/
-  } else if(result==20){
-    $(".modal-title").html("Marchandage raté");
-    $("#txt-tirage").html("Echec critique du marchandage ("+result+" sur "+vlCaract+").");
-    $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Je n'aime pas le marchandage et le fait qu'on essaye de me la faire.</p>");
-    $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'><span style='font-weight: bold;'>"+nomArme+"</span> ne fera pas parti de votre équipement!</p>");
-  } else {
-    $(".modal-title").html("Marchandage raté");
-    $("#txt-tirage").html("Echec du marchandage ("+result+" sur "+vlCaract+").");
-    $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>En fait je viens de me souvenir que <span style='font-weight: bold;'>"+nomArme+"</span> appartenait à Glud l'Ancien.</p>");
-    $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Du coup le prix augmente à "+arme.prix*1.2+" pièces d'or.</p>");
-    $(".modal-footer").append("<button type='button' class='btn btn-warning' data-bs-dismiss='modal' onclick='resultAcheter(\""+arme.nom+"\","+arme.prix*1.2+")' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter ?</button>");
-  }
-
-
-  $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
 }
 
 function resultVoler(nomArme, vlCaract) {
