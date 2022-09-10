@@ -77,8 +77,29 @@ class Armes {
     setBonusMalus(arme,"intelligence");
     
     $(".modal-footer").empty();
-    $(".modal-footer").append("<button type='button' class='btn btn-primary' data-bs-dismiss='modal' onclick='resultAcheter(\""+arme.nom+"\",0)' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter</button>");
-    $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
+    $(".modal-footer").append("<button id='btn-achat-"+arme.nom.id()+"' type='button' class='btn btn-primary' data-bs-dismiss='modal' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter</button>");
+    $(".modal-footer").append("<button id='' type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
+
+    $("#btn-achat-"+arme.nom.id()).on("click", function() {
+      var fortune=pj.fortune;
+    
+      //prix = (prix==0 ? arme.prix : prix);
+      if (fortune>=arme.prix) {
+        $(".modal-title").html("Achat effectué");
+        $("#txt-result").html("<span style='font-weight: bold;'>"+nomArme+"</span> vient d'être acheté pour "+arme.prix+" pièces d'or.");
+        pj.fortune -= arme.prix;
+        pj.armes.push(nomArme);
+        $("#fortune").val(pj.fortune);
+        localStorage.setItem("pj",JSON.stringify(pj));
+        $("#eq-armes").append("<li><span style='font-weight: bold;'>"+arme.nom+"</span> ("+arme.degat+")</li>");
+      } else {
+        $(".modal-title").html("Achat non effectué");
+        $("#txt-result").html("<span style='font-weight: bold;'>"+nomArme+"</span> est beaucoup trop cher pour vous!");
+      }
+    
+      $(".modal-footer").empty();
+      $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
+    });
   }
 
   marchander(nomArme) {
@@ -103,8 +124,6 @@ class Armes {
     setBonusMalus(arme,"force");
     setBonusMalus(arme,"intelligence");
   
-    //var radin=pj.competences.find(competence => competence==="radin");
-    //var arnaque=pj.competences.find(competence => competence==="arnaque et carambouille");
     var charisme=+pj.charisme;
     if (pj.competences.includes("radin") || pj.competences.includes("arnaque et carambouille")) {
       $("#txt-comptences").html("Vous posséder la compétence \"Radin\". Vous aves un bonus de +4 au marchandage!");
