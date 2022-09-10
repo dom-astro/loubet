@@ -40,6 +40,8 @@ class PJ {
         this.pj.xp=+$("#xp").val();
 
         this.pj.armes=[];
+        this.pj.armures=[];
+        this.pj.divers=[];
     }
 
     // Getters & Setters
@@ -123,6 +125,12 @@ class PJ {
 
     get armes() { return this.pj.armes; }
     set armes(value) { this.pj.armes.push(value); }
+
+    get armures() { return this.pj.armures; }
+    set armures(value) { this.pj.armures.push(value); }
+
+    get divers() { return this.pj.divers; }
+    set divers(value) { this.pj.divers.push(value); }
 
     save() {      
         let origine= origines.find(origine => origine.nom===this.pj.origine);

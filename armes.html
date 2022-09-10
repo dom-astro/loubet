@@ -346,8 +346,10 @@
 	pj = new PJ();
 	pj.load();
 
-	//initArmes();
-	listeArmes();
+	listeArmes = new Armes(armes);
+	listeArmes.liste();
+	initArmes();
+	//listeArmes();
 	listeArmures();
 	listeDivers();
 	/*initPerso();

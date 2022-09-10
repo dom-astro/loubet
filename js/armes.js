@@ -1,35 +1,157 @@
-function listeArmes() {
-  strButton=
-  "<div class='dropdown'> \
-    <button type='button' class='btn btn-primary dropdown-toggle' data-bs-toggle='dropdown'> Action </button> \
-    <ul class='dropdown-menu'> \
-    <li><button type='button' class='btn' onclick='acheter(\"objet\")' data-bs-toggle='modal' data-bs-target='#action-modal'>Acheter</button> \
-    <li><button type='button' class='btn' onclick='marchander(\"objet\")' data-bs-toggle='modal' data-bs-target='#action-modal'>Marchander</button> \
-    <li><button type='button' class='btn' onclick='voler(\"objet\")' data-bs-toggle='modal' data-bs-target='#action-modal'>Voler</button> \
-  </ul> \
-  </div>";
-  //data-bs-toggle='modal' data-bs-target='#action-modal'
-  strButton2 = "<button type='button' class='btn btn-success'><img src='img/eye-solid.svg' style='width: 16px;'></img></span></button>";
-  //strButton2 = "<img src='img/eye-solid.svg'></img>";
-  type="";
-  armes.forEach(function(arme) {
-    if (type != arme.type) {
-      type=arme.type;
-      strLigne=" \
-      <tr> \
-        <td colspan='5' style='background-color: burlywood;' onclick='$(\".c-"+arme.type.id().id()+"\").toggle()'><i class='"+arme.icon+"'><span style='font-weight: bold;'> "+arme.type+"</span></i></td> \
+class Armes {
+  constructor(armes) {
+      this.armes = armes;
+  }
+
+  actionButton(arme) {
+    let strButton=
+    "<div class='dropdown'> \
+      <button type='button' class='btn btn-primary dropdown-toggle' data-bs-toggle='dropdown'> Action </button> \
+      <ul class='dropdown-menu'> \
+        <li><button id='btn-acheter-"+arme.nom.id()+"' type='button' class='btn' data-bs-toggle='modal' data-bs-target='#action-modal'>Acheter</button> \
+        <li><button id='btn-marchander-"+arme.nom.id()+"' type='button' class='btn' data-bs-toggle='modal' data-bs-target='#action-modal'>Marchander</button> \
+        <li><button id='btn-voler-"+arme.nom.id()+"' type='button' class='btn' data-bs-toggle='modal' data-bs-target='#action-modal'>Voler</button> \
+      </ul> \
+    </div>";
+
+    return strButton;
+  }
+
+  liste() {
+
+    let type="";
+    let self=this;
+    this.armes.forEach(function(arme) {
+      if (type != arme.type) {
+        type=arme.type;
+        let strLigne=" \
+        <tr> \
+          <td colspan='5' style='background-color: burlywood;' onclick='$(\".c-"+arme.type.id()+"\").toggle()'><i class='"+arme.icon+"'><span style='font-weight: bold;'> "+arme.type+"</span></i></td> \
+        </tr>";
+        $("#t-armes").append(strLigne);    
+      }
+
+      let strLigne =
+      "<tr class='c-"+arme.type.id()+"' style='display: none;'> \
+        <td>"+arme.nom+"</i></td> \
+        <td>"+arme.prix+"</td> \
+        <td>"+arme.degat+"</td> \
+        <td>"+arme.rupture+"</td> \
+        <td>"+self.actionButton(arme)+"</td> \
       </tr>";
-      $("#t-armes").append(strLigne);    
+      $("#t-armes").append(strLigne);
+
+      $("#btn-acheter-"+arme.nom.id()).on("click", function() {
+        self.acheter(arme.nom);
+      });
+      $("#btn-marchander-"+arme.nom.id()).on("click", function() {
+        self.marchander(arme.nom);
+      });
+      $("#btn-voler-"+arme.nom.id()).on("click", function() {
+        self.voler(arme.nom);
+      });
+    });
+  }
+
+  acheter(nomArme) {
+    var arme = this.armes.find(arme => arme.nom===nomArme);
+    
+    $(".modal-title").html("Acheter");
+    $("#objet").html("<i class='"+arme.icon+"'> "+nomArme+"<hr>");
+    $("#txt-marchand").html("C'est une lame de bonne qualité. C'est un prix d'ami que je vous fais!");
+    $("#txt-comptences").empty();
+
+    $("#caract").empty();
+    $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Dégâts:</span> "+arme.degat+"</li>");
+    $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Prix:</span> "+arme.prix+" pièces d'or</li>");
+    $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Rupture:</span> "+arme.rupture+"</li>");
+    
+    $("#bonus").empty();
+    $("#malus").empty();
+    setBonusMalus(arme,"attaque");
+    setBonusMalus(arme,"parade");
+    setBonusMalus(arme,"adresse");
+    setBonusMalus(arme,"courage");
+    setBonusMalus(arme,"charisme");
+    setBonusMalus(arme,"force");
+    setBonusMalus(arme,"intelligence");
+    
+    $(".modal-footer").empty();
+    $(".modal-footer").append("<button type='button' class='btn btn-primary' data-bs-dismiss='modal' onclick='resultAcheter(\""+arme.nom+"\",0)' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter</button>");
+    $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
+  }
+
+  marchander(nomArme) {
+    var arme = this.armes.find(arme => arme.nom===nomArme);
+    $(".modal-title").html("Marchander");
+    $("#objet").html("<i class='"+arme.icon+"'> "+nomArme+"<hr>");
+    $("#txt-marchand").html("Attention je n'aime pas les arnaques. Cela a tendance à faire monter les prix!");
+    $("#txt-comptences").empty();
+  
+    $("#caract").empty();
+    $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Dégâts:</span> "+arme.degat+"</li>");
+    $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Prix:</span> "+arme.prix+" pièces d'or</li>");
+    $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Rupture:</span> "+arme.rupture+"</li>");
+  
+    $("#bonus").empty();
+    $("#malus").empty();
+    setBonusMalus(arme,"attaque");
+    setBonusMalus(arme,"parade");
+    setBonusMalus(arme,"adresse");
+    setBonusMalus(arme,"courage");
+    setBonusMalus(arme,"charisme");
+    setBonusMalus(arme,"force");
+    setBonusMalus(arme,"intelligence");
+  
+    //var radin=pj.competences.find(competence => competence==="radin");
+    //var arnaque=pj.competences.find(competence => competence==="arnaque et carambouille");
+    var charisme=+pj.charisme;
+    if (pj.competences.includes("radin") || pj.competences.includes("arnaque et carambouille")) {
+      $("#txt-comptences").html("Vous posséder la compétence \"Radin\". Vous aves un bonus de +4 au marchandage!");
+      charisme += 4;
     }
-    strLigne="<tr class='c-"+arme.type.id().id()+"' style='display: none;'>";
-    strLigne +="<td>"+arme.nom+"</i></td>";
-    strLigne +="<td>"+arme.prix+"</td>";
-    strLigne +="<td>"+arme.degat+"</td>";
-    strLigne +="<td>"+arme.rupture+"</td>";
-    strLigne +="<td>"+strButton.replaceAll("objet",arme.nom)+"</td>";
-    strLigne += "</tr>";
-    $("#t-armes").append(strLigne);    
-  });
+    $("#txt-explication").html("Vous pouvez marchander en effectuant un jet de charisme.");
+  
+    $(".modal-footer").empty();
+    $(".modal-footer").append("<p>Vous pouvez marchander en effectuant un jet de charisme <= "+charisme+".<p>");
+    $(".modal-footer").append("<button type='button' class='btn btn-primary' data-bs-dismiss='modal' onclick='resultMarchander(\""+arme.nom+"\","+charisme+")' data-bs-toggle='modal' data-bs-target='#result-modal'>Marchander</button>");
+    $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
+  }
+
+  voler(nomArme) {
+    var arme = this.armes.find(arme => arme.nom===nomArme);
+    $(".modal-title").html("Voler");
+    $("#objet").html("<i class='"+arme.icon+"'> "+nomArme+"<hr>");
+    $("#txt-marchand").html("<span style='font-weight: bold;'>Attention</span> si l'envie vous prend de voler, j'ai un garde à l'entrée du magasin!");
+    $("#txt-comptences").empty();
+  
+    $("#caract").empty();
+    $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Dégâts:</span> "+arme.degat+"</li>");
+    $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Prix:</span> "+arme.prix+" pièces d'or</li>");
+    $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Rupture:</span> "+arme.rupture+"</li>");
+  
+    $("#bonus").empty();
+    $("#malus").empty();
+    setBonusMalus(arme,"attaque");
+    setBonusMalus(arme,"parade");
+    setBonusMalus(arme,"adresse");
+    setBonusMalus(arme,"courage");
+    setBonusMalus(arme,"charisme");
+    setBonusMalus(arme,"force");
+    setBonusMalus(arme,"intelligence");
+  
+    var chouraver=pj.competences.find(competence => competence==="chouraver");
+    var adresse=+pj.adresse;
+    if (chouraver != undefined) {
+      $("#txt-comptences").html("Vous posséder la compétence \"Chouraver\". Vous aves un bonus de +4 au vol!");
+      adresse += 4;
+    }
+  
+    $(".modal-footer").empty();
+    $(".modal-footer").append("<p>Vous pouvez voler en effectuant un jet d'adresse <= "+adresse+".<p>");
+    $(".modal-footer").append("<button type='button' class='btn btn-warning' data-bs-dismiss='modal' onclick='resultVoler(\""+arme.nom+"\","+adresse+")' data-bs-toggle='modal' data-bs-target='#result-modal'>Voler</button>");
+    $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
+  }
 }
 
 function listeArmures() {
@@ -49,11 +171,11 @@ function listeArmures() {
       type=armure.type;
       strLigne=" \
       <tr> \
-        <td colspan='5' style='background-color: burlywood;' onclick='$(\".c-"+armure.type.id().id()+"\").toggle()'><i class='"+armure.icon+"' style='color: black;'><span style='font-weight: bold;'> "+armure.type+"</span></i></td> \
+        <td colspan='5' style='background-color: burlywood;' onclick='$(\".c-"+armure.type.id()+"\").toggle()'><i class='"+armure.icon+"' style='color: black;'><span style='font-weight: bold;'> "+armure.type+"</span></i></td> \
       </tr>";
       $("#t-armures").append(strLigne);    
     }
-    strLigne="<tr class='c-"+armure.type.id().id()+"' style='display: none;'>";
+    strLigne="<tr class='c-"+armure.type.id()+"' style='display: none;'>";
     strLigne +="<td>"+armure.nom+"</i></td>";
     strLigne +="<td>"+armure.prix+"</td>";
     strLigne +="<td>"+armure.pr+"</td>";
@@ -81,11 +203,11 @@ function listeDivers() {
       type=objet.type;
       strLigne=" \
       <tr> \
-        <td colspan='5' style='background-color: burlywood;' onclick='$(\".c-"+objet.type.id().id()+"\").toggle()'><i class='"+objet.icon+"' style='color: black;'><span style='font-weight: bold;'> "+objet.type+"</span></i></td> \
+        <td colspan='5' style='background-color: burlywood;' onclick='$(\".c-"+objet.type.id()+"\").toggle()'><i class='"+objet.icon+"' style='color: black;'><span style='font-weight: bold;'> "+objet.type+"</span></i></td> \
       </tr>";
       $("#t-divers").append(strLigne);    
     }
-    strLigne="<tr class='c-"+objet.type.id().id()+"' style='display: none;'>";
+    strLigne="<tr class='c-"+objet.type.id()+"' style='display: none;'>";
     strLigne +="<td>"+objet.nom+"</i></td>";
     strLigne +="<td>"+objet.prix+"</td>";
     strLigne +="<td>"+objet.poids+"</td>";
@@ -93,33 +215,6 @@ function listeDivers() {
     strLigne += "</tr>";
     $("#t-divers").append(strLigne);    
   });
-}
-
-function acheter(nomArme) {
-  var arme = armes.find(arme => arme.nom===nomArme);
-
-  $(".modal-title").html("Acheter");
-  $("#objet").html("<i class='"+arme.icon+"'> "+nomArme+"<hr>");
-  $("#txt-marchand").html("C'est une lame de bonne qualité. C'est un prix d'ami que je vous fais!");
-
-  $("#caract").empty();
-  $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Dégâts:</span> "+arme.degat+"</li>");
-  $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Prix:</span> "+arme.prix+" pièces d'or</li>");
-  $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Rupture:</span> "+arme.rupture+"</li>");
-
-  $("#bonus").empty();
-  $("#malus").empty();
-  setBonusMalus(arme,"attaque");
-  setBonusMalus(arme,"parade");
-  setBonusMalus(arme,"adresse");
-  setBonusMalus(arme,"courage");
-  setBonusMalus(arme,"charisme");
-  setBonusMalus(arme,"force");
-  setBonusMalus(arme,"intelligence");
-
-  $(".modal-footer").empty();
-  $(".modal-footer").append("<button type='button' class='btn btn-primary' data-bs-dismiss='modal' onclick='resultAcheter(\""+arme.nom+"\",0)' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter</button>");
-  $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
 }
 
 function resultAcheter(nomArme, prix) {
@@ -144,41 +239,6 @@ function resultAcheter(nomArme, prix) {
   $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
 }
 
-function marchander(nomArme) {
-  var arme = armes.find(arme => arme.nom===nomArme);
-  $(".modal-title").html("Marchander");
-  $("#objet").html("<i class='"+arme.icon+"'> "+nomArme+"<hr>");
-  $("#txt-marchand").html("Attention je n'aime pas les arnaques. Cela a tendance à faire monter les prix!");
-
-  $("#caract").empty();
-  $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Dégâts:</span> "+arme.degat+"</li>");
-  $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Prix:</span> "+arme.prix+" pièces d'or</li>");
-  $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Rupture:</span> "+arme.rupture+"</li>");
-
-  $("#bonus").empty();
-  $("#malus").empty();
-  setBonusMalus(arme,"attaque");
-  setBonusMalus(arme,"parade");
-  setBonusMalus(arme,"adresse");
-  setBonusMalus(arme,"courage");
-  setBonusMalus(arme,"charisme");
-  setBonusMalus(arme,"force");
-  setBonusMalus(arme,"intelligence");
-
-  //var radin=pj.competences.find(competence => competence==="radin");
-  //var arnaque=pj.competences.find(competence => competence==="arnaque et carambouille");
-  var charisme=+pj.charisme;
-  if (pj.competences.includes("radin") || pj.competences.includes("arnaque et carambouille")) {
-    $("#txt-comptences").html("Vous posséder la compétence \"Radin\". Vous aves un bonus de +4 au marchandage!");
-    charisme += 4;
-  }
-  $("#txt-explication").html("Vous pouvez marchander en effectuant un jet de charisme.");
-
-  $(".modal-footer").empty();
-  $(".modal-footer").append("<p>Vous pouvez marchander en effectuant un jet de charisme <= "+charisme+".<p>");
-  $(".modal-footer").append("<button type='button' class='btn btn-primary' data-bs-dismiss='modal' onclick='resultMarchander(\""+arme.nom+"\","+charisme+")' data-bs-toggle='modal' data-bs-target='#result-modal'>Marchander</button>");
-  $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
-}
 
 function resultMarchander(nomArme, vlCaract) {
   var arme = armes.find(arme => arme.nom===nomArme);
@@ -216,40 +276,6 @@ function resultMarchander(nomArme, vlCaract) {
   }
 
 
-  $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
-}
-
-function voler(nomArme) {
-  var arme = armes.find(arme => arme.nom===nomArme);
-  $(".modal-title").html("Voler");
-  $("#objet").html("<i class='"+arme.icon+"'> "+nomArme+"<hr>");
-  $("#txt-marchand").html("<span style='font-weight: bold;'>Attention</span> si l'envie vous prend de voler, j'ai un garde à l'entrée du magasin!");
-
-  $("#caract").empty();
-  $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Dégâts:</span> "+arme.degat+"</li>");
-  $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Prix:</span> "+arme.prix+" pièces d'or</li>");
-  $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Rupture:</span> "+arme.rupture+"</li>");
-
-  $("#bonus").empty();
-  $("#malus").empty();
-  setBonusMalus(arme,"attaque");
-  setBonusMalus(arme,"parade");
-  setBonusMalus(arme,"adresse");
-  setBonusMalus(arme,"courage");
-  setBonusMalus(arme,"charisme");
-  setBonusMalus(arme,"force");
-  setBonusMalus(arme,"intelligence");
-
-  var chouraver=pj.competences.find(competence => competence==="chouraver");
-  var adresse=+pj.adresse;
-  if (chouraver != undefined) {
-    $("#txt-comptences").html("Vous posséder la compétence \"Chouraver\". Vous aves un bonus de +4 au vol!");
-    adresse += 4;
-  }
-
-  $(".modal-footer").empty();
-  $(".modal-footer").append("<p>Vous pouvez voler en effectuant un jet d'adresse <= "+adresse+".<p>");
-  $(".modal-footer").append("<button type='button' class='btn btn-warning' data-bs-dismiss='modal' onclick='resultVoler(\""+arme.nom+"\","+adresse+")' data-bs-toggle='modal' data-bs-target='#result-modal'>Voler</button>");
   $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
 }
 
@@ -331,7 +357,6 @@ function tirageD20(seuil) {
 }
 
 function initArmes() {
-    pj = JSON.parse(localStorage.getItem("pj"));
 
     pj.armes.forEach(function(nomArme) {
       var arme = armes.find(arme => arme.nom===nomArme);

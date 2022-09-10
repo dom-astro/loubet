@@ -4,6 +4,7 @@
 	<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
 	<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/donjon.css">
+	<link rel="stylesheet" type="text/css"  href="css/driver.min.css">
 	<link rel="stylesheet" type="text/css" href="css/rpg-awesome.min.css">
 	<title>Naheulbeuk - Création PJ</title>
 
@@ -250,6 +251,7 @@
 <script type="text/javascript" src="json/pj.json"></script>
 <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/driver.min.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript" src="js/donjon.js"></script>
@@ -261,7 +263,9 @@
 		$(".wip").addClass("wip-in-progress");
 	});
 
-	//initPerso();
+	pj = new PJ();
+	pj.load();
+
 </script>
 </body>
 </html>
