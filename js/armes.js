@@ -1,6 +1,16 @@
 class Armes {
   constructor(armes) {
+    if ("armes" in localStorage) {
+      this.armes = JSON.parse(localStorage.getItem("armes"));;
+    } else {      
       this.armes = armes;
+    }
+
+    this.save();
+  }
+
+  save() {
+    localStorage.setItem("armes", JSON.stringify(armes));
   }
 
   actionButton(arme) {
@@ -149,6 +159,7 @@ class Armes {
       $("#txt-result").empty();
       
       let result=Math.ceil(Math.random()*20);
+      result=19;
       if(result==1) {
         $(".modal-title").html("Marchandage effectué");
         $("#txt-tirage").html("Réussite critique du marchandage ("+result+" sur "+charisme+").");
@@ -173,14 +184,16 @@ class Armes {
         $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Du coup le prix augmente à "+arme.prix*1.2+" pièces d'or.</p>");
         arme.prix = arme.prix*1.2;
       }
+      arme.prix = Math.ceil(arme.prix);
 
       self.updatePrix(arme);
       //$(".modal-footer").append("<button type='button' class='btn btn-warning' data-bs-dismiss='modal' onclick='resultAcheter(\""+arme.nom+"\","+arme.prix*1.2+")' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter ?</button>");
       if (result<20) {
         $(".modal-footer").append("<button type='button' class='btn btn-success' data-bs-dismiss='modal' onclick='resultAcheter(\""+arme.nom+"\","+arme.prix+")' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter</button>");      
       }
-      $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");    });
-      this.liste();
+      $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
+      self.liste();
+    });
   }
 
   voler(nomArme) {
@@ -219,12 +232,13 @@ class Armes {
   }
 
   updatePrix(majArme) {
-    armes.forEach(function(arme) {
+    this.armes.forEach(function(arme) {
       if(arme.nom==majArme.nom) {
         arme.prix=majArme.prix;
       }
-      
     });
+
+    this.save();
   }
 }
 
