@@ -3,11 +3,28 @@
     "origine": "Nain",
     "metier": "Guerrier",
     "description": "Je suis un Nain.\n\nJ'ai grandi sous les montagnes, dans les mines avec d'autres Nains. En fait, je ne connais pas grand-chose du monde extérieur, mais ça ne m'intéresse pas, du fait que c'est souvent tout pourri.\nJ'aime la bière, les pièces d'or, les minéraux, les cavernes, la pierre, les haches. Et c'est déjà bien.\nEt quand on dit que je suis chiant, c'est même pas vrai : j'ai seulement du caractère.\nIl paraît que j'ai un talent spécial pour trouver les trésors... Ouais, d'accord, mais à ce moment je ne vois pas pourquoi on devrait partager.\nJe n'aime pas trop la magie, sauf quand c'est pour enchanter une arme ou une armure, parce que là c'est vachement bien du coup. D'ailleurs, on fait ça très bien chez nous, les armes enchantées.",
-    "courage": 12,
-    "charisme": 11,
-    "intelligence": 10,
-    "force": 12,
-    "adresse": 13,
+    "caracts": [
+        {
+            "nom": "adresse",
+            "valeur": 13
+        },
+        {
+            "nom": "charisme",
+            "valeur": 11
+        },
+        {
+            "nom": "courage",
+            "valeur": 12
+        },
+        {
+            "nom": "force",
+            "valeur": 12
+        },
+        {
+            "nom": "intelligence",
+            "valeur": 10
+        }
+    ],
     "ev": 30,
     "ea": 0,
     "attaque": 8,
@@ -16,5 +33,14 @@
     "destin": 2,
     "genre": "Homme",
     "armes": [],
-    "competences": []
+    "armures": [],
+    "divers": [],
+    "competences": [
+        "appel du tonneau",
+        "instinct du tresor",
+        "pénible",
+        "radin",
+        "armes de bourrin",
+        "bourre-pif"
+    ]
 }
