@@ -111,6 +111,12 @@ class PJ {
     get competences() { return this.pj.competences; }
     set comptences(value) { this.pj.competences.push(value); }
 
+    get ev() { return this.pj.ev; }
+    set ev(value) { this.pj.ev=value; }
+
+    get ea() { return this.pj.ea; }
+    set ea(value) { this.pj.ea=value; }
+
     get attaque() { return this.pj.attaque; }
     set attaque(value) { this.pj.attaque=value; }
 
@@ -138,6 +144,7 @@ class PJ {
         this.pj.competences=origine.competences.naissance;
         this.pj.competences.concat(metier.competences.naissance);
         localStorage.setItem("pj",JSON.stringify(this.pj));
+        this.load();
     }
     
     load() {
@@ -157,6 +164,8 @@ class PJ {
 
             $("#destin").val(this.destin);
             $("#fortune").val(this.fortune);
+            $("#ev").val(this.ev);
+            $("#ea").val(this.ea);
             $("#attaque").val(this.attaque);
             $("#parade").val(this.parade);
 

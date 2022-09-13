@@ -89,7 +89,7 @@ class Armes {
     
     $(".modal-footer").empty();
     $(".modal-footer").append("<button id='btn-achat-"+arme.nom.id()+"' type='button' class='btn btn-primary' data-bs-dismiss='modal' data-bs-toggle='modal' data-bs-target='#result-modal'><i class='ra ra-gold-bar'> Acheter</button>");
-    $(".modal-footer").append("<button id='' type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
+    $(".modal-footer").append("<button id='' type='button' class='btn btn-danger' data-bs-dismiss='modal'><i class='ra ra-cancel'> Fermer</i></button>");
 
     $("#btn-achat-"+arme.nom.id()).on("click", function() {
       var fortune=pj.fortune;
@@ -109,7 +109,7 @@ class Armes {
       }
     
       $(".modal-footer").empty();
-      $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
+      $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'><li class='ra ra-cancel'> Fermer</i></button>");
     });
   }
 
@@ -149,7 +149,7 @@ class Armes {
     $(".modal-footer").empty();
     $(".modal-footer").append("<p>Vous pouvez marchander en effectuant un jet de charisme <= "+charisme+".<p>");
     $(".modal-footer").append("<button id='btn-marachandage-"+arme.nom.id()+"' type='button' class='btn btn-primary' data-bs-dismiss='modal' data-bs-toggle='modal' data-bs-target='#result-modal'><i class='ra ra-crystal-ball'> Marchander</i></button>");
-    $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
+    $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'><i class='ra ra-cancel'> Fermer</i></button>");
 
     var self=this;
     $("#btn-marachandage-"+arme.nom.id()).on("click", function() {
@@ -189,11 +189,10 @@ class Armes {
       arme.prix = Math.ceil(arme.prix);
       self.updatePrix(arme);
 
-      //$(".modal-footer").append("<button type='button' class='btn btn-warning' data-bs-dismiss='modal' onclick='resultAcheter(\""+arme.nom+"\","+arme.prix*1.2+")' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter ?</button>");
       if (result<20) {
-        $(".modal-footer").append("<button type='button' class='btn btn-success btn-achat' data-bs-dismiss='modal' data-bs-toggle='modal' data-bs-target='#result-modal'>Acheter</button>");      
+        $(".modal-footer").append("<button type='button' class='btn btn-success btn-achat' data-bs-dismiss='modal' data-bs-toggle='modal' data-bs-target='#result-modal'><i class='ra ra-gold-bar'> Acheter</i></button>");      
       }
-      $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
+      $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'><i class='ra ra-cancel'> Fermer</i></button>");
       self.liste();
 
       $(".btn-achat").on("click", function() {
@@ -214,7 +213,7 @@ class Armes {
         }
       
         $(".modal-footer").empty();
-        $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
+        $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'><i class='ra ra-cancel'> Fermer</i></button>");
       });
   
     });
@@ -252,7 +251,7 @@ class Armes {
     $(".modal-footer").empty();
     $(".modal-footer").append("<p>Vous pouvez voler en effectuant un jet d'adresse <= "+adresse+".<p>");
     $(".modal-footer").append("<button id='btn-vol-"+arme.nom.id()+"' type='button' class='btn btn-warning' data-bs-dismiss='modal' data-bs-toggle='modal' data-bs-target='#result-modal'><i class='ra ra-hood'></i> Voler</button>");
-    $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
+    $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'<i class='ra ra-cancel'> Fermer</i></button>");
 
     var self=this;
     $("#btn-vol-"+arme.nom.id()).on("click", function() {
@@ -266,28 +265,32 @@ class Armes {
         $(".modal-title").html("Vol effectué");
         $("#txt-tirage").html("Réussite critique du vol ("+result+" sur "+adresse+").");
         $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Vous aussi vous avez senti un courant d'air?</p>");
-        $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
+        $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'><i class='ra ra-cancel'> Fermer</i></button>");
       } else if(result<=adresse) {
         $(".modal-title").html("Vol effectué");
         $("#txt-tirage").html("Réussite du vol ("+result+" sur "+adresse+").");
         $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Tiens, j'aurais juré que <span style='font-weight: bold;'>"+nomArme+"</span> était posée ici tout à l'heure.</p>");
-        $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
+        $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'><i class='ra ra-cancel'> Fermer</i></button>");
       } else if(result==20){
         $(".modal-title").html("Vol raté");
         $("#txt-tirage").html("Echec critique du vol ("+result+" sur "+adresse+").");
         $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Zeus, Apollon attaquez ce voleur de bas étage!</p>");
         $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'><span style='font-weight: bold;'>"+nomArme+"</span> ne fera pas parti de votre équipement!</p>");
-        $(".modal-footer").append("<button type='button' class='btn btn-warning' data-bs-dismiss='modal' onclick='' data-bs-toggle='modal' data-bs-target='#result-modal'><i class='ra ra-shoe-prints'> Fuir</li></button>");
+        $(".modal-footer").append("<button type='button' class='btn  btn-fuir btn-warning' data-bs-dismiss='modal' onclick='' data-bs-toggle='modal' data-bs-target='#result-modal'><i class='ra ra-shoe-prints'> Fuir</i></button>");
         $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal' onclick='' data-bs-toggle='modal' data-bs-target='#result-modal'><i class='ra ra-crossed-swords'> Combattre</i></button>");
       } else {
         $(".modal-title").html("Vol raté");
         $("#txt-tirage").html("Echec du Vol ("+result+" sur "+adresse+").");
         $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>Dite donc mon ami... Vous n'essayerai pas de voler <span style='font-weight: bold;'>"+nomArme+"</span>?</p>");
         $("#txt-result").append("<p style='position: relative; top: 10px; left: -50px;'>J'ai des gardes qui pourraient vous en faire passer l'envie!</p>");
-        $(".modal-footer").append("<button type='button' class='btn btn-primary' data-bs-primary='modal' onclick='' data-bs-toggle='modal' data-bs-target='#result-modal'><i class='ra ra-hand'> Reposer l'arme</li></button>");
-        $(".modal-footer").append("<button type='button' class='btn btn-warning' data-bs-dismiss='modal' onclick='' data-bs-toggle='modal' data-bs-target='#result-modal'><i class='ra ra-shoe-prints'> Fuir</li></button>");
+        $(".modal-footer").append("<button type='button' class='btn btn-primary' data-bs-primary='modal' onclick='' data-bs-toggle='modal' data-bs-target='#result-modal'><i class='ra ra-hand'> Reposer l'arme</i></button>");
+        $(".modal-footer").append("<button type='button' class='btn  btn-fuir btn-warning' data-bs-dismiss='modal' onclick='' data-bs-toggle='modal' data-bs-target='#result-modal'><i class='ra ra-shoe-prints'> Fuir</i></button>");
         $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal' onclick='' data-bs-toggle='modal' data-bs-target='#result-modal'><i class='ra ra-crossed-swords'> Combattre</i></button>");
       }
+
+      $(".btn-fuir").on("click", function() {
+        blessure(2);
+      });
 
     });
 
@@ -410,7 +413,7 @@ function resultVoler(nomArme, vlCaract) {
   }
 
 
-  $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer</button>");
+  $(".modal-footer").append("<button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Fermer <li class='ra ra-cancel'></li></button>");
 }
 
 function setBonusMalus(arme,caract) {
