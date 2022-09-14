@@ -27,8 +27,8 @@
 <br>
 <br>
 <div class="container-fluid">
-	<h1 style="text-align: center;">Bienvenue à l'Arme Adroite </i><i class='ra ra-dripping-sword'></i></h1>
-	<h3 style="text-align: center; font-style: italic;">Si vous ne voulez pas être tué dans un donjon, alors passez à l'Arme Adroite!</h3>
+	<h1 style="text-align: center;">Bienvenue à la cage aux fioles </i><i class='ra ra-bottle-vapors'></i></h1>
+	<h3 style="text-align: center; font-style: italic;">Articles de qualité pour aventuriers !</h3>
 	<div class="row">
 		<div class="col-5">
 			<h3 title="Personnage joueur">Personnage</h3>
@@ -177,19 +177,18 @@
 			</div>
 		</div>
 		<div class="col-7">
-			<h3 class="aide">Armes</h3>
-			<div id="armes" class="card">
+			<h3 class="aide">Divers</h3>
+			<div id="divers" class="card">
 				<table class="table table-hover">
 					<thead>
 						<tr>
 					  		<th>Nom</th>
 					  		<th>Prix (PO)</th>
-					  		<th>Dégâts (D6)</th>
-					  		<th>Rupture</th>
+					  		<th>Poids</th>
 					  		<th></th>
 						</tr>
 				  	</thead>
-					<tbody id="t-armes">
+					<tbody id="t-divers">
 					</tbody>
 				</table>
 			</div>
@@ -329,12 +328,12 @@
 	pj.load();
 	pj.loadArmes();
 
-	listeArmes = new Armes(armes);
-	listeArmes.liste();
+	//listeArmes = new Armes(armes);
+	//listeArmes.liste();
 	//initArmes();
 	//listeArmes();
 	//listeArmures();
-	//listeDivers();
+	listeDivers();
 	/*initPerso();
 	initArmes();
 	listeArmes();

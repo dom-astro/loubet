@@ -183,6 +183,37 @@ class PJ {
     toJSON() {
         return this.pj;
     }
+
+    loadArmes() {
+        $("#eq-armes").empty();
+        if ("pj" in localStorage) {
+            this.pj.armes.forEach(function(nomArme) {
+                var arme = armes.find(arme => arme.nom===nomArme);
+                $("#eq-armes").append("<li><span style='font-weight: bold;'>"+arme.nom+"</span> (Dégât: "+arme.degat+")</li>");
+            });
+        }
+    }
+
+    loadArmures() {
+        $("#eq-armures").empty();
+        if ("pj" in localStorage) {
+            this.pj.armures.forEach(function(nomArmure) {
+                var armure = armures.find(armure => armure.nom===nomArmure);
+                $("#eq-armures").append("<li><span style='font-weight: bold;'>"+armure.nom+"</span> (Protection: "+armure.pr+")</li>");
+            });
+        }
+    }
+
+    loadDivers() {
+        $("#eq-divers").empty();
+        if ("pj" in localStorage) {
+            this.pj.divers.forEach(function(nomDiver) {
+                var diver = divers.find(diver => diver.nom===nomDiver);
+                $("#eq-divers").append("<li><span style='font-weight: bold;'>"+diver.nom+"</span> (Poids: "+diver.poids+")</li>");
+            });
+        }
+    }
+
 }
 
 // Classe Origine / Metier
@@ -331,5 +362,4 @@ class Competences {
         this.adresse=$("#adresse").val();
     
     }
-   
 }

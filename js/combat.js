@@ -4,7 +4,7 @@ var strToast =
 		<div class="d-flex"> \
 	  		<div class="toast-body"> \
 	  		</div> \
-	  		<button type="button" class="btn-close btn-close-white btn-alert me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button> \
+	  		<button style="color: green;" type="button" class="btn-close btn-alert me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button> \
 		</div> \
 	</div> \
 </div>';

@@ -450,12 +450,3 @@ function tirageD20(seuil) {
   }
 
 }
-
-function initArmes() {
-
-    pj.armes.forEach(function(nomArme) {
-      var arme = armes.find(arme => arme.nom===nomArme);
-      $("#eq-armes").append("<li><span style='font-weight: bold;'>"+arme.nom+"</span> ("+arme.degat+")</li>");
-    });
- 
-}

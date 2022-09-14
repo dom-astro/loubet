@@ -203,7 +203,6 @@ body {
 .navbar-light .navbar-nav .nav-link {
     color: rgba(0,0,0,.55);
 	font-size: 20px;
-	border-radius: 5px;
 }
 
 .active {
