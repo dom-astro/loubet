@@ -4,13 +4,13 @@ class Armes {
       this.armes = JSON.parse(localStorage.getItem("armes"));;
     } else {      
       this.armes = armes;
+      this.save();
     }
 
-    this.save();
   }
 
   save() {
-    localStorage.setItem("armes", JSON.stringify(armes));
+    localStorage.setItem("armes", JSON.stringify(this.armes));
   }
 
   actionButton(arme) {

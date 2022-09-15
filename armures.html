@@ -174,6 +174,8 @@
 			<h4>Equipements</h4>
 			<div class="card">
 				<ul id="eq-armes" style="top: 5px; position: relative; width: 95%; left: 10px;"></ul>
+				<ul id="eq-armures" style="top: 5px; position: relative; width: 95%; left: 10px;"></ul>
+				<ul id="eq-divers" style="top: 5px; position: relative; width: 95%; left: 10px;"></ul>
 			</div>
 		</div>
 		<div class="col-7">
@@ -316,7 +318,7 @@
 <script type="text/javascript" src="js/donjon.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
 <script type="text/javascript" src="js/creation.js"></script>
-<script type="text/javascript" src="js/armes.js"></script>
+<script type="text/javascript" src="js/objets.js"></script>
 <script type="text/javascript" src="js/combat.js"></script>
 <script>
 	 setMenu("Donjon facile");
@@ -328,12 +330,14 @@
 	pj = new PJ();
 	pj.load();
 	pj.loadArmes();
+	pj.loadArmures();
+	pj.loadDivers();
 
-	//listeArmes = new Armes(armes);
-	//listeArmes.liste();
+	listeArmures = new Armures(armures);
+	listeArmures.liste();
 	//initArmes();
 	//listeArmes();
-	listeArmures();
+	//listeArmures();
 	//listeDivers();
 	/*initPerso();
 	initArmes();
