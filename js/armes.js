@@ -260,7 +260,6 @@ class Armes {
       $("#txt-result").empty();
     
       let result=Math.ceil(Math.random()*20);
-      result=19;
       if(result==1) {
         $(".modal-title").html("Vol effectué");
         $("#txt-tirage").html("Réussite critique du vol ("+result+" sur "+adresse+").");

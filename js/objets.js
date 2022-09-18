@@ -14,7 +14,7 @@ class Objets {
   }
 
   save() {
-    localStorage.setItem(this.typeObjet, JSON.stringify(this.objet));
+    localStorage.setItem(this.typeObjet, JSON.stringify(this.objets));
   }
 
   actionButton(objet) {
@@ -45,19 +45,29 @@ class Objets {
     </div></td>";
 
     $("#t-"+objet.nom.id()).append(strButtons);
-
-    $("#btn-acheter-"+objet.nom.id()).on("click", function() {
-      this.acheter(objet.nom);
-    });
-    $("#btn-marchander-"+objet.nom.id()).on("click", function() {
-      this.marchander(objet.nom);
-    });
-    $("#btn-voler-"+objet.nom.id()).on("click", function() {
-      this.voler(objet.nom);
-    });
-
   }
 
+  updatePrix(majObjet) {
+    this.objets.forEach(function(objet) {
+      if(objet.nom==majObjet.nom) {
+        objet.prix=majObjet.prix;
+      }
+    });
+
+    this.save();
+  }
+
+  setBonusMalus(objet) {
+    let caracts=["attaque","parade","adresse","courage","charisme","force","intelligence"];
+    caracts.forEach(function(caract) {
+      if (objet[caract]>0) {
+        $("#bonus").append("<li class='list-group-item'><span style='font-weight: bold;'>"+caract.capitalize()+":</span> "+objet[caract]+"</li>");
+      }
+      if (objet[caract]<0) {
+        $("#malus").append("<li class='list-group-item'><span style='font-weight: bold;'>"+caract.capitalize()+":</span> "+objet[caract]+"</li>");
+      }
+      });
+  }
 }
 
 class Armures extends Objets{
@@ -92,31 +102,34 @@ class Armures extends Objets{
       $(tId).append(strLigne);
       self.setActionButton(objet);
 
+      $("#btn-acheter-"+objet.nom.id()).on("click", function() {
+        self.acheter(objet.nom);
+      });
+      $("#btn-marchander-"+objet.nom.id()).on("click", function() {
+        self.marchander(objet.nom);
+      });
+      $("#btn-voler-"+objet.nom.id()).on("click", function() {
+        self.voler(objet.nom);
+      });
     });
   }
 
   acheter(nomArmure) {
-    var armure = this.armures.find(armure => armure.nom===nomArmure);
+    var armure = this.objets.find(armure => armure.nom===nomArmure);
     
     $(".modal-title").html("Acheter");
     $("#objet").html("<i class='"+armure.icon+"'> "+nomArmure+"<hr>");
-    $("#txt-marchand").html("C'est une lame de bonne qualité. C'est un prix d'ami que je vous fais!");
+    $("#txt-marchand").html("C'est un article de bonne qualité. C'est un prix d'ami que je vous fais!");
     $("#txt-comptences").empty();
 
     $("#caract").empty();
-    $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Dégâts:</span> "+armure.pr+"</li>");
+    $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Protection:</span> "+armure.pr+"</li>");
     $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Prix:</span> "+armure.prix+" pièces d'or</li>");
     $("#caract").append("<li class='list-group-item'><span style='font-weight: bold;'>Rupture:</span> "+armure.rupture+"</li>");
     
     $("#bonus").empty();
     $("#malus").empty();
-    setBonusMalus(armure,"attaque");
-    setBonusMalus(armure,"parade");
-    setBonusMalus(armure,"adresse");
-    setBonusMalus(armure,"courage");
-    setBonusMalus(armure,"charisme");
-    setBonusMalus(armure,"force");
-    setBonusMalus(armure,"intelligence");
+    this.setBonusMalus(armure);
     
     $(".modal-footer").empty();
     $(".modal-footer").append("<button id='btn-achat-"+armure.nom.id()+"' type='button' class='btn btn-primary' data-bs-dismiss='modal' data-bs-toggle='modal' data-bs-target='#result-modal'><i class='ra ra-gold-bar'> Acheter</button>");
@@ -145,7 +158,7 @@ class Armures extends Objets{
   }
 
   marchander(nomArmure) {
-    var armure = this.armures.find(armure => armure.nom===nomArmure);
+    var armure = this.objets.find(armure => armure.nom===nomArmure);
 
     $(".modal-title").html("Marchander");
     $("#objet").html("<i class='"+armure.icon+"'> "+nomArmure+"<hr>");
@@ -159,13 +172,7 @@ class Armures extends Objets{
   
     $("#bonus").empty();
     $("#malus").empty();
-    setBonusMalus(armure,"attaque");
-    setBonusMalus(armure,"parade");
-    setBonusMalus(armure,"adresse");
-    setBonusMalus(armure,"courage");
-    setBonusMalus(armure,"charisme");
-    setBonusMalus(armure,"force");
-    setBonusMalus(armure,"intelligence");
+    this.setBonusMalus(armure);
   
     var charisme=+pj.charisme;
     if (pj.competences.includes("radin")) {
@@ -190,7 +197,6 @@ class Armures extends Objets{
       $("#txt-result").empty();
       
       let result=Math.ceil(Math.random()*20);
-      //result=19;
       if(result==1) {
         $(".modal-title").html("Marchandage effectué");
         $("#txt-tirage").html("Réussite critique du marchandage ("+result+" sur "+charisme+").");
@@ -251,7 +257,7 @@ class Armures extends Objets{
   }
 
   voler(nomArmure) {
-    var armure = this.armures.find(armure => armure.nom===nomArmure);
+    var armure = this.objets.find(armure => armure.nom===nomArmure);
 
     $(".modal-title").html("Voler");
     $("#objet").html("<i class='"+armure.icon+"'> "+nomArmure+"<hr>");
@@ -265,13 +271,7 @@ class Armures extends Objets{
   
     $("#bonus").empty();
     $("#malus").empty();
-    setBonusMalus(armure,"attaque");
-    setBonusMalus(armure,"parade");
-    setBonusMalus(armure,"adresse");
-    setBonusMalus(armure,"courage");
-    setBonusMalus(armure,"charisme");
-    setBonusMalus(armure,"force");
-    setBonusMalus(armure,"intelligence");
+    this.setBonusMalus(armure);
   
     var adresse=+pj.adresse;
     if (pj.competences.includes("chouraver")) {
@@ -327,8 +327,8 @@ class Armures extends Objets{
 
   }
 
-  updatePrix(majArmure) {
-    this.armures.forEach(function(armure) {
+  updatePrix2(majArmure) {
+    this.objets.forEach(function(armure) {
       if(armure.nom==majArmure.nom) {
         armure.prix=majArmure.prix;
       }
@@ -455,21 +455,6 @@ function setBonusMalus(armure,caract) {
     $("#malus").append("<li class='list-group-item'><span style='font-weight: bold;'>"+caract.capitalize()+":</span> "+armure[caract]+"</li>");
   }
 }
-
-/*function acheter(nomArmure) {
-  $("#equiepent").append("<li class='list-group-item'><span style='font-weight: bold;'>"+nomArmure+"</span></li>");
-
-  var armure = armures.find(armure => armure.nom===nomArmure);
-
-  var fortune=$("#fortune").val();
-  fortune -= armure.prix;
-  $("#fortune").val(fortune);
-  if(!pj.hasOwnProperty(armures)) {
-    pj.armures = [];
-  }
-  pj.armures.push(nomArmure);
-  console.info(pj);
-}*/
 
 function tirageD20(seuil) {
   result=Math.ceil(Math.random()*20);
