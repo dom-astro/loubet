@@ -423,45 +423,10 @@ N'utilise pas la magie (parchemins, sorts), sauf arme ou protection enchantée."
         },
         "competences": {
             "naissance": [
-                ""
+                "appel des renforts", "arnaque et carambouille", "érudition", "fariboles", "méfiance"
             ],
             "choix": [
-                ""
-            ]
-        }
-    },
-    {
-        "nom": "Négociant",
-        "titre": "",
-        "description": "",
-        "ev": "",
-        "ea": "",
-        "courage": {
-            "min": 0,
-            "max": 99
-        },
-        "intelligence": {
-            "min": 12,
-            "max": 99
-        },
-        "charisme": {
-            "min": 11,
-            "max": 99
-        },
-        "adresse": {
-            "min": 0,
-            "max": 99
-        },
-        "force": {
-            "min": 0,
-            "max": 99
-        },
-        "competences": {
-            "naissance": [
-                ""
-            ],
-            "choix": [
-                ""
+                "Chef de groupe", "chevaucher", "cuistot", "forgeron", "instinct du trésor", "runes bizarres"
             ]
         }
     },

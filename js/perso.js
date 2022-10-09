@@ -237,6 +237,19 @@ function initGenre() {
     $("#desc-genre").append(strImgPerso);
 }
 
+function setGenre(genre) {
+    if (genre == "homme") {
+        $("#homme").attr("src", "img/homme.svg");
+        $("#femme").attr("src", "img/femme-disabled.svg");
+    } else {
+        $("#homme").attr("src", "img/homme-disabled.svg");
+        $("#femme").attr("src", "img/femme.svg");
+    }
+    pj.genre = genre;
+    $('#btn-valider').prop("disabled", false);
+    $("#genre").html(genre.capitalize());
+}
+
 function chargePJ() {
     $("#jsonFile").click();
  }
@@ -411,7 +424,6 @@ function listeMetier() {
             </div> \
         </div>";
         $("#metiers").append(strMetier);
-        setCompetencesMetier(pjMetier);
     }
 }
 
