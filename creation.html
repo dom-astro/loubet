@@ -1,237 +1,769 @@
 <html>
 <head>
-	<!--meta http-equiv="Content-Type" content="text/html; charset=windows-752"-->
-	<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" type="text/css"  href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css"  href="css/driver.min.css">
-	<link rel="stylesheet" type="text/css" href="css/rpg-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/donjon.css">
-	<title>Naheulbeuk - Création PJ</title>
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/driver.min.css">
+  <link rel="stylesheet" type="text/css" href="css/rpg-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/donjon.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <title>Naheulbeuk — Création de Personnage</title>
+  <meta name="author" content="Pen of Chaos">
+  <link rel="icon" href="img/logo.png" />
 
-	<meta name="author" content="Pen of Chaos">
-	<meta name="description" content="Le Donjon de Naheulbeuk est un jeu de rôle plus ou moins humoristique et médial-fantastique, à télécharger">
-	<meta name="Keywords" content="donjon, naheulbeuk, roleplay, roles, rôliste, officiel, téléchargement, aventure, jdr, scenario">
-	<link rel="icon" href="img/logo.png" />
+  <style>
+    /* ── Tokens ─────────────────────────────────────────────── */
+    :root {
+      --ink:        #1a110a;
+      --ink-light:  #3d2b1f;
+      --parchment:  #f5ead6;
+      --parchment2: #ede0c4;
+      --parchment3: #d9c9a8;
+      --crimson:    #8b1a1a;
+      --crimson2:   #b22222;
+      --gold:       #c8961e;
+      --gold-light: #e8b84b;
+      --shadow:     rgba(26,17,10,0.18);
+      --radius:     6px;
+    }
+
+    /* ── Base ────────────────────────────────────────────────── */
+    body {
+      background-color: #2a1f14;
+      background-image:
+        radial-gradient(ellipse at 20% 0%, #3d2b1a 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 100%, #1a1108 0%, transparent 60%);
+      font-family: 'Crimson Text', Georgia, serif;
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    nav.navbar { background: transparent !important; }
+    hr { border-top: 2px solid var(--crimson); opacity: 1; }
+
+    /* ── Page wrapper ─────────────────────────────────────────── */
+    #creation-wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 16px 60px;
+    }
+
+    /* ── Header ───────────────────────────────────────────────── */
+    .creation-header {
+      text-align: center;
+      padding: 28px 0 12px;
+    }
+    .creation-header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 700;
+      color: var(--gold-light);
+      letter-spacing: 0.08em;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      margin: 0 0 4px;
+    }
+    .creation-header p {
+      font-style: italic;
+      color: var(--parchment3);
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    /* ── Step bar ─────────────────────────────────────────────── */
+    .step-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin: 24px 0 28px;
+    }
+    .step-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .step-circle {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 2px solid var(--parchment3);
+      background: #2a1f14;
+      color: var(--parchment3);
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s ease;
+    }
+    .step-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.06em;
+      color: var(--parchment3);
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .step-line {
+      width: 80px; height: 2px;
+      background: var(--parchment3);
+      opacity: 0.3;
+      margin-bottom: 24px;
+      flex-shrink: 0;
+    }
+    .step-item.active .step-circle {
+      background: var(--crimson);
+      border-color: var(--gold);
+      color: var(--gold-light);
+      box-shadow: 0 0 14px rgba(200,150,30,0.35);
+    }
+    .step-item.active .step-label { color: var(--gold-light); }
+    .step-item.done .step-circle {
+      background: var(--gold);
+      border-color: var(--gold-light);
+      color: var(--ink);
+    }
+    .step-item.done .step-label { color: var(--parchment); }
+
+    /* ── Parchment card ───────────────────────────────────────── */
+    .parchment-card {
+      background: var(--parchment);
+      background-image: repeating-linear-gradient(
+        0deg, transparent, transparent 27px,
+        rgba(139,26,26,0.05) 28px
+      );
+      border: 1px solid var(--parchment3);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 28px var(--shadow), inset 0 1px 0 rgba(255,255,255,0.4);
+      padding: 28px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .parchment-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--crimson), var(--gold), var(--crimson));
+    }
+
+    /* ── Step panels ──────────────────────────────────────────── */
+    .step-panel { display: none; }
+    .step-panel.active { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* ── Section title ────────────────────────────────────────── */
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      border-bottom: 1px solid var(--parchment3);
+      padding-bottom: 6px;
+      margin: 0 0 16px;
+    }
+
+    /* ── Field ────────────────────────────────────────────────── */
+    .field-group { display: flex; flex-direction: column; gap: 5px; }
+    .field-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.67rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+    }
+    .field-input {
+      background: #fff9f0;
+      border: 1px solid var(--parchment3);
+      border-radius: var(--radius);
+      padding: 8px 12px;
+      font-family: 'Crimson Text', serif;
+      font-size: 1.05rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+    .field-input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(200,150,30,0.15);
+    }
+    .field-input.is-invalid { border-color: var(--crimson2) !important; }
+    textarea.field-input { resize: vertical; min-height: 90px; }
+    .field-error {
+      font-size: 0.8rem;
+      color: var(--crimson2);
+      font-style: italic;
+      display: none;
+    }
+
+    /* ── Identity grid ────────────────────────────────────────── */
+    .identity-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 600px) { .identity-grid { grid-template-columns: 1fr; } }
+
+    /* ── Genre selector ───────────────────────────────────────── */
+    .genre-selector { display: flex; gap: 12px; margin-top: 4px; }
+    .genre-btn {
+      flex: 1; padding: 10px 8px;
+      border: 2px solid var(--parchment3);
+      border-radius: var(--radius);
+      background: var(--parchment2);
+      cursor: pointer;
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      transition: all 0.2s;
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      color: var(--ink-light);
+    }
+    .genre-btn img { width: 36px; height: 36px; }
+    .genre-btn:hover { border-color: var(--gold); background: #fff3dc; }
+    .genre-btn.selected { border-color: var(--crimson); background: #fff0e8; color: var(--crimson); }
+
+    /* ── Choice grid (origines / métiers) ─────────────────────── */
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
+      gap: 12px;
+    }
+    .choice-card {
+      border: 2px solid var(--ink-light);
+      border-radius: var(--radius);
+      background: #fff9f0;
+      padding: 16px 10px 14px;
+      cursor: pointer;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      transition: all 0.2s;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 2px 6px rgba(26,17,10,0.12), inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+    .choice-card:hover {
+      border-color: var(--gold);
+      background: #fffbf0;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(26,17,10,0.18), inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+    .choice-card.selected {
+      border-color: var(--crimson);
+      background: #fff4ee;
+      box-shadow: 0 0 0 3px rgba(139,26,26,0.2), 0 4px 12px rgba(139,26,26,0.12);
+    }
+    .choice-card .choice-icon {
+      font-size: 2rem;
+      color: var(--ink-light);
+      filter: drop-shadow(0 1px 1px rgba(0,0,0,0.15));
+    }
+    .choice-card:hover .choice-icon { color: var(--gold); }
+    .choice-card.selected .choice-icon { color: var(--crimson); }
+    .choice-card .choice-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+    }
+    .choice-card .choice-hint {
+      font-size: 0.76rem;
+      font-style: italic;
+      color: #6b5344;
+      line-height: 1.3;
+    }
+    .choice-info-btn {
+      position: absolute; top: 5px; right: 5px;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      border: 1px solid var(--parchment3);
+      background: transparent;
+      font-size: 0.6rem;
+      color: var(--ink-light);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      padding: 0;
+      transition: all 0.2s;
+    }
+    .choice-info-btn:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
+
+    /* ── Stats ────────────────────────────────────────────────── */
+    .stats-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    @media (max-width: 640px) { .stats-layout { grid-template-columns: 1fr; } }
+
+    .stat-row {
+      display: flex; align-items: center; gap: 8px;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(139,26,26,0.08);
+    }
+    .stat-row:last-child { border-bottom: none; }
+    .stat-icon { width: 24px; text-align: center; font-size: 1rem; color: var(--crimson); flex-shrink: 0; }
+    .stat-name {
+      flex: 1;
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+    }
+    .stat-input {
+      width: 52px; text-align: center;
+      background: #fff9f0;
+      border: 1px solid var(--parchment3);
+      border-radius: 4px;
+      padding: 4px 6px;
+      font-family: 'Crimson Text', serif;
+      font-size: 1.1rem; font-weight: 600;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .stat-input:focus { border-color: var(--gold); }
+    .stat-input:disabled { background: var(--parchment2); color: #7a6555; cursor: not-allowed; }
+    .stat-dice-btn {
+      width: 32px; height: 28px;
+      border: 1px solid var(--gold);
+      border-radius: 4px;
+      background: transparent; color: var(--gold);
+      font-size: 0.65rem; font-family: 'Cinzel', serif; font-weight: 600;
+      cursor: pointer; transition: all 0.2s; flex-shrink: 0; padding: 0;
+    }
+    .stat-dice-btn:hover { background: var(--gold); color: var(--ink); }
+
+    /* Derived */
+    .derived-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .derived-item {
+      background: var(--parchment2);
+      border: 1px solid var(--parchment3);
+      border-radius: var(--radius);
+      padding: 10px 6px 8px;
+      text-align: center;
+    }
+    .derived-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem; letter-spacing: 0.07em; text-transform: uppercase;
+      color: var(--ink-light); display: block; margin-bottom: 4px;
+    }
+    .derived-input {
+      width: 100%; text-align: center;
+      background: transparent; border: none;
+      font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700;
+      color: var(--crimson); padding: 0; outline: none;
+    }
+
+    /* Bonus (destin / fortune) */
+    .bonus-row { display: flex; gap: 12px; margin-top: 16px; }
+    .bonus-item {
+      flex: 1;
+      background: var(--parchment2); border: 1px solid var(--parchment3);
+      border-radius: var(--radius); padding: 10px 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .bonus-icon { font-size: 1.3rem; color: var(--gold); }
+    .bonus-item-info { flex: 1; }
+    .bonus-item-label {
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-light);
+    }
+    .bonus-item-input {
+      width: 44px; text-align: center;
+      background: #fff9f0; border: 1px solid var(--parchment3);
+      border-radius: 4px; padding: 4px;
+      font-family: 'Cinzel', serif; font-size: 1rem; font-weight: 700;
+      color: var(--crimson); outline: none;
+    }
+    .bonus-item-input:disabled { background: var(--parchment2); cursor: not-allowed; }
+    .bonus-dice-btn {
+      border: 1px solid var(--gold); border-radius: 4px;
+      background: transparent; color: var(--gold);
+      font-size: 0.62rem; font-family: 'Cinzel', serif; font-weight: 600;
+      cursor: pointer; padding: 3px 6px; transition: all 0.2s;
+    }
+    .bonus-dice-btn:hover { background: var(--gold); color: var(--ink); }
+
+    /* XP row */
+    .xp-row { display: flex; gap: 12px; }
+    .xp-item {
+      flex: 1; display: flex; align-items: center; gap: 8px;
+      padding: 8px 12px;
+      background: var(--parchment2); border: 1px solid var(--parchment3);
+      border-radius: var(--radius);
+    }
+    .xp-label {
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      text-transform: uppercase; letter-spacing: 0.07em;
+      color: var(--ink-light); flex: 1;
+    }
+    .xp-input {
+      width: 48px; text-align: center;
+      background: #fff9f0; border: 1px solid var(--parchment3);
+      border-radius: 4px; padding: 4px;
+      font-family: 'Cinzel', serif; font-size: 0.95rem; font-weight: 700;
+      color: var(--crimson); outline: none;
+    }
+    .xp-input:disabled { background: var(--parchment2); cursor: not-allowed; }
+
+    /* ── Wizard nav ───────────────────────────────────────────── */
+    .wizard-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 28px; gap: 12px;
+    }
+    .btn-group-right { display: flex; gap: 10px; }
+
+    .btn-parchment {
+      font-family: 'Cinzel', serif; font-size: 0.74rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 9px 20px; border-radius: var(--radius);
+      border: 2px solid var(--parchment3);
+      background: var(--parchment2); color: var(--ink-light);
+      cursor: pointer; transition: all 0.2s;
+    }
+    .btn-parchment:hover { border-color: var(--gold); background: #fff8e8; color: var(--ink); }
+
+    .btn-crimson {
+      font-family: 'Cinzel', serif; font-size: 0.74rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 9px 24px; border-radius: var(--radius);
+      border: 2px solid var(--crimson); background: var(--crimson);
+      color: var(--parchment); cursor: pointer; transition: all 0.2s;
+    }
+    .btn-crimson:hover { background: var(--crimson2); border-color: var(--crimson2); }
+
+    .btn-gold {
+      font-family: 'Cinzel', serif; font-size: 0.74rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 9px 24px; border-radius: var(--radius);
+      border: 2px solid var(--gold); background: var(--gold);
+      color: var(--ink); cursor: pointer; transition: all 0.2s;
+    }
+    .btn-gold:hover { background: var(--gold-light); border-color: var(--gold-light); }
+
+    .btn-aide {
+      font-family: 'Cinzel', serif; font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.06em; padding: 5px 12px;
+      border-radius: var(--radius); border: 1px solid var(--parchment3);
+      background: transparent; color: var(--parchment3);
+      cursor: pointer; transition: all 0.2s;
+      display: inline-flex; align-items: center; gap: 5px;
+    }
+    .btn-aide:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── Recap badges ─────────────────────────────────────────── */
+    .recap-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: var(--parchment2); border: 1px solid var(--parchment3);
+      border-radius: 20px; padding: 3px 10px 3px 7px;
+      font-family: 'Cinzel', serif; font-size: 0.66rem;
+      color: var(--ink-light); letter-spacing: 0.04em;
+    }
+    .recap-badge i { color: var(--crimson); }
+
+    /* ── Modal overrides ──────────────────────────────────────── */
+    .modal-content {
+      background: var(--parchment);
+      border: 1px solid var(--parchment3);
+      border-radius: var(--radius);
+    }
+    .modal-header {
+      border-bottom: 1px solid var(--parchment3);
+      background: var(--ink);
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+    .modal-title { font-family: 'Cinzel', serif; color: var(--gold-light); font-size: 1rem; }
+    .btn-close { filter: invert(1); }
+    #modal-description, #modal-competences {
+      font-family: 'Crimson Text', serif; font-size: 1.05rem; color: var(--ink);
+    }
+  </style>
 </head>
-<body >
+<body>
 <noscript>Your browser does not support script</noscript>
 
 <nav class="navbar navbar-expand-sm bg-transparent navbar-light">
-	<div id="menu" class="container-fluid">
-	</div>
+  <div id="menu" class="container-fluid"></div>
 </nav>
 <hr>
-<br>
-<br>
-<span class="wip">Website in progress</span><img class="zombie" src="img/wip.png" width="100px" alt="Websit in progress" title="Websit in progress" border="0">
-<br>
-<br>
-<div class="container-fluid">
-	<!-- img src="img/creation_pj.png"  style="height: 200px;" class="rounded"></img -->
-	<div class="">
-		<div class="row">
-			<div class="col-5">
-				<h3 style="position: relative; left: 10px;">Personnage  <button class="btn btn-primary" title="Aide à la création du PJ" onclick="aideCreationPJ();"><i class="ra ra-help"> Aide à la création</i></button></h3>
-				<form action="" class="was-validated">
-					<div class="card" style="width: 100%; height: 360px">
-						<div class="row">
-							<div class="col-8">
-								<input id="nom" type="text" pattern=".{3,}" class="form-control" placeholder="Nom" title="3 lettres minimum" required style="margin-left: 10px; margin-top: 5px; width: 90%" onkeyup="verifNom()">
-								<input id="origine" type="text" class="form-control" placeholder="Origine du pj" title="Origine du pj" disabled            style="margin-left: 10px; margin-top: 5px; width: 90%">
-								<input id="metier" type="text" class="form-control" placeholder="Métier du pj" title="Métier du pj" disabled               style="margin-left: 10px; margin-top: 5px; width: 90%">
-								<!--div class="invalid-feedback" style="margin-left: 10px;">Veuillez choisir un nom.</div-->
-							</div>
-							<div id="desc-genre" class="col-4">
-								<img id="femme" src="img/femme.svg"  width="32px" alt="Femme" title="Femme" onclick="setGenre('femme')" style="margin-top: 5px; margin-left: -10px;">
-								<img id="homme" src="img/homme.svg"  width="32px" alt="Homme" title="Homme" onclick="setGenre('homme')" style="margin-top: 5px">
-								<span id="genre" style="font-weight: bold; font-size: 18px; position: relative; top: 5px;"></span>
-								<!--img id="imgPerso" class="card-img-top rounded-circle" src="img/pj.png" alt="Card image" style="width: 100px; height: 90px; position: relative; left: -40px; top:10px"!-->
-							</div>
-						</div>
-						<div class="card-body" style="position: relative; top: -20px;">
-							<br>
-							<p>Présentation</p>
-							<textarea  id="presentation" rows="6" cols="35" style="width: 100%;"></textarea>
-						</div>
-					</div>
-				</form>
-				<h4 style="top: 20px;">Caractéristiques</h4>
-				<div class="card" style="height: 150px;">
-					<div class="row">
-						<div class="col-5">
-							<div id="g-adresse" class="input-group">
-								<span class="caract-label" title="Ne sert pas qu'au bière pong">Adresse</span>
-								<input id="adresse" type="number" class="caract-valeur" value="7" >
-								<button class="btn btn-warning caract-btn" onclick="caractD6('adresse')">D6</button> 
-							</div>
-						</div>
-						<div class="col-5">
-							<div id="g-charisme" class="input-group">
-								<span class="caract-label" title="Apparence du héros, prestigieuse ou non...">Charisme</span>
-								<input id="charisme" type="number" class="caract-valeur" value="7" >
-								<button class="btn btn-warning caract-btn" onclick="caractD6('charisme')">D6</button> 
-							</div>
-						</div>
-						<div class="col-5">
-							<div id="g-courage" class="input-group">
-								<span class="caract-label" title="Détermine qui frappe le premier dans un combat">Courage</span>
-								<input id="courage" type="number" class="caract-valeur" value="7" >
-								<button class="btn btn-warning caract-btn" onclick="caractD6('courage')">D6</button> 
-							</div>
-						</div>
-						<div class="col-5">
-							<div id="g-force" class="input-group">
-								<span class="caract-label" title="Permet notament de défoncer une porte">Force</span>
-								<input id="force" type="number" class="caract-valeur" value="7" >
-								<button class="btn btn-warning caract-btn" onclick="caractD6('force')">D6</button> 
-							</div>
-						</div>
-						<div class="col-5">
-							<div id="g-intelligence" class="input-group">
-								<span class="caract-label" title="Trouver son chemin dans un labyrinthe, entre autre...">Intelligence</span>
-								<input id="intelligence" type="number" class="caract-valeur" value="7" >
-								<button class="btn btn-warning caract-btn" onclick="caractD6('intelligence')">D6</button> 
-							</div>
-						</div>
-						<div class="col-5"></div>
-						<div class="col-5">
-							<div id="g-destin" class="input-group">
-								<span class="caract-label" title="Avec des si, on ne serait pas mort. Marche aussi avec un point du destin!">Point destin</span>
-								<input id="destin" type="number" class="caract-valeur" value="0" disabled>
-								<button class="btn btn-warning caract-btn" onclick="destinD4()">D4</button> 
-							</div>
-						</div>
-						<div class="col-5">
-							<div id="g-fortune" class="input-group">
-								<span class="caract-label" title="Pièces d'or">Fortune</span>
-								<input id="fortune" type="number" class="caract-valeur" style="width: 48px;" value="0" disabled>
-								<button class="btn btn-warning caract-btn" onclick="fortuneD6()">D6</button> 
-							</div>
-						</div>
-					</div>
-				</div>
-				<br>
-				<h4 style="top: 20px;">Attributs</h4>
-				<div class="card" style="height: 90px;">
-					<div class="row" style="margin-top: 5px;">
-						<div class="col-4">
-							<div class="input-group"style="left: 6px;">
-								<span class="caract-label" title="Attaque">Attaque</span>
-								<input id="attaque" type="number" class="caract-valeur" placeholder="8" value="0" disabled>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="input-group" style="left: 0px;">
-								<span class="caract-label" title="Parade">Parade</span>
-								<input id="parade" type="number" class="caract-valeur" placeholder="10" value="0" disabled>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="input-group" style="left: -10px;">
-								<span class="caract-label" title="Point de protection (armure)">Protection</span>
-								<input id="pr" type="number" class="caract-valeur" value="0" disabled>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="input-group" style="left: 5px;">
-								<span class="caract-label" title="Energie vitale ou points de vie">E. vitale</span>
-								<input id="ev" type="number" class="caract-valeur" placeholder="30" value="0" disabled>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="input-group" style="left: 0px;">
-								<span class="caract-label" title="Truc de magicien pour lancer des sorts">E. astrale</span>
-								<input id="ea" type="number" class="caract-valeur" placeholder="0" value="0" disabled>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="input-group" style="left: -10px;">
-								<span class="caract-label" title="Tenter de résister à un sortilège">Rés. magie</span>
-								<input id="rm" type="number" class="caract-valeur" value="0" disabled>
-							</div>
-						</div>
-					</div>
-				</div>
-				<br>
-				<h4>Expérience</h4>
-				<div class="card" style="height: 50px;">
-					<div class="row" style="margin-top: 4px;">
 
-						<div class="col-6">
-							<div class="input-group" style="left: 20px;">
-								<span class="caract-label" title="Point d'expérience">Point d'XP</span>
-								<input id="xp" type="number" class="caract-valeur" style="width: 48px;" placeholder="0" disabled>
-							</div>
-						</div>
-						<div class="col-6">
-							<div class="input-group">
-								<span class="caract-label" title="Point d'expérience">Niveau</span>
-								<input id="niveau" type="number" class="caract-valeur" placeholder="1" disabled>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-7">
-				<div id="classes" class="row" style="position :relative; display: none;"></div>
-				<br>
-				<div id="origines" class="row" style="position :relative; display: none;"></div>
-				<div id="metiers" class="row"  style="position :relative; display: none;"></div>
-				<div class="row">
-					<!--div id="c-origine" class="card" style="width: 100%; height: 100px; margin-left: 16px;">
-						<h4 style="margin-top: 5px; margin-left: 10px;">Compétences d'origine</h4>
-						<div class="row"></div>
-					</div-->
-					<!--div id="c-metier" class="card" style="width: 100%; height: 100px; margin-left: 16px;">
-						<h4 style="margin: 5px 0 0 10px">Compétences métiers</h4>
-					</div-->
-				</div>
-			</div>
-		</div>
-		<div class="row" style="position: relative; top: 20px; height: 60px;">
-			<div class="col-2" style="position: relative; left: 5px;">
-				<button type="button" class="btn btn-danger btn-export w-75" style="margin-top: 10px;" onclick="nouveauPJ()">Nouveau</button>
-			</div>
-			<div class="col-2">
-				<button type="button" class="btn btn-success btn-svg w-75" style="margin-top: 10px; margin-left: -30px;" onclick="savePJ()">Sauvegarder</button>
-			</div>
-			<div class="col-2">
-				<button type="button" class="btn btn-primary btn-export w-75" style="margin-top: 10px; margin-left: -70px;" onclick="exportPJ()">Exporter</button>
-			</div>
-		</div>
+<div id="creation-wrapper">
 
-	</div>
+  <!-- Header -->
+  <div class="creation-header">
+    <h1><i class="ra ra-quill-ink"></i> Création de Personnage</h1>
+    <p>Choisissez votre destin — si tant est que vous en ayez un.</p>
+  </div>
+
+  <!-- Step bar -->
+  <div class="step-bar">
+    <div class="step-item active" id="step-ind-1">
+      <div class="step-circle">I</div>
+      <span class="step-label">Identité</span>
+    </div>
+    <div class="step-line"></div>
+    <div class="step-item" id="step-ind-2">
+      <div class="step-circle">II</div>
+      <span class="step-label">Caractéristiques</span>
+    </div>
+    <div class="step-line"></div>
+    <div class="step-item" id="step-ind-3">
+      <div class="step-circle">III</div>
+      <span class="step-label">Origine &amp; Métier</span>
+    </div>
+  </div>
+
+  <!-- ─── STEP 1 — IDENTITÉ ─────────────────────────────────── -->
+  <div class="step-panel parchment-card active" id="panel-1">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <p class="section-title mb-0">Qui êtes-vous ?</p>
+      <button class="btn-aide" onclick="aideCreationPJ()">
+        <i class="ra ra-help"></i> Aide
+      </button>
+    </div>
+
+    <div class="identity-grid">
+      <div class="field-group">
+        <label class="field-label" for="nom">Nom du personnage</label>
+        <input id="nom" type="text" pattern=".{3,}" class="field-input"
+               placeholder="Ex : Mortadel le Téméraire"
+               title="3 lettres minimum" required onkeyup="verifNom()">
+        <span class="field-error" id="nom-error">Le nom doit faire au moins 3 caractères.</span>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Genre</label>
+        <div class="genre-selector">
+          <button class="genre-btn" id="btn-femme" onclick="setGenre('femme'); selectGenreBtn('femme')">
+            <img src="img/femme.svg" alt="Femme">
+            <span>Femme</span>
+          </button>
+          <button class="genre-btn" id="btn-homme" onclick="setGenre('homme'); selectGenreBtn('homme')">
+            <img src="img/homme.svg" alt="Homme">
+            <span>Homme</span>
+          </button>
+        </div>
+        <!-- kept for perso.js compat -->
+        <span id="genre" style="display:none;"></span>
+      </div>
+
+      <div class="field-group" style="grid-column: 1 / -1;">
+        <label class="field-label" for="presentation">
+          Présentation <span style="font-style:italic;font-size:.8rem;color:#8a7060;">(optionnel)</span>
+        </label>
+        <textarea id="presentation" class="field-input" rows="4"
+          placeholder="Un mot sur votre héros… Son passé glorieux, ses cicatrices douteuses, son odeur caractéristique…"></textarea>
+      </div>
+    </div>
+
+    <!-- hidden fields — kept for JS compat -->
+    <input id="origine" type="hidden" disabled>
+    <input id="metier"  type="hidden" disabled>
+
+    <div class="wizard-nav">
+      <button class="btn-parchment" onclick="resetCreation()">
+        <i class="ra ra-recycle"></i> Recommencer
+      </button>
+      <button class="btn-crimson" onclick="goToStep(2)">
+        Suivant <i class="ra ra-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ─── STEP 2 — CARACTÉRISTIQUES ───────────────────────── -->
+  <div class="step-panel parchment-card" id="panel-2">
+
+    <div class="d-flex gap-2 flex-wrap mb-3">
+      <span class="recap-badge"><i class="ra ra-player"></i><span id="recap-nom-2">—</span></span>
+    </div>
+
+    <div class="stats-layout">
+
+      <!-- Left: base stats -->
+      <div>
+        <p class="section-title">Caractéristiques de base</p>
+
+        <div class="stat-row">
+          <span class="stat-icon"><i class="ra ra-eagle-emblem"></i></span>
+          <span class="stat-name" title="Ne sert pas qu'au bière pong">Adresse</span>
+          <input id="adresse" type="number" class="stat-input" value="7">
+          <button class="stat-dice-btn" onclick="caractD6('adresse')">D6</button>
+        </div>
+        <div class="stat-row">
+          <span class="stat-icon"><i class="ra ra-gem"></i></span>
+          <span class="stat-name" title="Apparence du héros">Charisme</span>
+          <input id="charisme" type="number" class="stat-input" value="7">
+          <button class="stat-dice-btn" onclick="caractD6('charisme')">D6</button>
+        </div>
+        <div class="stat-row">
+          <span class="stat-icon"><i class="ra ra-sword"></i></span>
+          <span class="stat-name" title="Détermine qui frappe le premier">Courage</span>
+          <input id="courage" type="number" class="stat-input" value="7">
+          <button class="stat-dice-btn" onclick="caractD6('courage')">D6</button>
+        </div>
+        <div class="stat-row">
+          <span class="stat-icon"><i class="ra ra-muscle-up"></i></span>
+          <span class="stat-name" title="Permet de défoncer une porte">Force</span>
+          <input id="force" type="number" class="stat-input" value="7">
+          <button class="stat-dice-btn" onclick="caractD6('force')">D6</button>
+        </div>
+        <div class="stat-row">
+          <span class="stat-icon"><i class="ra ra-book"></i></span>
+          <span class="stat-name" title="Trouver son chemin, entre autre">Intelligence</span>
+          <input id="intelligence" type="number" class="stat-input" value="7">
+          <button class="stat-dice-btn" onclick="caractD6('intelligence')">D6</button>
+        </div>
+
+        <div class="bonus-row">
+          <div class="bonus-item">
+            <span class="bonus-icon">✦</span>
+            <div class="bonus-item-info">
+              <div class="bonus-item-label">Destin</div>
+            </div>
+            <input id="destin" type="number" class="bonus-item-input" value="0" disabled>
+            <button class="bonus-dice-btn" onclick="destinD4()">D4</button>
+          </div>
+          <div class="bonus-item">
+            <span class="bonus-icon"><i class="ra ra-coin" style="color:var(--gold)"></i></span>
+            <div class="bonus-item-info">
+              <div class="bonus-item-label">Fortune</div>
+            </div>
+            <input id="fortune" type="number" class="bonus-item-input" value="0" disabled>
+            <button class="bonus-dice-btn" onclick="fortuneD6()">D6</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: derived attributes -->
+      <div>
+        <p class="section-title">Attributs dérivés</p>
+        <div class="derived-grid">
+          <div class="derived-item">
+            <span class="derived-label">Attaque</span>
+            <input id="attaque" type="number" class="derived-input" value="0" disabled>
+          </div>
+          <div class="derived-item">
+            <span class="derived-label">Parade</span>
+            <input id="parade" type="number" class="derived-input" value="0" disabled>
+          </div>
+          <div class="derived-item">
+            <span class="derived-label">Protection</span>
+            <input id="pr" type="number" class="derived-input" value="0" disabled>
+          </div>
+          <div class="derived-item">
+            <span class="derived-label">Énergie vitale</span>
+            <input id="ev" type="number" class="derived-input" value="0" disabled>
+          </div>
+          <div class="derived-item">
+            <span class="derived-label">Énergie astrale</span>
+            <input id="ea" type="number" class="derived-input" value="0" disabled>
+          </div>
+          <div class="derived-item">
+            <span class="derived-label">Rés. magie</span>
+            <input id="rm" type="number" class="derived-input" value="0" disabled>
+          </div>
+        </div>
+
+        <div class="xp-row mt-3">
+          <div class="xp-item">
+            <span class="xp-label">Points d'XP</span>
+            <input id="xp" type="number" class="xp-input" value="0" disabled>
+          </div>
+          <div class="xp-item">
+            <span class="xp-label">Niveau</span>
+            <input id="niveau" type="number" class="xp-input" value="1" disabled>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wizard-nav">
+      <button class="btn-parchment" onclick="goToStep(1)">
+        <i class="ra ra-arrow-left"></i> Retour
+      </button>
+      <button class="btn-crimson" onclick="goToStep(3)">
+        Suivant <i class="ra ra-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ─── STEP 3 — ORIGINE & MÉTIER ───────────────────────── -->
+  <div class="step-panel parchment-card" id="panel-3">
+
+    <div class="mb-3">
+      <span class="recap-badge">
+        <i class="ra ra-player"></i>
+        <span id="recap-nom-3">—</span>
+      </span>
+    </div>
+
+    <p class="section-title">Origine</p>
+    <div id="origines" class="choice-grid"></div>
+
+    <hr style="margin: 22px 0;">
+
+    <p class="section-title">Métier</p>
+    <div id="metiers" class="choice-grid"></div>
+
+    <!-- kept for creation.js compat -->
+    <div id="classes" style="display:none;"></div>
+
+    <div class="wizard-nav">
+      <button class="btn-parchment" onclick="goToStep(2)">
+        <i class="ra ra-arrow-left"></i> Retour
+      </button>
+      <div class="btn-group-right">
+        <button class="btn-parchment" onclick="exportPJ()">
+          <i class="ra ra-scroll-unfurled"></i> Exporter
+        </button>
+        <button class="btn-gold" id="btn-save" onclick="savePJAndConfirm()">
+          <i class="ra ra-quill-ink"></i> Sauvegarder
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /creation-wrapper -->
+
+<!-- Modal -->
+<div class="modal fade" id="choix-modal">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Détail</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <img id="modal-img" class="rounded-circle float-start me-3"
+             src="img/pj.png" alt="Portrait"
+             style="width:90px;height:110px;object-fit:cover;">
+        <p id="modal-description"></p>
+        <div style="clear:both;">
+          <h5 style="font-family:'Cinzel',serif;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--crimson);margin-top:12px;">
+            Compétences
+          </h5>
+          <hr>
+          <p id="modal-competences"></p>
+        </div>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
 </div>
 
-<div class="modal fade" id="choix-modal" heigth="66%">
-	<div class="modal-dialog modal-dialog-scrollable">
-	  <div class="modal-content">
-		<!-- Modal Header -->
-		<div class="modal-header">
-		  <h4 class="modal-title">Modal Heading</h4>
-		  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-		</div>
-  
-		<!-- Modal body -->
-		<div class="modal-body">
-			<img id="modal-img" class="card-img-top rounded-circle" src="img/pj.png" alt="Card image" style="width: 100px; height: 120px; text-align: center; margin-top: 0px; margin-left: 5px; margin-right: 10px;">
-			<p id="modal-description" style="margin-left: 5px;"></p>
-			<div>
-				<h5>Compétences</h5>
-				<hr>
-				<p id="modal-competences" style="margin-left: 5px;"></p>
-			</div>
-		</div>
-  
-		<!-- Modal footer -->
-		<div class="modal-footer">
-		</div>
-  
-	  </div>
-	</div>
-</div>
-
-
+<!-- Scripts -->
 <script type="text/javascript" src="json/competences.json"></script>
 <script type="text/javascript" src="json/origines.json"></script>
 <script type="text/javascript" src="json/metiers.json"></script>
@@ -242,16 +774,83 @@
 <script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript" src="js/perso.js"></script>
 <script type="text/javascript" src="js/creation.js"></script>
+
 <script>
-	 setMenu("Personnage");
-	 $(document).ready(function() {
-		$(".zombie").addClass("zombie-in-progress");
-		$(".wip").addClass("wip-in-progress");
-	});
+  setMenu("Personnage");
 
-	pj = new PJ();
-	nouveauPJ();
+  let currentStep = 1;
 
+  /* ── Navigation entre étapes ── */
+  function goToStep(n) {
+    // Validation step 1
+    if (n > 1 && currentStep === 1) {
+      const nom = document.getElementById('nom').value.trim();
+      if (nom.length < 3) {
+        document.getElementById('nom').classList.add('is-invalid');
+        document.getElementById('nom-error').style.display = 'block';
+        document.getElementById('nom').focus();
+        return;
+      }
+      document.getElementById('nom').classList.remove('is-invalid');
+      document.getElementById('nom-error').style.display = 'none';
+    }
+
+    // Sync recap badges
+    const nomVal = document.getElementById('nom').value.trim() || '—';
+    document.getElementById('recap-nom-2').textContent = nomVal;
+    document.getElementById('recap-nom-3').textContent = nomVal;
+
+    // Update step indicators
+    for (let i = 1; i <= 3; i++) {
+      const ind = document.getElementById('step-ind-' + i);
+      ind.classList.remove('active', 'done');
+      if (i < n)  ind.classList.add('done');
+      if (i === n) ind.classList.add('active');
+    }
+
+    // Show/hide panels
+    document.querySelectorAll('.step-panel').forEach((p, i) => {
+      p.classList.toggle('active', i + 1 === n);
+    });
+
+    currentStep = n;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ── Sélection de genre ── */
+  function selectGenreBtn(g) {
+    document.getElementById('btn-femme').classList.toggle('selected', g === 'femme');
+    document.getElementById('btn-homme').classList.toggle('selected', g === 'homme');
+  }
+
+  /* ── Reset complet ── */
+  function resetCreation() {
+    pj = new PJ();
+    nouveauPJ();
+    document.getElementById('btn-femme').classList.remove('selected');
+    document.getElementById('btn-homme').classList.remove('selected');
+    document.querySelectorAll('.choice-card').forEach(c => c.classList.remove('selected'));
+    goToStep(1);
+  }
+
+  /* ── Sauvegarde avec feedback visuel ── */
+  function savePJAndConfirm() {
+    savePJ();
+    const btn = document.getElementById('btn-save');
+    const orig = btn.innerHTML;
+    btn.innerHTML = '<i class="ra ra-check"></i> Sauvegardé !';
+    btn.style.cssText += ';background:#2d7a2d;border-color:#2d7a2d;color:#fff;';
+    setTimeout(() => {
+      btn.innerHTML = orig;
+      btn.style.background = '';
+      btn.style.borderColor = '';
+      btn.style.color = '';
+    }, 2200);
+  }
+
+  /* ── Init ── */
+  pj = new PJ();
+  nouveauPJ();
 </script>
 </body>
 </html>

@@ -7,9 +7,8 @@ function write(id) {
 
     jsonParagraphe.paragraphe.forEach(function(data) {
 
-        strParagraphe="<p>"+formatParagraphe(data.ligne)+"</p>";
-
-        $("#texte").append(strParagraphe);
+        // formatParagraphe retourne déjà un <p>…</p>, on l'insère directement
+        $("#texte").append(formatParagraphe(data.ligne));
     });
 
     localStorage.setItem("paragraphe",id);
@@ -20,7 +19,7 @@ function formatParagraphe(ligne) {
     var strLigne="";
 
     var actions=ligne.split("paragraphe ");
-    for(i=0;i<actions.length;i++) {
+    for(let i=0;i<actions.length;i++) {
         let action=actions[i];
         let id=action.replace(',','.').replace(' ','.').split(".")[0];
         if(!isNaN(id)) {
@@ -28,15 +27,6 @@ function formatParagraphe(ligne) {
         }
         strLigne += action;
     }
-    /*
-    let pos=ligne.indexOf("paragraphe")+11;
-    let action=ligne.substring(pos).replace(',','.').replace(' ','.');
-    let id=action.split(".")[0];
-
-    if(!isNaN(id)) {
-        ligne=ligne.replace(id,'<a href="javascript:write('+id+')">'+id+'</a>');
-        ligne=capitalizeFirstLetter(ligne);
-    }*/
 
     strLigne = "<p>"+capitalizeFirstLetter(strLigne)+"</p>";
 
@@ -48,7 +38,8 @@ function goTo() {
 }
 
 function capitalizeFirstLetter(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    // On met uniquement la première lettre en majuscule, sans toucher au reste
+    return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 $('.listPerso').click(function(event) {
@@ -80,7 +71,7 @@ $('.listPerso').click(function(event) {
             break;
         case "Ogre":
             desc="L'Ogre est une créature très simple d'esprit adorant manger tout et n'importe quoi comme la musique et ceux qui la joue, parfois.";
-            ev45;
+            ev=45;
             break;
         case "Ranger":
             desc="Le Ranger est un leader lâche et incompétent mais fier.";
