@@ -231,68 +231,153 @@
     /* ── Choice grid (origines / métiers) ─────────────────────── */
     .choice-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
       gap: 12px;
     }
-    .choice-card {
-      border: 2px solid var(--ink-light);
-      border-radius: var(--radius);
-      background: #fff9f0;
-      padding: 16px 10px 14px;
-      cursor: pointer;
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      transition: all 0.2s;
-      text-align: center;
-      position: relative;
-      box-shadow: 0 2px 6px rgba(26,17,10,0.12), inset 0 1px 0 rgba(255,255,255,0.6);
-    }
-    .choice-card:hover {
-      border-color: var(--gold);
-      background: #fffbf0;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(26,17,10,0.18), inset 0 1px 0 rgba(255,255,255,0.6);
-    }
-    .choice-card.selected {
-      border-color: var(--crimson);
-      background: #fff4ee;
-      box-shadow: 0 0 0 3px rgba(139,26,26,0.2), 0 4px 12px rgba(139,26,26,0.12);
-    }
-    .choice-card .choice-icon {
-      font-size: 2rem;
-      color: var(--ink-light);
-      filter: drop-shadow(0 1px 1px rgba(0,0,0,0.15));
-    }
-    .choice-card:hover .choice-icon { color: var(--gold); }
-    .choice-card.selected .choice-icon { color: var(--crimson); }
-    .choice-card .choice-name {
-      font-family: 'Cinzel', serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      color: var(--ink);
-    }
-    .choice-card .choice-hint {
-      font-size: 0.76rem;
-      font-style: italic;
-      color: #6b5344;
-      line-height: 1.3;
-    }
-    .choice-info-btn {
-      position: absolute; top: 5px; right: 5px;
-      width: 18px; height: 18px;
-      border-radius: 50%;
-      border: 1px solid var(--parchment3);
-      background: transparent;
-      font-size: 0.6rem;
-      color: var(--ink-light);
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      padding: 0;
-      transition: all 0.2s;
-    }
-    .choice-info-btn:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
 
-    /* ── Stats ────────────────────────────────────────────────── */
+    /* Surcharge des styles Bootstrap + donjon.css sur les cards générées */
+    #origines .card,
+    #metiers .card {
+      /* Annule la hauteur fixe de donjon.css (220px) */
+      height: auto !important;
+      min-height: 0 !important;
+      /* Nouveau layout vertical */
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      padding: 14px 12px 48px !important; /* 48px réservé pour le bouton absolu en bas */
+      text-align: center !important;
+      position: relative !important;
+      background: #fff9f0 !important;
+      border: 2px solid var(--ink-light) !important;
+      border-radius: var(--radius) !important;
+      box-shadow: 0 2px 6px rgba(26,17,10,0.12) !important;
+      transition: all 0.2s !important;
+      cursor: pointer !important;
+      /* Reset marges Bootstrap */
+      margin: 0 !important;
+    }
+    #origines .card:hover,
+    #metiers .card:hover {
+      border-color: var(--gold) !important;
+      background: #fffbf0 !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 6px 16px rgba(26,17,10,0.18) !important;
+    }
+    #origines .card-enabled,
+    #metiers .card-enabled {
+      border-color: var(--ink-light) !important;
+      background: #fff9f0 !important;
+    }
+    #origines .card-disabled,
+    #metiers .card-disabled {
+      background: var(--parchment2) !important;
+      border-color: var(--parchment3) !important;
+      opacity: 0.6 !important;
+      cursor: not-allowed !important;
+    }
+
+    /* Image : centrée, pas flottante */
+    #origines .card-img-top,
+    #metiers .card-img-top {
+      float: none !important;
+      width: 56px !important;
+      height: 56px !important;
+      object-fit: cover !important;
+      border-radius: 50% !important;
+      margin: 0 0 10px 0 !important;
+      border: 2px solid var(--parchment3) !important;
+      flex-shrink: 0 !important;
+    }
+
+    /* Nom + titre : en flux normal (plus en absolu) */
+    #origines .card > p,
+    #metiers .card > p {
+      position: static !important;
+      left: auto !important;
+      top: auto !important;
+      margin: 0 0 6px 0 !important;
+      font-family: 'Cinzel', serif !important;
+      font-size: 0.8rem !important;
+      font-weight: 700 !important;
+      color: var(--ink) !important;
+      line-height: 1.4 !important;
+    }
+    #origines .card > p span,
+    #metiers .card > p span {
+      font-size: 0.7rem !important;
+      font-style: italic !important;
+      color: #6b5344 !important;
+      font-family: 'Crimson Text', serif !important;
+      font-weight: 400 !important;
+    }
+
+    /* Conditions de stats : centré et aéré */
+    #origines .card > div,
+    #metiers .card > div {
+      position: static !important;
+      left: auto !important;
+      top: auto !important;
+      font-size: 0.72rem !important;
+      color: var(--ink-light) !important;
+      font-family: 'Crimson Text', serif !important;
+      line-height: 1.6 !important;
+      margin-bottom: 4px !important;
+    }
+
+    /* Bouton "Voir" : collé en bas de la card */
+    #origines .btn-classe,
+    #metiers .btn-classe {
+      position: absolute !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      border-radius: 0 0 var(--radius) var(--radius) !important;
+      font-family: 'Cinzel', serif !important;
+      font-size: 0.68rem !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.06em !important;
+      background: var(--crimson) !important;
+      border-color: var(--crimson) !important;
+      color: var(--parchment) !important;
+      padding: 7px !important;
+      transition: background 0.2s !important;
+    }
+    #origines .btn-classe:hover,
+    #metiers .btn-classe:hover {
+      background: var(--crimson2) !important;
+      border-color: var(--crimson2) !important;
+    }
+    #origines .card-disabled .btn-classe,
+    #metiers .card-disabled .btn-classe {
+      background: #aaa !important;
+      border-color: #aaa !important;
+      cursor: not-allowed !important;
+    }
+
+    /* col-4 wrapper : supprime padding Bootstrap pour la grille */
+    #origines > .col-4,
+    #metiers > .col-4 {
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    /* Conteneurs origines/metiers : grille CSS au lieu de row Bootstrap */
+    #origines,
+    #metiers {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)) !important;
+      gap: 12px !important;
+      /* Reset row Bootstrap */
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+    /* Retire le h3 généré par creation.js du flux de grille */
+    #origines > h3,
+    #metiers > h3 {
+      grid-column: 1 / -1;
+      display: none; /* remplacé par .section-title dans le HTML */
+    }
     .stats-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -462,6 +547,35 @@
     }
     .btn-aide:hover { border-color: var(--gold); color: var(--gold); }
 
+    /* ── Bouton dé nom aléatoire ──────────────────────────────── */
+    .btn-dice-nom {
+      width: 42px; height: 42px; flex-shrink: 0;
+      border: 2px solid var(--gold);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--gold);
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex; align-items: center; justify-content: center;
+      padding: 0;
+      margin-top: 0;
+    }
+    .btn-dice-nom:hover {
+      background: var(--gold);
+      color: var(--ink);
+      transform: rotate(20deg) scale(1.1);
+    }
+    .btn-dice-nom.rolled {
+      animation: diceRoll 0.35s ease;
+    }
+    @keyframes diceRoll {
+      0%   { transform: rotate(0deg) scale(1); }
+      40%  { transform: rotate(25deg) scale(1.15); }
+      70%  { transform: rotate(-10deg) scale(0.95); }
+      100% { transform: rotate(0deg) scale(1); }
+    }
+
     /* ── Recap badges ─────────────────────────────────────────── */
     .recap-badge {
       display: inline-flex; align-items: center; gap: 5px;
@@ -537,10 +651,19 @@
     <div class="identity-grid">
       <div class="field-group">
         <label class="field-label" for="nom">Nom du personnage</label>
-        <input id="nom" type="text" pattern=".{3,}" class="field-input"
-               placeholder="Ex : Mortadel le Téméraire"
-               title="3 lettres minimum" required onkeyup="verifNom()">
-        <span class="field-error" id="nom-error">Le nom doit faire au moins 3 caractères.</span>
+        <div style="display:flex; gap:8px; align-items:flex-start;">
+          <div style="flex:1; display:flex; flex-direction:column; gap:5px;">
+            <input id="nom" type="text" pattern=".{3,}" class="field-input"
+                   placeholder="Ex : Mortadel le Téméraire"
+                   title="3 lettres minimum" required
+                   autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+                   onkeyup="verifNom()">
+            <span class="field-error" id="nom-error">Le nom doit faire au moins 3 caractères.</span>
+          </div>
+          <button type="button" class="btn-dice-nom" onclick="genererNom()" title="Générer un nom aléatoire">
+            <i class="ra ra-dice-six"></i>
+          </button>
+        </div>
       </div>
 
       <div class="field-group">
@@ -576,7 +699,8 @@
       <button class="btn-parchment" onclick="resetCreation()">
         <i class="ra ra-recycle"></i> Recommencer
       </button>
-      <button class="btn-crimson" onclick="goToStep(2)">
+      <button class="btn-crimson" id="btn-suivant-1" onclick="goToStep(2)" disabled
+              style="opacity:0.45; cursor:not-allowed; transition: opacity 0.2s;">
         Suivant <i class="ra ra-arrow-right"></i>
       </button>
     </div>
@@ -780,6 +904,99 @@
 
   let currentStep = 1;
 
+  /* ── Générateur de noms aléatoires ── */
+  const NOM_MATRIX = {
+    homme: {
+      prefixes: [
+        'Mor','Bal','Gar','Thal','Kro','Dun','Bran','Tor','Sig',
+        'Rag','Helm','Erd','Gond','Morg','Beld','Ulf','Skar',
+        'Drak','Hald','Grym','Wulf','Thro','Bor','Vorn','Keld',
+        'Orm','Zal','Arn','Dorn','Grim'
+      ],
+      suffixes: [
+        'ulf','gar','on','ek','or','ak','bor','elm','und',
+        'ur','ond','ern','eld','an','os','ald','oth','ik',
+        'ast','mar','ard','olt','ulf','arn','von','at','ur','im','en','ax'
+      ],
+      surnoms: [
+        'le Téméraire','le Maudit','l\'Intrépide','le Malchanceux',
+        'le Puant','la Terreur des Tavernes','le Médiocre','l\'Infaillible',
+        'le Courageux (de loin)','la Brute Épaisse','l\'Incompris',
+        'le Pas-si-vaillant','le Fier','l\'Étourdi',
+        'le Valeureux (parfois)','l\'Aventurier Raté',
+        'le Sans-Peur (enfin presque)','le Doué (selon lui)',
+        'le Bougre','l\'Imposteur','le Chanceux',
+        'le Tenace','le Discret','l\'Odieux',
+        'le Fougueux','le Peu Recommandable','le Grognon',
+        'le Mal Rasé','le Borgne','l\'Ivrogne Repenti'
+      ]
+    },
+    femme: {
+      prefixes: [
+        'Aly','Bri','Cel','Dae','El','Fae','Gor','Hel','Ira','Jyn',
+        'Kal','Lyr','Mir','Nae','Oryn','Phe','Ryl','Syl','Tae','Uly',
+        'Val','Wren','Xan','Yor','Zel','Ara','Bel','Cir','Dor','Eve'
+      ],
+      suffixes: [
+        'ina','ara','wen','elle','ith','ia','ora','ane','ise','yre',
+        'anda','enne','ilda','issa','onna','eira','alis','yne','eve','inde',
+        'ath','iel','wyn','ola','una','aste','ine','ire','osa','ula'
+      ],
+      surnoms: [
+        'la Téméraire','la Maudite','l\'Intrépide','la Malchanceuse',
+        'la Terreur des Tavernes','la Médiocre','l\'Infaillible',
+        'la Courageuse (de loin)','l\'Incomprise',
+        'la Pas-si-vaillante','la Fière','la Calamité','l\'Étourdie',
+        'la Valeureuse (parfois)','la Mauvaise Piouce','l\'Aventurière Ratée',
+        'la Sans-Peur (enfin presque)','la Douée (selon elle)',
+        'la Brebis Égarée','l\'Imposteure','la Chanceuse',
+        'la Tenace','la Catastrophe Ambulante','la Discrète',
+        'la Fougeuse','la Peu Recommandable','la Grincheuse',
+        'la Mal Coiffée','l\'Indomptable','la Farouche'
+      ]
+    }
+  };
+
+  function _activerSuivant(actif) {
+    const btn = document.getElementById('btn-suivant-1');
+    btn.disabled = !actif;
+    btn.style.opacity = actif ? '1' : '0.45';
+    btn.style.cursor  = actif ? 'pointer' : 'not-allowed';
+  }
+
+  function verifNom() {
+    const nom = document.getElementById('nom').value.trim();
+    const ok  = nom.length >= 3;
+    document.getElementById('nom').classList.toggle('is-invalid', !ok && nom.length > 0);
+    document.getElementById('nom-error').style.display = (!ok && nom.length > 0) ? 'block' : 'none';
+    _activerSuivant(ok);
+  }
+
+  function genererNom() {
+    const btn   = document.querySelector('.btn-dice-nom');
+    btn.classList.remove('rolled');
+    void btn.offsetWidth;
+    btn.classList.add('rolled');
+
+    const genre = pj.genre || 'homme';
+    const matrice = NOM_MATRIX[genre] || NOM_MATRIX.homme;
+    const pick  = arr => arr[Math.floor(Math.random() * arr.length)];
+    const nom   = pick(matrice.prefixes) + pick(matrice.suffixes) + ' ' + pick(matrice.surnoms);
+
+    const input = document.getElementById('nom');
+    input.value = nom;
+    input.classList.remove('is-invalid');
+    document.getElementById('nom-error').style.display = 'none';
+
+    // Flash doré sur le champ
+    input.style.transition = 'background 0.15s';
+    input.style.background = '#fff3d0';
+    setTimeout(() => { input.style.background = ''; }, 400);
+
+    // Active le bouton Suivant
+    _activerSuivant(true);
+  }
+
   /* ── Navigation entre étapes ── */
   function goToStep(n) {
     // Validation step 1
@@ -821,6 +1038,11 @@
   function selectGenreBtn(g) {
     document.getElementById('btn-femme').classList.toggle('selected', g === 'femme');
     document.getElementById('btn-homme').classList.toggle('selected', g === 'homme');
+    // Si un nom généré est déjà présent, en proposer un nouveau accordé au genre
+    const input = document.getElementById('nom');
+    if (input.value.trim().length >= 3) {
+      genererNom();
+    }
   }
 
   /* ── Reset complet ── */
@@ -830,6 +1052,8 @@
     document.getElementById('btn-femme').classList.remove('selected');
     document.getElementById('btn-homme').classList.remove('selected');
     document.querySelectorAll('.choice-card').forEach(c => c.classList.remove('selected'));
+    document.getElementById('nom').value = '';
+    _activerSuivant(false);
     goToStep(1);
   }
 
